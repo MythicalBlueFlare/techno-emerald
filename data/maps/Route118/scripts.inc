@@ -96,10 +96,14 @@ Route118_EventScript_StevenTrigger::
 	delay 30
 	msgbox Route118_Text_StevenQuestions, MSGBOX_DEFAULT
 	closemessage
+	trainerbattle_no_intro TRAINER_STEVEN_ROUTE118, Route118_Text_StevenDefeat
+	msgbox Route118_Text_StevenExit, MSGBOX_DEFAULT
+	closemessage
 	call_if_eq VAR_0x8008, 0, Route118_EventScript_StevenExit0
 	call_if_eq VAR_0x8008, 1, Route118_EventScript_StevenExit1
 	call_if_eq VAR_0x8008, 2, Route118_EventScript_StevenExit2
 	setvar VAR_ROUTE118_STATE, 1
+	setflag FLAG_UPDATE_WEATHERINSTITUTECAP
 	removeobject LOCALID_STEVEN
 	releaseall
 	end
@@ -259,8 +263,18 @@ Route118_Text_StevenQuestions:
 	.string "As a TRAINER of POKéMON,\n"
 	.string "what do you think?\p"
 	.string "Of course, it's not any of my business.\p"
-	.string "It would be nice if we were to meet\n"
-	.string "again somewhere.$"
+	.string "How about a rematch? I've been training\n"
+	.string "since our battle then. How much\l"
+	.string "stronger have you become?\p"
+	.string "I want you to show me!$"
+	
+Route118_Text_StevenExit:
+	.string "That sure was intense!\p"
+	.string "I must be going now,\n" 
+	.string "I hope we meet each other again!$"
+	
+Route118_Text_StevenDefeat: 
+	.string "Phew…$"
 
 Route118_Text_YouAgreeGoodRodIsGood:
 	.string "Hmm!\n"

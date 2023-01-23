@@ -9,7 +9,7 @@ MirageTower_4F_EventScript_RootFossil::
 	faceplayer
 	msgbox MirageTower_4F_Text_TakeRootFossil, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MirageTower_4F_EventScript_LeaveRootFossil
-	giveitem ITEM_ROOT_FOSSIL
+	giveitem ITEM_PLUME_FOSSIL
 	closemessage
 	setflag FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL
 	setflag FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL
@@ -29,7 +29,7 @@ MirageTower_4F_EventScript_ClawFossil::
 	faceplayer
 	msgbox MirageTower_4F_Text_TakeClawFossil, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, MirageTower_4F_EventScript_LeaveClawFossil
-	giveitem ITEM_CLAW_FOSSIL
+	giveitem ITEM_COVER_FOSSIL
 	closemessage
 	setflag FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL
 	setflag FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL
@@ -61,20 +61,20 @@ MirageTower_4F_EventScript_CollapseMirageTower::
 	end
 
 MirageTower_4F_Text_TakeRootFossil:
-	.string "You found the ROOT FOSSIL.\p"
+	.string "You found the PLUME FOSSIL.\p"
 	.string "If this FOSSIL is taken, the ground\n"
 	.string "around it will likely crumble away…\p"
-	.string "Take the ROOT FOSSIL anyway?$"
+	.string "Take the PLUME FOSSIL anyway?$"
 
 MirageTower_4F_Text_LeftRootFossilAlone:
-	.string "{PLAYER} left the ROOT FOSSIL alone.$"
+	.string "{PLAYER} left the PLUME FOSSIL alone.$"
 
 MirageTower_4F_Text_TakeClawFossil:
-	.string "You found the CLAW FOSSIL.\p"
+	.string "You found the COVER FOSSIL.\p"
 	.string "If this FOSSIL is taken, the ground\n"
 	.string "around it will likely crumble away…\p"
-	.string "Take the CLAW FOSSIL anyway?$"
+	.string "Take the COVER FOSSIL anyway?$"
 
 MirageTower_4F_Text_LeaveClawFossilAlone:
-	.string "{PLAYER} left the CLAW FOSSIL alone.$"
+	.string "{PLAYER} left the COVER FOSSIL alone.$"
 

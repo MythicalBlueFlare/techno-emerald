@@ -201,14 +201,14 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
-      "x": 34,
-      "y": 40,
+      "x": 31,
+      "y": 42,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "4",
+      "trainer_sight_or_berry_tree_id": "5",
       "script": "Route110_EventScript_Edwin",
       "flag": "0"
     },
@@ -370,7 +370,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M",
-      "x": 21,
+      "x": 22,
       "y": 78,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_LEFT_UP_RIGHT_DOWN",
@@ -410,39 +410,39 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 33,
-      "y": 69,
+      "y": 65,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "trainer_sight_or_berry_tree_id": "4",
       "script": "Route110_EventScript_Timmy",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_F",
-      "x": 10,
-      "y": 76,
+      "x": 11,
+      "y": 75,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "trainer_sight_or_berry_tree_id": "3",
       "script": "Route110_EventScript_Isabel",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_POKEFAN_M",
       "x": 7,
-      "y": 76,
+      "y": 75,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "trainer_sight_or_berry_tree_id": "3",
       "script": "Route110_EventScript_Kaleb",
       "flag": "0"
     },
@@ -462,13 +462,13 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
       "x": 36,
-      "y": 40,
+      "y": 41,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "trainer_sight_or_berry_tree_id": "4",
       "script": "Route110_EventScript_Joseph",
       "flag": "0"
     },
@@ -505,13 +505,6 @@
       "y": 24,
       "elevation": 3,
       "dest_map": "MAP_NEW_MAUVILLE_ENTRANCE",
-      "dest_warp_id": 0
-    },
-    {
-      "x": 11,
-      "y": 66,
-      "elevation": 0,
-      "dest_map": "MAP_ROUTE110_TRICK_HOUSE_ENTRANCE",
       "dest_warp_id": 0
     },
     {
@@ -760,6 +753,14 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route110_EventScript_CyclingRoadSign"
+    },
+    {
+      "type": "sign",
+      "x": 11,
+      "y": 66,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "Route110_EventScript_TrickHouseLocked"
     }
   ]
 }

@@ -7375,7 +7375,7 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
-            return MUS_VS_CHAMPION;
+            return MUS_RG_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
             if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 return MUS_VS_RIVAL;
@@ -7392,6 +7392,16 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_PIKE_QUEEN:
         case TRAINER_CLASS_PYRAMID_KING:
             return MUS_VS_FRONTIER_BRAIN;
+		case TRAINER_CLASS_ROUTE_BOSS:
+			return MUS_RG_VS_TRAINER;
+		case TRAINER_CLASS_FINAL_BOSS:
+			return MUS_VS_FINAL_BOSS;
+		case TRAINER_CLASS_FORMER_CHAMPION:
+			return MUS_VS_CHAMPION;
+		case TRAINER_CLASS_VICTORY_ROAD:
+			return MUS_RG_VS_GYM_LEADER;
+		case TRAINER_CLASS_FINAL_RIVAL:
+			return MUS_VS_FINAL_WALLY;
         default:
             return MUS_VS_TRAINER;
         }
@@ -8244,3 +8254,66 @@ u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove)
     }
     return 0;
 }
+
+u8 GetLevelCap(void)
+{
+    if (FlagGet(FLAG_BRANDON_DEFEATED))
+        return 101;
+    if (FlagGet(FLAG_BADGE08_GET))
+        return 90;
+	if (FlagGet(FLAG_FINAL_COURTNEY_DEFEATED))
+        return 85;
+	if (FlagGet(FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS))
+        return 82;
+	if (FlagGet(FLAG_SHELLY_SEAFLOOR_CAVERN_DEFEATED))
+        return 81;
+	if (FlagGet(FLAG_DEFEATED_MAGMA_SPACE_CENTER))
+        return 80;
+    if (FlagGet(FLAG_BADGE07_GET))
+        return 78;
+	if (FlagGet (FLAG_REMATCHES_DONE))
+		return 75;
+	if (FlagGet(FLAG_TEAM_AQUA_ESCAPED_IN_SUBMARINE))
+		return 74;
+	if (FlagGet(FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS))
+		return 72;
+    if (FlagGet(FLAG_HIDE_MT_PYRE_SUMMIT_TEAM_AQUA))
+        return 70;
+    if (FlagGet(FLAG_NOLAND_DEFEATED))
+        return 65;
+    if (FlagGet(FLAG_NOLAND_DEFEATED))
+        return 65;
+    if (FlagGet(FLAG_BADGE06_GET))
+        return 62;
+	if (FlagGet(FLAG_RECEIVED_HM02))
+		return 60;
+    if (FlagGet(FLAG_UPDATE_WEATHERINSTITUTECAP))
+        return 55;
+    if (FlagGet(FLAG_BADGE05_GET))
+        return 52;
+    if (FlagGet(FLAG_UPDATE_NORMANCAP))
+        return 50;
+    if (FlagGet(FLAG_BADGE04_GET))
+        return 47;
+	 if (FlagGet(FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA))
+        return 44;
+    if (FlagGet(FLAG_MET_ARCHIE_METEOR_FALLS))
+        return 40;
+    if (FlagGet(FLAG_BADGE03_GET))
+        return 38;
+	if (FlagGet(FLAG_HIDE_MAUVILLE_CITY_WALLY))
+		return 35;
+	if (FlagGet(FLAG_DELIVERED_DEVON_GOODS))
+		return 32;
+    if (FlagGet(FLAG_DELIVERED_STEVEN_LETTER))
+        return 27;
+    if (FlagGet(FLAG_BADGE02_GET))
+        return 25;
+    if (FlagGet(FLAG_RECOVERED_DEVON_GOODS))
+        return 23;
+    if (FlagGet(FLAG_BADGE01_GET))
+        return 17;
+
+    return 16;
+}
+

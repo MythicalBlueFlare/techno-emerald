@@ -61,6 +61,8 @@ static void ItemUseOnFieldCB_Itemfinder(u8);
 static void ItemUseOnFieldCB_Berry(u8 taskId);
 static void ItemUseOnFieldCB_WailmerPailBerry(u8 taskId);
 static void ItemUseOnFieldCB_WailmerPailSudowoodo(u8 taskId);
+static void ItemUseOnFieldCB_PokeVial(u8 taskId);
+static void ItemUseOnFieldCB_PokeRider(u8 taskId);
 static bool8 TryToWaterSudowoodo(void);
 static void BootUpSoundTMHM(u8 taskId);
 static void Task_ShowTMHMContainedMessage(u8 taskId);
@@ -785,6 +787,33 @@ void ItemUseOutOfBattle_RareCandy(u8 taskId)
     gItemUseCB = ItemUseCB_RareCandy;
     SetUpItemUseCallback(taskId);
 }
+
+void ItemUseOutOfBattle_PokeVial(u8 taskId)
+{
+	sItemUseOnFieldCB = ItemUseOnFieldCB_PokeVial;
+	SetUpItemUseOnFieldCallback(taskId);
+}
+
+static void ItemUseOnFieldCB_PokeVial(u8 taskId)
+{
+	ScriptContext2_Enable(); 
+	ScriptContext1_SetupScript(EventScript_PokeVial);
+	DestroyTask(taskId);
+}
+
+void ItemUseOutOfBattle_PokeRider(u8 taskId)
+{
+	sItemUseOnFieldCB = ItemUseOnFieldCB_PokeRider;
+	SetUpItemUseOnFieldCallback(taskId);
+}
+
+static void ItemUseOnFieldCB_PokeRider(u8 taskId)
+{
+	ScriptContext2_Enable(); 
+	ScriptContext1_SetupScript(EventScript_PokeRider);
+	DestroyTask(taskId);
+}
+
 
 void ItemUseOutOfBattle_TMHM(u8 taskId)
 {

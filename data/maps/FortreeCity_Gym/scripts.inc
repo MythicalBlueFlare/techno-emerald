@@ -16,7 +16,7 @@ FortreeCity_Gym_EventScript_InitRotatingGates::
 	end
 
 FortreeCity_Gym_EventScript_Winona::
-	trainerbattle_single TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
+	trainerbattle_double TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_Text_WinonaNeedTwoMons, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, FortreeCity_Gym_EventScript_WinonaRematch
 	goto_if_unset FLAG_RECEIVED_TM40, FortreeCity_Gym_EventScript_GiveAerialAce2
@@ -61,7 +61,7 @@ FortreeCity_Gym_EventScript_GiveAerialAce::
 	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM40
 	return
-
+	
 FortreeCity_Gym_EventScript_WinonaRematch::
 	trainerbattle_rematch_double TRAINER_WINONA_1, FortreeCity_Gym_Text_WinonaPreRematch, FortreeCity_Gym_Text_WinonaRematchDefeat, FortreeCity_Gym_Text_WinonaRematchNeedTwoMons
 	msgbox FortreeCity_Gym_Text_WinonaPostRematch, MSGBOX_AUTOCLOSE
@@ -239,6 +239,17 @@ FortreeCity_Gym_Text_WinonaIntro:
 	.string "triumphed with grace…\p"
 	.string "Witness the elegant choreography\n"
 	.string "of BIRD POKéMON and I!$"
+	
+FortreeCity_Gym_Text_WinonaNeedTwoMons:
+	.string "I am WINONA. I am the LEADER of\n"
+	.string "the FORTREE POKéMON GYM.\p"
+	.string "I have become one with BIRD POKéMON\n"
+	.string "and have soared the skies…\p"
+	.string "However grueling the battle, we have\n"
+	.string "triumphed with grace…\p"
+	.string "I cannot battle you now, however…\n"
+	.string "Bring two POKéMON and I shall show you\l"
+	.string "The elegant BIRD POKéMON!$"
 
 FortreeCity_Gym_Text_WinonaDefeat:
 	.string "Never before have I seen a TRAINER\n"

@@ -1,4 +1,5 @@
 .set LOCALID_RAYQUAZA_SLEEPING, 1
+.set LOCALID_COURTNEY, 3
 
 SkyPillar_Top_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, SkyPillar_Top_OnResume
@@ -45,10 +46,10 @@ SkyPillar_Top_EventScript_RayquazaFaceDown::
 SkyPillar_Top_EventScript_Rayquaza::
 	lockall
 	waitse
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_NECROZMA, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	setwildbattle SPECIES_RAYQUAZA, 70
+	setwildbattle SPECIES_NECROZMA, 82
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special BattleSetup_StartLegendaryBattle
 	waitstate
@@ -179,7 +180,92 @@ SkyPillar_Top_Movement_CameraPanDown:
 	walk_slow_down
 	walk_slow_down
 	step_end
+	
+SkyPillar_Top_Movement_CourtneyPaceUp:
+	walk_up
+	delay_16
+	face_down
+	step_end
+	
+SkyPillar_Top_EventScript_Courtney::
+	lock
+	faceplayer 
+	playse SE_PIN
+	applymovement LOCALID_COURTNEY, Common_Movement_ExclamationMark
+	waitmovement 0
+	delay 30
+	playbgm MUS_RG_POKE_MANSION, FALSE
+	msgbox SkyPillar_Top_Text_YouFinallyArrived, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_COURTNEY, Common_Movement_WalkUp
+	waitmovement 0 
+	delay 8
+	applymovement LOCALID_COURTNEY, Common_Movement_FaceDown
+	waitmovement 0
+	msgbox SkyPillar_Top_Text_TheStrangeCreatures, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_COURTNEY, Common_Movement_WalkDown
+	waitmovement 0 
+	trainerbattle_double TRAINER_COURTNEY_SKYPILLAR, SkyPillar_Top_Text_FaceMeInBattle, SkyPillar_Top_Text_CourtneyDefeat, SkyPillar_Top_Text_CourtneyNeedTwoMons, SkyPillar_Top_EventScript_CourtneyDefeated, NO_MUSIC
+	release
+	end 
+	
+SkyPillar_Top_EventScript_CourtneyDefeated::
+	msgbox SkyPillar_Top_Text_WhyMustYouGetInMyWay, MSGBOX_DEFAULT
+	closemessage
+	delay 32
+	msgbox SkyPillar_Top_Text_WhenIReturn, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_COURTNEY
+	setflag FLAG_FINAL_COURTNEY_DEFEATED
+	fadescreen FADE_FROM_BLACK
+	release
+	end 
 
 SkyPillar_Top_Text_RayquazaFlewOff:
 	.string "The awakened RAYQUAZA flew off…$"
-
+	
+SkyPillar_Top_Text_YouFinallyArrived:
+	.string "What do you plan on doing, {PLAYER}?\p"
+	.string "To calm RESHIRAM and ZEKROM's rage?\n"
+	.string "This world will eventually reach the\l"
+	.string "point of no return.\p"
+	.string "My team… The team I put all my hope\n"
+	.string "into… LEADER MAXIE… He was broken…\p"
+	.string "Broken because of you.$"
+	
+SkyPillar_Top_Text_TheStrangeCreatures:
+	.string "Those… Things… That TEAM MAGMA and\n"
+	.string "TEAM AQUA obtained.\p"
+	.string "They did not show up on a whim.\p"
+	.string "They were brought here by a certain\n"
+	.string "POKéMON…\p"
+	.string "A POKéMON capable of opening tears in\n"
+	.string "space and time.$"
+	
+SkyPillar_Top_Text_FaceMeInBattle:
+	.string "This POKéMON is now under my control!\n"
+	.string "With it, I will plunge this world into\l"
+	.string "darkness.\p"
+	.string "And for you…\p"
+	.string "It's the end of the line!$"
+	
+SkyPillar_Top_Text_CourtneyDefeat:
+	.string "…Just barely!$"
+	
+SkyPillar_Top_Text_CourtneyNeedTwoMons:
+	.string "Only one POKéMON? Don't humor me.$"
+	
+SkyPillar_Top_Text_WhyMustYouGetInMyWay:
+	.string "Why? Why must… you always…\n"
+	.string "Always, always, always, always…\l"
+	.string "Get in my way!\p"
+	.string "Darn! Dang it…$"
+	
+SkyPillar_Top_Text_WhenIReturn:
+	.string "…Ha ha. Ahahahaha haha!\p"
+	.string "Don't think this is the end!\n"
+	.string "I'll be back someday…\l"
+	.string "And when I return…\p"
+	.string "You'll be sorry.$"

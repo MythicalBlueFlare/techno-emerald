@@ -756,4 +756,8 @@ const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1] =
     [MOVE_GLACIAL_LANCE] = _("GlacialLance"),
     [MOVE_ASTRAL_BARRAGE] = _("AstrlBarrage"),
     [MOVE_EERIE_SPELL] = _("Eerie Spell"),
+	[MOVE_AQUA_FANG] = _("Aqua Fang"),
+	[MOVE_ANGELIC_SONG] = _("Angelic Song"),
+	[MOVE_HEADLONG_RUSH] = _("Headlng Rush"),
+	[MOVE_TOXIN_TURN] = _("Toxin Turn"),
 };

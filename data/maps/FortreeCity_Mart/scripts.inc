@@ -22,7 +22,12 @@ FortreeCity_Mart_Pokemart:
 	.2byte ITEM_AWAKENING
 	.2byte ITEM_REVIVE
 	.2byte ITEM_SUPER_REPEL
-	.2byte ITEM_WOOD_MAIL
+	.2byte ITEM_LIECHI_BERRY
+	.2byte ITEM_GANLON_BERRY
+	.2byte ITEM_SALAC_BERRY
+	.2byte ITEM_PETAYA_BERRY
+	.2byte ITEM_APICOT_BERRY
+	.2byte ITEM_LANSAT_BERRY
 	.2byte ITEM_NONE
 	release
 	end

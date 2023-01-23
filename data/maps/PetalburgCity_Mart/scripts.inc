@@ -21,10 +21,12 @@ PetalburgCity_Mart_Pokemart_Basic:
 	.2byte ITEM_AWAKENING
 	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_REPEL
-	.2byte ITEM_X_SPEED
-	.2byte ITEM_X_ATTACK
-	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_ORANGE_MAIL
+	.2byte ITEM_PECHA_BERRY
+	.2byte ITEM_CHESTO_BERRY
+	.2byte ITEM_CHERI_BERRY
+	.2byte ITEM_RAWST_BERRY
+	.2byte ITEM_PERSIM_BERRY
+	.2byte ITEM_ASPEAR_BERRY
 	.2byte ITEM_NONE
 	release
 	end
@@ -46,10 +48,6 @@ PetalburgCity_Mart_Pokemart_Expanded:
 	.2byte ITEM_AWAKENING
 	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_REPEL
-	.2byte ITEM_X_SPEED
-	.2byte ITEM_X_ATTACK
-	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_ORANGE_MAIL
 	.2byte ITEM_NONE
 	release
 	end

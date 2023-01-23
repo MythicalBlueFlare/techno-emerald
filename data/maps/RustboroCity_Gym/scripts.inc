@@ -2,6 +2,7 @@ RustboroCity_Gym_MapScripts::
 	.byte 0
 
 RustboroCity_Gym_EventScript_Roxanne::
+	call_if_unset FLAG_ROXANNE_REMATCH, RustboroCity_Gym_EventScript_Roxanne2
 	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Gym_EventScript_RoxanneRematch
@@ -24,6 +25,23 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 	call_if_eq VAR_PETALBURG_GYM_STATE, 6, Common_EventScript_ReadyPetalburgGymForBattle
 	goto RustboroCity_Gym_EventScript_GiveRockTomb
 	end
+	
+RustboroCity_Gym_EventScript_Roxanne2::
+	setweather WEATHER_SANDSTORM
+	doweather
+	trainerbattle_single TRAINER_ROXANNE_2, RustboroCity_Gym_Text_RoxanneIntroRematch, RustboroCity_Gym_Text_RoxanneDefeatRematch, RustboroCity_Gym_EventScript_RoxanneDefeatedRematch, MUSIC
+	release 
+	end
+
+RustboroCity_Gym_EventScript_RoxanneDefeatedRematch:
+	setweather WEATHER_NONE
+	doweather
+	msgbox RustboroCity_Gym_Text_RoxanneCongrats
+	giveitem ITEM_SAFETY_GOGGLES
+	setflag FLAG_ROXANNE_REMATCH
+	release
+	end
+
 
 RustboroCity_Gym_EventScript_GiveRockTomb::
 	giveitem ITEM_TM39
@@ -281,3 +299,21 @@ RustboroCity_Gym_Text_RoxanneRematchNeedTwoMons:
 	.string "You only have one POKéMON with you?\p"
 	.string "Please return with at least one more\n"
 	.string "POKéMON.$"
+
+RustboroCity_Gym_Text_RoxanneIntroRematch:
+	.string "ROXANNE: I'm so glad to see you again.\n"
+	.string "I'm ROXANNE, the GYM LEADER here.\p"
+	.string "I'm sure we've both experienced many\n"
+	.string "battles since we last met.\p"
+	.string "I would like to see how much better\n"
+	.string "we've become. Let us battle!$"
+	
+RustboroCity_Gym_Text_RoxanneDefeatRematch:
+	.string "We fall like a crumbling boulder once\n"
+	.string "again…$"
+	
+RustboroCity_Gym_Text_RoxanneCongrats:
+	.string "You've bested us yet again!\n"
+	.string "I think you have the potential to\l"
+	.string "become CHAMPION with enough hard work.\p"
+	.string "That is all. Good luck!$"

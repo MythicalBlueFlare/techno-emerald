@@ -11,6 +11,7 @@ MagmaHideout_4F_MapScripts::
 
 MagmaHideout_4F_EventScript_Maxie::
 	lockall
+	call_if_set FLAG_MAXIE_NEED_TWO_MONS, MagmaHideout_4F_EventScript_MaxieNeedTwoMons
 	playbgm MUS_ENCOUNTER_MAGMA, FALSE
 	msgbox MagmaHideout_4F_Text_MaxieAwakenGroudon, MSGBOX_DEFAULT
 	closemessage
@@ -40,6 +41,17 @@ MagmaHideout_4F_EventScript_Maxie::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
+	applymovement LOCALID_MAXIE, Common_Movement_FacePlayer
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
+	waitmovement 0
+	delay 30
+	setflag FLAG_MAXIE_NEED_TWO_MONS
+	trainerbattle_double TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_Text_MaxieIntro, MagmaHideout_4F_Text_MaxieDefeat, MagmaHideout_4F_Text_MaxieNeedTwoMons, MagmaHideout_4F_EventScript_MaxieDefeated, NO_MUSIC
+	releaseall
+	end 
+	
+MagmaHideout_4F_EventScript_MaxieDefeated:
 	applymovement LOCALID_GROUDON, MagmaHideout_4F_Movement_GroudonExit
 	waitmovement 0
 	removeobject LOCALID_GROUDON
@@ -54,15 +66,9 @@ MagmaHideout_4F_EventScript_Maxie::
 	applymovement LOCALID_MAXIE, MagmaHideout_4F_Movement_MaxieLookAround
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_MaxieGroudonWhatsWrong, MSGBOX_DEFAULT
-	closemessage
-	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
-	waitmovement 0
-	delay 30
+	closemessage 
 	applymovement LOCALID_MAXIE, Common_Movement_FacePlayer
 	waitmovement 0
-	msgbox MagmaHideout_4F_Text_MaxieOhItWasYou, MSGBOX_DEFAULT
-	closemessage
-	trainerbattle_no_intro TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_Text_MaxieDefeat
 	msgbox MagmaHideout_4F_Text_MaxieImGoingAfterGroudon, MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
@@ -80,6 +86,11 @@ MagmaHideout_4F_EventScript_Maxie::
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
+	
+MagmaHideout_4F_EventScript_MaxieNeedTwoMons:
+	trainerbattle_double TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_Text_MaxieIntro, MagmaHideout_4F_Text_MaxieDefeat, MagmaHideout_4F_Text_MaxieNeedTwoMons, MagmaHideout_4F_EventScript_MaxieDefeated, NO_MUSIC
+	release 
+	end 
 
 MagmaHideout_4F_Movement_GroudonApproach:
 	delay_16
@@ -97,6 +108,10 @@ MagmaHideout_4F_Movement_GroudonApproach:
 MagmaHideout_4F_Movement_GroudonExit:
 	slide_up
 	slide_up
+	step_end
+	
+MagmaHideout_4F_Movement_MaxieFacePlayer: 
+	face_left 
 	step_end
 
 MagmaHideout_4F_Movement_MaxieLookAround:
@@ -134,18 +149,19 @@ MagmaHideout_4F_EventScript_Tabitha::
 	end
 
 MagmaHideout_4F_Text_Grunt11Intro:
-	.string "I want to see GROUDON, too, but they\n"
-	.string "won't let me see even its tail…\p"
+	.string "I want to see the RESHIRAM, too,\n"
+	.string "but they won't let me see even its tail…\p"
 	.string "It's got me feeling really frustrated.\p"
 	.string "Oh, no!\n"
-	.string "I blabbed about GROUDON!$"
+	.string "I blabbed about RESHIRAM!$"
 
 MagmaHideout_4F_Text_Grunt11Defeat:
 	.string "I guess it's impossible to win if one\n"
 	.string "doesn't have a calm mind…$"
 
 MagmaHideout_4F_Text_Grunt11PostBattle:
-	.string "I wonder if GROUDON even has a tail?$"
+	.string "I wonder if the LEGENDARY POKéMON even has\n"
+	.string "a tail?$"
 
 MagmaHideout_4F_Text_Grunt12Intro:
 	.string "Fuhahaha!\n"
@@ -174,8 +190,9 @@ MagmaHideout_4F_Text_TabithaIntro:
 	.string "Hehehe!\n"
 	.string "You made it this far, so I'll tell you!\p"
 	.string "That's right!\n"
-	.string "Up ahead, GROUDON is sleeping!\p"
-	.string "MAXIE went to GROUDON just seconds\n"
+	.string "Up ahead, the LEGENDARY POKéMON is\l"
+	.string "sleeping!\p"
+	.string "MAXIE went to it just seconds\n"
 	.string "ago!\p"
 	.string "It's going to awaken real soon!\n"
 	.string "Hehe! Hehehe!$"
@@ -186,10 +203,11 @@ MagmaHideout_4F_Text_TabithaDefeat:
 
 MagmaHideout_4F_Text_TabithaPostBattle:
 	.string "…And while you wasted time with me,\n"
-	.string "MAXIE should have awakened GROUDON…$"
+	.string "MAXIE should have awakened the\l"
+	.string "LEGENDARY POKéMON by now…$"
 
 MagmaHideout_4F_Text_MaxieAwakenGroudon:
-	.string "MAXIE: GROUDON…\p"
+	.string "MAXIE: RESHIRAM…\p"
 	.string "Nothing could awaken you from your\n"
 	.string "sleep bathed in magma…\p"
 	.string "This BLUE ORB is what you sought.\n"
@@ -200,33 +218,45 @@ MagmaHideout_4F_Text_MaxieAwakenGroudon:
 	.string "Show me the full extent of your power!$"
 
 MagmaHideout_4F_Text_MaxieGroudonWhatsWrong:
-	.string "MAXIE: GROUDON!\n"
+	.string "MAXIE: RESHIRAM!\n"
 	.string "What's wrong?\p"
 	.string "Wasn't the BLUE ORB the key?\p"
-	.string "GROUDON!\n"
+	.string "RESHIRAM!\n"
 	.string "Where have you gone…$"
 
-MagmaHideout_4F_Text_MaxieOhItWasYou:
+MagmaHideout_4F_Text_MaxieIntro:
 	.string "MAXIE: Oh, so it was you?\p"
 	.string "I've seen you poking around uninvited\n"
 	.string "here and there…\p"
-	.string "I get it now!\n"
-	.string "You must have pulled a cheap stunt!$"
+	.string "So…\n"
+	.string "You want to stop TEAM MAGMA from \l"
+	.string "making our dreams a reality?\p"
+	.string "Fufufu…\n"
+	.string "You are a fool! With the power of the\l"
+	.string "LEGENDARY POKéMON on my side,\l"
+	.string "no one can oppose TEAM MAGMA!\p"
+	.string "Not ARCHIE, not TEAM AQUA, and not YOU!$"
 
 MagmaHideout_4F_Text_MaxieDefeat:
 	.string "What makes you so adept at handling\n"
 	.string "POKéMON?$"
+	
+MagmaHideout_4F_Text_MaxieNeedTwoMons:
+	.string "MXIE: Huh?\n"
+	.string "You think you can insult the great\l"
+	.string "MAXIE by only bringing one POKéMON?\l"
+	.string "I will not allow it!$"
 
 MagmaHideout_4F_Text_MaxieImGoingAfterGroudon:
 	.string "MAXIE: There has to be some reason\n"
-	.string "why GROUDON fled…\p"
+	.string "why RESHIRAM fled…\p"
 	.string "That's what you're trying to say,\n"
 	.string "aren't you?\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "Humph…\n"
 	.string "You think I didn't know that?\p"
-	.string "With GROUDON gone, there is no longer\n"
+	.string "With RESHIRAM gone, there is no longer\n"
 	.string "any need for this blasted volcano.\p"
-	.string "I am going after GROUDON, so this\n"
+	.string "I am going after RESHIRAM, so this\n"
 	.string "is where we part!$"

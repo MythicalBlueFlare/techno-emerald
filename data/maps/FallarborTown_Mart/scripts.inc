@@ -19,12 +19,11 @@ FallarborTown_Mart_Pokemart:
 	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_SUPER_REPEL
-	.2byte ITEM_X_SP_ATK
-	.2byte ITEM_X_SPEED
-	.2byte ITEM_X_ATTACK
-	.2byte ITEM_X_DEFENSE
-	.2byte ITEM_DIRE_HIT
-	.2byte ITEM_GUARD_SPEC
+	.2byte ITEM_ROSELI_BERRY
+	.2byte ITEM_PAYAPA_BERRY
+	.2byte ITEM_HABAN_BERRY
+	.2byte ITEM_KASIB_BERRY
+	.2byte ITEM_LUM_BERRY
 	.2byte ITEM_NONE
 	release
 	end

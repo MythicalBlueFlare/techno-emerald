@@ -2022,7 +2022,7 @@ static void CB_ExitFlyMap(void)
             }
             else
             {
-                SetMainCallback2(CB2_ReturnToPartyMenuFromFlyMap);
+                SetMainCallback2(CB2_ReturnToField);
             }
             if (sFlyMap != NULL)
             {

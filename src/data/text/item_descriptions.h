@@ -3176,9 +3176,8 @@ static const u8 sTM33Desc[] = _(
     "physical attacks.");
 
 static const u8 sTM34Desc[] = _(
-    "Zaps the foe with a\n"
-    "jolt of electricity\n"
-    "that never misses.");
+    "User must switch\n"
+    "after attacking.");
 
 static const u8 sTM35Desc[] = _(
     "Looses a stream of\n"
@@ -3433,7 +3432,7 @@ static const u8 sHM04Desc[] = _(
 static const u8 sHM05Desc[] = _(
     "Looses a powerful\n"
     "blast of light that\n"
-    "reduces accuracy.");
+    "cuts attack.");
 
 static const u8 sHM06Desc[] = _(
     "A rock-crushingly\n"
@@ -3637,6 +3636,20 @@ static const u8 sTeachyTVDesc[] = _(
     "A TV set tuned to\n"
     "an advice program\n"
     "for Trainers.");
+
+static const u8 sCandyBagDesc[] = _(
+    "A bag full of\n"
+    "rare candies.");
+	
+static const u8 sPokeVialDesc[] = _(
+    "A vial of mysterious\n"
+	"liquid that heals\n" 
+	"your party.");
+	
+static const u8 sPokeRiderDesc[] = _(
+    "A device to call\n"
+	"upon a POKéMON\n"
+	"to fly.");
 
 // Story Key Items
 static const u8 sSSTicketDesc[] = _(

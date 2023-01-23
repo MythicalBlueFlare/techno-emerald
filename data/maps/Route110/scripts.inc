@@ -131,6 +131,10 @@ Route110_EventScript_TrainerTipsRegisterItems::
 Route110_EventScript_TrickHouseSign::
 	msgbox Route110_Text_TrickHouseSign, MSGBOX_SIGN
 	end
+	
+Route110_EventScript_TrickHouseLocked::
+	msgbox Route110_Text_TrickHouseLocked, MSGBOX_SIGN
+	end
 
 Route110_EventScript_CyclingRoadResultsSign::
 	lockall
@@ -952,8 +956,12 @@ Route110_Text_TrainerTipsRegisterItems:
 
 Route110_Text_TrickHouseSign:
 	.string "“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
-	.string "to reach the wondrous TRICK HOUSE.”$"
-
+	.string "to reach the wondrous TRICK HOUSE.”\p" 
+	.string "CURRENTLY CLOSED.$"
+	
+Route110_Text_TrickHouseLocked:
+	.string "The Door is locked…$"
+	
 Route110_Text_BestRecord:
 	.string "THE BEST RECORD TO DATE…\p"
 	.string "No. of collisions: {STR_VAR_1}\p"

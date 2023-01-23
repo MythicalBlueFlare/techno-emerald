@@ -40,7 +40,12 @@ VictoryRoad_1F_EventScript_WallyBattleTrigger2::
 VictoryRoad_1F_EventScript_WallyEntranceBattle::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
-	msgbox VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore, MSGBOX_DEFAULT
+	msgbox VictoryRoad_1F_Text_PromiseWeMade, MSGBOX_DEFAULT
+	closemessage
+	delay 32 
+	playbgm MUS_VS_FINAL_WALLY, FALSE
+	delay 8
+	msgbox VictoryRoad_1F_Text_WallyIWontLose, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_WALLY_VR_1, VictoryRoad_1F_Text_WallyEntranceDefeat
 	msgbox VictoryRoad_1F_Text_WallyPostEntranceBattle, MSGBOX_DEFAULT
 	clearflag FLAG_HIDE_VICTORY_ROAD_ENTRANCE_WALLY
@@ -110,36 +115,71 @@ VictoryRoad_1F_EventScript_Hope::
 	msgbox VictoryRoad_1F_Text_HopePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-VictoryRoad_1F_EventScript_Quincy::
-	trainerbattle_single TRAINER_QUINCY, VictoryRoad_1F_Text_QuincyIntro, VictoryRoad_1F_Text_QuincyDefeat
+VictoryRoad_1F_EventScript_PHBrandon::
+	trainerbattle_single TRAINER_PH_BRANDON, VictoryRoad_1F_Text_QuincyIntro, VictoryRoad_1F_Text_QuincyDefeat, VictoryRoad_1F_EventScript_BrandonDefeated
 	msgbox VictoryRoad_1F_Text_QuincyPostBattle, MSGBOX_AUTOCLOSE
 	end
+	
+VictoryRoad_1F_EventScript_BrandonDefeated::
+	setflag FLAG_BRANDON_DEFEATED
+	release
+	end 
+	
 
-VictoryRoad_1F_EventScript_Katelynn::
-	trainerbattle_single TRAINER_KATELYNN, VictoryRoad_1F_Text_KatelynnIntro, VictoryRoad_1F_Text_KatelynnDefeat
-	msgbox VictoryRoad_1F_Text_KatelynnPostBattle, MSGBOX_AUTOCLOSE
-	end
-
-VictoryRoad_1F_Text_WallyNotGoingToLoseAnymore:
+VictoryRoad_1F_Text_PromiseWeMade:
 	.string "WALLY: Hi! {PLAYER}!\p"
 	.string "I bet you're surprised to see me here!\p"
-	.string "I made it all the way here, and it's\n"
-	.string "all thanks to you!\p"
-	.string "{PLAYER}, losing to you that time\n"
-	.string "made me stronger!\p"
-	.string "But I'm not going to lose anymore!\p"
-	.string "I'm going to win! For the POKéMON who\n"
-	.string "gave me courage and strength!\p"
-	.string "Okay… Here I come!$"
+	.string "That promise we made back then…\n"
+	.string "Thank you for keeping your end of it.\p"
+	.string "It was really all thanks to you that\n"
+	.string "I could make it this far, {PLAYER}.\p"
+	.string "It was only because I lost to you back\n"
+	.string "then that I could become even stronger.\p"
+	.string "I'm sure that you and your POKéMON must\n"
+	.string "have had to overcome a lot, too…\p"
+	.string "To make it all the way here.\n"
+	.string "Right, {PLAYER}?\p"
+	.string "Everyone's grown so much…\p"
+	.string "And now we'll finally get to see just\n"
+	.string "what we can all do.\p"
+	.string "Standing here facing you again gives\n"
+	.string "me chills…$"
+	
+VictoryRoad_1F_Text_WallyIWontLose:
+	.string "…But I won't give up!\p"
+	.string "I won't lose anymore.\p"
+	.string "My POKéMON have given me me the\n"
+	.string "courage and strength to fight.\p"
+	.string "I have to win for their sake!\p"
+	.string "So get ready… Here I come!$"
 
 VictoryRoad_1F_Text_WallyEntranceDefeat:
-	.string "Wow!\n"
-	.string "{PLAYER}, you are strong, after all!$"
+	.string "…\p"
+	.string "I've lost…$"
 
 VictoryRoad_1F_Text_WallyPostEntranceBattle:
-	.string "WALLY: I couldn't beat you today,\n"
-	.string "{PLAYER}, but one of these days, I'll\l"
-	.string "catch up to you!$"
+	.string "WALLY: …\p"
+	.string "…\p"
+	.string "Arghhh!!!\p"
+	.string "…\p"
+	.string "…\p"
+	.string "…Hah.\p"
+	.string "{PLAYER}, you…\n"
+	.string "and your POKéMON too…\p"
+	.string "Thank you for not holding back when you\n"
+	.string "battled against us…\l"
+	.string "For not holding back when you beat us…\p"
+	.string "And…\p"
+	.string "Gothitelle… Everyone…\p"
+	.string "Thank you so much…\p"
+	.string "I feel like I've been able to take\n"
+	.string "another step forward thanks to you!\p"
+	.string "I couldn't beat you this time, {PLAYER}.\n"
+	.string "But I'll stay here and continue training.\p"
+	.string "And one day… Look out!\n"
+	.string "I swear I'll catch up to you one day!\p"
+	.string "When I do, promise we'll battle again!\n"
+	.string "That's a promise I intend to live up to!$"
 
 VictoryRoad_1F_Text_WallyIntro:
 	.string "WALLY: Hi! {PLAYER}!\p"
@@ -194,19 +234,40 @@ VictoryRoad_1F_Text_HopePostBattle:
 	.string "becoming the CHAMPION.$"
 
 VictoryRoad_1F_Text_QuincyIntro:
-	.string "What is the VICTORY ROAD?\n"
-	.string "I'll tell you if you win!$"
-
+	.string "Young adventurer…\p"
+	.string "Wouldn't you agree that explorations\n"
+	.string "are the grandest of adventures?\p"
+	.string "Your own wits!\p"
+	.string "Your own strength!\p"
+	.string "Your own POKéMON!\p"
+	.string "And, above all, only your courage\n"
+	.string "to lead you through unknown worlds…\p"
+	.string "Aah, yes, indeed this life is grand!\n"
+	.string "Grand, it is! Eh?\p"
+	.string "I'm BRANDON.\p"
+	.string "I'm the Pyramid King, at the\n"
+	.string "BATTLE FRONTIER.\p"
+	.string "Most people call me the chief!\p"
+	.string "You coming here means you have\n"
+	.string "that much confidence in yourself,\l"
+	.string "am I right?\p"
+	.string "Hahahah!\n"
+	.string "This should be exciting!\p"
+	.string "This is the final hurdle before the\n"
+	.string "POKéMON LEAGUE!\p"
+	.string "Now, then!\n"
+	.string "Bring your courage to our battle!$"
+	
 VictoryRoad_1F_Text_QuincyDefeat:
-	.string "Okay!\n"
-	.string "Well done!$"
+	.string "That's it! You’ve done great!\n"
+	.string "You've worked hard for this!$"
 
 VictoryRoad_1F_Text_QuincyPostBattle:
-	.string "Getting through here safely--that's\n"
-	.string "the final test for any TRAINER aiming\l"
-	.string "to become the POKéMON CHAMPION.\p"
-	.string "That's why it's called the VICTORY\n"
-	.string "ROAD.$"
+	.string "BRANDON: Hahahah! Grand it was!\n"
+	.string "Grand, yes, indeed!\p"
+	.string "Well done! You've earned the right\n"
+	.string "of passage to the POKéMON LEAGUE!\p"
+	.string "Good luck!$"
 
 VictoryRoad_1F_Text_KatelynnIntro:
 	.string "I have nothing to say to anyone\n"

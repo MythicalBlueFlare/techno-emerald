@@ -233,34 +233,9 @@ LavaridgeTown_EventScript_ExpertF::
 	end
 
 LavaridgeTown_EventScript_EggWoman::
-	lock
+	lock 
 	faceplayer
-	goto_if_set FLAG_RECEIVED_LAVARIDGE_EGG, LavaridgeTown_EventScript_ReceivedEgg
-	msgbox LavaridgeTown_Text_HaveEggWillYouTakeIt, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, LavaridgeTown_EventScript_DeclineEgg
-	getpartysize
-	goto_if_eq VAR_RESULT, PARTY_SIZE, LavaridgeTown_EventScript_NoRoomForEgg
-	msgbox LavaridgeTown_Text_HopeYoullWalkPlentyWithEgg, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_LAVARIDGE_EGG
-	playfanfare MUS_OBTAIN_ITEM
-	message LavaridgeTown_Text_ReceivedTheEgg
-	waitfanfare
-	giveegg SPECIES_WYNAUT
-	release
-	end
-
-LavaridgeTown_EventScript_ReceivedEgg::
-	msgbox LavaridgeTown_Text_EverySoOftenEggFoundAtDayCare, MSGBOX_DEFAULT
-	release
-	end
-
-LavaridgeTown_EventScript_NoRoomForEgg::
-	msgbox LavaridgeTown_Text_NoRoomForThisEgg, MSGBOX_DEFAULT
-	release
-	end
-
-LavaridgeTown_EventScript_DeclineEgg::
-	msgbox LavaridgeTown_Text_AsYouWishThen, MSGBOX_DEFAULT
+	msgbox LavaridgeTown_Text_EggWoman, MSGBOX_DEFAULT
 	release
 	end
 
@@ -275,6 +250,13 @@ LavaridgeTown_EventScript_GymSign::
 LavaridgeTown_EventScript_HerbShopSign::
 	msgbox LavaridgeTown_Text_HerbShopSign, MSGBOX_SIGN
 	end
+	
+LavaridgeTown_Text_EggWoman: 
+	.string "I used to take care of POKéMON eggs.\n" 
+	.string "But I've passed down that duty\l" 
+	.string "to my sister.\p" 
+	.string	"She hangs around SLATEPORT CITY now,\n"
+	.string "if you want to visit her.$" 
 
 LavaridgeTown_Text_MayNiceBadgesTakeThis:
 	.string "MAY: {PLAYER}{KUN}! Long time no see!\p"
@@ -294,8 +276,9 @@ LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
 	.string "Challenging GYMS…\p"
 	.string "You're trying hard because you don't\n"
 	.string "want to lose to me, I bet!\p"
-	.string "{PLAYER}{KUN}, I think I should challenge\n"
-	.string "your dad in PETALBURG GYM.\p"
+	.string "{PLAYER}{KUN}, I think I heard your dad was out\n"
+	.string "on ROUTE 111 doing research.\p"
+	.string "Maybe you should go see what he is up to.\n"
 	.string "See you again!$"
 
 LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
@@ -318,6 +301,9 @@ LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad:
 	.string "the GYM LEADER of PETALBURG.\p"
 	.string "Unlike you, {PLAYER}, your dad looks like\n"
 	.string "he really is tough.\p"
+	.string "I heard your dad was out on ROUTE 111\n"
+	.string "doing research.\p"
+	.string "Maybe you should go see what he is up to.\n"
 	.string "See you around!$"
 
 LavaridgeTown_Text_HaveEggWillYouTakeIt:

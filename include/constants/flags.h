@@ -41,24 +41,24 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 
-#define FLAG_UNUSED_0x020    0x20 // Unused Flag
-#define FLAG_UNUSED_0x021    0x21 // Unused Flag
-#define FLAG_UNUSED_0x022    0x22 // Unused Flag
-#define FLAG_UNUSED_0x023    0x23 // Unused Flag
-#define FLAG_UNUSED_0x024    0x24 // Unused Flag
-#define FLAG_UNUSED_0x025    0x25 // Unused Flag
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
-#define FLAG_UNUSED_0x029    0x29 // Unused Flag
-#define FLAG_UNUSED_0x02A    0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
-#define FLAG_UNUSED_0x02C    0x2C // Unused Flag
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
-#define FLAG_UNUSED_0x02E    0x2E // Unused Flag
-#define FLAG_UNUSED_0x02F    0x2F // Unused Flag
-#define FLAG_UNUSED_0x030    0x30 // Unused Flag
-#define FLAG_UNUSED_0x031    0x31 // Unused Flag
+#define FLAG_WALLY_ROUTE111_DEFEATED   0x20 
+#define FLAG_SIDNEY_DEFEATED   0x21 
+#define FLAG_UPDATE_NORMANCAP    0x22 
+#define FLAG_UPDATE_WEATHERINSTITUTECAP 0x23 
+#define FLAG_NOLAND_DEFEATED   0x24 
+#define FLAG_LILYCOVE_AQUA_GRUNT_DEFEATED  0x25 
+#define FLAG_MAXIE_NEED_TWO_MONS   0x26 
+#define FLAG_ROXANNE_REMATCH    0x27 
+#define FLAG_BRAWLY_REMATCH   0x28 
+#define FLAG_REMATCHES_DONE   0x29 
+#define FLAG_FINAL_COURTNEY_DEFEATED  0x2A
+#define FLAG_SHELLY_SEAFLOOR_CAVERN_DEFEATED  0x2B
+#define FLAG_WALLACE_DEFEATED   0x2C
+#define FLAG_BRANDON_DEFEATED   0x2D
+#define FLAG_LUCY_DEFEATED    0x2E 
+#define FLAG_ANABEL_DEFEATED  0x2F 
+#define FLAG_TUCKER_DEFEATED   0x30
+#define FLAG_CHALLENGING_ELITE_4  0x31 
 #define FLAG_UNUSED_0x032    0x32 // Unused Flag
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
@@ -1217,7 +1217,7 @@
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
-#define FLAG_UNUSED_0x493                                           0x493 // Unused Flag
+#define FLAG_POKEMONPCMENU                                          0x493 // Unused Flag
 #define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
 #define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
 #define FLAG_UNUSED_0x496                                           0x496 // Unused Flag

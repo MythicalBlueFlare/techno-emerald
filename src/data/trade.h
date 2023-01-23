@@ -1005,51 +1005,51 @@ static const struct InGameTrade sIngameTrades[] =
 {
     [INGAME_TRADE_SEEDOT] =
     {
-        .nickname = _("DOTS"),
-        .species = SPECIES_SEEDOT,
-        .ivs = {5, 4, 5, 4, 4, 4},
+        .nickname = _("Mitosis"),
+        .species = SPECIES_SOLOSIS,
+        .ivs = {31, 20, 20, 20, 20, 20},
         .abilityNum = 1,
         .otId = 38726,
         .conditions = {30, 5, 5, 5, 5},
         .personality = 0x84,
-        .heldItem = ITEM_CHESTO_BERRY,
+        .heldItem = ITEM_SITRUS_BERRY,
         .mailNum = -1,
-        .otName = _("KOBE"),
+        .otName = _("Elyssa"),
         .otGender = MALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_RALTS
+        .requestedSpecies = SPECIES_GOTHITA
     },
     [INGAME_TRADE_PLUSLE] =
     {
-        .nickname = _("PLUSES"),
-        .species = SPECIES_PLUSLE,
-        .ivs = {4, 4, 4, 5, 5, 4},
-        .abilityNum = 0,
+        .nickname = _("Poly"),
+        .species = SPECIES_TOGEDEMARU,
+        .ivs = {20, 31, 20, 20, 20, 20},
+        .abilityNum = 1,
         .otId = 73996,
         .conditions = {5, 5, 30, 5, 5},
         .personality = 0x6F,
-        .heldItem = ITEM_WOOD_MAIL,
+        .heldItem = ITEM_SHUCA_BERRY,
         .mailNum = 0,
-        .otName = _("ROMAN"),
+        .otName = _("Roman"),
         .otGender = MALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_VOLBEAT
+        .requestedSpecies = SPECIES_CHARJABUG
     },
     [INGAME_TRADE_HORSEA] =
     {
-        .nickname = _("SEASOR"),
-        .species = SPECIES_HORSEA,
-        .ivs = {5, 4, 4, 4, 5, 4},
-        .abilityNum = 0,
+        .nickname = _("Espionner"),
+        .species = SPECIES_SOBBLE,
+        .ivs = {20, 20, 20, 31, 20, 20},
+        .abilityNum = 2,
         .otId = 46285,
         .conditions = {5, 5, 5, 5, 30},
         .personality = 0x7F,
-        .heldItem = ITEM_WAVE_MAIL,
+        .heldItem = ITEM_SCOPE_LENS,
         .mailNum = 1,
-        .otName = _("SKYLAR"),
+        .otName = _("Skylar"),
         .otGender = MALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_BAGON
+        .requestedSpecies = SPECIES_DEINO
     },
     [INGAME_TRADE_MEOWTH] =
     {

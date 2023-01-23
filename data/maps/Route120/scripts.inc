@@ -1,6 +1,7 @@
 .set LOCALID_BRIDGE_KECLEON, 30
 .set LOCALID_STEVEN, 31
 .set LOCALID_BRIDGE_KECLEON_SHADOW, 36  @ They use a second object which is identical to Kecleon but has a reflection palette tag for the bridge shadow
+.set LOCALID_NOLAND, 45
 
 Route120_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route120_OnResume
@@ -108,6 +109,26 @@ Route120_EventScript_BerryBeauty::
 	case 9, Route120_EventScript_GiveIapapaBerry
 	end
 
+Route120_Movement_NolandStartWalkLeft:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	step_end
+	
+Route120_Movement_NolandLeave:
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	walk_right
+	step_end
+
 Route120_EventScript_GiveFigyBerry::
 	setvar VAR_0x8004, ITEM_FIGY_BERRY
 	goto Route120_EventScript_GiveBerry
@@ -157,11 +178,17 @@ Route120_EventScript_BerryNotLove::
 Route120_EventScript_Steven::
 	lock
 	faceplayer
+	goto_if_unset FLAG_BADGE06_GET, Route120_EventScript_StevenAskToGetBadge
 	goto_if_set FLAG_NOT_READY_FOR_BATTLE_ROUTE_120, Route120_EventScript_StevenAskReadyForBattle
 	msgbox Route120_Text_StevenGreeting, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route120_EventScript_StevenNotReady
 	goto Route120_EventScript_StevenBattleKecleon
 	end
+	
+Route120_EventScript_StevenAskToGetBadge::
+	msgbox Route120_Text_StevenGoGetBadge, MSGBOX_DEFAULT
+	release 
+	end 
 
 Route120_EventScript_StevenNotReady::
 	msgbox Route120_Text_StevenIllWaitHere, MSGBOX_DEFAULT
@@ -190,10 +217,10 @@ Route120_EventScript_StevenBattleKecleon::
 	applymovement LOCALID_BRIDGE_KECLEON, Movement_KecleonAppears
 	waitmovement 0
 	waitse
-	playmoncry SPECIES_KECLEON, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_ZOROARK, CRY_MODE_ENCOUNTER
 	delay 40
 	waitmoncry
-	setwildbattle SPECIES_KECLEON, 30
+	setwildbattle SPECIES_ZOROARK, 55
 	setvar VAR_0x8009, 0
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	dowildbattle
@@ -362,6 +389,52 @@ Route120_EventScript_Callie::
 	msgbox Route120_Text_CalliePostBattle, MSGBOX_AUTOCLOSE
 	end
 
+Route120_EventScript_Noland0::
+	lockall
+	setobjectxy LOCALID_NOLAND, 39, 88
+	goto Route120_EventScript_Noland
+	end
+
+Route120_EventScript_Noland1::
+	lockall
+	setobjectxy LOCALID_NOLAND, 39, 89
+	goto Route120_EventScript_Noland
+	end
+
+Route120_EventScript_Noland2::
+	lockall
+	setobjectxy LOCALID_NOLAND, 39, 90
+	goto Route120_EventScript_Noland
+	end
+
+Route120_EventScript_Noland3::
+	lockall
+	setobjectxy LOCALID_NOLAND, 39, 91
+	goto Route120_EventScript_Noland
+	end
+	
+Route120_EventScript_Noland:: 
+	applymovement LOCALID_NOLAND, Route120_Movement_NolandStartWalkLeft
+	waitmovement 0
+	playse SE_PIN
+	applymovement LOCALID_NOLAND, Common_Movement_ExclamationMark
+	waitmovement 0
+	trainerbattle_single TRAINER_NOLAND_ROUTE120, Route120_Text_NolandAreYouPlayer, Route120_Text_NolandDefeat, Route120_EventScript_NolandDefeated, MUSIC
+	release 
+	end
+	
+Route120_EventScript_NolandDefeated::
+	lockall 
+	msgbox Route120_Text_NolandGreatBattle, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_NOLAND, Route120_Movement_NolandLeave
+	waitmovement 0 
+	removeobject LOCALID_NOLAND
+	setvar VAR_NOLAND_ENCOUNTER, 1
+	setflag FLAG_NOLAND_DEFEATED
+	release 
+	end 
+	
 Route120_Text_StevenGreeting:
 	.string "STEVEN: Hm? {PLAYER}{KUN}, hi.\n"
 	.string "It's been a while.\p"
@@ -397,7 +470,7 @@ Route120_Text_StevenGiveDevonScope:
 	.string "STEVEN: I see…\n"
 	.string "Your battle style is intriguing.\p"
 	.string "Your POKéMON have obviously grown\n"
-	.string "since I first met you in DEWFORD.\p"
+	.string "since I our encounter on ROUTE 118.\p"
 	.string "I'd like you to have this\n"
 	.string "DEVON SCOPE.\p"
 	.string "Who knows, there may be other\n"
@@ -430,3 +503,34 @@ Route120_Text_RouteSignFortree:
 Route120_Text_RouteSign121:
 	.string "{RIGHT_ARROW} ROUTE 121\n"
 	.string "{LEFT_ARROW} ROUTE 120$"
+	
+Route120_Text_StevenGoGetBadge:
+	.string "STEVEN: Hm? {PLAYER}, hi.\n"
+	.string "Have you been keeping well?\p" 
+	.string "How come you haven't challenged the\n" 
+	.string "FORTREE CITY GYM yet? You should go do\l"
+	.string "that first. I'll wait here.$"
+
+Route120_Text_NolandAreYouPlayer:
+	.string "???: You must be {PLAYER}!\p" 
+	.string "STEVEN said I could find you here.\n"
+	.string "You've obtained quite the reputation\l" 
+	.string "here in HOENN.\p" 
+	.string "I'm NOLAND, a POKéMON TRAINER like you.\n"
+	.string "You have the FORTREE CITY GYM BADGE,\l"
+	.string "don't you?\p"
+	.string "In that case, I'd like you to show me\n"
+	.string "your power!\l"
+	.string "Come at me with everything you've got!$"
+	
+Route120_Text_NolandDefeat: 
+	.string "Well how about that…$"
+	
+Route120_Text_NolandGreatBattle:
+	.string "I haven't had a battle that intense\n" 
+	.string "in ages.\p" 
+	.string "You should come visit the\n"
+	.string "BATTLE FRONTIER sometime!\p" 
+	.string "I outta be heading out now.\n"
+	.string "Though, maybe you'll see some of the\l"
+	.string "others soon…$"

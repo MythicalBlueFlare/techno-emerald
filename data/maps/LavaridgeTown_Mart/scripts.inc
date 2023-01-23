@@ -21,7 +21,11 @@ LavaridgeTown_Mart_Pokemart:
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_REVIVE
 	.2byte ITEM_SUPER_REPEL
-	.2byte ITEM_X_SPEED
+	.2byte ITEM_FIGY_BERRY
+	.2byte ITEM_WIKI_BERRY
+	.2byte ITEM_MAGO_BERRY
+	.2byte ITEM_AGUAV_BERRY
+	.2byte ITEM_IAPAPA_BERRY
 	.2byte ITEM_NONE
 	release
 	end

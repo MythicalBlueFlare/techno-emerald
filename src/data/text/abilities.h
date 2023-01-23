@@ -33,7 +33,7 @@ static const u8 sLightningRodDescription[] = _("Draws electrical moves.");
 static const u8 sSereneGraceDescription[] = _("Promotes added effects.");
 static const u8 sSwiftSwimDescription[] = _("Raises Speed in rain.");
 static const u8 sChlorophyllDescription[] = _("Raises Speed in sunshine.");
-static const u8 sIlluminateDescription[] = _("Encounter rate increases.");
+static const u8 sIlluminateDescription[] = _("Raises accuracy.");
 static const u8 sTraceDescription[] = _("Copies special ability.");
 static const u8 sHugePowerDescription[] = _("Raises Attack.");
 static const u8 sPoisonPointDescription[] = _("Poisons foe on contact.");
@@ -185,7 +185,7 @@ static const u8 sDesolateLandDescription[] = _("Summons intense sunlight.");
 static const u8 sDeltaStreamDescription[] = _("Summons strong winds.");
 static const u8 sStaminaDescription[] = _("Boosts Defense when hit.");
 static const u8 sWimpOutDescription[] = _("Flees at half HP.");
-static const u8 sWaterCompactionDescription[] = _("Water boosts Defense.");
+static const u8 sWaterCompactionDescription[] = _("Water raises Defenses");
 static const u8 sMercilessDescription[] = _("Criticals poisoned foes.");
 static const u8 sShieldsDownDescription[] = _("Shell breaks at half HP.");
 static const u8 sStakeoutDescription[] = _("Stronger as foes switch in.");
@@ -223,7 +223,7 @@ static const u8 sNeuroforceDescription[] = _("Ups “supereffective”.");
 static const u8 sIntrepidSwordDescription[] = _("Ups Attack on entry.");
 static const u8 sDauntlessShieldDescription[] = _("Ups Defense on entry.");
 static const u8 sLiberoDescription[] = _("Changes type to move's.");
-static const u8 sBallFetchDescription[] = _("Fetches failed Poké Ball.");
+static const u8 sBallFetchDescription[] = _("Copies ally's ability.");
 static const u8 sCottonDownDescription[] = _("Lower Speed of all when hit.");
 static const u8 sPropellerTailDescription[] = _("Ignores foe's redirection.");
 static const u8 sMirrorArmorDescription[] = _("Reflect stat decreases.");
@@ -254,6 +254,11 @@ static const u8 sChillingNeighDescription[] = _("KOs boost Attack stat.");
 static const u8 sGrimNeighDescription[] = _("KOs boost Sp. Atk stat.");
 static const u8 sAsOneIceRiderDescription[] = _("Unnerve and Chilling Neigh.");
 static const u8 sAsOneShadowRiderDescription[] = _("Unnerve and Grim Neigh.");
+static const u8 sGliderDescription[] = _("Powers up Flying moves.");
+static const u8 sLeadSingerDescription[] = _("Ups and resists sound.");
+static const u8 sWrestlersMarkDescription[] = _("Boosts physical moves.");
+static const u8 sHubrisDescription[] = _("KOs raise Sp. Atk.");
+static const u8 sIcyHeartDescription[] = _("Ice moves go first.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -526,6 +531,11 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_GRIM_NEIGH] = _("Grim Neigh"),
     [ABILITY_AS_ONE_ICE_RIDER] = _("As One"),
     [ABILITY_AS_ONE_SHADOW_RIDER] = _("As One"),
+	[ABILITY_GLIDER] = _("Glider"),
+	[ABILITY_LEAD_SINGER] = _("Lead Singer"),
+	[ABILITY_WRESTLERS_MARK] = _("Wrstler's Mark"),
+	[ABILITY_HUBRIS] = _("Hubris"),
+	[ABILITY_ICY_HEART] = _("Icy Heart"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -798,6 +808,11 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_GRIM_NEIGH] = _("Grim Neigh"),
     [ABILITY_AS_ONE_ICE_RIDER] = _("As One"),
     [ABILITY_AS_ONE_SHADOW_RIDER] = _("As One"),
+	[ABILITY_GLIDER] = _("Glider"),
+	[ABILITY_LEAD_SINGER] = _("Lead Singer"),
+	[ABILITY_WRESTLERS_MARK] = _("Wrstler's Mark"),
+	[ABILITY_HUBRIS] = _("Hubris"),
+	[ABILITY_ICY_HEART] = _("Icy Heart"),
 };
 #endif
 
@@ -1071,4 +1086,9 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_GRIM_NEIGH] = sGrimNeighDescription,
     [ABILITY_AS_ONE_ICE_RIDER] = sAsOneIceRiderDescription,
     [ABILITY_AS_ONE_SHADOW_RIDER] = sAsOneShadowRiderDescription,
+	[ABILITY_GLIDER] = sGliderDescription,
+	[ABILITY_LEAD_SINGER] = sLeadSingerDescription,
+	[ABILITY_WRESTLERS_MARK] = sWrestlersMarkDescription,
+	[ABILITY_HUBRIS] = sHubrisDescription,
+	[ABILITY_ICY_HEART] = sIcyHeartDescription,
 };

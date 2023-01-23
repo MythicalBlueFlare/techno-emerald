@@ -1,4 +1,5 @@
 .set LOCALID_TWIN, 2
+.set LOCALID_TUCKER, 5
 
 VerdanturfTown_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VerdanturfTown_OnTransition
@@ -62,6 +63,33 @@ VerdanturfTown_EventScript_BattleTentSign::
 VerdanturfTown_EventScript_RusturfTunnelSign::
 	msgbox VerdanturfTown_Text_RusturfTunnelSign, MSGBOX_SIGN
 	end
+	
+VerdanturfTown_EventScript_Tucker::
+	lockall 
+	faceplayer
+	playse SE_PIN
+	applymovement LOCALID_TUCKER, Common_Movement_ExclamationMark
+	waitmovement 0
+	call_if_set FLAG_BRANDON_DEFEATED, VerdanturfTown_EventScript_TuckerHardMode
+	trainerbattle_double TRAINER_TUCKER_1, VerdanturfTown_Text_TuckerIntro, VerdanturfTown_Text_TuckerDefeat, VerdanturfTown_Text_TuckerNeedTwoMons, VerdanturfTown_EventScript_TuckerDefeated, NO_MUSIC
+	end 
+	
+VerdanturfTown_EventScript_TuckerHardMode::
+	trainerbattle_double TRAINER_TUCKER_2, VerdanturfTown_Text_TuckerIntro, VerdanturfTown_Text_TuckerDefeat, VerdanturfTown_EventScript_TuckerDefeated, NO_MUSIC
+	end 
+	
+VerdanturfTown_EventScript_TuckerDefeated:: 
+	lockall 
+	faceplayer
+	msgbox VerdanturfTown_Text_TuckerLeave, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_CHOICE_SCARF
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_TUCKER
+	setflag FLAG_TUCKER_DEFEATED
+	fadescreen FADE_FROM_BLACK
+	release 
+	end 
 
 VerdanturfTown_Text_ManTryingToDigTunnel:
 	.string "My papa told me.\p"
@@ -125,3 +153,31 @@ VerdanturfTown_Text_RusturfTunnelSign:
 	.string "“The tunnel project has been\n"
 	.string "canceled.”$"
 
+VerdanturfTown_Text_TuckerIntro:
+	.string "Ahahah!\p"
+	.string "Greetings!\n"
+	.string "I am TUCKER, head of the BATTLE DOME.\p"
+	.string "I bet you are twitching with tension of\n"
+	.string "my presence!\p"
+	.string "But don't worry about a thing!\p"
+	.string "I want something from you.\p"
+	.string "Your strategy!\n"
+	.string "Let's see it!\l"
+	.string "Let the battle begin!$"
+	
+VerdanturfTown_Text_TuckerNeedTwoMons:
+	.string "You intend to challenge me with one\n"
+	.string "POKéMON?\l"
+	.string "Don't make me laugh!$"
+
+VerdanturfTown_Text_TuckerDefeat:
+	.string "Grr… What the…$"
+	
+VerdanturfTown_Text_TuckerLeave:
+	.string "I see you've defeated me…\p"
+	.string "Well then. Take this.\n"
+	.string "It is an item said to increase the\l"
+	.string "SPEED of a POKéMON, but at the cost\l"
+	.string "of only being able to select one move.\p"
+	.string "I have a show to put on. Can't keep the\n"
+	.string "audience waiting!$"

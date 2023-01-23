@@ -1,4 +1,5 @@
 #include "global.h"
+#include "global.h"
 #include "battle.h"
 #include "battle_setup.h"
 #include "battle_transition.h"
@@ -270,7 +271,6 @@ const struct RematchTrainer gRematchTable[REMATCH_TABLE_ENTRIES] =
     [REMATCH_THALIA] = REMATCH(TRAINER_THALIA_1, TRAINER_THALIA_2, TRAINER_THALIA_3, TRAINER_THALIA_4, TRAINER_THALIA_5, ABANDONED_SHIP_ROOMS_1F),
     [REMATCH_JESSICA] = REMATCH(TRAINER_JESSICA_1, TRAINER_JESSICA_2, TRAINER_JESSICA_3, TRAINER_JESSICA_4, TRAINER_JESSICA_5, ROUTE121),
     [REMATCH_WINSTON] = REMATCH(TRAINER_WINSTON_1, TRAINER_WINSTON_2, TRAINER_WINSTON_3, TRAINER_WINSTON_4, TRAINER_WINSTON_5, ROUTE104),
-    [REMATCH_STEVE] = REMATCH(TRAINER_STEVE_1, TRAINER_STEVE_2, TRAINER_STEVE_3, TRAINER_STEVE_4, TRAINER_STEVE_5, ROUTE114),
     [REMATCH_TONY] = REMATCH(TRAINER_TONY_1, TRAINER_TONY_2, TRAINER_TONY_3, TRAINER_TONY_4, TRAINER_TONY_5, ROUTE107),
     [REMATCH_NOB] = REMATCH(TRAINER_NOB_1, TRAINER_NOB_2, TRAINER_NOB_3, TRAINER_NOB_4, TRAINER_NOB_5, ROUTE115),
     [REMATCH_KOJI] = REMATCH(TRAINER_KOJI_1, TRAINER_KOJI_2, TRAINER_KOJI_3, TRAINER_KOJI_4, TRAINER_KOJI_5, ROUTE127),
@@ -483,7 +483,7 @@ static void DoBattlePyramidTrainerHillBattle(void)
 // Initiates battle where Wally catches Ralts
 void StartWallyTutorialBattle(void)
 {
-    CreateMaleMon(&gEnemyParty[0], SPECIES_RALTS, 5);
+    CreateMaleMon(&gEnemyParty[0], SPECIES_GOTHITA, 5);
     ScriptContext2_Enable();
     gMain.savedCallback = CB2_ReturnToFieldContinueScriptPlayMapMusic;
     gBattleTypeFlags = BATTLE_TYPE_WALLY_TUTORIAL;
@@ -831,24 +831,8 @@ u8 GetTrainerBattleTransition(void)
     u8 enemyLevel;
     u8 playerLevel;
 
-    if (gTrainerBattleOpponent_A == TRAINER_SECRET_BASE)
-        return B_TRANSITION_CHAMPION;
-
-    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_ELITE_FOUR)
-    {
-        if (gTrainerBattleOpponent_A == TRAINER_SIDNEY)
-            return B_TRANSITION_SIDNEY;
-        if (gTrainerBattleOpponent_A == TRAINER_PHOEBE)
-            return B_TRANSITION_PHOEBE;
-        if (gTrainerBattleOpponent_A == TRAINER_GLACIA)
-            return B_TRANSITION_GLACIA;
-        if (gTrainerBattleOpponent_A == TRAINER_DRAKE)
-            return B_TRANSITION_DRAKE;
-        return B_TRANSITION_CHAMPION;
-    }
-
-    if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_CHAMPION)
-        return B_TRANSITION_CHAMPION;
+    if (gTrainers[gTrainerBattleOpponent_A].mugshotEnabled)
+        return B_TRANSITION_MUGSHOT;
 
     if (gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_TEAM_MAGMA
         || gTrainers[gTrainerBattleOpponent_A].trainerClass == TRAINER_CLASS_MAGMA_LEADER

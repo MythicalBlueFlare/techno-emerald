@@ -483,6 +483,7 @@ gSongTable::
 	song mus_vs_regi, 0, 0
 	song mus_vs_kyogre_groudon, 0, 0
 	song mus_vs_rival, 0, 0
+	
 	song mus_vs_elite_four, 0, 0
 	song mus_vs_aqua_magma_leader, 0, 0
 	song mus_rg_follow_me, 0, 0
@@ -611,6 +612,9 @@ gSongTable::
 	song ph_nurse_blend, 2, 2
 	song ph_nurse_held, 2, 2
 	song ph_nurse_solo, 2, 2
+	song mus_vs_final_boss, 0, 0
+	song mus_vs_gsc_champion, 0, 0
+	song mus_vs_final_wally, 0, 0
 
 	.align 2
 dummy_song_header:

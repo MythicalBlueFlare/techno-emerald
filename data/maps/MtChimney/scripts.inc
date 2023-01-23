@@ -68,6 +68,7 @@ MtChimney_EventScript_Maxie::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox MtChimney_Text_ArchieThankYou, MSGBOX_DEFAULT
+	giveitem ITEM_EXPERT_BELT, 1
 	closemessage
 	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_ArchieExitEast
 	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_ArchieExitNorth
@@ -684,7 +685,8 @@ MtChimney_Text_ArchieThankYou:
 	.string "Ah, it doesn't matter.\p"
 	.string "We will remain vigilant and keep up\n"
 	.string "our pursuit of TEAM MAGMA.\p"
-	.string "{PLAYER}, we shall meet again!$"
+	.string "{PLAYER}, we shall meet again!\n"
+	.string "Take this! You earned it, kid.$"
 
 MtChimney_Text_MagmaOutnumbersUs:
 	.string "Darn… TEAM MAGMA outnumbers us!\n"

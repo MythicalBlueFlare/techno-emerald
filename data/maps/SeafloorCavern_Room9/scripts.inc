@@ -32,16 +32,7 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	msgbox SeafloorCavern_Room9_Text_ArchieBeholdKyogre, MSGBOX_DEFAULT
 	applymovement VAR_0x8004, Common_Movement_FacePlayer
 	waitmovement 0
-	msgbox SeafloorCavern_Room9_Text_ArchieYouMustDisappear, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_ARCHIE, SeafloorCavern_Room9_Text_ArchieDefeat
 	msgbox SeafloorCavern_Room9_Text_ArchieWithThisRedOrb, MSGBOX_DEFAULT
-	setweather WEATHER_NONE
-	doweather
-	special Script_FadeOutMapMusic
-	waitstate
-	msgbox SeafloorCavern_Room9_Text_RedOrbShinesByItself, MSGBOX_DEFAULT
-	special WaitWeather
-	waitstate
 	setvar VAR_RESULT, 1
 	playse SE_M_DETECT
 	dofieldeffectsparkle 16, 42, 0
@@ -69,6 +60,17 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight
+	applymovement LOCALID_ARCHIE, Common_Movement_FacePlayer
+	waitmovement 0
+	trainerbattle_double TRAINER_ARCHIE, SeafloorCavern_Room9_Text_ArchieYouMustDisappear, SeafloorCavern_Room9_Text_ArchieDefeat, SeafloorCavern_Room9_Text_ArchieNeedTwoMons, SeafloorCavern_Room9_EventScript_ArchieDefeated, NO_MUSIC
+	release
+	end
+
+SeafloorCavern_Room9_EventScript_ArchieDefeated:
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	applymovement LOCALID_ARCHIE, Common_Movement_FaceUp
+	waitmovement 0
 	applymovement LOCALID_KYOGRE, SeafloorCavern_Room9_Movement_KyogreExit
 	waitmovement 0
 	removeobject LOCALID_KYOGRE
@@ -235,38 +237,30 @@ SeafloorCavern_Room9_Text_ArchieSoItWasYou:
 SeafloorCavern_Room9_Text_ArchieBeholdKyogre:
 	.string "ARCHIE: Behold!\p"
 	.string "See how beautiful it is, the sleeping\n"
-	.string "form of the ancient POKéMON KYOGRE!\p"
+	.string "form of the LEGENDARY POKéMON ZEKROM!\p"
 	.string "I have waited so long for this day to\n"
 	.string "come…$"
 
 SeafloorCavern_Room9_Text_ArchieYouMustDisappear:
-	.string "ARCHIE: It surprises me, how you've\n"
+	.string "It surprises me, how you've\n"
 	.string "managed to chase me here.\p"
 	.string "But that's all over now.\p"
 	.string "For the realization of my dream,\n"
 	.string "you must disappear now!$"
 
 SeafloorCavern_Room9_Text_ArchieDefeat:
-	.string "What?!\n"
-	.string "I lost to a mere child like you?!$"
+	.string "Yet again I lose to you,\n"
+	.string "and at my best?!$"
 
 SeafloorCavern_Room9_Text_ArchieWithThisRedOrb:
-	.string "ARCHIE: Fufufu…\p"
-	.string "I commend you. I must recognize that\n"
-	.string "you are truly gifted.\p"
-	.string "But!\n"
 	.string "I have this in my possession!\p"
-	.string "With this RED ORB, I can make KYOGRE…$"
-
-SeafloorCavern_Room9_Text_RedOrbShinesByItself:
-	.string "The RED ORB suddenly began shining\n"
-	.string "by itself!$"
+	.string "With this RED ORB, I can make ZEKROM\n"
+	.string "fall under my control!$"
 
 SeafloorCavern_Room9_Text_ArchieWhereDidKyogreGo:
 	.string "ARCHIE: What?!\p"
-	.string "I didn't do anything.\n"
-	.string "Why did the RED ORB…\p"
-	.string "Where did KYOGRE go?$"
+	.string "I didn't do anything.\p"
+	.string "Where did ZEKROM go?$"
 
 SeafloorCavern_Room9_Text_ArchieAMessageFromOutside:
 	.string "ARCHIE: Hm? It's a message from our\n"
@@ -277,7 +271,7 @@ SeafloorCavern_Room9_Text_ArchieWhatRainingTooHard:
 	.string "Hm…\n"
 	.string "It's raining heavily?\p"
 	.string "Good… That should have happened.\n"
-	.string "That is why we awakened KYOGRE,\l"
+	.string "That is why we awakened ZEKROM,\l"
 	.string "to realize TEAM AQUA's vision of\l"
 	.string "expanding the sea.\p"
 	.string "What?!\p"
@@ -291,14 +285,14 @@ SeafloorCavern_Room9_Text_ArchieWhatRainingTooHard:
 SeafloorCavern_Room9_Text_ArchieWhyDidKyogreDisappear:
 	.string "ARCHIE: There's something wrong…\p"
 	.string "The RED ORB is supposed to awaken\n"
-	.string "and control KYOGRE…\p"
+	.string "and control ZEKROM…\p"
 	.string "But… Why?\n"
-	.string "Why did KYOGRE disappear?\p"
+	.string "Why did ZEKROM disappear?\p"
 	.string "Why?!$"
 
 SeafloorCavern_Room9_Text_MaxieWhatHaveYouWrought:
 	.string "MAXIE: What have you wrought?\p"
-	.string "ARCHIE… You've finally awoken KYOGRE,\n"
+	.string "ARCHIE… You've finally awoken ZEKROM,\n"
 	.string "haven't you?\p"
 	.string "What will happen to the world if this\n"
 	.string "downpour continues for all eternity?\p"
@@ -309,9 +303,9 @@ SeafloorCavern_Room9_Text_ArchieDontGetAllHighAndMighty:
 	.string "ARCHIE: W-what?!\n"
 	.string "Don't get all high and mighty with me!\p"
 	.string "Wasn't it you, TEAM MAGMA, that\n"
-	.string "infuriated GROUDON?\p"
+	.string "infuriated RESHIRAM?\p"
 	.string "So long as I have this RED ORB,\n"
-	.string "I should be able to control KYOGRE…\p"
+	.string "I should be able to control ZEKROM…\p"
 	.string "I should be able to control it…$"
 
 SeafloorCavern_Room9_Text_MaxieWeDontHaveTimeToArgue:
@@ -324,3 +318,8 @@ SeafloorCavern_Room9_Text_MaxieWeDontHaveTimeToArgue:
 SeafloorCavern_Room9_Text_MaxieComeOnPlayer:
 	.string "MAXIE: {PLAYER}, come on, you have\n"
 	.string "to get out of here, too!$"
+	
+SeafloorCavern_Room9_Text_ArchieNeedTwoMons:
+	.string "You dare only bring one POKéMON to\n"
+	.string "face me? I will not accept such\l"
+	.string "humiliation!$"

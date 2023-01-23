@@ -86,7 +86,7 @@ MossdeepCity_StevensHouse_EventScript_LeaveBeldum::
 
 MossdeepCity_StevensHouse_EventScript_GiveBeldum::
 	setvar VAR_TEMP_1, SPECIES_BELDUM
-	givemon SPECIES_BELDUM, 5
+	givemon SPECIES_CARBINK, 30
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, MossdeepCity_StevensHouse_EventScript_SendBeldumParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, MossdeepCity_StevensHouse_EventScript_SendBeldumPC
 	goto Common_EventScript_NoMoreRoomForPokemon
@@ -180,11 +180,11 @@ MossdeepCity_StevensHouse_Text_UnderwateCavernBetweenMossdeepSootopolis:
 MossdeepCity_StevensHouse_Text_TakeBallContainingBeldum:
 	.string "{PLAYER} checked the POKé BALL.\p"
 	.string "It contained the POKéMON\n"
-	.string "BELDUM.\p"
+	.string "CARBINK.\p"
 	.string "Take the POKé BALL?$"
 
 MossdeepCity_StevensHouse_Text_ObtainedBeldum:
-	.string "{PLAYER} obtained a BELDUM.$"
+	.string "{PLAYER} obtained a CARBINK.$"
 
 @ Unused
 MossdeepCity_StevensHouse_Text_NoSpaceForAnotherMon:
@@ -205,8 +205,8 @@ MossdeepCity_StevensHouse_Text_LetterFromSteven:
 	.string "I have a favor to ask of you.\p"
 	.string "I want you to take the POKé BALL on\n"
 	.string "the desk.\p"
-	.string "Inside it is a BELDUM, my favorite\n"
-	.string "POKéMON.\p"
+	.string "Inside it is a CARBINK, one of my\n"
+	.string "favorite POKéMON.\p"
 	.string "I'm counting on you.\p"
 	.string "May our paths cross someday.\p"
 	.string "STEVEN STONE$"

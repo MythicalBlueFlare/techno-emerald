@@ -1,8 +1,8 @@
-.set LOCALID_MAGMA_GRUNT_1, 5
-.set LOCALID_MAGMA_GRUNT_2, 6
-.set LOCALID_ARCHIE, 7
-.set LOCALID_AQUA_GRUNT_1, 8
-.set LOCALID_AQUA_GRUNT_2, 9
+.set LOCALID_MAGMA_GRUNT_1, 4
+.set LOCALID_MAGMA_GRUNT_2, 5
+.set LOCALID_ARCHIE, 6
+.set LOCALID_AQUA_GRUNT_1, 7
+.set LOCALID_AQUA_GRUNT_2, 8
 
 MeteorFalls_1F_1R_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, MeteorFalls_1F_1R_OnLoad
@@ -41,6 +41,7 @@ MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene::
 	closemessage
 	applymovement LOCALID_MAGMA_GRUNT_1, MeteorFalls_1F_1R_Movement_MagmaGruntApproachPlayer
 	waitmovement 0
+	trainerbattle_no_intro TRAINER_COURTNEY_METEOR_FALLS, MeteorFalls_1F_1R_Defeat
 	msgbox MeteorFalls_1F_1R_Text_HoldItRightThereMagma, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
@@ -244,9 +245,14 @@ MeteorFalls_1F_1R_Text_WithThisMeteorite:
 
 MeteorFalls_1F_1R_Text_DontExpectMercyFromMagma:
 	.string "Heh?\p"
-	.string "I don't know who you are, but if you get\n"
-	.string "in the way of TEAM MAGMA, don't\l"
-	.string "expect any mercy!$"
+	.string "Who are you? How did you get past the\n"
+	.string "guard outside?\p"
+	.string "Wait…\p"
+	.string "You're that kid that TEAM AQUA has\n"
+	.string "been whining about!\p" 
+	.string "I'm not suprised you are able to\n"
+	.string "handle those jokers! Let me show you \l" 
+	.string "how scary an adult can be!$"
 
 MeteorFalls_1F_1R_Text_HoldItRightThereMagma:
 	.string "Hold it right there, TEAM MAGMA!\p"
@@ -313,3 +319,6 @@ MeteorFalls_1F_1R_Text_WhatsTeamMagmaDoingAtMtChimney:
 	.string "PROF. COZMO: But that TEAM MAGMA…\p"
 	.string "What are they going to do with that\n"
 	.string "METEORITE at MT. CHIMNEY?$"
+
+MeteorFalls_1F_1R_Defeat:
+	.string "This outcome was… Unexpected.$"

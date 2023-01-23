@@ -17,7 +17,7 @@
 .set LOCALID_GRUNT_8, 30
 .set LOCALID_GRUNT_9, 31
 .set LOCALID_GRUNT_11, 33
-.set LOCALID_SCOTT, 35
+.set LOCALID_SCOTT, 36
 
 @ Note: LOCALID_SLATEPORT_ENERGY_GURU is a local id for this map used elsewhere. It's defined in event_objects.h
 
@@ -148,12 +148,15 @@ SlateportCity_EventScript_EnergyGuru::
 
 	.align 2
 SlateportCity_Pokemart_EnergyGuru:
-	.2byte ITEM_PROTEIN
-	.2byte ITEM_IRON
-	.2byte ITEM_CARBOS
-	.2byte ITEM_ZINC
-	.2byte ITEM_CALCIUM
-	.2byte ITEM_HP_UP
+	.2byte ITEM_WATER_STONE
+	.2byte ITEM_FIRE_STONE
+	.2byte ITEM_THUNDER_STONE
+	.2byte ITEM_SUN_STONE
+	.2byte ITEM_MOON_STONE
+	.2byte ITEM_LEAF_STONE
+	.2byte ITEM_ICE_STONE
+	.2byte ITEM_SHINY_STONE
+	.2byte ITEM_DUSK_STONE
 	.2byte ITEM_NONE
 	release
 	end
@@ -161,18 +164,7 @@ SlateportCity_Pokemart_EnergyGuru:
 SlateportCity_EventScript_EffortRibbonWoman::
 	lock
 	faceplayer
-	bufferleadmonspeciesname STR_VAR_1
-	msgbox SlateportCity_Text_OhYourPokemon, MSGBOX_DEFAULT
-	specialvar VAR_RESULT, LeadMonHasEffortRibbon
-	call_if_eq VAR_RESULT, TRUE, SlateportCity_EventScript_MonHasEffortRibbon
-	specialvar VAR_RESULT, Special_AreLeadMonEVsMaxedOut
-	call_if_eq VAR_RESULT, FALSE, SlateportCity_EventScript_MonEVsNotMaxed
-	msgbox SlateportCity_Text_PleaseGiveItThisEffortRibbon, MSGBOX_DEFAULT
-	playfanfare MUS_OBTAIN_ITEM
-	message SlateportCity_Text_ReceivedEffortRibbon
-	waitfanfare
-	msgbox SlateportCity_Text_PutEffortRibbonOnMon, MSGBOX_DEFAULT
-	special GiveLeadMonEffortRibbon
+	msgbox SlateportCity_Text_WeAreOutOfVitamins, MSGBOX_DEFAULT
 	release
 	end
 
@@ -504,17 +496,16 @@ SlateportCity_EventScript_DollClerk::
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemartdecoration SlateportCity_PokemartDecor_Dolls
+	pokemart SlateportCity_PokemartDecor_Dolls
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
 	end
 
 	.align 2
 SlateportCity_PokemartDecor_Dolls:
-	.2byte DECOR_AZURILL_DOLL
-	.2byte DECOR_MARILL_DOLL
-	.2byte DECOR_SKITTY_DOLL
-	.2byte DECOR_NONE
+	.2byte ITEM_ABILITY_CAPSULE
+	.2byte ITEM_SITRUS_BERRY
+	.2byte ITEM_NONE
 	release
 	end
 
@@ -566,8 +557,7 @@ SlateportCity_EventScript_PowerTMClerk::
 
 	.align 2
 SlateportCity_Pokemart_PowerTMs:
-	.2byte ITEM_TM10  @ Hidden Power
-	.2byte ITEM_TM43  @ Secret Power
+	.2byte ITEM_TM10
 	.2byte ITEM_NONE
 	release
 	end
@@ -915,6 +905,38 @@ SlateportCity_EventScript_ScottBattleTentScene::
 	setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE, 3
 	releaseall
 	end
+	
+SlateportCity_EventScript_EggWoman::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_LAVARIDGE_EGG, SlateportCity_EventScript_ReceivedEgg
+	msgbox SlateportCity_Text_HaveEggWillYouTakeIt, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, SlateportCity_EventScript_DeclineEgg
+	getpartysize
+	goto_if_eq VAR_RESULT, PARTY_SIZE, SlateportCity_EventScript_NoRoomForEgg
+	msgbox SlateportCity_Text_HopeYoullWalkPlentyWithEgg, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_LAVARIDGE_EGG
+	playfanfare MUS_OBTAIN_ITEM
+	message SlateportCity_Text_ReceivedTheEgg
+	waitfanfare
+	giveegg SPECIES_EEVEE
+	release
+	end
+	
+SlateportCity_EventScript_ReceivedEgg::
+	msgbox SlateportCity_Text_EverySoOftenEggFoundAtDayCare, MSGBOX_DEFAULT
+	release
+	end
+	
+SlateportCity_EventScript_DeclineEgg::
+	msgbox SlateportCity_Text_AsYouWishThen, MSGBOX_DEFAULT
+	release
+	end
+	
+SlateportCity_EventScript_NoRoomForEgg::
+	msgbox SlateportCity_Text_NoRoomForThisEgg, MSGBOX_DEFAULT
+	release
+	end
 
 SlateportCity_Movement_PushPlayerDown:
 	lock_facing_direction
@@ -949,9 +971,43 @@ SlateportCity_EventScript_BerryCrushRankingsSign::
 	waitstate
 	releaseall
 	end
+	
+SlateportCity_Text_EverySoOftenEggFoundAtDayCare:
+	.string "Every so often, an EGG will be found at\n"
+	.string "the POKéMON DAY CARE.\p"
+	.string "Or at least that's how the rumor goes.$"
+	
+SlateportCity_Text_HaveEggWillYouTakeIt:
+	.string "I have here an EGG.\p"
+	.string "I'd hoped to hatch it by covering it in\n"
+	.string "hot sand by the beach.\l"
+	.string "But that doesn't seem to be enough…\p"
+	.string "I've heard it would be best if it were\n"
+	.string "kept together with POKéMON and\l"
+	.string "carried about.\p"
+	.string "You are a TRAINER, yes?\n"
+	.string "And your POKéMON radiate vitality.\p"
+	.string "So, what say you?\n"
+	.string "Will you take this EGG to hatch?$"
+	
+SlateportCity_Text_AsYouWishThen:
+	.string "As you wish, then…\p"
+	.string "If you have a change of heart about\n"
+	.string "hatching this EGG, I will be here.$"
+	
+SlateportCity_Text_NoRoomForThisEgg:
+	.string "Oh? You've too many POKéMON.\n"
+	.string "There's no room for this EGG…$"
+	
+SlateportCity_Text_HopeYoullWalkPlentyWithEgg:
+	.string "Good! I hope you'll walk plenty with\n"
+	.string "this here EGG!$"
+	
+SlateportCity_Text_ReceivedTheEgg:
+	.string "{PLAYER} received the EGG.$"
 
 SlateportCity_Text_EnergyGuruSellWhatYouNeed:
-	.string "I'm the ENERGY GURU! I'll go for it and\n"
+	.string "I'm the Stone Guru! I'll go for it and\n"
 	.string "sell you what you need!$"
 
 SlateportCity_Text_OhYourPokemon:
@@ -1383,3 +1439,8 @@ SlateportCity_Text_TakingBattleTentChallenge:
 	.string "After all, a tough TRAINER is\n"
 	.string "the perfect fit for the BATTLE TENT!\p"
 	.string "Give it your best effort!$"
+
+SlateportCity_Text_WeAreOutOfVitamins: 
+	.string "Sorry hun, we are out of\n"
+	.string "vitamins, they are in short supply\l"
+	.string "these days.$"

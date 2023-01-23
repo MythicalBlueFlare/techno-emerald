@@ -44,7 +44,6 @@ LavaridgeTown_Gym_1F_EventScript_CheckBuryAxle::
 	setobjectmovementtype LOCALID_AXLE, MOVEMENT_TYPE_BURIED
 LavaridgeTown_Gym_1F_EventScript_CheckBuryDanielle::
 	goto_if_defeated TRAINER_DANIELLE, LavaridgeTown_Gym_1F_EventScript_EndCheckBuryTrainers
-	setobjectmovementtype LOCALID_DANIELLE, MOVEMENT_TYPE_BURIED
 LavaridgeTown_Gym_1F_EventScript_EndCheckBuryTrainers::
 	return
 
@@ -80,6 +79,7 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
 	closemessage
 	delay 30
 	setflag FLAG_ENABLE_FLANNERY_MATCH_CALL
+	clearflag FLAG_SIDNEY_DEFEATED
 	release
 	end
 

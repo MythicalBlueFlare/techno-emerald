@@ -6854,6 +6854,8 @@ extern const u32 gTrainerFrontPic_Red[];
 extern const u32 gTrainerFrontPic_Leaf[];
 extern const u32 gTrainerFrontPic_RubySapphireBrendan[];
 extern const u32 gTrainerFrontPic_RubySapphireMay[];
+extern const u32 gTrainerFrontPic_MagmaAdminF[];
+extern const u32 gTrainerFrontPic_Courtney[];
 
 extern const u32 gTrainerPalette_Hiker[];
 extern const u32 gTrainerPalette_AquaGruntM[];
@@ -6948,6 +6950,8 @@ extern const u32 gTrainerPalette_Red[];
 extern const u32 gTrainerPalette_Leaf[];
 extern const u32 gTrainerPalette_RubySapphireBrendan[];
 extern const u32 gTrainerPalette_RubySapphireMay[];
+extern const u32 gTrainerPalette_MagmaAdminF[];
+extern const u32 gTrainerPalette_Courtney[];
 
 extern const u8 gTrainerBackPic_Brendan[];
 extern const u8 gTrainerBackPic_May[];
@@ -8449,6 +8453,12 @@ extern const u32 gItemIcon_FameChecker[];
 extern const u32 gItemIconPalette_FameChecker[];
 extern const u32 gItemIcon_TeachyTV[];
 extern const u32 gItemIconPalette_TeachyTV[];
+extern const u32 gItemIcon_CandyBag[];
+extern const u32 gItemIconPalette_CandyBag[];
+extern const u32 gItemIcon_PokeVial[];
+extern const u32 gItemIconPalette_PokeVial[];
+extern const u32 gItemIcon_PokeRider[];
+extern const u32 gItemIconPalette_PokeRider[];
 // Story Key Items
 extern const u32 gItemIcon_SSTicket[];
 extern const u32 gItemIconPalette_SSTicket[];

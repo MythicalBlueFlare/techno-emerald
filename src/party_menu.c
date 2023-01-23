@@ -409,6 +409,8 @@ void TryItemHoldFormChange(struct Pokemon *mon);
 #include "data/party_menu.h"
 
 // code
+static void CB2_ReturnToPartyMenuUsingRareCandy(void);
+
 static void InitPartyMenu(u8 menuType, u8 layout, u8 partyAction, bool8 keepCursorPos, u8 messageId, TaskFunc task, MainCallback callback)
 {
     u16 i;
@@ -1964,7 +1966,7 @@ static u8 CanMonLearnTMTutor(struct Pokemon *mon, u16 item, u8 tutor)
 
     if (item >= ITEM_TM01)
     {
-        if (!CanMonLearnTMHM(mon, item - ITEM_TM01 - ((item > ITEM_TM100) ? NUM_TECHNICAL_MACHINES : 0)))
+        if (!CanMonLearnTMHM(mon, item - ITEM_TM01 - ((item > ITEM_TM100) ? 50 : 0)))
             return CANNOT_LEARN_MOVE;
         else
             move = ItemIdToBattleMoveId(item);
@@ -4348,7 +4350,11 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
         PlaySE(SE_SELECT);
         DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
         ScheduleBgCopyTilemapToVram(2);
-        gTasks[taskId].func = task;
+        if (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD)
+            gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+        else
+            gTasks[taskId].func = task;
+        return;
     }
     else
     {
@@ -4380,7 +4386,10 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc task)
             GetMedicineItemEffectMessage(item);
             DisplayPartyMenuMessage(gStringVar4, TRUE);
             ScheduleBgCopyTilemapToVram(2);
-            gTasks[taskId].func = task;
+            if (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(item, 1))
+                gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+            else
+                gTasks[taskId].func = task;
         }
     }
 }
@@ -4492,7 +4501,10 @@ static void Task_DisplayHPRestoredMessage(u8 taskId)
     DisplayPartyMenuMessage(gStringVar4, FALSE);
     ScheduleBgCopyTilemapToVram(2);
     HandleBattleLowHpMusicChange();
-    gTasks[taskId].func = Task_ClosePartyMenuAfterText;
+        if (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
+        gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+    else
+        gTasks[taskId].func = Task_ClosePartyMenuAfterText;
 }
 
 static void Task_ClosePartyMenuAfterText(u8 taskId)
@@ -4813,8 +4825,6 @@ static void Task_LearnedMove(u8 taskId)
     if (move[1] == 0)
     {
         AdjustFriendship(mon, FRIENDSHIP_EVENT_LEARN_TMHM);
-        if (item < ITEM_HM01_CUT)
-            RemoveBagItem(item, 1);
     }
     GetMonNickname(mon, gStringVar1);
     StringCopy(gStringVar2, gMoveNames[move[0]]);
@@ -4890,7 +4900,10 @@ static void CB2_ShowSummaryScreenToForgetMove(void)
 
 static void CB2_ReturnToPartyMenuWhileLearningMove(void)
 {
-    InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
+    if ((gSpecialVar_ItemId == ITEM_RARE_CANDY || gSpecialVar_ItemId == ITEM_CANDY_BAG) && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
+        InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_USE_ITEM, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
+    else
+        InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
 }
 
 static void Task_ReturnToPartyMenuWhileLearningMove(u8 taskId)
@@ -4995,8 +5008,9 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
     s16 *arrayPtr = ptr->data;
     u16 *itemPtr = &gSpecialVar_ItemId;
     bool8 cannotUseEffect;
+	u8 level = GetMonData(mon, MON_DATA_LEVEL);
 
-    if (GetMonData(mon, MON_DATA_LEVEL) != MAX_LEVEL)
+    if (level != MAX_LEVEL && (level < GetLevelCap()))
     {
         BufferMonStatsToTaskData(mon, arrayPtr);
         cannotUseEffect = ExecuteTableBasedItemEffect_(gPartyMenu.slotId, *itemPtr, 0);
@@ -5019,7 +5033,47 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
         gPartyMenuUseExitCallback = TRUE;
         PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
         UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
-        RemoveBagItem(gSpecialVar_ItemId, 1);
+        GetMonNickname(mon, gStringVar1);
+        ConvertIntToDecimalStringN(gStringVar2, GetMonData(mon, MON_DATA_LEVEL), STR_CONV_MODE_LEFT_ALIGN, 3);
+        StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
+        DisplayPartyMenuMessage(gStringVar4, TRUE);
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = Task_DisplayLevelUpStatsPg1;
+    }
+}
+
+void ItemUseCB_CandyBag(u8 taskId, TaskFunc task)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    struct PartyMenuInternal *ptr = sPartyMenuInternal;
+    s16 *arrayPtr = ptr->data;
+    u16 *itemPtr = &gSpecialVar_ItemId;
+    bool8 cannotUseEffect;
+	u8 level = GetMonData(mon, MON_DATA_LEVEL);
+
+    if (level != MAX_LEVEL && (level < GetLevelCap()))
+    {
+        BufferMonStatsToTaskData(mon, arrayPtr);
+        cannotUseEffect = ExecuteTableBasedItemEffect_(gPartyMenu.slotId, *itemPtr, 0);
+        BufferMonStatsToTaskData(mon, &ptr->data[NUM_STATS]);
+    }
+    else
+    {
+        cannotUseEffect = TRUE;
+    }
+    PlaySE(SE_SELECT);
+    if (cannotUseEffect)
+    {
+        gPartyMenuUseExitCallback = FALSE;
+        DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = task;
+    }
+    else
+    {
+        gPartyMenuUseExitCallback = TRUE;
+        PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
+        UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
         GetMonNickname(mon, gStringVar1);
         ConvertIntToDecimalStringN(gStringVar2, GetMonData(mon, MON_DATA_LEVEL), STR_CONV_MODE_LEFT_ALIGN, 3);
         StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
@@ -5136,13 +5190,19 @@ static void PartyMenuTryEvolution(u8 taskId)
     if (targetSpecies != SPECIES_NONE)
     {
         FreePartyPointers();
-        gCB2_AfterEvolution = gPartyMenu.exitCallback;
+        if (gSpecialVar_ItemId == ITEM_RARE_CANDY && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
+            gCB2_AfterEvolution = CB2_ReturnToPartyMenuUsingRareCandy;
+        else
+            gCB2_AfterEvolution = gPartyMenu.exitCallback;
         BeginEvolutionScene(mon, targetSpecies, TRUE, gPartyMenu.slotId);
         DestroyTask(taskId);
     }
     else
     {
-        gTasks[taskId].func = Task_ClosePartyMenuAfterText;
+        if (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
+            gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+        else
+            gTasks[taskId].func = Task_ClosePartyMenuAfterText;
     }
 }
 
@@ -6622,4 +6682,10 @@ void IsLastMonThatKnowsSurf(void)
         if (AnyStorageMonWithMove(move) != TRUE)
             gSpecialVar_Result = TRUE;
     }
+}
+
+static void CB2_ReturnToPartyMenuUsingRareCandy(void)
+{
+    gItemUseCB = ItemUseCB_RareCandy;
+    SetMainCallback2(CB2_ShowPartyMenuForItemUse);
 }

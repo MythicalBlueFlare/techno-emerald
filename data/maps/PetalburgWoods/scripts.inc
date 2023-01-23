@@ -1,5 +1,6 @@
 .set LOCALID_GRUNT, 3
 .set LOCALID_DEVON_EMPLOYEE, 4
+.set LOCALID_ANABEL, 14
 
 PetalburgWoods_MapScripts::
 	.byte 0
@@ -253,7 +254,7 @@ PetalburgWoods_EventScript_Girl::
 	faceplayer
 	goto_if_set FLAG_RECEIVED_MIRACLE_SEED, PetalburgWoods_EventScript_ExplainMiracleSeed
 	msgbox PetalburgWoods_Text_TryUsingThisItem, MSGBOX_DEFAULT
-	giveitem ITEM_MIRACLE_SEED
+	giveitem ITEM_MENTAL_HERB
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_MIRACLE_SEED
 	release
@@ -317,6 +318,37 @@ PetalburgWoods_EventScript_JamesRematch::
 	trainerbattle_rematch TRAINER_JAMES_1, PetalburgWoods_Text_MyPokemonHaveGrown, PetalburgWoods_Text_CantBePopularIfLose
 	msgbox PetalburgWoods_Text_IveBeenTrainingHard, MSGBOX_AUTOCLOSE
 	end
+	
+PetalburgWoods_EventScript_Anabel::
+	lockall 
+	faceplayer
+	playse SE_PIN
+	applymovement LOCALID_ANABEL, Common_Movement_ExclamationMark
+	waitmovement 0
+	setweather WEATHER_RAIN
+	doweather
+	call_if_set FLAG_BRANDON_DEFEATED, PetalburgWoods_EventScript_AnabelHardMode
+	trainerbattle_single TRAINER_ANABEL_1, PetalburgWoods_Text_AnabelIntro, PetalburgWoods_Text_AnabelDefeat, PetalburgWoods_EventScript_AnabelDefeated, NO_MUSIC
+	end 
+	
+PetalburgWoods_EventScript_AnabelHardMode::
+	trainerbattle_single TRAINER_ANABEL_2, PetalburgWoods_Text_AnabelIntro, PetalburgWoods_Text_AnabelDefeat, PetalburgWoods_EventScript_AnabelDefeated, NO_MUSIC
+	end 
+	
+PetalburgWoods_EventScript_AnabelDefeated:: 
+	lockall 
+	faceplayer
+	setweather WEATHER_NONE
+	doweather
+	msgbox PetalburgWoods_Text_AnabelLeave, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_CHOICE_SPECS
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_ANABEL
+	setflag FLAG_ANABEL_DEFEATED
+	fadescreen FADE_FROM_BLACK
+	release 
+	end 
 
 PetalburgWoods_Text_NotAOneToBeFound:
 	.string "Hmmm…\n"
@@ -474,3 +506,26 @@ PetalburgWoods_Text_TrainerTipsPP:
 	.string "If a POKéMON runs out of PP, it must be\n"
 	.string "taken to a POKéMON CENTER.$"
 
+PetalburgWoods_Text_AnabelIntro:
+	.string "Greetings.\n"
+	.string "My name is ANABEL.\p"
+	.string "I run the BATTLE TOWER at the\n"
+	.string "BATTLE FRONTIER.\p"
+	.string "I come here often to observe the\n"
+	.string "lush and blooming woods.\p"
+	.string "You seem like a very strong trainer…\p"
+	.string "Please show me something…\p"
+	.string "Let me see your talent in\n"
+	.string "its entirety…$" 
+	
+PetalburgWoods_Text_AnabelDefeat:
+	.string "Okay, I understand…$"
+	
+PetalburgWoods_Text_AnabelLeave:
+	.string "Fufufu, nicely done…\p"
+	.string "I'd like you to take this.\n"
+	.string "It is an item said to increase the\l"
+	.string "SPECIAL ATTACK of a POKéMON, but at the\l"
+	.string "cost of only being able to select one\l"
+	.string "move.\p"
+	.string "Well, I best be going now.$"

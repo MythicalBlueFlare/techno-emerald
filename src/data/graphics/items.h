@@ -1843,6 +1843,15 @@ const u32 gItemIconPalette_FameChecker[] = INCBIN_U32("graphics/items/icon_palet
 const u32 gItemIcon_TeachyTV[] = INCBIN_U32("graphics/items/icons/teachy_tv.4bpp.lz");
 const u32 gItemIconPalette_TeachyTV[] = INCBIN_U32("graphics/items/icon_palettes/teachy_tv.gbapal.lz");
 
+const u32 gItemIcon_CandyBag[] = INCBIN_U32("graphics/items/icons/candy_bag.4bpp.lz");
+const u32 gItemIconPalette_CandyBag[] = INCBIN_U32("graphics/items/icon_palettes/candy_bag.gbapal.lz");
+
+const u32 gItemIcon_PokeVial[] = INCBIN_U32("graphics/items/icons/poke_vial.4bpp.lz");
+const u32 gItemIconPalette_PokeVial[] = INCBIN_U32("graphics/items/icon_palettes/poke_vial.gbapal.lz");
+
+const u32 gItemIcon_PokeRider[] = INCBIN_U32("graphics/items/icons/poke_rider.4bpp.lz");
+const u32 gItemIconPalette_PokeRider[] = INCBIN_U32("graphics/items/icon_palettes/poke_rider.gbapal.lz");
+
 // Story Key Items
 
 const u32 gItemIcon_SSTicket[] = INCBIN_U32("graphics/items/icons/ss_ticket.4bpp.lz");

@@ -4,22 +4,7 @@ LilycoveCity_DepartmentStore_3F_MapScripts::
 LilycoveCity_DepartmentStore_3F_EventScript_ClerkLeft::
 	lock
 	faceplayer
-	message gText_HowMayIServeYou
-	waitmessage
-	pokemart LilycoveCity_DepartmentStore_3F_Pokemart_Vitamins
-	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
-	.align 2
-LilycoveCity_DepartmentStore_3F_Pokemart_Vitamins:
-	.2byte ITEM_PROTEIN
-	.2byte ITEM_CALCIUM
-	.2byte ITEM_IRON
-	.2byte ITEM_ZINC
-	.2byte ITEM_CARBOS
-	.2byte ITEM_HP_UP
-	.2byte ITEM_NONE
+	msgbox LilycoveCity_DepartmentStore_3F_Text_SorryWeAreOut
 	release
 	end
 
@@ -74,3 +59,6 @@ LilycoveCity_DepartmentStore_3F_Text_GaveCarbosToSpeedUpMon:
 	.string "I gave a CARBOS to my POKéMON,\n"
 	.string "and its SPEED went up.$"
 
+LilycoveCity_DepartmentStore_3F_Text_SorryWeAreOut:
+	.string "Sorry, some thug came and stole all of\n"
+	.string "our goods. We'll have to get restocked.$"

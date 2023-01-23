@@ -4197,6 +4197,14 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                         effect++;
                     }
                     break;
+                case WEATHER_SNOW:
+                    if (!(gBattleWeather & B_WEATHER_HAIL))
+                    {
+                        gBattleWeather = (B_WEATHER_HAIL_PERMANENT | B_WEATHER_HAIL_TEMPORARY);
+                        gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
+                        effect++;
+                    }
+                    break;
                 }
             }
             if (effect)
@@ -4554,6 +4562,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
         case ABILITY_SHIELDS_DOWN:
             if (ShouldChangeFormHpBased(battler))
             {
+				gBattlerAttacker = battler;
                 BattleScriptPushCursorAndCallback(BattleScript_AttackerFormChangeEnd3);
                 effect++;
             }
@@ -4976,9 +4985,11 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
              && TARGET_TURN_DAMAGED
              && IsBattlerAlive(battler)
              && moveType == TYPE_WATER
-             && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN))
+             && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN)
+			 && CompareStat(battler, STAT_SPDEF, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
-                SET_STATCHANGER(STAT_DEF, 2, FALSE);
+                SET_STATCHANGER(STAT_DEF, 1, FALSE);
+				SET_STATCHANGER(STAT_SPDEF, 1, FALSE);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_TargetAbilityStatRaiseOnMoveEnd;
                 effect++;
@@ -7527,14 +7538,14 @@ u8 IsMonDisobedient(void)
         if (FlagGet(FLAG_BADGE08_GET))
             return 0;
 
-        obedienceLevel = 10;
+        obedienceLevel = 16;
 
         if (FlagGet(FLAG_BADGE02_GET))
-            obedienceLevel = 30;
+            obedienceLevel = 35;
         if (FlagGet(FLAG_BADGE04_GET))
             obedienceLevel = 50;
         if (FlagGet(FLAG_BADGE06_GET))
-            obedienceLevel = 70;
+            obedienceLevel = 75;
     }
 
     if (gBattleMons[gBattlerAttacker].level <= obedienceLevel)
@@ -8190,7 +8201,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     switch (GetBattlerAbility(battlerAtk))
     {
     case ABILITY_TECHNICIAN:
-        if (basePower <= 60)
+        if (basePower <= 65)
            MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_FLARE_BOOST:
@@ -8226,7 +8237,7 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
              == GetGenderFromSpeciesAndPersonality(gBattleMons[battlerDef].species, gBattleMons[battlerDef].personality))
                MulModifier(&modifier, UQ_4_12(1.25));
             else
-               MulModifier(&modifier, UQ_4_12(0.75));
+               MulModifier(&modifier, UQ_4_12(1));
         }
         break;
     case ABILITY_ANALYTIC:
@@ -8236,6 +8247,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
     case ABILITY_TOUGH_CLAWS:
         if (IsMoveMakingContact(move, battlerAtk))
            MulModifier(&modifier, UQ_4_12(1.3));
+        break;
+    case ABILITY_WRESTLERS_MARK:
+        if (IS_MOVE_PHYSICAL(move))
+            MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_STRONG_JAW:
         if (gBattleMoves[move].flags & FLAG_STRONG_JAW_BOOST)
@@ -8251,6 +8266,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         break;
     case ABILITY_STEELWORKER:
         if (moveType == TYPE_STEEL)
+           MulModifier(&modifier, UQ_4_12(1.5));
+        break;
+    case ABILITY_GLIDER:
+        if (moveType == TYPE_FLYING)
            MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_PIXILATE:
@@ -8274,6 +8293,9 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_PUNK_ROCK:
+        if (gBattleMoves[move].flags & FLAG_SOUND)
+            MulModifier(&modifier, UQ_4_12(1.3));
+    case ABILITY_LEAD_SINGER:
         if (gBattleMoves[move].flags & FLAG_SOUND)
             MulModifier(&modifier, UQ_4_12(1.3));
         break;
@@ -8556,6 +8578,9 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
     switch (GetBattlerAbility(battlerAtk))
     {
     case ABILITY_HUGE_POWER:
+	    if (IS_MOVE_PHYSICAL(move))
+            MulModifier(&modifier, UQ_4_12(2.0));
+        break;
     case ABILITY_PURE_POWER:
         if (IS_MOVE_PHYSICAL(move))
             MulModifier(&modifier, UQ_4_12(2.0));
@@ -8569,7 +8594,7 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
             MulModifier(&modifier, UQ_4_12(1.5));
         break;
     case ABILITY_DEFEATIST:
-        if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 2))
+        if (gBattleMons[battlerAtk].hp <= (gBattleMons[battlerAtk].maxHP / 3))
             MulModifier(&modifier, UQ_4_12(0.5));
         break;
     case ABILITY_FLASH_FIRE:

@@ -471,6 +471,7 @@ static const u8 sText_Someones[] = _("someone's");
 static const u8 sText_Lanettes[] = _("LANETTE's");
 static const u8 sText_PkmnDataAddedToDex[] = _("{B_DEF_NAME}'s data was\nadded to the POKéDEX.\p");
 static const u8 sText_ItIsRaining[] = _("It is raining.");
+static const u8 sText_ItIsHailing[] = _("A blizzard formed.");
 static const u8 sText_SandstormIsRaging[] = _("A sandstorm is raging.");
 static const u8 sText_BoxIsFull[] = _("The BOX is full!\nYou can't catch any more!\p");
 static const u8 sText_EnigmaBerry[] = _("ENIGMA BERRY");
@@ -1071,6 +1072,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PKMNSENTTOPC - BATTLESTRINGS_TABLE_START] = sText_PkmnSentToPC,
     [STRINGID_PKMNDATAADDEDTODEX - BATTLESTRINGS_TABLE_START] = sText_PkmnDataAddedToDex,
     [STRINGID_ITISRAINING - BATTLESTRINGS_TABLE_START] = sText_ItIsRaining,
+	[STRINGID_ITISHAILING - BATTLESTRINGS_TABLE_START] = sText_ItIsHailing,
     [STRINGID_SANDSTORMISRAGING - BATTLESTRINGS_TABLE_START] = sText_SandstormIsRaging,
     [STRINGID_CANTESCAPE2 - BATTLESTRINGS_TABLE_START] = sText_CantEscape2,
     [STRINGID_PKMNIGNORESASLEEP - BATTLESTRINGS_TABLE_START] = sText_PkmnIgnoresAsleep,
@@ -1678,7 +1680,7 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_SUNNY_CLOUDS]       = STRINGID_ITISRAINING,
     [WEATHER_SUNNY]              = STRINGID_ITISRAINING,
     [WEATHER_RAIN]               = STRINGID_ITISRAINING,
-    [WEATHER_SNOW]               = STRINGID_ITISRAINING,
+    [WEATHER_SNOW]               = STRINGID_ITISHAILING,
     [WEATHER_RAIN_THUNDERSTORM]  = STRINGID_ITISRAINING,
     [WEATHER_FOG_HORIZONTAL]     = STRINGID_ITISRAINING,
     [WEATHER_VOLCANIC_ASH]       = STRINGID_ITISRAINING,
@@ -1949,6 +1951,115 @@ static const u8 sText_Your1[] = _("Your");
 static const u8 sText_Opposing1[] = _("The opposing");
 static const u8 sText_Your2[] = _("your");
 static const u8 sText_Opposing2[] = _("the opposing");
+
+static const u8 sText_Steven3LastSwitchIn[] = _("This is it, don't let up!\nThis battle is far from over!\p");
+static const u8 sText_Steven3LastLowHp[] = _("So it comes down to this…\p");
+
+static const u8 sText_DrakeLastSwitchIn[] = _("Here's everything we've got!\p");
+static const u8 sText_DrakeLastLowHp[] = _("The mighty dragon lets out its final\nroar…\p");
+
+static const u8 sText_GlaciaLastSwitchIn[] = _("Be careful you don't freeze up!\p");
+static const u8 sText_GlaciaLastLowHp[] = _("You've melted us away…\p");
+
+static const u8 sText_PhoebeLastSwitchIn[] = _("Ghost POKéMON get stronger the more\nthey fall!\lWe'll take you down right here!\p");
+static const u8 sText_PhoebeLastLowHp[] = _("My training… Was not enough?\p");
+
+static const u8 sText_Sidney2LastSwitchIn[] = _("One more? We're just getting started!\p");
+static const u8 sText_Sidney2LastLowHp[] = _("It's not over 'till it's over!\p");
+
+static const u8 sText_WallaceLastSwitchIn[] = _("I've shown you plenty of illusions…\nNow time for the finale!\p");
+static const u8 sText_WallaceLastLowHp[] = _("Even in peril can you find elegance!\p");
+
+static const u8 sText_JuanLastSwitchIn[] = _("I'm not concerned with dynamism.\nI care about winning beautifully!\p");
+static const u8 sText_JuanLastLowHp[] = _("Even in peril can you find elegance!\p");
+
+static const u8 sText_Courtney2LastSwitchIn[] = _("Enough!\nI've have enough of this world!\p");
+static const u8 sText_Courtney2LastLowHp[] = _("Hah hah… Uhn… hah hah…\p");
+
+static const u8 sText_Archie2LastSwitchIn[] = _("How could you possibly be so strong?!\p");
+static const u8 sText_Archie2LastLowHp[] = _("Aye, this doesn't look good!\p");
+
+static const u8 sText_Shelly2LastSwitchIn[] = _("Ahahahaha!\nWhat makes you so strong?!\p");
+static const u8 sText_Shelly2LastLowHp[] = _("Ahahahaha…\p");
+
+static const u8 sText_Maxie3LastSwitchIn[] = _("Gah! You bring us this close to defeat\nyet again?!\p");
+static const u8 sText_Maxie3LastLowHp[] = _("So close…\p");
+
+static const u8 sText_Tabitha3LastSwitchIn[] = _("Time and time again…\p");
+static const u8 sText_Tabitha3LastLowHp[] = _("So close…\p");
+
+static const u8 sText_TateLizaLastSwitchIn[] = _("TATE: Even when we are down to one…\nLIZA: We fight as one!\p");
+static const u8 sText_TateLizaLastLowHp[] = _("Our combination…\p");
+
+static const u8 sText_Matt1LastSwitchIn[] = _("Heh heh…\nThis one is gonna SLAM you!\p");
+static const u8 sText_Matt1LastLowHp[] = _("Heh heh…\nSo I wasn't enough…\p");
+
+static const u8 sText_Maxie2LastSwitchIn[] = _("There must be some sort of mistake!\nI have the power of RESHIRAM!\lThe power of a LEGENDARY POKéMON!\p");
+static const u8 sText_Maxie2LastLowHp[] = _("What a blunder…\p");
+
+static const u8 sText_Tabitha2LastSwitchIn[] = _("An unexpected development?!\p");
+static const u8 sText_Tabitha2LastLowHp[] = _("Yet again I'm backed into a corner!\pBut this changes nothing…\p");
+
+static const u8 sText_NolandLastSwitchIn[] = _("Hey, hey! You're tougher than\nyou look!\p");
+static const u8 sText_NolandLastLowHp[] = _("What happened here?\p");
+
+static const u8 sText_WinonaLastSwitchIn[] = _("Feel the winds of change!\p");
+static const u8 sText_WinonaLastLowHp[] = _("The winds…\nThey slow…\pBut our spirit is strong!\p");
+
+static const u8 sText_Rival4LastSwitchIn[] = _("You only keep getting stronger, huh?\p");
+static const u8 sText_Rival4LastLowHp[] = _("Maybe I'm just not able to keep up with\nyou…\p");
+
+static const u8 sText_Shelly1LastSwitchIn[] = _("Ahahahaha!\nYou sure know how to fight!\p");
+static const u8 sText_Shelly1LastLowHp[] = _("Ahahahaha!\nEven I, Team Aqua Admin Shelly,\lhave been made a fool…\p");
+
+static const u8 sText_Steven2LastSwitchIn[] = _("Extreme conditions really test you\nand train you!\p");
+static const u8 sText_Steven2LastLowHp[] = _("So it comes down to this…\p");
+
+static const u8 sText_NormanLastSwitchIn[] = _("So, I'm backed into a corner like this…\p");
+static const u8 sText_NormanLastLowHp[] = _("…!\p");
+
+static const u8 sText_Sidney1LastSwitchIn[] = _("This is heatin' up real nicely!\p");
+static const u8 sText_Sidney1LastLowHp[] = _("It's not over 'till it's over!\p");
+
+static const u8 sText_Wally2LastSwitchIn[] = _("I… I won't give up yet!\p");
+static const u8 sText_Wally2LastLowHp[] = _("…\p");
+
+static const u8 sText_FlanneryLastSwitchIn[] = _("Ha! You think that'll stop us?\p");
+static const u8 sText_FlanneryLastLowHp[] = _("Too close…\nUh…\lThis isn't over yet!\p");
+
+static const u8 sText_Maxie1LastSwitchIn[] = _("I seem to be falling behind…\nBut only by an inch!\p");
+static const u8 sText_Maxie1LastLowHp[] = _("What?\p");
+
+static const u8 sText_Tabitha1LastSwitchIn[] = _("Hehe…\nYou're no ordinary kid…\p");
+static const u8 sText_Tabitha1LastLowHp[] = _("Even if you defeat me…\p");
+
+static const u8 sText_Courtney1LastSwitchIn[] = _("Why are brats like you so meddlesome?!\p");
+static const u8 sText_Courtney1LastLowHp[] = _("Hah hah… Uhn… Hah hah…\p");
+
+static const u8 sText_WattsonLastSwitchIn[] = _("Wahahahah!\nI can't believe it's this close!\p");
+static const u8 sText_WattsonLastLowHp[] = _("Your bulb burns brighter than mine!\p");
+
+static const u8 sText_Wally1LastSwitchIn[] = _("Your… Your strength…\nIt's overwhelming…\p");
+static const u8 sText_Wally1LastLowHp[] = _("…\p");
+
+static const u8 sText_Brendan3LastSwitchIn[] = _("Woah! You sure are serious, huh?\p");
+static const u8 sText_Brendan3LastLowHp[] = _("I guess this is what I should expect\nfrom the daughter of a Gym Leader…\p");
+
+static const u8 sText_May3LastSwitchIn[] = _("Woah! You sure are serious, huh?\p");
+static const u8 sText_May3LastLowHp[] = _("I guess this is what I should expect\nfrom the son of a Gym Leader…\p");
+
+static const u8 sText_Archie1LastSwitchIn[] = _("Bwahahahahah!\nYou've got a fighting spirit little\lscamp!\p");
+static const u8 sText_Archie1LastLowHp[] = _("Aye, this must be some kind of joke!\p");
+
+static const u8 sText_Steven1LastSwitchIn[] = _("These intense battles are what I\nlive for!\p");
+static const u8 sText_Steven1LastLowHp[] = _("So it comes down to this…\p");
+
+static const u8 sText_BrawlyLastSwitchIn[] = _("You crashed down harder than a\ntidal wave…\p");
+static const u8 sText_BrawlyLastLowHp[] = _("Not even I could ride this tide…\p");
+
+static const u8 sText_RoxanneLastSwitchIn[] = _("This isn't over! I'll show you\njust how much I've learned!\p");
+static const u8 sText_RoxanneLastLowHp[] = _("A fight isn't over until the\nvery last moment!\p");
+
 
 // This is four lists of moves which use a different attack string in Japanese
 // to the default. See the documentation for ChooseTypeOfMoveUsedString for more detail.
@@ -3878,7 +3989,53 @@ struct TrainerSlide
 
 static const struct TrainerSlide sTrainerSlides[] =
 {
-    {0x291, sText_AarghAlmostHadIt, sText_BoxIsFull, sText_123Poof},
+	{TRAINER_ROXANNE_1, sText_RoxanneLastSwitchIn, sText_RoxanneLastLowHp, NULL},
+	{TRAINER_BRAWLY_1, sText_BrawlyLastSwitchIn, sText_BrawlyLastLowHp, NULL},
+	{TRAINER_STEVEN_GRANITE_CAVE, sText_Steven1LastSwitchIn, sText_Steven1LastLowHp, NULL},
+	{TRAINER_ARCHIE_OCEANIC_MUSEUM, sText_Archie1LastSwitchIn, sText_Archie1LastLowHp, NULL},
+	{TRAINER_BRENDAN_ROUTE_110_TORCHIC, sText_Brendan3LastSwitchIn, sText_Brendan3LastLowHp, NULL},
+	{TRAINER_BRENDAN_ROUTE_110_TREECKO, sText_Brendan3LastSwitchIn, sText_Brendan3LastLowHp, NULL},
+	{TRAINER_BRENDAN_ROUTE_110_MUDKIP, sText_Brendan3LastSwitchIn, sText_Brendan3LastLowHp, NULL},
+	{TRAINER_MAY_ROUTE_110_TORCHIC, sText_May3LastSwitchIn, sText_May3LastLowHp, NULL},
+	{TRAINER_MAY_ROUTE_110_TREECKO, sText_May3LastSwitchIn, sText_May3LastLowHp, NULL},
+	{TRAINER_MAY_ROUTE_110_MUDKIP, sText_May3LastSwitchIn, sText_May3LastLowHp, NULL},
+	{TRAINER_WALLY_MAUVILLE, sText_Wally1LastSwitchIn, sText_Wally1LastLowHp, NULL},
+	{TRAINER_WATTSON_1, sText_WattsonLastSwitchIn, sText_WattsonLastLowHp, NULL},
+	{TRAINER_COURTNEY_METEOR_FALLS, sText_Courtney1LastSwitchIn, sText_Courtney1LastLowHp, NULL},
+	{TRAINER_TABITHA_MT_CHIMNEY, sText_Tabitha1LastSwitchIn, sText_Tabitha1LastLowHp, NULL},
+	{TRAINER_MAXIE_MT_CHIMNEY, sText_Maxie1LastSwitchIn, sText_Maxie1LastLowHp, NULL},
+	{TRAINER_FLANNERY_1, sText_FlanneryLastSwitchIn, sText_FlanneryLastLowHp, NULL},
+	{TRAINER_WALLY_ROUTE111, sText_Wally2LastSwitchIn, sText_Wally2LastLowHp, NULL},
+	{TRAINER_SIDNEY_PETALBURG_CITY, sText_Sidney1LastSwitchIn, sText_Sidney1LastLowHp, NULL},
+	{TRAINER_NORMAN_1, sText_NormanLastSwitchIn, sText_NormanLastLowHp, NULL},
+    {TRAINER_STEVEN_ROUTE118, sText_Steven2LastSwitchIn, sText_Steven2LastLowHp, NULL},
+	{TRAINER_SHELLY_WEATHER_INSTITUTE, sText_Shelly1LastSwitchIn, sText_Shelly1LastLowHp, NULL},
+	{TRAINER_BRENDAN_ROUTE_119_TORCHIC, sText_Rival4LastSwitchIn, sText_Rival4LastLowHp, NULL},
+	{TRAINER_BRENDAN_ROUTE_119_TREECKO, sText_Rival4LastSwitchIn, sText_Rival4LastLowHp, NULL},
+	{TRAINER_BRENDAN_ROUTE_119_MUDKIP, sText_Rival4LastSwitchIn, sText_Rival4LastLowHp, NULL},
+	{TRAINER_MAY_ROUTE_119_TORCHIC, sText_Rival4LastSwitchIn, sText_Rival4LastLowHp, NULL},
+	{TRAINER_MAY_ROUTE_119_TREECKO, sText_Rival4LastSwitchIn, sText_Rival4LastLowHp, NULL},
+	{TRAINER_MAY_ROUTE_119_MUDKIP, sText_Rival4LastSwitchIn, sText_Rival4LastLowHp, NULL},
+	{TRAINER_WINONA_1, sText_WinonaLastSwitchIn, sText_WinonaLastLowHp, NULL},
+	{TRAINER_NOLAND_ROUTE120, sText_NolandLastSwitchIn, sText_NolandLastLowHp, NULL},
+	{TRAINER_TABITHA_MAGMA_HIDEOUT, sText_Tabitha2LastSwitchIn, sText_Tabitha2LastLowHp, NULL},
+	{TRAINER_MAXIE_MAGMA_HIDEOUT, sText_Maxie2LastSwitchIn, sText_Maxie2LastLowHp, NULL},
+	{TRAINER_MATT, sText_Matt1LastSwitchIn, sText_Matt1LastLowHp, NULL},
+	{TRAINER_ROXANNE_2, sText_RoxanneLastSwitchIn, sText_RoxanneLastLowHp, NULL},
+	{TRAINER_BRAWLY_2, sText_BrawlyLastSwitchIn, sText_BrawlyLastLowHp, NULL},
+	{TRAINER_TATE_AND_LIZA_1, sText_TateLizaLastSwitchIn, sText_TateLizaLastLowHp, NULL},
+	{TRAINER_TABITHA_MOSSDEEP, sText_Tabitha3LastSwitchIn, sText_Tabitha3LastLowHp, NULL},
+	{TRAINER_MAXIE_MOSSDEEP, sText_Maxie3LastSwitchIn, sText_Maxie3LastLowHp, NULL},
+	{TRAINER_SHELLY_SEAFLOOR_CAVERN, sText_Shelly2LastSwitchIn, sText_Shelly2LastLowHp, NULL},
+	{TRAINER_ARCHIE, sText_Archie2LastSwitchIn, sText_Archie2LastLowHp, NULL},
+	{TRAINER_COURTNEY_SKYPILLAR, sText_Courtney2LastSwitchIn, sText_Courtney2LastLowHp, NULL},
+	{TRAINER_JUAN_1, sText_JuanLastSwitchIn, sText_JuanLastLowHp, NULL},
+	{TRAINER_WALLACE, sText_WallaceLastSwitchIn, sText_WallaceLastLowHp, NULL},
+	{TRAINER_SIDNEY, sText_Sidney2LastSwitchIn, sText_Sidney2LastLowHp, NULL},
+	{TRAINER_PHOEBE, sText_PhoebeLastSwitchIn, sText_PhoebeLastLowHp, NULL},
+	{TRAINER_GLACIA, sText_GlaciaLastSwitchIn, sText_GlaciaLastLowHp, NULL},
+	{TRAINER_DRAKE, sText_DrakeLastSwitchIn, sText_DrakeLastLowHp, NULL},
+	{TRAINER_STEVEN_EVER_GRANDE_CITY, sText_Steven3LastSwitchIn, sText_Steven3LastLowHp, NULL},
 };
 
 static u32 GetEnemyMonCount(bool32 onlyAlive)

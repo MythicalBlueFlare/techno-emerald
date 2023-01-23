@@ -88,8 +88,8 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated::
 
 Route119_WeatherInstitute_2F_EventScript_ReceiveCastform::
 	msgbox Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon, MSGBOX_DEFAULT
-	setvar VAR_TEMP_1, SPECIES_CASTFORM
-	givemon SPECIES_CASTFORM, 25, ITEM_MYSTIC_WATER
+	setvar VAR_TEMP_1, SPECIES_POIPOLE
+	givemon SPECIES_POIPOLE, 50, ITEM_POISON_BARB
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformParty
 	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPC
 	goto Common_EventScript_NoMoreRoomForPokemon
@@ -122,7 +122,7 @@ Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfare::
 	message Route119_WeatherInstitute_2F_Text_PlayerReceivedCastform
 	waitmessage
 	waitfanfare
-	bufferspeciesname STR_VAR_1, SPECIES_CASTFORM
+	bufferspeciesname STR_VAR_1, SPECIES_POIPOLE
 	return
 
 Route119_WeatherInstitute_2F_EventScript_ExplainCastform::
@@ -211,17 +211,18 @@ Route119_WeatherInstitute_2F_EventScript_WeatherScientist::
 	end
 
 Route119_WeatherInstitute_2F_Text_Grunt2Intro:
-	.string "The INSTITUTE created a type of\n"
-	.string "POKéMON that has something to do with\l"
-	.string "the weather. We're here to take them!$"
+	.string "The INSTITUTE found a type of\n"
+	.string "POKéMON that has something to do\l"
+	.string "with other dimensions.\p"
+	.string "We're here to take them!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt2Defeat:
 	.string "Our plan's being spoiled by a kid?$"
 
 Route119_WeatherInstitute_2F_Text_Grunt2PostBattle:
 	.string "If the POKéMON they made here can\n"
-	.string "control the weather freely, then we of\l"
-	.string "TEAM AQUA definitely need it!$"
+	.string "access other dimensions freely,\l"
+	.string "then we of TEAM AQUA definitely need it!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt3Intro:
 	.string "We're TEAM AQUA!\n"
@@ -238,7 +239,7 @@ Route119_WeatherInstitute_2F_Text_Grunt3PostBattle:
 
 Route119_WeatherInstitute_2F_Text_Grunt5Intro:
 	.string "Don't tell me you're looking for that\n"
-	.string "weather POKéMON, too?\p"
+	.string "strange POKéMON, too?\p"
 	.string "That's a no-no!\n"
 	.string "We were here to get it first!$"
 
@@ -296,11 +297,11 @@ Route119_WeatherInstitute_2F_Text_NoRoomForPokemon:
 	.string "for this POKéMON.$"
 
 Route119_WeatherInstitute_2F_Text_PlayerReceivedCastform:
-	.string "{PLAYER} received CASTFORM!$"
+	.string "{PLAYER} received Poipole!$"
 
 Route119_WeatherInstitute_2F_Text_PokemonChangesWithWeather:
-	.string "That POKéMON changes shape according\n"
-	.string "to the weather conditions.\p"
+	.string "That POKéMON came from another\n"
+	.string "dimension.\p"
 	.string "There're plenty of them in the\n"
 	.string "INSTITUTE--go ahead and take it.$"
 

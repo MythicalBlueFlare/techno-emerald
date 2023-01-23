@@ -3,6 +3,8 @@
 
 #define ITEM_NONE 0
 
+//QOL Items
+
 // Poké Balls
 #define ITEM_POKE_BALL 1
 #define ITEM_GREAT_BALL 2
@@ -823,7 +825,7 @@
 #define ITEM_TM31_BRICK_BREAK ITEM_TM31
 #define ITEM_TM32_DOUBLE_TEAM ITEM_TM32
 #define ITEM_TM33_REFLECT ITEM_TM33
-#define ITEM_TM34_SHOCK_WAVE ITEM_TM34
+#define ITEM_TM34_VOLT_SWITCH ITEM_TM34
 #define ITEM_TM35_FLAMETHROWER ITEM_TM35
 #define ITEM_TM36_SLUDGE_BOMB ITEM_TM36
 #define ITEM_TM37_SANDSTORM ITEM_TM37
@@ -894,6 +896,9 @@
 #define ITEM_POKE_FLUTE 724
 #define ITEM_FAME_CHECKER 725
 #define ITEM_TEACHY_TV 726
+#define ITEM_CANDY_BAG 758
+#define ITEM_POKE_VIAL 759
+#define ITEM_POKE_RIDER 760
 
 // Story Key Items
 #define ITEM_SS_TICKET 727
@@ -928,7 +933,7 @@
 #define ITEM_RUBY 756
 #define ITEM_SAPPHIRE 757
 
-#define ITEMS_COUNT 758
+#define ITEMS_COUNT 761
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // Range of berries given out by various NPCS
@@ -985,6 +990,6 @@
 #define ITEM_B_USE_OTHER    2
 
 // Check if the item is one that can be used on a Pokemon.
-#define ITEM_HAS_EFFECT(item) ((item) >= ITEM_POTION && (item) <= LAST_BERRY_INDEX)
+#define ITEM_HAS_EFFECT(item)  (((item) >= ITEM_POTION && (item) <= LAST_BERRY_INDEX) ||  (item) == ITEM_CANDY_BAG) 
 
 #endif  // GUARD_CONSTANTS_ITEMS_H

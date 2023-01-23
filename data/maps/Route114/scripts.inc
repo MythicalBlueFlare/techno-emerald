@@ -1,3 +1,5 @@
+.set LOCALID_LUCY, 28
+
 Route114_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route114_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Route114_OnLoad
@@ -99,25 +101,10 @@ Route114_EventScript_Nancy::
 	msgbox Route114_Text_NancyPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route114_EventScript_Steve::
-	trainerbattle_single TRAINER_STEVE_1, Route114_Text_SteveIntro, Route114_Text_SteveDefeat, Route114_EventScript_RegisterSteve
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, Route114_EventScript_RematchSteve
-	msgbox Route114_Text_StevePostBattle, MSGBOX_DEFAULT
+Route114_EventScript_Grunt::
+	trainerbattle_single TRAINER_GRUNT_ROUTE114, Route114_Text_GruntIntro, Route114_Text_GruntDefeat
+	msgbox Route114_Text_GruntPostBattle, MSGBOX_DEFAULT
 	release
-	end
-
-Route114_EventScript_RegisterSteve::
-	special PlayerFaceTrainerAfterBattle
-	waitmovement 0
-	msgbox Route114_Text_SteveRegister, MSGBOX_DEFAULT
-	register_matchcall TRAINER_STEVE_1
-	release
-	end
-
-Route114_EventScript_RematchSteve::
-	trainerbattle_rematch TRAINER_STEVE_1, Route114_Text_SteveRematchIntro, Route114_Text_SteveRematchDefeat
-	msgbox Route114_Text_StevePostRematch, MSGBOX_AUTOCLOSE
 	end
 
 Route114_EventScript_Bernie::
@@ -175,6 +162,33 @@ Route114_EventScript_Kai::
 	trainerbattle_single TRAINER_KAI, Route114_Text_KaiIntro, Route114_Text_KaiDefeat
 	msgbox Route114_Text_KaiPostBattle, MSGBOX_AUTOCLOSE
 	end
+	
+Route114_EventScript_Lucy::
+	lockall 
+	faceplayer
+	playse SE_PIN
+	applymovement LOCALID_LUCY, Common_Movement_ExclamationMark
+	waitmovement 0
+	call_if_set FLAG_BRANDON_DEFEATED, Route114_EventScript_LucyHardMode
+	trainerbattle_single TRAINER_LUCY_1, Route114_Text_LucyIntro, Route114_Text_LucyDefeat, Route114_EventScript_LucyDefeated, NO_MUSIC
+	end 
+	
+Route114_EventScript_LucyHardMode::
+	trainerbattle_single TRAINER_LUCY_2, Route114_Text_LucyIntro, Route114_Text_LucyDefeat, Route114_EventScript_LucyDefeated, NO_MUSIC
+	end 
+	
+Route114_EventScript_LucyDefeated:: 
+	lockall 
+	faceplayer
+	msgbox Route114_Text_LucyLeave, MSGBOX_DEFAULT
+	closemessage
+	giveitem ITEM_CHOICE_BAND
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_LUCY
+	setflag FLAG_LUCY_DEFEATED
+	fadescreen FADE_FROM_BLACK
+	release 
+	end 
 
 Route114_Text_AllMyMonDoesIsRoarTakeThis:
 	.string "All my POKéMON does is ROAR…\n"
@@ -199,4 +213,34 @@ Route114_Text_FossilManiacsHouseSign:
 
 Route114_Text_LanettesHouse:
 	.string "LANETTE'S HOUSE$"
+	
+Route114_Text_GruntIntro: 
+	.string "This area is off limits to bystanders!\p"
+	.string "Huh? Not leaving, are you?\n"
+	.string "Guess I've got to deal with you myself!$" 
 
+
+Route114_Text_GruntDefeat:
+	.string "COURTNEY isn't going to be happy about\n"
+	.string "this…$"
+	
+Route114_Text_GruntPostBattle: 
+	.string "This isn't very good…$"
+
+Route114_Text_LucyIntro:
+	.string "What's a brat like you doing here…\p"
+	.string "Oh… You have 8 GYM BADGES.\n"
+	.string "Are you by chance {PLAYER}?\p"
+	.string "NOLAND told me all about you.\p"
+	.string "I'm not one for idle chatter.\n"
+	.string "Hurry. Come on…\p"
+	.string "Your luck…\n"
+	.string "I hope you didn't use it all up here…$"
+	
+Route114_Text_LucyDefeat:
+	.string "Urk…$"
+	
+Route114_Text_LucyLeave:
+	.string "That's all there is…\p"
+	.string "Here.\n"
+	.string "Take this, and disappear.$"

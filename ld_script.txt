@@ -1231,6 +1231,9 @@ SECTIONS {
         sound/songs/midi/ph_nurse_blend.o(.rodata);
         sound/songs/midi/ph_nurse_held.o(.rodata);
         sound/songs/midi/ph_nurse_solo.o(.rodata);
+		sound/songs/midi/mus_vs_final_boss.o(.rodata);
+		sound/songs/midi/mus_vs_gsc_champion.o(.rodata);
+		sound/songs/midi/mus_vs_final_wally.o(.rodata);
     } =0
 
     lib_rodata :

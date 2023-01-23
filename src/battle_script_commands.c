@@ -1683,6 +1683,8 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move)
 
     if (atkAbility == ABILITY_COMPOUND_EYES)
         calc = (calc * 130) / 100; // 1.3 compound eyes boost
+	 if (atkAbility == ABILITY_ILLUMINATE)
+        calc = (calc * 130) / 100; // 1.3 compound eyes boost
     else if (atkAbility == ABILITY_VICTORY_STAR)
         calc = (calc * 110) / 100; // 1.1 victory star boost
     if (IsBattlerAlive(BATTLE_PARTNER(battlerAtk)) && GetBattlerAbility(BATTLE_PARTNER(battlerAtk)) == ABILITY_VICTORY_STAR)
@@ -3945,6 +3947,14 @@ static void Cmd_getexp(void)
             #if B_MAX_LEVEL_EV_GAINS >= GEN_5
                 MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
             #endif
+            }
+			else if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) >= (GetLevelCap() + 1))
+            {
+                gBattleMoveDamage = 0; // If mon is above level cap, it gets 0 exp, but still gains EVs
+                MonGainEVs(&gPlayerParty[gBattleStruct->expGetterMonId], gBattleMons[gBattlerFainted].species);
+                // EVs won't be applied until next level up. TODO: Update this mechanic to match newer games
+                gBattleStruct->sentInPokes >>= 1;
+                gBattleScripting.getexpState++;
             }
             else
             {
@@ -6574,13 +6584,6 @@ static void Cmd_yesnoboxlearnmove(void)
             else
             {
                 u16 moveId = GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_MOVE1 + movePosition);
-                if (IsHMMove2(moveId))
-                {
-                    PrepareStringBattle(STRINGID_HMMOVESCANTBEFORGOTTEN, gActiveBattler);
-                    gBattleScripting.learnMoveState = 6;
-                }
-                else
-                {
                     gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
 
                     PREPARE_MOVE_BUFFER(gBattleTextBuff2, moveId)
@@ -6600,7 +6603,6 @@ static void Cmd_yesnoboxlearnmove(void)
                         RemoveBattleMonPPBonus(&gBattleMons[2], movePosition);
                         SetBattleMonMoveSlot(&gBattleMons[2], gMoveToLearn, movePosition);
                     }
-                }
             }
         }
         break;
@@ -8090,6 +8092,7 @@ static void Cmd_various(void)
         u16 battlerAbility = GetBattlerAbility(gActiveBattler);
 
         if ((battlerAbility == ABILITY_GRIM_NEIGH
+         || battlerAbility == ABILITY_HUBRIS
          || battlerAbility == ABILITY_AS_ONE_SHADOW_RIDER)
           && HasAttackerFaintedTarget()
           && !NoAliveMonsForEitherParty()
@@ -8111,7 +8114,7 @@ static void Cmd_various(void)
         gBattlerAbility = BATTLE_PARTNER(gActiveBattler);
         i = GetBattlerAbility(gBattlerAbility);
         if (IsBattlerAlive(gBattlerAbility)
-            && (i == ABILITY_RECEIVER || i == ABILITY_POWER_OF_ALCHEMY))
+            && (i == ABILITY_RECEIVER || i == ABILITY_POWER_OF_ALCHEMY || i == ABILITY_BALL_FETCH))
         {
             switch (gBattleMons[gActiveBattler].ability)
             { // Can't copy these abilities.

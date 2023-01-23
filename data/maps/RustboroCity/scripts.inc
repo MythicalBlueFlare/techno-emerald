@@ -97,6 +97,7 @@ RustboroCity_EventScript_MatchCallTutorial::
 	waitstate
 	delay 20
 	msgbox RustboroCity_Text_IdBetterGetBackToWork, MSGBOX_DEFAULT
+	giveitem ITEM_POKE_RIDER, 1
 	closemessage
 	applymovement LOCALID_SCIENTIST, RustboroCity_Movement_ScientistLeave
 	waitmovement 0
@@ -1286,7 +1287,8 @@ RustboroCity_Text_PleaseSelectPokenav:
 
 RustboroCity_Text_IdBetterGetBackToWork:
 	.string "Okay, I'd better get back to work.\n"
-	.string "Please take care, {PLAYER}!$"
+	.string "Please also take this item, {PLAYER}.\l"
+	.string "A little gift from me personally.$"
 
 RustboroCity_Text_YouCanHave2On2Battle:
 	.string "Did you know this?\p"

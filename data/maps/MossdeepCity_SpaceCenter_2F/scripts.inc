@@ -460,14 +460,14 @@ MossdeepCity_SpaceCenter_2F_Text_MaxieUseFuelToEruptVolcano:
 	.string "curious, you deserve an explanation.\p"
 	.string "We're going to jettison the entire\n"
 	.string "load into MT. CHIMNEY!\p"
-	.string "With GROUDON gone, we have no need\n"
+	.string "With RESHIRAM gone, we have no need\n"
 	.string "for that slag heap of a mountain!\p"
 	.string "So we'll use the fuel's power to make\n"
 	.string "the volcano erupt!\p"
 	.string "It will be savage!$"
 
 MossdeepCity_SpaceCenter_2F_Text_StevenAreYouReadyToBattle:
-	.string "STEVEN: {PLAYER}{KUN}!\n"
+	.string "STEVEN: {PLAYER}!\n"
 	.string "You're going to help me?\p"
 	.string "Let's go into battle together!\n"
 	.string "Are you ready?$"
@@ -486,7 +486,7 @@ MossdeepCity_SpaceCenter_Text_TabithaDefeat:
 MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided:
 	.string "MAXIE: We failed to make the volcano\n"
 	.string "erupt…\p"
-	.string "We failed to control GROUDON after\n"
+	.string "We failed to control RESHIRAM after\n"
 	.string "we had awoken it…\p"
 	.string "Is our goal to expand the land\n"
 	.string "misguided?\p"
@@ -506,7 +506,7 @@ MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp:
 
 MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome:
 	.string "STEVEN: Whew, that was too tense.\n"
-	.string "{PLAYER}{KUN}, thank you.\p"
+	.string "{PLAYER}, thank you.\p"
 	.string "I have something to give you as\n"
 	.string "thanks for your support.\p"
 	.string "Please come see me at home\n"

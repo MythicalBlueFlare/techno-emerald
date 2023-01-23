@@ -396,6 +396,6 @@ OldaleTown_Text_BrendanLetsGoBack:
 	.string "{PLAYER}, you should hustle back, too.$"
 
 OldaleTown_Text_CitySign:
-	.string "OLDALE TOWN\n"
+	.string "Oldale Town\n"
 	.string "“Where things start off scarce.”$"
-
+	

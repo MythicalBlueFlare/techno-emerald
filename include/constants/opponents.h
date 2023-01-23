@@ -82,7 +82,7 @@
 #define TRAINER_WILTON_1                     78
 #define TRAINER_EDGAR                        79
 #define TRAINER_ALBERT                       80
-#define TRAINER_SAMUEL                       81
+#define TRAINER_LUCY_1                       81
 #define TRAINER_VITO                         82
 #define TRAINER_OWEN                         83
 #define TRAINER_WILTON_2                     84
@@ -98,8 +98,8 @@
 #define TRAINER_BROOKE_1                     94
 #define TRAINER_JENNIFER                     95
 #define TRAINER_HOPE                         96
-#define TRAINER_SHANNON                      97
-#define TRAINER_MICHELLE                     98
+#define TRAINER_LUCY_2                       97
+#define TRAINER_TUCKER_1                     98
 #define TRAINER_CAROLINE                     99
 #define TRAINER_JULIE                       100
 #define TRAINER_BROOKE_2                    101
@@ -144,11 +144,11 @@
 #define TRAINER_WINSTON_3                   140
 #define TRAINER_WINSTON_4                   141
 #define TRAINER_WINSTON_5                   142
-#define TRAINER_STEVE_1                     143
+#define TRAINER_COURTNEY_SKYPILLAR          143
 #define TRAINER_THALIA_1                    144
 #define TRAINER_MARK                        145
 #define TRAINER_GRUNT_MT_CHIMNEY_1          146
-#define TRAINER_STEVE_2                     147
+#define TRAINER_STEVEN_EVER_GRANDE_CITY     147
 #define TRAINER_STEVE_3                     148
 #define TRAINER_STEVE_4                     149
 #define TRAINER_STEVE_5                     150
@@ -325,8 +325,8 @@
 #define TRAINER_TOMMY                       321
 #define TRAINER_JOEY                        322
 #define TRAINER_BEN                         323
-#define TRAINER_QUINCY                      324
-#define TRAINER_KATELYNN                    325
+#define TRAINER_PH_BRANDON                  324
+#define TRAINER_TUCKER_2                    325
 #define TRAINER_JAYLEN                      326
 #define TRAINER_DILLON                      327
 #define TRAINER_CALVIN_2                    328
@@ -541,13 +541,13 @@
 #define TRAINER_MAY_ROUTE_119_TORCHIC       537
 #define TRAINER_ISAAC_1                     538
 #define TRAINER_DAVIS                       539
-#define TRAINER_MITCHELL                    540
+#define TRAINER_ANABEL_1                    540
 #define TRAINER_ISAAC_2                     541
 #define TRAINER_ISAAC_3                     542
 #define TRAINER_ISAAC_4                     543
 #define TRAINER_ISAAC_5                     544
 #define TRAINER_LYDIA_1                     545
-#define TRAINER_HALLE                       546
+#define TRAINER_ANABEL_2                    546
 #define TRAINER_GARRISON                    547
 #define TRAINER_LYDIA_2                     548
 #define TRAINER_LYDIA_3                     549
@@ -856,12 +856,21 @@
 #define TRAINER_LEAF                        852
 #define TRAINER_BRENDAN_PLACEHOLDER         853
 #define TRAINER_MAY_PLACEHOLDER             854
+#define TRAINER_STEVEN_GRANITE_CAVE			855
+#define TRAINER_ARCHIE_OCEANIC_MUSEUM       856
+#define TRAINER_GRUNT_ROUTE114              857
+#define TRAINER_COURTNEY_METEOR_FALLS       858
+#define TRAINER_WALLY_ROUTE111              859
+#define TRAINER_SIDNEY_PETALBURG_CITY		860
+#define TRAINER_STEVEN_ROUTE118             861
+#define TRAINER_NOLAND_ROUTE120             862
+#define TRAINER_GRUNT_LILYCOVECITY          863
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      855
+#define TRAINERS_COUNT                      864
 #define MAX_TRAINERS_COUNT                  864
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H

@@ -280,6 +280,11 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_PERISH_BODY] = -1,
     [ABILITY_WANDERING_SPIRIT] = 2,
     [ABILITY_GORILLA_TACTICS] = 4,
+	[ABILITY_GLIDER] = 6,
+	[ABILITY_LEAD_SINGER] = 2,
+	[ABILITY_WRESTLERS_MARK] = 7,
+	[ABILITY_HUBRIS] = 7,
+	[ABILITY_ICY_HEART] = 6,
 };
 
 static const u16 sEncouragedEncoreEffects[] =

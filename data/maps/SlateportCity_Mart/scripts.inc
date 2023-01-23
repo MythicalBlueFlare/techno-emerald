@@ -22,6 +22,11 @@ SlateportCity_Mart_Pokemart:
 	.2byte ITEM_ESCAPE_ROPE
 	.2byte ITEM_REPEL
 	.2byte ITEM_HARBOR_MAIL
+	.2byte ITEM_YACHE_BERRY
+	.2byte ITEM_COLBUR_BERRY
+	.2byte ITEM_KEBIA_BERRY
+	.2byte ITEM_TANGA_BERRY
+	.2byte ITEM_BABIRI_BERRY
 	.2byte ITEM_NONE
 	release
 	end

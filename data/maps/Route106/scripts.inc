@@ -40,9 +40,10 @@ Route106_EventScript_Ned::
 	trainerbattle_single TRAINER_NED, Route106_Text_NedIntro, Route106_Text_NedDefeated
 	msgbox Route106_Text_NedPostBattle, MSGBOX_AUTOCLOSE
 	end
-
+	
 Route106_Text_TrainerTips:
 	.string "TRAINER TIPS\p"
 	.string "Advice on catching POKéMON with a ROD:\n"
 	.string "Press the A Button if you get a bite.$"
+
 

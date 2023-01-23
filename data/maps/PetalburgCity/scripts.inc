@@ -3,6 +3,7 @@
 .set LOCALID_WALLYS_DAD, 5
 .set LOCALID_GYM_BOY, 8
 .set LOCALID_SCOTT, 9
+.set LOCALID_SIDNEY, 10
 
 PetalburgCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_OnTransition
@@ -558,6 +559,15 @@ PetalburgCity_EventScript_Scott::
 	waitmovement 0
 	delay 30
 	msgbox PetalburgCity_Text_ImLookingForTalentedTrainers, MSGBOX_DEFAULT
+	closemessage 
+	playse SE_PIN
+	applymovement LOCALID_SCOTT, Common_Movement_ExclamationMark
+	waitmovement 0
+	delay 30 
+	msgbox PetalburgCity_Text_TakeTheseItems, MSGBOX_DEFAULT
+	giveitem ITEM_CANDY_BAG, 1
+	giveitem ITEM_POKE_VIAL, 1
+	giveitem ITEM_EXP_SHARE, 1
 	closemessage
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_ScottExit0
 	call_if_eq VAR_0x8008, 1, PetalburgCity_EventScript_ScottExit1
@@ -704,6 +714,35 @@ PetalburgCity_EventScript_GymBoy::
 	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_NPC
 	end
 
+PetalburgCity_EventScript_Sidney:: 
+	lockall 
+	faceplayer
+	call_if_set FLAG_WALLY_ROUTE111_DEFEATED, PetalburgCity_EventScript_SidneyBattle
+	msgbox PetalburgCity_Text_NormanIsntHere, MSGBOX_DEFAULT
+	release 
+	end 
+	
+PetalburgCity_EventScript_SidneyBattle::
+	msgbox PetalburgCity_Text_SidneyApologies, MSGBOX_DEFAULT
+	playse SE_PIN
+	applymovement LOCALID_SIDNEY, Common_Movement_ExclamationMark
+	waitmovement 0
+	trainerbattle_single TRAINER_SIDNEY_PETALBURG_CITY, PetalburgCity_Text_SidneyIntro, PetalburgCity_Text_SidneyDefeat, PetalburgCity_EventScript_SidneyDefeated, MUSIC
+	end
+	
+PetalburgCity_EventScript_SidneyDefeated:: 
+	lockall 
+	faceplayer
+	msgbox PetalburgCity_Text_SidneyExit, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_SIDNEY
+	setflag FLAG_SIDNEY_DEFEATED
+	setflag FLAG_UPDATE_NORMANCAP
+	fadescreen FADE_FROM_BLACK
+	release
+	end 
+
 PetalburgCity_Text_WhereIsWally:
 	.string "Where has our WALLY gone?\p"
 	.string "We have to leave for VERDANTURF TOWN\n"
@@ -764,4 +803,43 @@ PetalburgCity_Text_WellMaybeNot:
 PetalburgCity_Text_ImLookingForTalentedTrainers:
 	.string "I'm roaming the land in search of\n"
 	.string "talented TRAINERS.\p"
+	.string "You seem pretty new.\n"
 	.string "I'm sorry to have taken your time.$"
+
+PetalburgCity_Text_TakeTheseItems:
+	.string "Oh! One more thing.\p"
+	.string "Take these items.\n"
+	.string "Any aspiring trainer should have them.$"
+	
+PetalburgCity_Text_NormanIsntHere: 
+    .string "Hey there! You here looking for NORMAN?\n" 
+    .string "He's currently out with someone at\l" 
+    .string "ROUTE 111. You'll have to come back\l"
+    .string "later.$"
+	
+PetalburgCity_Text_SidneyApologies: 
+	.string "Oh, were you trying to challenge \n"
+	.string "the PETALBURG GYM?\p"
+	.string "My apologies, I'll get out of your way.$"
+
+PetalburgCity_Text_SidneyIntro:
+	.string "Say, aren't you {PLAYER}{KUN}?\p"
+	.string "I've heard a lot about you from\n"
+	.string "some of the GYM LEADERS.\l"
+	.string "They say you're really tough!\p"
+	.string "Name's SIDNEY, I'm a member of the\n"
+	.string "the ELITE FOUR.\p"
+	.string "How about a quick battle before\n"
+	.string "you challenge this gym?\l"
+	.string "I'd like to see what the ruckus is about!$" 
+
+PetalburgCity_Text_SidneyDefeat:
+	.string "Well, how about that…\p"
+	.string "You sure are one tough kid!$"
+	
+PetalburgCity_Text_SidneyExit:
+	.string "Wow, you blew me away!\n" 
+	.string "BRAWLY sure wasn't exaggerating…\p" 
+	.string "Well, I'll get out of your way.\n" 
+	.string "I better see you at the POKéMON\l"
+	.string "LEAGUE, kid.$" 

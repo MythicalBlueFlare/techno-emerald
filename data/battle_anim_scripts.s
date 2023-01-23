@@ -779,6 +779,11 @@ gBattleAnims_Moves::
 	.4byte Move_GLACIAL_LANCE
 	.4byte Move_ASTRAL_BARRAGE
 	.4byte Move_EERIE_SPELL
+	.4byte Move_AQUA_FANG
+	.4byte Move_ANGELIC_SONG
+	.4byte Move_HEADLONG_RUSH
+	.4byte Move_TOXIN_TURN
+	.4byte Move_FILLER_MOVE
 	.4byte Move_COUNT @ cannot be reached, because last move is Eerie Spell
 
 	.align 2
@@ -14093,7 +14098,18 @@ Move_MISTY_EXPLOSION::
 	end @to do:
 
 Move_GRASSY_GLIDE::
-	end @to do:
+	playsewithpan SE_M_JUMP_KICK, SOUND_PAN_ATTACKER
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 0, 12, RGB(13, 31, 12)
+	waitforvisualfinish
+	createsprite gHorizontalLungeSpriteTemplate, ANIM_ATTACKER, 2, 4, 10
+	delay 6
+	playsewithpan SE_M_SCRATCH, SOUND_PAN_TARGET
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 8, 1
+	blendoff 
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 1, 12, 0, RGB(13, 31, 12)
+	waitforvisualfinish
+	waitbgfadein
+	end
 
 Move_RISING_VOLTAGE::
 	end @to do:
@@ -14206,10 +14222,71 @@ Move_TRIPLE_AXEL::
 	end @to do:
 
 Move_DUAL_WINGBEAT::
-	end @to do:
+	loadspritegfx ANIM_TAG_GUST
+	loadspritegfx ANIM_TAG_IMPACT
+	monbg ANIM_DEF_PARTNER
+	splitbgprio ANIM_TARGET
+	setalpha 12, 8
+	loopsewithpan SE_M_WING_ATTACK, SOUND_PAN_ATTACKER, 20, 2
+	createvisualtask AnimTask_TranslateMonElliptical, 2, 0, 12, 4, 1, 4
+	createvisualtask AnimTask_AnimateGustTornadoPalette, 5, 1, 70
+	createsprite gGustToTargetSpriteTemplate, ANIM_ATTACKER, 2, -25, 0, 0, 0, 20
+	createsprite gGustToTargetSpriteTemplate, ANIM_ATTACKER, 2, 25, 0, 0, 0, 20
+	delay 24
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, 0, 24, 0, 0, 9
+	delay 17
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 16, 0, ANIM_TARGET, 1
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, -16, 0, ANIM_TARGET, 1
+	loopsewithpan SE_M_DOUBLE_SLAP, SOUND_PAN_TARGET, 5, 2
+	waitforvisualfinish
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 11
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
 
 Move_SCORCHING_SANDS::
-	end @to do:
+	loadspritegfx ANIM_TAG_MUD_SAND
+	monbg ANIM_ATK_PARTNER
+	splitbgprio ANIM_ATTACKER
+	setalpha 12, 8
+	playsewithpan SE_M_SAND_ATTACK, SOUND_PAN_ATTACKER
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, 0, -10, 0, 0, 3
+	waitforvisualfinish
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 2
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	call SandAttackDirt
+	waitforvisualfinish
+	clearmonbg ANIM_ATK_PARTNER
+	blendoff
+	loadspritegfx ANIM_TAG_SMALL_EMBER
+	loadspritegfx ANIM_TAG_EXPLOSION
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 4, 0, 16, 1
+	createsprite gExplosionSpriteTemplate, ANIM_TARGET, 4, 0, 0, 1, 0
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, 192, 76, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, -192, 76, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, 20, 140, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, -20, 140, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, 192, -160, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, -192, -160, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, 82, -112, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, -82, -112, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, 160, -52, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, -160, -52, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, 224, -32, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, -224, -32, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, 112, -128, 70
+	createsprite gFireSpreadSpriteTemplate, ANIM_TARGET, 1, 0, 0, -112, -128, 70
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	delay 3
+	createsprite gExplosionSpriteTemplate, ANIM_TARGET, 4, 14, -14, 1, 0
+	playsewithpan SE_M_SELF_DESTRUCT, SOUND_PAN_TARGET
+	waitforvisualfinish
+	end
 
 Move_JUNGLE_HEALING::
 	goto Move_AROMATHERAPY
@@ -14243,6 +14320,83 @@ Move_ASTRAL_BARRAGE::
 
 Move_EERIE_SPELL::
 	end @to do:
+	
+Move_AQUA_FANG::
+	loadspritegfx ANIM_TAG_SHARP_TEETH
+	loadspritegfx ANIM_TAG_IMPACT
+	monbg ANIM_TARGET
+	setalpha 12, 8
+	playsewithpan SE_M_BITE, SOUND_PAN_TARGET
+	createsprite gSharpTeethSpriteTemplate, ANIM_ATTACKER, 2, 0, -32, 0, 0, 819, 10
+	createsprite gSharpTeethSpriteTemplate, ANIM_ATTACKER, 2, 0, 32, 4, 0, -819, 10
+	delay 10
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, ANIM_TARGET, 2
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 4, 7, 1
+	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	blendoff
+	loadspritegfx ANIM_TAG_WATER_IMPACT
+	loadspritegfx ANIM_TAG_SMALL_BUBBLES
+	loadspritegfx ANIM_TAG_ICE_CRYSTALS
+	loadspritegfx ANIM_TAG_IMPACT
+	monbg ANIM_TARGET
+	setalpha 12, 8
+	call RisingWaterHitEffect
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	delay 1
+	end
+	
+Move_ANGELIC_SONG::
+	loadspritegfx ANIM_TAG_THIN_RING
+	createvisualtask SoundTask_PlayCryWithEcho, 5, FALSE
+	call HyperVoiceEffect
+	waitforvisualfinish
+	delay 8
+	createvisualtask SoundTask_PlayCryWithEcho, 5, TRUE
+	call HyperVoiceEffect
+	waitforvisualfinish
+	end
+	
+Move_HEADLONG_RUSH:: 
+	loadspritegfx ANIM_TAG_MUD_SAND
+	fadetobg BG_FISSURE
+	createvisualtask AnimTask_PositionFissureBgOnBattler, 5, ANIM_TARGET, 5, -1
+	waitbgfadeout
+	loadspritegfx ANIM_TAG_IMPACT
+	monbg ANIM_DEF_PARTNER
+	setalpha 12, 8
+	createvisualtask AnimTask_WindUpLunge, 5, ANIM_ATTACKER, -24, 8, 23, 10, 40, 10
+	delay 35
+	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 31, 3, 1, RGB_BLACK, 10, RGB_BLACK, 0
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 4, -10, 0, ANIM_TARGET, 0
+	playsewithpan SE_M_MEGA_KICK2, SOUND_PAN_TARGET
+	delay 1
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, 1, -16, 0, 0, 4
+	waitforvisualfinish
+	createvisualtask AnimTask_ShakeMonInPlace, 2, ANIM_TARGET, 4, 0, 12, 1
+	waitforvisualfinish
+	delay 2
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 5
+	delay 3
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 1, 0, 7
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	waitbgfadein
+	delay 40
+	restorebg
+	waitbgfadeout
+	setarg 7, -1
+	waitbgfadein
+	end
+	
+Move_TOXIN_TURN::
+	end @to do:
+	
+Move_FILLER_MOVE::
+	end @to do: 
 
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 1-3 @@@@@@@@@@@@@@@@@@@@@@@
 Move_NONE:

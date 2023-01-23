@@ -1848,6 +1848,7 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
                 {
                     if (GetBattlerSecondaryDamage(battlerAtk) >= gBattleMons[battlerAtk].hp
                       && AI_DATA->defAbility != ABILITY_MOXIE
+					  && AI_DATA->defAbility != ABILITY_GRIM_NEIGH
                       && AI_DATA->defAbility != ABILITY_BEAST_BOOST)
                     {
                         score -= 10; //Don't protect if you're going to faint after protecting
@@ -4412,9 +4413,9 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         break;
     case EFFECT_TRICK_ROOM:
         if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && GetBattlerSideSpeedAverage(battlerAtk) < GetBattlerSideSpeedAverage(battlerDef))
-            score += 3;
+            score += 5;
         else if ((gFieldStatuses & STATUS_FIELD_TRICK_ROOM) && GetBattlerSideSpeedAverage(battlerAtk) >= GetBattlerSideSpeedAverage(battlerDef))
-            score += 3;
+            score += 5;
         break;
     case EFFECT_MAGIC_ROOM:
         score++;

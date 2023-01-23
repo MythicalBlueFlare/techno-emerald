@@ -1,5 +1,6 @@
 .set LOCALID_WOMAN_1, 19
 .set LOCALID_MAN_1, 20
+.set LOCALID_MARTGRUNT, 22
 
 LilycoveCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_OnTransition
@@ -411,6 +412,26 @@ LilycoveCity_EventScript_KnowAboutBerryBlender::
 LilycoveCity_EventScript_DontKnowAboutBerryBlender::
 	msgbox LilycoveCity_Text_ExplainBerryBlender, MSGBOX_DEFAULT
 	return
+	
+LilycoveCity_EventScript_AquaGruntBattle::
+	playse SE_PIN
+	applymovement LOCALID_MARTGRUNT, Common_Movement_ExclamationMark
+	waitmovement 0
+	playbgm MUS_ENCOUNTER_AQUA, FALSE
+	trainerbattle_single TRAINER_GRUNT_LILYCOVECITY, LilycoveCity_Text_AquaGruntIntro, LilycoveCity_Text_AquaGruntDefeat, PetalburgCity_EventScript_AquaGruntDefeated, MUSIC
+	end
+	
+PetalburgCity_EventScript_AquaGruntDefeated:: 
+	lockall 
+	faceplayer
+	msgbox LilycoveCity_Text_AquaGruntRun, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_MARTGRUNT
+	setflag FLAG_LILYCOVE_AQUA_GRUNT_DEFEATED
+	fadescreen FADE_FROM_BLACK
+	release
+	end 
 
 LilycoveCity_Text_MayShoppingLetsBattle:
 	.string "MAY: Oh, hey?\n"
@@ -759,3 +780,20 @@ LilycoveCity_Text_HoneymoonVowToSeeRarePokemon:
 	.string "POKéMON as soon as we arrived.\p"
 	.string "I mean, we are totally happy!$"
 
+LilycoveCity_Text_AquaGruntIntro:
+	.string "What do you want?\n"
+	.string "I'm simply just… uh…\l" 
+	.string "guarding the DEPARTMENT STORE from\l"
+	.string "thiefs!\p"
+	.string "…\p" 
+	.string "Seems like that didn't fool you…\p" 
+	.string "Then I, the ELITE AQUA GRUNT, shall\n"
+	.string "defeat you!$"
+
+LilycoveCity_Text_AquaGruntDefeat:
+	.string "…!\n" 
+	.string "I-I lost? No way!$"
+	
+LilycoveCity_Text_AquaGruntRun:
+	.string "You may have bested me this time,\n"
+	.string "but you haven't seen the last of me!$"

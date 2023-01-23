@@ -1,6 +1,7 @@
 .set LOCALID_NURSE, 1
 .set LOCALID_GUARD_1, 3
 .set LOCALID_GUARD_2, 4
+.set LOCALID_WALLACE, 5
 
 EverGrandeCity_PokemonLeague_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_PokemonLeague_1F_OnTransition
@@ -124,6 +125,59 @@ EverGrandeCity_PokemonLeague_1F_Movement_RightGuardOutOfWay:
 	walk_right
 	walk_in_place_faster_down
 	step_end
+	
+EverGrandeCity_PokemonLeague_1F_Movement_WallaceStartWalkUp:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+	
+EverGrandeCity_PokemonLeague_1F_Movement_WallaceLeave:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+EverGrandeCity_PokemonLeague_1F_EventScript_Wallace0::
+	lockall
+	setobjectxy LOCALID_WALLACE, 9, 8
+	goto EverGrandeCity_PokemonLeague_1F_EventScript_Wallace
+	end
+
+EverGrandeCity_PokemonLeague_1F_EventScript_Wallace1::
+	lockall
+	setobjectxy LOCALID_WALLACE, 10, 8
+	goto EverGrandeCity_PokemonLeague_1F_EventScript_Wallace
+	end
+	
+EverGrandeCity_PokemonLeague_1F_EventScript_Wallace:: 
+	applymovement LOCALID_WALLACE, EverGrandeCity_PokemonLeague_1F_Movement_WallaceStartWalkUp
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	setweather WEATHER_RAIN
+	doweather
+	playbgm MUS_ENCOUNTER_CHAMPION, FALSE
+	trainerbattle_single TRAINER_WALLACE, EverGrandeCity_PokemonLeague_1F_Text_WallaceSoYouveMadeIt, EverGrandeCity_PokemonLeague_1F_Text_WallaceDefeat, EverGrandeCity_PokemonLeague_1F_EventScript_WallaceDefeated, MUSIC
+	release 
+	end
+	
+EverGrandeCity_PokemonLeague_1F_EventScript_WallaceDefeated::
+	lockall 
+	setweather WEATHER_NONE
+	doweather
+	msgbox EverGrandeCity_PokemonLeague_1F_Text_WallaceGreatBattle, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_WALLACE, EverGrandeCity_PokemonLeague_1F_Movement_WallaceLeave
+	waitmovement 0 
+	removeobject LOCALID_WALLACE
+	setvar VAR_WALLACE_ENCOUNTER, 1
+	setflag FLAG_WALLACE_DEFEATED
+	release 
+	end 
 
 EverGrandeCity_PokemonLeague_1F_Text_MustHaveAllGymBadges:
 	.string "Beyond this point, only those TRAINERS\n"
@@ -141,3 +195,32 @@ EverGrandeCity_PokemonLeague_1F_Text_GoForth:
 	.string "TRAINER! Believe in yourself and your\n"
 	.string "POKéMON, and go forth!$"
 
+EverGrandeCity_PokemonLeague_1F_Text_WallaceSoYouveMadeIt:
+	.string "I see you've made it, {PLAYER}.\p"
+	.string "From the moment I met you in\n"
+	.string "MOSSDEEP CITY, I could tell you\l"
+	.string "would achieve greatness.\p"
+	.string "Here you are, standing elegantly at\n"
+	.string "the gates of the POKéMON LEAGUE.\p"
+	.string "There's something about you…\p"
+	.string "A difference in your demeanor…\p"
+	.string "Before you challenge the ELITE FOUR,\n"
+	.string "I would like you evaluate you myself.\p"
+	.string "Now, show me.\n"
+	.string "Show me the power you wield with\l"
+	.string "your POKéMON.\p"
+	.string "And I, in turn, shall present you…\n"
+	.string "With a performance of illusions in\l"
+	.string "water… By me and my POKéMON!$"
+	
+EverGrandeCity_PokemonLeague_1F_Text_WallaceDefeat:
+	.string "Bravo!$"
+	
+EverGrandeCity_PokemonLeague_1F_Text_WallaceGreatBattle:
+	.string "I realize now your authenticity\n"
+	.string "and magnificence as a POKéMON TRAINER.\p"
+	.string "I find much joy in having met you\n"
+	.string "and your POKéMON.\p"
+	.string "{PLAYER}, please keep reaching for the\n"
+	.string "stars! Become the ultimate work of art,\l"
+	.string "and show me what you can do!$"

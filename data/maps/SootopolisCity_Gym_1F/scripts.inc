@@ -112,6 +112,9 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	closemessage
 	delay 30
 	setflag FLAG_ENABLE_JUAN_MATCH_CALL
+	clearflag FLAG_LUCY_DEFEATED
+	clearflag FLAG_ANABEL_DEFEATED
+	clearflag FLAG_TUCKER_DEFEATED
 	release
 	end
 

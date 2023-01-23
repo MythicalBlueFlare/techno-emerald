@@ -771,6 +771,9 @@ const u32 *const gItemIconTable[][2] =
     [ITEM_POKE_FLUTE] = {gItemIcon_PokeFlute, gItemIconPalette_PokeFlute},
     [ITEM_FAME_CHECKER] = {gItemIcon_FameChecker, gItemIconPalette_FameChecker},
     [ITEM_TEACHY_TV] = {gItemIcon_TeachyTV, gItemIconPalette_TeachyTV},
+	[ITEM_CANDY_BAG] = {gItemIcon_CandyBag, gItemIconPalette_CandyBag},
+	[ITEM_POKE_VIAL] = {gItemIcon_PokeVial, gItemIconPalette_PokeVial},
+	[ITEM_POKE_RIDER] = {gItemIcon_PokeRider, gItemIconPalette_PokeRider},
     // Story Key Items
     [ITEM_SS_TICKET] = {gItemIcon_SSTicket, gItemIconPalette_SSTicket},
     [ITEM_EON_TICKET] = {gItemIcon_EonTicket, gItemIconPalette_EonTicket},

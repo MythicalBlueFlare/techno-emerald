@@ -30,7 +30,8 @@ struct TrainerMonNoItemDefaultMoves
     u16 iv;
     u8 lvl;
     u16 species;
-};
+	u8 abilityNums;
+};	
 
 struct TrainerMonItemDefaultMoves
 {
@@ -38,6 +39,7 @@ struct TrainerMonItemDefaultMoves
     u8 lvl;
     u16 species;
     u16 heldItem;
+	u8 abilityNums;
 };
 
 struct TrainerMonNoItemCustomMoves
@@ -45,6 +47,7 @@ struct TrainerMonNoItemCustomMoves
     u16 iv;
     u8 lvl;
     u16 species;
+	u8 abilityNums;
     u16 moves[MAX_MON_MOVES];
 };
 
@@ -54,6 +57,7 @@ struct TrainerMonItemCustomMoves
     u8 lvl;
     u16 species;
     u16 heldItem;
+	u8 abilityNums;
     u16 moves[MAX_MON_MOVES];
 };
 
@@ -74,6 +78,8 @@ struct Trainer
     /*0x04*/ u8 trainerName[12];
     /*0x10*/ u16 items[MAX_TRAINER_ITEMS];
     /*0x18*/ bool8 doubleBattle;
+    /*0x19*/ bool8 mugshotEnabled;
+    /*0x1A*/ u8 mugshotColor;
     /*0x1C*/ u32 aiFlags;
     /*0x20*/ u8 partySize;
     /*0x24*/ union TrainerMonPtr party;
@@ -126,7 +132,7 @@ extern const struct CompressedSpriteSheet gMonFrontPicTable[];
 extern const struct CompressedSpriteSheet gMonFrontPicTableFemale[];
 
 extern const struct Trainer gTrainers[];
-extern const u8 gTrainerClassNames[][13];
+extern const u8 gTrainerClassNames[][16];
 extern const u8 gSpeciesNames[][POKEMON_NAME_LENGTH + 1];
 extern const u8 gMoveNames[MOVES_COUNT][MOVE_NAME_LENGTH + 1];
 

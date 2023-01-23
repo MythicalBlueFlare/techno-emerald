@@ -1593,12 +1593,10 @@ static void OpponentHandleChooseMove(void)
                         gBattlerTarget = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
                 }
 
-                // If opponent can mega evolve, do it.
-                if (CanMegaEvolve(gActiveBattler))
-                    BtlController_EmitTwoReturnValues(BUFFER_B, 10, (chosenMoveId) | (RET_MEGA_EVOLUTION) | (gBattlerTarget << 8));
-                else
-                    BtlController_EmitTwoReturnValues(BUFFER_B, 10, (chosenMoveId) | (gBattlerTarget << 8));
-                break;
+             if (CanMegaEvolve(gActiveBattler)) // If opponent can mega evolve, do it.
+                    BtlController_EmitTwoReturnValues(1, 10, (chosenMoveId) | (RET_MEGA_EVOLUTION) | (gBattlerTarget << 8));
+else
+                    BtlController_EmitTwoReturnValues(1, 10, (chosenMoveId) | (gBattlerTarget << 8));
             }
             OpponentBufferExecCompleted();
         }

@@ -59,6 +59,15 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_ArchieWarning, MSGBOX_DEFAULT
 	closemessage
+	delay 30 
+	playse SE_PIN
+	applymovement LOCALID_ARCHIE, Common_Movement_ExclamationMark
+	waitmovement 0
+	delay 30 
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ArchieAnger, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_ARCHIE_OCEANIC_MUSEUM, SlateportCity_OceanicMuseum_2F_Text_ArchieDefeat
+	msgbox SlateportCity_OceanicMuseum_2F_Text_ArchieFarewell
+	closemessage
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	fadescreen FADE_TO_BLACK
@@ -344,8 +353,7 @@ SlateportCity_OceanicMuseum_2F_Text_ArchieWarning:
 	.string "But, I warn you, don't even consider\n"
 	.string "interfering with our plans again.\p"
 	.string "The consequences will cost you\n"
-	.string "dearly!\p"
-	.string "And don't you forget it!$"
+	.string "dearly!$"
 
 SlateportCity_OceanicMuseum_2F_Text_SternThankYouForSavingUs:
 	.string "CAPT. STERN: You're…\n"
@@ -438,3 +446,19 @@ SlateportCity_OceanicMuseum_2F_Text_SSAnneReplica:
 	.string "“A replica of the luxury liner that\n"
 	.string "circles the globe.”$"
 
+SlateportCity_OceanicMuseum_2F_Text_ArchieAnger:
+	.string "You're not taking this seriously,\n" 
+	.string "are you, little scamp? I'll show you\l"
+	.string "not to mess with TEAM AQUA!$"
+	
+SlateportCity_OceanicMuseum_2F_Text_ArchieDefeat:
+	.string "What?! I lost to a mere child like you?!$"
+	
+SlateportCity_OceanicMuseum_2F_Text_ArchieFarewell:
+	.string "I commend you! I must recognize that\n"
+	.string "you are truly gifted. I'll withdraw for\l"
+	.string "now and leave you be.\l" 
+	.string "But understand this…\p" 
+	.string "Get in my way again, and you won't\n" 
+	.string "walk away unscathed next time.\l"
+	.string "Remember that, at least!$"

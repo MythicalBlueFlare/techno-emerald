@@ -1596,7 +1596,7 @@ SootopolisCity_Text_YouBroughtFlyingMon:
 	.string "Well, aren't you amazing!$"
 
 SootopolisCity_Text_GroudonPleaseStop:
-	.string "MAXIE: G… GROUDON…\n"
+	.string "MAXIE: R… RESHIRAM…\n"
 	.string "Please! Stop what you're doing!\p"
 	.string "I know the extent of your power now!\p"
 	.string "If you keep going, all HOENN, not just\n"
@@ -1604,7 +1604,7 @@ SootopolisCity_Text_GroudonPleaseStop:
 
 SootopolisCity_Text_AfterAllOurScheming:
 	.string "MAXIE: So the super-ancient POKéMON\n"
-	.string "weren't only GROUDON and KYOGRE…\p"
+	.string "weren't only RESHIRAM and ZEKROM…\p"
 	.string "After all our fruitless scheming and\n"
 	.string "frantic efforts, that one POKéMON's\l"
 	.string "simple action puts everything right\l"
@@ -1613,7 +1613,7 @@ SootopolisCity_Text_AfterAllOurScheming:
 	.string "Fuhahaha…$"
 
 SootopolisCity_Text_KyogreCalmDown:
-	.string "ARCHIE: KYOGRE! What's wrong?!\n"
+	.string "ARCHIE: ZEKROM! What's wrong?!\n"
 	.string "Look over here! It's the RED ORB!\l"
 	.string "Calm down! KYOGRE!\p"
 	.string "… … … … … …\n"
@@ -1622,7 +1622,7 @@ SootopolisCity_Text_KyogreCalmDown:
 	.string "It's not responding at all!$"
 
 SootopolisCity_Text_TryingMeaninglessToPokemon:
-	.string "ARCHIE: KYOGRE and GROUDON both\n"
+	.string "ARCHIE: ZEKROM and RESHIRAM both\n"
 	.string "flew off to who knows where.\p"
 	.string "The weather in HOENN has returned\n"
 	.string "to its normal state…\p"
@@ -1634,7 +1634,7 @@ SootopolisCity_Text_TryingMeaninglessToPokemon:
 
 SootopolisCity_Text_InvolvedWithCrisisComeWithMe:
 	.string "STEVEN: Those POKéMON fighting…\n"
-	.string "GROUDON… And KYOGRE…\p"
+	.string "RESHIRAM… And ZKEROM…\p"
 	.string "The two super-ancient POKéMON\n"
 	.string "were awakened from a long sleep…\p"
 	.string "And now they are smashing each other\n"
@@ -1649,7 +1649,7 @@ SootopolisCity_Text_InvolvedWithCrisisComeWithMe:
 
 SootopolisCity_Text_DoesThisMakeYourFearPokemon:
 	.string "STEVEN: Listen, {PLAYER}{KUN}.\p"
-	.string "Does seeing GROUDON and KYOGRE make\n"
+	.string "Does seeing RESHIRAM and ZEKROM make\n"
 	.string "you think POKéMON are to be feared?\p"
 	.string "But that's not true.\n"
 	.string "POKéMON are really more…\p"

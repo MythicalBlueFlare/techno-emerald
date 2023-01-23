@@ -4,6 +4,7 @@
 .set LOCALID_GRUNT_4, 13
 .set LOCALID_MAXIE, 14
 .set LOCALID_SCOTT, 16
+.set LOCALID_WALLACE, 18
 
 MossdeepCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_OnTransition
@@ -309,6 +310,35 @@ MossdeepCity_Movement_ScottExitEast:
 	walk_left
 	walk_left
 	step_end
+	
+MossdeepCity_EventScript_WallaceCheckRematchProgress::
+	lock
+	faceplayer
+	playse SE_PIN
+	applymovement LOCALID_WALLACE, Common_Movement_ExclamationMark
+	waitmovement 0
+	msgbox MossdeepCity_Text_IveBeenExpectingYou MSGBOX_DEFAULT
+	call_if_set FLAG_ROXANNE_REMATCH, MossdeepCity_EventScript_RoxanneBeaten
+	msgbox MossdeepCity_Text_ComeBackAfterBeatingRoxanne MSGBOX_DEFAULT
+	release
+	end 
+	
+MossdeepCity_EventScript_RoxanneBeaten::
+	msgbox MossdeepCity_Text_ISeeYouveBeatenRoxanne MSGBOX_DEFAULT
+	call_if_set FLAG_BRAWLY_REMATCH, MossdeepCity_EventScript_BrawlyBeaten
+	msgbox MossdeepCity_Text_ComeBackAfterBeatingBrawly 
+	release
+	end
+
+MossdeepCity_EventScript_BrawlyBeaten::
+	msgbox MossdeepCity_Text_OhGoodYouveBeatenThemBoth MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_WALLACE
+	setflag FLAG_REMATCHES_DONE
+	fadescreen FADE_FROM_BLACK
+	release
+	end 
 
 MossdeepCity_Text_WantKingsRockStevenGaveMe:
 	.string "I got this from STEVEN, but I don't\n"
@@ -433,3 +463,28 @@ MossdeepCity_Text_SootopolisNewGymLeader:
 	.string "People tell me the new LEADER once\n"
 	.string "mentored WALLACE.$"
 
+MossdeepCity_Text_IveBeenExpectingYou:
+	.string "Oh? You must be {PLAYER}!\n"
+	.string "I've been expecting you.$" 
+	
+MossdeepCity_Text_ComeBackAfterBeatingRoxanne:
+	.string "I've heard ROXANNE has been anticipating\n"
+	.string "a rematch with you. Maybe you should go\l"
+	.string "check it out, no?$"
+	
+MossdeepCity_Text_ISeeYouveBeatenRoxanne:
+	.string "I see you've beaten ROXANNE…$"
+	
+MossdeepCity_Text_ComeBackAfterBeatingBrawly:
+	.string "BRAWLY seemed to be very motivated to\n"
+	.string "train as of late. Maybe he wants\l"
+	.string "to have a rematch as well?$"
+	
+MossdeepCity_Text_OhGoodYouveBeatenThemBoth:
+	.string "Oh! I see BRAWLY has been defeated as\n"
+	.string "well.\p"
+	.string "It seems you are ready for TATE & LIZA\n"
+	.string "now.\l"
+	.string "I'm sure we will see each other again,\l"
+	.string "{PLAYER}.$"
+	

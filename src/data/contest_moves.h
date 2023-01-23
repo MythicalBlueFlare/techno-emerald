@@ -5918,6 +5918,22 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
         .comboStarterId = 0,
         .comboMoves = {0}
     },
+	
+   [MOVE_AQUA_FANG] =
+    {
+        .effect = CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .comboStarterId = 0,
+        .comboMoves = {COMBO_STARTER_LEER, COMBO_STARTER_SCARY_FACE},
+    },
+  
+	[MOVE_ANGELIC_SONG] =
+    {
+        .effect = CONTEST_EFFECT_BADLY_STARTLE_PREV_MONS,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .comboStarterId = 0,
+        .comboMoves = {0}
+    },
 };
 
 const struct ContestEffect gContestEffects[] =

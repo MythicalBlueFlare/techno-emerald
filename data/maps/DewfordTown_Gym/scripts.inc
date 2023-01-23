@@ -133,7 +133,8 @@ DewfordTown_Gym_EventScript_StopCountingTrainers::
 	return
 
 DewfordTown_Gym_EventScript_Brawly::
-	trainerbattle_single TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
+	call_if_unset FLAG_BRAWLY_REMATCH, DewfordTown_Gym_EventScript_Brawly2
+	trainerbattle_double TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_Text_BrawlyNeedTwoMons, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, DewfordTown_Gym_EventScript_BrawlyRematch
 	goto_if_unset FLAG_RECEIVED_TM08, DewfordTown_Gym_EventScript_GiveBulkUp2
@@ -162,8 +163,18 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 	closemessage
 	delay 30
 	setflag FLAG_ENABLE_BRAWLY_MATCH_CALL
-	setvar VAR_ROXANNE_CALL_STEP_COUNTER, 0
-	setflag FLAG_ENABLE_ROXANNE_FIRST_CALL
+	release
+	end
+	
+DewfordTown_Gym_EventScript_Brawly2::
+	trainerbattle_double TRAINER_BRAWLY_2, DewfordTown_Gym_Text_BrawlyIntroRematch, DewfordTown_Gym_Text_BrawlyDefeatRematch, DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons, DewfordTown_Gym_EventScript_BrawlyDefeatedRematch, MUSIC
+	release 
+	end
+
+DewfordTown_Gym_EventScript_BrawlyDefeatedRematch:
+	msgbox DewfordTown_Gym_Text_BrawlyCongrats
+	giveitem ITEM_PROTECTIVE_PADS
+	setflag FLAG_BRAWLY_REMATCH
 	release
 	end
 
@@ -388,6 +399,15 @@ DewfordTown_Gym_Text_BrawlyIntro:
 	.string "So you wanted to challenge me?\n"
 	.string "Let me see what you're made of!$"
 
+DewfordTown_Gym_Text_BrawlyNeedTwoMons:
+	.string "I'm BRAWLY!\n"
+	.string "DEWFORD's GYM LEADER!\p"
+	.string "I've been churned in the rough waves\n"
+	.string "of these parts, and I've grown tough\l"
+	.string "in the pitch-black cave!\p"
+	.string "So you wanted to challenge me?\n"
+	.string "Bring two POKéMON for that to happen!$"
+
 DewfordTown_Gym_Text_BrawlyDefeat:
 	.string "Whoah, wow! You made a much bigger\n"
 	.string "splash than I expected!\p"
@@ -455,5 +475,22 @@ DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons:
 	.string "I knew you would return!\p"
 	.string "Oh? You only have one POKéMON\n"
 	.string "that can battle.\p"
-	.string "I'm sorry, but I'd like you to come back\n"
-	.string "with at least two POKéMON.$"
+	.string "I'm sorry, dude. But I'd like you to\n"
+	.string "come back with at least two POKéMON.$"
+
+DewfordTown_Gym_Text_BrawlyIntroRematch:
+	.string "BRAWLY: A wave may draw back, but it\n"
+	.string "always returns to the shore.\p"
+	.string "A giant wave of a talent like you…\n"
+	.string "I knew you would return!\p"
+	.string "Show me how much higher\n"
+	.string "you've gone!$"
+	
+DewfordTown_Gym_Text_BrawlyDefeatRematch:
+	.string "Aw wipeout,\n"
+	.string "I guess the blue was too gnarly for us…$"
+	
+DewfordTown_Gym_Text_BrawlyCongrats:
+	.string "You do have a good shout…\n"
+	.string "But you gotta have balance, too.\p"
+	.string "You keep riding that tide, dude!$"

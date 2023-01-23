@@ -6,7 +6,9 @@ GraniteCave_StevensRoom_MapScripts::
 GraniteCave_StevensRoom_EventScript_Steven::
 	lock
 	faceplayer
-	msgbox GraniteCave_StevensRoom_Text_ImStevenLetterForMe, MSGBOX_DEFAULT
+	msgbox GraniteCave_StevensRoom_Text_ImStevenBattle
+	trainerbattle_no_intro TRAINER_STEVEN_GRANITE_CAVE, GraniteCave_StevensRoom_Defeat
+	msgbox GraniteCave_StevensRoom_Text_LetterForMe, MSGBOX_DEFAULT
 	setvar VAR_0x8004, ITEM_LETTER
 	call Common_EventScript_PlayerHandedOverTheItem
 	setflag FLAG_DELIVERED_STEVEN_LETTER
@@ -81,10 +83,15 @@ GraniteCave_StevensRoom_Movement_StevenExitSouth:
 	delay_8
 	step_end
 
-GraniteCave_StevensRoom_Text_ImStevenLetterForMe:
+GraniteCave_StevensRoom_Text_ImStevenBattle:
 	.string "My name is STEVEN.\p"
 	.string "I'm interested in rare stones,\n"
 	.string "so I travel here and there.\p"
+	.string "You must be pretty tough to find your\n"
+	.string "way down here.\l"
+	.string "Show me how tough you are in battle!$"
+	
+GraniteCave_StevensRoom_Text_LetterForMe:
 	.string "Oh?\n"
 	.string "A LETTER for me?$"
 
@@ -119,3 +126,5 @@ GraniteCave_StevensRoom_Text_OhBagIsFull:
 	.string "Oh, your BAG is full…\n"
 	.string "That's too bad, then.$"
 
+GraniteCave_StevensRoom_Defeat:
+	.string "Impressive!$"

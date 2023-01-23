@@ -764,36 +764,45 @@ static const u8 *const *const sPartnerApprenticeTextTables[NUM_APPRENTICES] =
 struct
 {
     u16 species;
+	u16 heldItem;
+	u8 abilityNums;
     u8 fixedIV;
     u8 level;
     u8 nature;
     u8 evs[NUM_STATS];
     u16 moves[MAX_MON_MOVES];
+
 } const sStevenMons[MULTI_PARTY_SIZE] =
 {
-    {
-        .species = SPECIES_METANG,
+		{
+        .species = SPECIES_DIANCIE,
+		.heldItem = ITEM_LEFTOVERS,
+		.abilityNums = 0,
         .fixedIV = MAX_PER_STAT_IVS,
-        .level = 42,
-        .nature = NATURE_BRAVE,
-        .evs = {0, 252, 252, 0, 6, 0},
-        .moves = {MOVE_LIGHT_SCREEN, MOVE_PSYCHIC, MOVE_REFLECT, MOVE_METAL_CLAW}
+        .level = 77,
+        .nature = NATURE_MODEST,
+        .evs = {252, 0, 0, 0, 252, 6},
+        .moves = {MOVE_MOONBLAST, MOVE_DIAMOND_STORM, MOVE_EARTH_POWER, MOVE_CALM_MIND}
     },
     {
-        .species = SPECIES_SKARMORY,
+        .species = SPECIES_GOLURK,
+		.heldItem = ITEM_ASSAULT_VEST,
+		.abilityNums = 2,
         .fixedIV = MAX_PER_STAT_IVS,
-        .level = 43,
-        .nature = NATURE_IMPISH,
-        .evs = {252, 0, 0, 0, 6, 252},
-        .moves = {MOVE_TOXIC, MOVE_AERIAL_ACE, MOVE_PROTECT, MOVE_STEEL_WING}
-    },
-    {
-        .species = SPECIES_AGGRON,
-        .fixedIV = MAX_PER_STAT_IVS,
-        .level = 44,
+        .level = 77,
         .nature = NATURE_ADAMANT,
-        .evs = {0, 252, 0, 0, 252, 6},
-        .moves = {MOVE_THUNDER, MOVE_PROTECT, MOVE_SOLAR_BEAM, MOVE_DRAGON_CLAW}
+        .evs = {252, 252, 0, 0, 0, 6},
+        .moves = {MOVE_HEADLONG_RUSH, MOVE_SHADOW_PUNCH, MOVE_HAMMER_ARM, MOVE_DARKEST_LARIAT}
+    },
+    {
+        .species = SPECIES_KLINKLANG,
+		.heldItem = ITEM_SITRUS_BERRY,
+		.abilityNums = 2,
+        .fixedIV = MAX_PER_STAT_IVS,
+        .level = 78,
+        .nature = NATURE_JOLLY,
+        .evs = {0, 252, 0, 252, 0, 6},
+        .moves = {MOVE_GEAR_GRIND, MOVE_WILD_CHARGE, MOVE_EARTHQUAKE, MOVE_SHIFT_GEAR}
     }
 };
 

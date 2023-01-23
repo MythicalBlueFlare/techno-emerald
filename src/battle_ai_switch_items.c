@@ -947,4 +947,5 @@ static bool8 ShouldUseItem(void)
     }
 
     return FALSE;
+
 }
