@@ -2651,7 +2651,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
             .power = 40,
             .pp = 10,
         #endif
-        .effect = EFFECT_THIEF,
+        .effect = EFFECT_HIT,
         .type = TYPE_DARK,
         .accuracy = 100,
         .secondaryEffectChance = 100,
@@ -5463,7 +5463,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
             .pp = 40,
             .flags = FLAG_PROTECT_AFFECTED | FLAG_MIRROR_MOVE_AFFECTED,
         #endif
-        .effect = EFFECT_THIEF,
+        .effect = EFFECT_HIT,
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .secondaryEffectChance = 100,
