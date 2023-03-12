@@ -294,3 +294,12 @@ const u32 gTrainerPalette_MagmaAdminF[] = INCBIN_U32("graphics/trainers/palettes
 
 const u32 gTrainerFrontPic_Courtney[] = INCBIN_U32("graphics/trainers/front_pics/courtney_front_pic.4bpp.lz");
 const u32 gTrainerPalette_Courtney[] = INCBIN_U32("graphics/trainers/palettes/courtney.gbapal.lz");
+
+const u32 gTrainerFrontPic_Morty[] = INCBIN_U32("graphics/trainers/front_pics/morty_front_pic.4bpp.lz");
+const u32 gTrainerPalette_Morty[] = INCBIN_U32("graphics/trainers/palettes/morty.gbapal.lz");
+
+const u32 gTrainerFrontPic_WallyNew[] = INCBIN_U32("graphics/trainers/front_pics/wally_new_front_pic.4bpp.lz");
+const u32 gTrainerPalette_WallyNew[] = INCBIN_U32("graphics/trainers/palettes/wally_new.gbapal.lz");
+
+const u32 gTrainerFrontPic_WallyFinal[] = INCBIN_U32("graphics/trainers/front_pics/wally_final_front_pic.4bpp.lz");
+const u32 gTrainerPalette_WallyFinal[] = INCBIN_U32("graphics/trainers/palettes/wally_final.gbapal.lz");

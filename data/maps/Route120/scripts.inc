@@ -419,12 +419,12 @@ Route120_EventScript_Noland::
 	playse SE_PIN
 	applymovement LOCALID_NOLAND, Common_Movement_ExclamationMark
 	waitmovement 0
+	applymovement LOCALID_NOLAND, Common_Movement_Delay48
+	waitmovement 0
 	trainerbattle_single TRAINER_NOLAND_ROUTE120, Route120_Text_NolandAreYouPlayer, Route120_Text_NolandDefeat, Route120_EventScript_NolandDefeated, MUSIC
-	release 
 	end
 	
 Route120_EventScript_NolandDefeated::
-	lockall 
 	msgbox Route120_Text_NolandGreatBattle, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_NOLAND, Route120_Movement_NolandLeave
@@ -512,15 +512,15 @@ Route120_Text_StevenGoGetBadge:
 	.string "that first. I'll wait here.$"
 
 Route120_Text_NolandAreYouPlayer:
-	.string "???: You must be {PLAYER}!\p" 
+	.string "You must be {PLAYER}!\p" 
 	.string "STEVEN said I could find you here.\n"
 	.string "You've obtained quite the reputation\l" 
 	.string "here in HOENN.\p" 
 	.string "I'm NOLAND, a POKéMON TRAINER like you.\n"
 	.string "You have the FORTREE CITY GYM BADGE,\l"
 	.string "don't you?\p"
-	.string "In that case, I'd like you to show me\n"
-	.string "your power!\l"
+	.string "In that case,\n"
+	.string "I'd like you to show me your power!\p"
 	.string "Come at me with everything you've got!$"
 	
 Route120_Text_NolandDefeat: 

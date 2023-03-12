@@ -421,7 +421,8 @@ MossdeepCity_SpaceCenter_2F_Text_Grunt6Defeat:
 
 MossdeepCity_SpaceCenter_2F_Text_Grunt7Intro:
 	.string "I bet you want to take a break.\n"
-	.string "But I'm not about to let you do that!$"
+	.string "As a former TEAM ROCKET member,\l"
+	.string "I'm not about to let you do that!$"
 
 MossdeepCity_SpaceCenter_2F_Text_Grunt7Defeat:
 	.string "We should've taken a break…\n"

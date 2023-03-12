@@ -1271,3 +1271,6 @@ $(MID_SUBDIR)/mus_vs_gsc_champion.s: %.s: %.mid
 	
 $(MID_SUBDIR)/mus_vs_final_wally.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G158 -V080 -P1
+	
+$(MID_SUBDIR)/mus_vs_gsc_gym_leader.s: %.s: %.mid
+	$(MID) $< $@ -E -R$(STD_REVERB) -G158 -V080 -P1

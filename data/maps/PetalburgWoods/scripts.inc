@@ -327,17 +327,11 @@ PetalburgWoods_EventScript_Anabel::
 	waitmovement 0
 	setweather WEATHER_RAIN
 	doweather
-	call_if_set FLAG_BRANDON_DEFEATED, PetalburgWoods_EventScript_AnabelHardMode
+	setvar VAR_SET_TERRAIN, STATUS_FIELD_GRASSY_TERRAIN
 	trainerbattle_single TRAINER_ANABEL_1, PetalburgWoods_Text_AnabelIntro, PetalburgWoods_Text_AnabelDefeat, PetalburgWoods_EventScript_AnabelDefeated, NO_MUSIC
 	end 
 	
-PetalburgWoods_EventScript_AnabelHardMode::
-	trainerbattle_single TRAINER_ANABEL_2, PetalburgWoods_Text_AnabelIntro, PetalburgWoods_Text_AnabelDefeat, PetalburgWoods_EventScript_AnabelDefeated, NO_MUSIC
-	end 
-	
 PetalburgWoods_EventScript_AnabelDefeated:: 
-	lockall 
-	faceplayer
 	setweather WEATHER_NONE
 	doweather
 	msgbox PetalburgWoods_Text_AnabelLeave, MSGBOX_DEFAULT
@@ -513,10 +507,11 @@ PetalburgWoods_Text_AnabelIntro:
 	.string "BATTLE FRONTIER.\p"
 	.string "I come here often to observe the\n"
 	.string "lush and blooming woods.\p"
-	.string "You seem like a very strong trainer…\p"
-	.string "Please show me something…\p"
+	.string "You seem like a very strong trainer…\n"
+	.string "Could you be {PLAYER}?\p"
+	.string "I would like you to show me something.\p"
 	.string "Let me see your talent in\n"
-	.string "its entirety…$" 
+	.string "its entirety!$" 
 	
 PetalburgWoods_Text_AnabelDefeat:
 	.string "Okay, I understand…$"

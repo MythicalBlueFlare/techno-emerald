@@ -28,19 +28,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_CAMPER",
-      "x": 17,
-      "y": 38,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_AND_LEFT",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
-      "script": "JaggedPass_EventScript_Ethan",
-      "flag": "0"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 23,
       "y": 24,
@@ -104,6 +91,19 @@
       "trainer_sight_or_berry_tree_id": "3",
       "script": "JaggedPass_EventScript_Julio",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "x": 14,
+      "y": 29,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_WALLY_ROUTE111_DEFEATED"
     }
   ],
   "warp_events": [
@@ -223,6 +223,24 @@
       "var": "VAR_JAGGED_PASS_STATE",
       "var_value": "1",
       "script": "JaggedPass_EventScript_OpenMagmaHideout"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 36,
+      "elevation": 0,
+      "var": "VAR_WALLY_JAGGED_PASS_ENCOUNTER",
+      "var_value": "0",
+      "script": "JaggedPass_EventScript_WallyEncounter1"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 36,
+      "elevation": 0,
+      "var": "VAR_WALLY_JAGGED_PASS_ENCOUNTER",
+      "var_value": "0",
+      "script": "JaggedPass_EventScript_WallyEncounter2"
     }
   ],
   "bg_events": [

@@ -491,6 +491,7 @@
 #define MUS_VS_FINAL_BOSS           610 // MUS_VS_FINAL_BOSS
 #define MUS_VS_GSC_CHAMPION         611 // MUS_VS_GSC_CHAMPION
 #define MUS_VS_FINAL_WALLY          612 // MUS_VS_FINAL_WALLY
+#define MUS_VS_GSC_GYM_LEADER       613 // MUS_VS_GSC_GYM_LEADER
 
 #define PH_TRAP_BLEND               559
 #define PH_TRAP_HELD                560

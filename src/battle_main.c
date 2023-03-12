@@ -389,6 +389,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
 	{TRAINER_CLASS_FINAL_BOSS, 99},
 	{TRAINER_CLASS_FORMER_CHAMPION, 50},
 	{TRAINER_CLASS_FINAL_RIVAL, 15},
+    {TRAINER_CLASS_JOHTO_LEADER, 25},
     {0xFF, 5}, // Any trainer class not listed above uses this
 };
 
@@ -1829,6 +1830,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     u8 fixedIV;
     s32 i, j;
     u8 monsCount;
+    u16 ball;
 
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
@@ -1875,8 +1877,8 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
                 personalityValue += nameHash << 8;
+				personalityValue = personalityValue - (personalityValue % 25);
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
-				
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
 				SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNums);
                 break;
@@ -1889,15 +1891,16 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
                 personalityValue += nameHash << 8;
+				personalityValue = personalityValue - (personalityValue % 25);
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
-				
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-				SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNums);
+
                 for (j = 0; j < MAX_MON_MOVES; j++)
                 {
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
+				SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNums);
                 break;
             }
             case F_TRAINER_PARTY_HELD_ITEM:
@@ -1908,11 +1911,12 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
                 personalityValue += nameHash << 8;
+				personalityValue = personalityValue - (personalityValue % 25);
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
-				
                 CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-				SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNums);
+
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
+				SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNums);
                 break;
             }
             case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
@@ -1923,10 +1927,16 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     nameHash += gSpeciesNames[partyData[i].species][j];
 
                 personalityValue += nameHash << 8;
+				personalityValue = personalityValue - (personalityValue % 25);
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
-				
-                CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-				SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNums);
+                if (partyData[i].lvl <= 0)
+                {
+                    CreateMon(&party[i], partyData[i].species, GetLevelCap() + partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                }
+                else
+                {
+                    CreateMon(&party[i], partyData[i].species, partyData[i].lvl, fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
+                }
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
 
                 for (j = 0; j < MAX_MON_MOVES; j++)
@@ -1934,9 +1944,15 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
+				SetMonData(&party[i], MON_DATA_ABILITY_NUM, &partyData[i].abilityNums);
                 break;
             }
             }
+
+        #if B_TRAINER_CLASS_POKE_BALLS >= GEN_7
+            ball = (sTrainerBallTable[gTrainers[trainerNum].trainerClass]) ? sTrainerBallTable[gTrainers[trainerNum].trainerClass] : ITEM_POKE_BALL;
+            SetMonData(&party[i], MON_DATA_POKEBALL, &ball);
+        #endif
         }
 
         gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
@@ -3620,6 +3636,12 @@ static void TryDoEventsBeforeFirstTurn(void)
         return;
     }
 
+    if (!gBattleStruct->tryBattleStatusDone && TryBattleStatus())
+    {
+        gBattleStruct->tryBattleStatusDone = TRUE;
+        return;
+    }
+
     // Totem boosts
     for (i = 0; i < gBattlersCount; i++)
     {
@@ -3788,6 +3810,8 @@ void BattleTurnPassed(void)
     BattlePutTextOnWindow(gText_EmptyString3, B_WIN_MSG);
     gBattleMainFunc = HandleTurnActionSelectionState;
     gRandomTurnNumber = Random();
+
+    GetBattleStatus();
 
     if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
         BattleScriptExecute(BattleScript_PalacePrintFlavorText);
@@ -4413,6 +4437,12 @@ u32 GetBattlerTotalSpeedStat(u8 battlerId)
     if (ability == ABILITY_QUICK_FEET && gBattleMons[battlerId].status1 & STATUS1_ANY)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_SURGE_SURFER && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN)
+        speed *= 2;
+    else if (ability == ABILITY_SURGE_SURFER && gFieldStatuses & STATUS_FIELD_PSYCHIC_TERRAIN)
+        speed *= 2;
+    else if (ability == ABILITY_SURGE_SURFER && gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN)
+        speed *= 2;
+    else if (ability == ABILITY_SURGE_SURFER && gFieldStatuses & STATUS_FIELD_GRASSY_TERRAIN)
         speed *= 2;
     else if (ability == ABILITY_SLOW_START && gDisableStructs[battlerId].slowStartTimer != 0)
         speed /= 2;
@@ -5116,6 +5146,8 @@ static void HandleEndTurn_FinishBattle(void)
         RecordedBattle_SetPlaybackFinished();
         BeginFastPaletteFade(3);
         FadeOutMapMusic(5);
+        VarSet(VAR_SET_TERRAIN, 0);
+        VarSet(VAR_BATTLE_STATUS, 0);
         #if B_TRAINERS_KNOCK_OFF_ITEMS
         if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
             TryRestoreStolenItems();

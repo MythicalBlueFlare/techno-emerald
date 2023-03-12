@@ -17,7 +17,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_3",
       "x": 29,
-      "y": 17,
+      "y": 15,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -107,15 +107,15 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BRANDON",
-      "x": 35,
-      "y": 3,
+      "x": 40,
+      "y": 4,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
       "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
-      "script": "VictoryRoad_1F_EventScript_PHBrandon",
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "VictoryRoad_1F_EventScript_BrandonPostBattle",
       "flag": "FLAG_BRANDON_DEFEATED"
     }
   ],
@@ -174,6 +174,33 @@
       "var": "VAR_VICTORY_ROAD_1F_STATE",
       "var_value": "0",
       "script": "VictoryRoad_1F_EventScript_WallyBattleTrigger2"
+    },
+    {
+      "type": "trigger",
+      "x": 30,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "VictoryRoad_1F_EventScript_BrandonEncounter1"
+    },
+    {
+      "type": "trigger",
+      "x": 31,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_BRANDON_ENCOUNTER",
+      "var_value": "0",
+      "script": "VictoryRoad_1F_EventScript_BrandonEncounter2"
+    },
+    {
+      "type": "trigger",
+      "x": 32,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_BRANDON_ENCOUNTER",
+      "var_value": "0",
+      "script": "VictoryRoad_1F_EventScript_BrandonEncounter3"
     }
   ],
   "bg_events": [

@@ -112,8 +112,11 @@
 #define TRAINER_PIC_RS_MAY                92
 #define TRAINER_PIC_MAGMA_ADMIN_F         93
 #define TRAINER_PIC_COURTNEY         	  94
+#define TRAINER_PIC_MORTY         	      95
+#define TRAINER_PIC_WALLY_NEW     	      96
+#define TRAINER_PIC_WALLY_FINAL       	  97
 
-#define TRAINER_PIC_COUNT                 95
+#define TRAINER_PIC_COUNT                 98
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -361,6 +364,7 @@
 #define TRAINER_CLASS_FORMER_CHAMPION    0x44
 #define TRAINER_CLASS_VICTORY_ROAD   0x45
 #define TRAINER_CLASS_FINAL_RIVAL  0x46
+#define TRAINER_CLASS_JOHTO_LEADER   0x47
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

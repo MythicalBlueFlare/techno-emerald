@@ -55,7 +55,7 @@ Route110_EventScript_ItemDireHit::
 	end
 
 Route110_EventScript_ItemElixir::
-	finditem ITEM_ELIXIR
+	finditem ITEM_KINGS_ROCK
 	end
 
 Route111_EventScript_ItemTM37::

@@ -1,4 +1,5 @@
 .set LOCALID_WALLY_ENTRANCE, 4
+.set LOCALID_BRANDON, 8
 
 VictoryRoad_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, VictoryRoad_1F_OnTransition
@@ -115,16 +116,105 @@ VictoryRoad_1F_EventScript_Hope::
 	msgbox VictoryRoad_1F_Text_HopePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-VictoryRoad_1F_EventScript_PHBrandon::
-	trainerbattle_single TRAINER_PH_BRANDON, VictoryRoad_1F_Text_QuincyIntro, VictoryRoad_1F_Text_QuincyDefeat, VictoryRoad_1F_EventScript_BrandonDefeated
-	msgbox VictoryRoad_1F_Text_QuincyPostBattle, MSGBOX_AUTOCLOSE
+VictoryRoad_1F_EventScript_BrandonEncounter1::
+	lockall
+	setobjectxy LOCALID_BRANDON, 39, 5
+	playse SE_EXIT
+	applymovement LOCALID_BRANDON, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_BRANDON, Common_Movement_Delay32
+	waitmovement 0
+	applymovement LOCALID_BRANDON, VictoryRoad_1F_Movement_BrandonApproachPlayer1
+	waitmovement 0
+	goto VictoryRoad_1F_EventScript_Brandon
 	end
 	
+VictoryRoad_1F_EventScript_BrandonEncounter2::
+	lockall
+	setobjectxy LOCALID_BRANDON, 39, 5
+	playse SE_EXIT
+	applymovement LOCALID_BRANDON, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_BRANDON, Common_Movement_Delay32
+	waitmovement 0
+	applymovement LOCALID_BRANDON, VictoryRoad_1F_Movement_BrandonApproachPlayer2
+	waitmovement 0
+	goto VictoryRoad_1F_EventScript_Brandon
+	end
+
+VictoryRoad_1F_EventScript_BrandonEncounter3::
+	lockall
+	setobjectxy LOCALID_BRANDON, 39, 5
+	playse SE_EXIT
+	applymovement LOCALID_BRANDON, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_BRANDON, Common_Movement_Delay32
+	waitmovement 0
+	applymovement LOCALID_BRANDON, VictoryRoad_1F_Movement_BrandonApproachPlayer3
+	waitmovement 0
+	goto VictoryRoad_1F_EventScript_Brandon
+	end
+
+VictoryRoad_1F_EventScript_Brandon::
+	setvar VAR_BATTLE_STATUS, 6
+	playse SE_PIN
+	playbgm MUS_B_PYRAMID_TOP, TRUE
+	applymovement LOCALID_BRANDON, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_BRANDON, Common_Movement_Delay48
+	waitmovement 0
+	trainerbattle_single TRAINER_PH_BRANDON, VictoryRoad_1F_Text_PHBrandonIntro, VictoryRoad_1F_Text_PHBrandonDefeat, VictoryRoad_1F_EventScript_BrandonDefeated, NO_MUSIC
+	end
+
 VictoryRoad_1F_EventScript_BrandonDefeated::
+	msgbox VictoryRoad_1F_Text_PHBrandonPostBattle, MSGBOX_DEFAULT
 	setflag FLAG_BRANDON_DEFEATED
+	setvar VAR_BRANDON_ENCOUNTER, 1
 	release
 	end 
+
+VictoryRoad_1F_EventScript_BrandonPostBattle::
+	lock
+	faceplayer
+	msgbox VictoryRoad_1F_Text_PHBrandonPostBattle, MSGBOX_DEFAULT
+	release
+	end
 	
+VictoryRoad_1F_Movement_BrandonApproachPlayer1:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+VictoryRoad_1F_Movement_BrandonApproachPlayer2:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	step_end
+
+VictoryRoad_1F_Movement_BrandonApproachPlayer3:
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_down
+	step_end
 
 VictoryRoad_1F_Text_PromiseWeMade:
 	.string "WALLY: Hi! {PLAYER}!\p"
@@ -151,7 +241,8 @@ VictoryRoad_1F_Text_WallyIWontLose:
 	.string "My POKéMON have given me me the\n"
 	.string "courage and strength to fight.\p"
 	.string "I have to win for their sake!\p"
-	.string "So get ready… Here I come!$"
+	.string "So get ready…\n"
+	.string "Here I come!$"
 
 VictoryRoad_1F_Text_WallyEntranceDefeat:
 	.string "…\p"
@@ -170,7 +261,7 @@ VictoryRoad_1F_Text_WallyPostEntranceBattle:
 	.string "battled against us…\l"
 	.string "For not holding back when you beat us…\p"
 	.string "And…\p"
-	.string "Gothitelle… Everyone…\p"
+	.string "VOLCARONA… Everyone…\p"
 	.string "Thank you so much…\p"
 	.string "I feel like I've been able to take\n"
 	.string "another step forward thanks to you!\p"
@@ -233,7 +324,7 @@ VictoryRoad_1F_Text_HopePostBattle:
 	.string "You seem to have the potential for\n"
 	.string "becoming the CHAMPION.$"
 
-VictoryRoad_1F_Text_QuincyIntro:
+VictoryRoad_1F_Text_PHBrandonIntro:
 	.string "Young adventurer…\p"
 	.string "Wouldn't you agree that explorations\n"
 	.string "are the grandest of adventures?\p"
@@ -258,12 +349,12 @@ VictoryRoad_1F_Text_QuincyIntro:
 	.string "Now, then!\n"
 	.string "Bring your courage to our battle!$"
 	
-VictoryRoad_1F_Text_QuincyDefeat:
+VictoryRoad_1F_Text_PHBrandonDefeat:
 	.string "That's it! You’ve done great!\n"
 	.string "You've worked hard for this!$"
 
-VictoryRoad_1F_Text_QuincyPostBattle:
-	.string "BRANDON: Hahahah! Grand it was!\n"
+VictoryRoad_1F_Text_PHBrandonPostBattle:
+	.string "Hahahah! Grand it was!\n"
 	.string "Grand, yes, indeed!\p"
 	.string "Well done! You've earned the right\n"
 	.string "of passage to the POKéMON LEAGUE!\p"

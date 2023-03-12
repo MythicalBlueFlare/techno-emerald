@@ -240,8 +240,8 @@ static const u8 sText_PkmnWasMadeDrowsy[] = _("{B_ATK_NAME_WITH_PREFIX} made\n{B
 static const u8 sText_PkmnKnockedOff[] = _("{B_ATK_NAME_WITH_PREFIX} knocked off\n{B_DEF_NAME_WITH_PREFIX}'s {B_LAST_ITEM}!");
 static const u8 sText_PkmnSwappedAbilities[] = _("{B_ATK_NAME_WITH_PREFIX} swapped abilities\nwith its opponent!");
 static const u8 sText_PkmnSealedOpponentMove[] = _("{B_ATK_NAME_WITH_PREFIX} sealed the\nopponent's move(s)!");
-static const u8 sText_PkmnWantsGrudge[] = _("{B_ATK_NAME_WITH_PREFIX} wants the\nopponent to bear a GRUDGE!");
-static const u8 sText_PkmnLostPPGrudge[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1} lost\nall its PP due to the GRUDGE!");
+static const u8 sText_PkmnWantsGrudge[] = _("{B_ATK_NAME_WITH_PREFIX} is\nbearing a Grudge!");
+static const u8 sText_PkmnLostPPGrudge[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_BUFF1} lost\nall its PP due to the Grudge!");
 static const u8 sText_PkmnShroudedItself[] = _("{B_ATK_NAME_WITH_PREFIX} shrouded\nitself in {B_CURRENT_MOVE}!");
 static const u8 sText_PkmnMoveBounced[] = _("{B_ATK_NAME_WITH_PREFIX}'s {B_CURRENT_MOVE}\nwas bounced back by MAGIC COAT!");
 static const u8 sText_PkmnWaitsForTarget[] = _("{B_ATK_NAME_WITH_PREFIX} waits for a target\nto make a move!");
@@ -734,6 +734,13 @@ static const u8 sText_PkmnAboutToBeAttackedByItsItem[] = _("{B_DEF_NAME_WITH_PRE
 static const u8 sText_CantEscapeBecauseOfCurrentMove[] = _("{B_DEF_NAME_WITH_PREFIX} can no longer escape\nbecause of {B_CURRENT_MOVE}!");
 static const u8 sText_NeutralizingGasEnters[] = _("Neutralizing Gas filled the area!");
 static const u8 sText_NeutralizingGasOver[] = _("The effects of Neutralizing\nGas wore off!");
+static const u8 sText_PermaTailWindBlew[] = _("A permanent tailwind blew\nbehind the opposing team!");
+static const u8 sText_PermaTwistedDimensions[] = _("The opponent permanently twisted\nthe dimensions!");
+static const u8 sText_PermaMagnetRise[] = _("The opponent's team levitated on\nelectromagnetism!");
+static const u8 sText_PermaTorment[] = _("Your team was subjected\nto an endless Torment!");
+static const u8 sText_PermaGrudge[] = _("The opponent's team is\nbearing a Grudge!");
+static const u8 sText_PermaSteelySpirit[] = _("The opponent's steel spirit is strong!");
+static const u8 sText_PermaMoldBreaker[] = _("The opponent breaks the mold!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1336,6 +1343,13 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_CANTESCAPEBECAUSEOFCURRENTMOVE - BATTLESTRINGS_TABLE_START] = sText_CantEscapeBecauseOfCurrentMove,
     [STRINGID_PKMNTOOKTARGETHIGH - BATTLESTRINGS_TABLE_START] = sText_PkmnTookTargetHigh,
     [STRINGID_TARGETTOOHEAVY - BATTLESTRINGS_TABLE_START] = sText_TargetTooHeavy,
+    [STRINGID_PERMATAILWIND - BATTLESTRINGS_TABLE_START] = sText_PermaTailWindBlew,
+    [STRINGID_PERMATRICKROOM - BATTLESTRINGS_TABLE_START] = sText_PermaTwistedDimensions,
+    [STRINGID_PERMAMAGNETRISE - BATTLESTRINGS_TABLE_START] = sText_PermaMagnetRise,
+    [STRINGID_PERMATORMENT - BATTLESTRINGS_TABLE_START] = sText_PermaTorment,
+    [STRINGID_PERMAGRUDGE - BATTLESTRINGS_TABLE_START] = sText_PermaGrudge,
+    [STRINGID_PERMASTEELYSPIRIT - BATTLESTRINGS_TABLE_START] = sText_PermaSteelySpirit,
+    [STRINGID_PERMAMOLDBREAKER - BATTLESTRINGS_TABLE_START] = sText_PermaMoldBreaker,
 };
 
 const u16 gMentalHerbCureStringIds[] = 
@@ -1691,7 +1705,9 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_DROUGHT]            = STRINGID_SUNLIGHTSTRONG,
     [WEATHER_DOWNPOUR]           = STRINGID_ITISRAINING,
     [WEATHER_UNDERWATER_BUBBLES] = STRINGID_ITISRAINING,
-    [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING
+    [WEATHER_ABNORMAL]           = STRINGID_ITISRAINING,
+    [WEATHER_PERMANENT_TAILWIND] = STRINGID_ITISRAINING,
+    [WEATHER_PERMANENT_PSYCHIC_TERRAIN] = STRINGID_ITISRAINING
 };
 
 const u16 gInobedientStringIds[] =
@@ -1952,23 +1968,29 @@ static const u8 sText_Opposing1[] = _("The opposing");
 static const u8 sText_Your2[] = _("your");
 static const u8 sText_Opposing2[] = _("the opposing");
 
-static const u8 sText_Steven3LastSwitchIn[] = _("This is it, don't let up!\nThis battle is far from over!\p");
+static const u8 sText_MortyLastSwitchIn[] = _("No, it's not over yet--not yet!\nI still believe we can do it!\p");
+static const u8 sText_MortyLastLowHp[] = _("We've got more discipline than anyone\nelse!\p");
+
+static const u8 sText_Steven3LastSwitchIn[] = _("This last few moments will decide\n everything!\p");
 static const u8 sText_Steven3LastLowHp[] = _("So it comes down to this…\p");
 
-static const u8 sText_DrakeLastSwitchIn[] = _("Here's everything we've got!\p");
+static const u8 sText_DrakeLastSwitchIn[] = _("Don't underestimate the mighty\ndragon!\p");
 static const u8 sText_DrakeLastLowHp[] = _("The mighty dragon lets out its final\nroar…\p");
 
 static const u8 sText_GlaciaLastSwitchIn[] = _("Be careful you don't freeze up!\p");
 static const u8 sText_GlaciaLastLowHp[] = _("You've melted us away…\p");
 
-static const u8 sText_PhoebeLastSwitchIn[] = _("Ghost POKéMON get stronger the more\nthey fall!\lWe'll take you down right here!\p");
+static const u8 sText_PhoebeLastSwitchIn[] = _("Hehe… Are you worn out yet?\p");
 static const u8 sText_PhoebeLastLowHp[] = _("My training… Was not enough?\p");
 
-static const u8 sText_Sidney2LastSwitchIn[] = _("One more? We're just getting started!\p");
+static const u8 sText_Sidney2LastSwitchIn[] = _("One more?\nWe're just getting started!\p");
 static const u8 sText_Sidney2LastLowHp[] = _("It's not over 'till it's over!\p");
 
 static const u8 sText_WallaceLastSwitchIn[] = _("I've shown you plenty of illusions…\nNow time for the finale!\p");
 static const u8 sText_WallaceLastLowHp[] = _("Even in peril can you find elegance!\p");
+
+static const u8 sText_Wally3LastSwitchIn[] = _("This can't be it…\nAfter everything I've worked for…\p…\pI won't give up!\p");
+static const u8 sText_Wally3LastLowHp[] = _("This is everything I've got!\p");
 
 static const u8 sText_JuanLastSwitchIn[] = _("I'm not concerned with dynamism.\nI care about winning beautifully!\p");
 static const u8 sText_JuanLastLowHp[] = _("Even in peril can you find elegance!\p");
@@ -1976,10 +1998,10 @@ static const u8 sText_JuanLastLowHp[] = _("Even in peril can you find elegance!\
 static const u8 sText_Courtney2LastSwitchIn[] = _("Enough!\nI've have enough of this world!\p");
 static const u8 sText_Courtney2LastLowHp[] = _("Hah hah… Uhn… hah hah…\p");
 
-static const u8 sText_Archie2LastSwitchIn[] = _("How could you possibly be so strong?!\p");
+static const u8 sText_Archie2LastSwitchIn[] = _("How could you possibly be so strong!?\p");
 static const u8 sText_Archie2LastLowHp[] = _("Aye, this doesn't look good!\p");
 
-static const u8 sText_Shelly2LastSwitchIn[] = _("Ahahahaha!\nWhat makes you so strong?!\p");
+static const u8 sText_Shelly2LastSwitchIn[] = _("Ahahahaha!\nWhat makes you so strong!?\p");
 static const u8 sText_Shelly2LastLowHp[] = _("Ahahahaha…\p");
 
 static const u8 sText_Maxie3LastSwitchIn[] = _("Gah! You bring us this close to defeat\nyet again?!\p");
@@ -1997,8 +2019,8 @@ static const u8 sText_Matt1LastLowHp[] = _("Heh heh…\nSo I wasn't enough…\p"
 static const u8 sText_Maxie2LastSwitchIn[] = _("There must be some sort of mistake!\nI have the power of RESHIRAM!\lThe power of a LEGENDARY POKéMON!\p");
 static const u8 sText_Maxie2LastLowHp[] = _("What a blunder…\p");
 
-static const u8 sText_Tabitha2LastSwitchIn[] = _("An unexpected development?!\p");
-static const u8 sText_Tabitha2LastLowHp[] = _("Yet again I'm backed into a corner!\pBut this changes nothing…\p");
+static const u8 sText_Tabitha2LastSwitchIn[] = _("Even with this new power…\p");
+static const u8 sText_Tabitha2LastLowHp[] = _("Yet again I'm backed into a corner.\pBut this changes nothing…\p");
 
 static const u8 sText_NolandLastSwitchIn[] = _("Hey, hey! You're tougher than\nyou look!\p");
 static const u8 sText_NolandLastLowHp[] = _("What happened here?\p");
@@ -2009,7 +2031,7 @@ static const u8 sText_WinonaLastLowHp[] = _("The winds…\nThey slow…\pBut our
 static const u8 sText_Rival4LastSwitchIn[] = _("You only keep getting stronger, huh?\p");
 static const u8 sText_Rival4LastLowHp[] = _("Maybe I'm just not able to keep up with\nyou…\p");
 
-static const u8 sText_Shelly1LastSwitchIn[] = _("Ahahahaha!\nYou sure know how to fight!\p");
+static const u8 sText_Shelly1LastSwitchIn[] = _("Ahahahaha!\nNot over yet!\p");
 static const u8 sText_Shelly1LastLowHp[] = _("Ahahahaha!\nEven I, Team Aqua Admin Shelly,\lhave been made a fool…\p");
 
 static const u8 sText_Steven2LastSwitchIn[] = _("Extreme conditions really test you\nand train you!\p");
@@ -2022,10 +2044,10 @@ static const u8 sText_Sidney1LastSwitchIn[] = _("This is heatin' up real nicely!
 static const u8 sText_Sidney1LastLowHp[] = _("It's not over 'till it's over!\p");
 
 static const u8 sText_Wally2LastSwitchIn[] = _("I… I won't give up yet!\p");
-static const u8 sText_Wally2LastLowHp[] = _("…\p");
+static const u8 sText_Wally2LastLowHp[] = _("Even now…\p");
 
 static const u8 sText_FlanneryLastSwitchIn[] = _("Ha! You think that'll stop us?\p");
-static const u8 sText_FlanneryLastLowHp[] = _("Too close…\nUh…\lThis isn't over yet!\p");
+static const u8 sText_FlanneryLastLowHp[] = _("Too close…\nUh…\pThis isn't over yet!\p");
 
 static const u8 sText_Maxie1LastSwitchIn[] = _("I seem to be falling behind…\nBut only by an inch!\p");
 static const u8 sText_Maxie1LastLowHp[] = _("What?\p");
@@ -2039,8 +2061,8 @@ static const u8 sText_Courtney1LastLowHp[] = _("Hah hah… Uhn… Hah hah…\p")
 static const u8 sText_WattsonLastSwitchIn[] = _("Wahahahah!\nI can't believe it's this close!\p");
 static const u8 sText_WattsonLastLowHp[] = _("Your bulb burns brighter than mine!\p");
 
-static const u8 sText_Wally1LastSwitchIn[] = _("Your… Your strength…\nIt's overwhelming…\p");
-static const u8 sText_Wally1LastLowHp[] = _("…\p");
+static const u8 sText_Wally1LastSwitchIn[] = _("So strong…\p");
+static const u8 sText_Wally1LastLowHp[] = _("Hang in there…\p");
 
 static const u8 sText_Brendan3LastSwitchIn[] = _("Woah! You sure are serious, huh?\p");
 static const u8 sText_Brendan3LastLowHp[] = _("I guess this is what I should expect\nfrom the daughter of a Gym Leader…\p");
@@ -4030,12 +4052,14 @@ static const struct TrainerSlide sTrainerSlides[] =
 	{TRAINER_ARCHIE, sText_Archie2LastSwitchIn, sText_Archie2LastLowHp, NULL},
 	{TRAINER_COURTNEY_SKYPILLAR, sText_Courtney2LastSwitchIn, sText_Courtney2LastLowHp, NULL},
 	{TRAINER_JUAN_1, sText_JuanLastSwitchIn, sText_JuanLastLowHp, NULL},
+    {TRAINER_WALLY_VR_1, sText_Wally3LastSwitchIn, sText_Wally3LastLowHp, NULL},
 	{TRAINER_WALLACE, sText_WallaceLastSwitchIn, sText_WallaceLastLowHp, NULL},
 	{TRAINER_SIDNEY, sText_Sidney2LastSwitchIn, sText_Sidney2LastLowHp, NULL},
 	{TRAINER_PHOEBE, sText_PhoebeLastSwitchIn, sText_PhoebeLastLowHp, NULL},
 	{TRAINER_GLACIA, sText_GlaciaLastSwitchIn, sText_GlaciaLastLowHp, NULL},
 	{TRAINER_DRAKE, sText_DrakeLastSwitchIn, sText_DrakeLastLowHp, NULL},
 	{TRAINER_STEVEN_EVER_GRANDE_CITY, sText_Steven3LastSwitchIn, sText_Steven3LastLowHp, NULL},
+    {TRAINER_MORTY, sText_MortyLastSwitchIn, sText_MortyLastLowHp, NULL},
 };
 
 static u32 GetEnemyMonCount(bool32 onlyAlive)

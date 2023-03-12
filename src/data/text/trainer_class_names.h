@@ -70,4 +70,5 @@ const u8 gTrainerClassNames[][16] = {
 	[TRAINER_CLASS_FORMER_CHAMPION] = _("Ex Champion"),
 	[TRAINER_CLASS_VICTORY_ROAD] = _("Victory Road's"),
 	[TRAINER_CLASS_FINAL_RIVAL] = _("{PKMN} Trainer"),
+    [TRAINER_CLASS_JOHTO_LEADER] = _("Leader"),
 };

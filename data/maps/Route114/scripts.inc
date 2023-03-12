@@ -169,12 +169,7 @@ Route114_EventScript_Lucy::
 	playse SE_PIN
 	applymovement LOCALID_LUCY, Common_Movement_ExclamationMark
 	waitmovement 0
-	call_if_set FLAG_BRANDON_DEFEATED, Route114_EventScript_LucyHardMode
 	trainerbattle_single TRAINER_LUCY_1, Route114_Text_LucyIntro, Route114_Text_LucyDefeat, Route114_EventScript_LucyDefeated, NO_MUSIC
-	end 
-	
-Route114_EventScript_LucyHardMode::
-	trainerbattle_single TRAINER_LUCY_2, Route114_Text_LucyIntro, Route114_Text_LucyDefeat, Route114_EventScript_LucyDefeated, NO_MUSIC
 	end 
 	
 Route114_EventScript_LucyDefeated:: 
@@ -229,10 +224,11 @@ Route114_Text_GruntPostBattle:
 
 Route114_Text_LucyIntro:
 	.string "What's a brat like you doing here…\p"
-	.string "Oh… You have 8 GYM BADGES.\n"
+	.string "Oh… You have plenty of GYM BADGES.\n"
 	.string "Are you by chance {PLAYER}?\p"
 	.string "NOLAND told me all about you.\p"
 	.string "I'm not one for idle chatter.\n"
+	.string "I assume you came to challenge me.\p"
 	.string "Hurry. Come on…\p"
 	.string "Your luck…\n"
 	.string "I hope you didn't use it all up here…$"

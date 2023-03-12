@@ -379,6 +379,19 @@ static const union AnimCmd *const sAnims_Courtney[] ={
     sAnim_GeneralFrame0,
 };
 
+static const union AnimCmd *const sAnims_Morty[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_WallyNew[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_WallyFinal[] ={
+    sAnim_GeneralFrame0,
+};
+
+
 const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
 {
     [TRAINER_PIC_HIKER] = sAnims_Hiker,
@@ -476,4 +489,7 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_RS_MAY] = sAnims_RubySapphireMay,
 	[TRAINER_PIC_MAGMA_ADMIN_F] = sAnims_MagmaAdminF,
 	[TRAINER_PIC_COURTNEY] = sAnims_Courtney,
+    [TRAINER_PIC_MORTY] = sAnims_Morty,
+    [TRAINER_PIC_WALLY_NEW] = sAnims_WallyNew,
+    [TRAINER_PIC_WALLY_FINAL] = sAnims_WallyFinal,
 };

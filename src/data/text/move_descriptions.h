@@ -50,8 +50,8 @@ static const u8 sGuillotineDescription[] = _(
     "that may cause fainting.");
 
 static const u8 sRazorWindDescription[] = _(
-    "A 2-turn move that strikes\n"
-    "the foe on the 2nd turn.");
+    "A strong wind attack.\n"
+    "Also hurts the user");
 
 static const u8 sSwordsDanceDescription[] = _(
     "A fighting dance that\n"
@@ -258,8 +258,8 @@ static const u8 sPeckDescription[] = _(
     "jabbing beak, etc.");
 
 static const u8 sDrillPeckDescription[] = _(
-    "A corkscrewing attack with\n"
-    "the beak acting as a drill.");
+    "Attacks will a drill-like beak.\n"
+    "High critical-hit ratio.");
 
 static const u8 sSubmissionDescription[] = _(
     "A reckless body slam that\n"
@@ -670,8 +670,8 @@ static const u8 sTripleKickDescription[] = _(
     "row with rising intensity.");
 
 static const u8 sThiefDescription[] = _(
-    "While attacking, it may\n"
-    "steal the foe's held item.");
+    "A sneaky attack.\n"
+    "No longer steals held items.");
 
 static const u8 sSpiderWebDescription[] = _(
     "Ensnares the foe to stop it\n"
@@ -766,8 +766,8 @@ static const u8 sSpikesDescription[] = _(
     "foe switching in.");
 
 static const u8 sZapCannonDescription[] = _(
-    "Powerful and sure to cause\n"
-    "paralysis, but inaccurate.");
+    "A powerful blast of electricity.\n"
+    "Also hurts the user.");
 
 static const u8 sForesightDescription[] = _(
     "Negates the foe's efforts\n"
@@ -1370,8 +1370,8 @@ static const u8 sPoisonTailDescription[] = _(
     "ratio. May also poison.");
 
 static const u8 sCovetDescription[] = _(
-    "Cutely begs to obtain an\n"
-    "item held by the foe.");
+    "Cutely begs for a held item.\n"
+    "Beggars can't be choosers.");
 
 static const u8 sVoltTackleDescription[] = _(
     "A life-risking tackle that\n"
@@ -2346,8 +2346,8 @@ static const u8 sElectricTerrainDescription[] = _(
     "5 turns. Prevents sleep.");
 
 static const u8 sDazzlingGleamDescription[] = _(
-    "Damages foes by emitting\n"
-    "a bright flash. May lower Sp. Def.");
+    "Damages foes with bright flash.\n"
+    "May lower Sp. Def.");
 
 static const u8 sCelebrateDescription[] = _(
     "Congratulates you on your\n"

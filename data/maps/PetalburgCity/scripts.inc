@@ -94,6 +94,7 @@ PetalburgCity_EventScript_Boy::
 	closemessage
 	applymovement LOCALID_BOY, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	warp MAP_VICTORY_ROAD_1F, 31, 21
 	release
 	end
 
@@ -713,16 +714,9 @@ PetalburgCity_Movement_PlayerWatchScottExit3:
 PetalburgCity_EventScript_GymBoy::
 	msgbox PetalburgCity_Text_AreYouRookieTrainer, MSGBOX_NPC
 	end
-
-PetalburgCity_EventScript_Sidney:: 
-	lockall 
-	faceplayer
-	call_if_set FLAG_WALLY_ROUTE111_DEFEATED, PetalburgCity_EventScript_SidneyBattle
-	msgbox PetalburgCity_Text_NormanIsntHere, MSGBOX_DEFAULT
-	release 
-	end 
 	
-PetalburgCity_EventScript_SidneyBattle::
+PetalburgCity_EventScript_Sidney::
+	setvar VAR_BATTLE_STATUS, 4
 	msgbox PetalburgCity_Text_SidneyApologies, MSGBOX_DEFAULT
 	playse SE_PIN
 	applymovement LOCALID_SIDNEY, Common_Movement_ExclamationMark
@@ -731,8 +725,6 @@ PetalburgCity_EventScript_SidneyBattle::
 	end
 	
 PetalburgCity_EventScript_SidneyDefeated:: 
-	lockall 
-	faceplayer
 	msgbox PetalburgCity_Text_SidneyExit, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
@@ -830,7 +822,12 @@ PetalburgCity_Text_SidneyIntro:
 	.string "Name's SIDNEY, I'm a member of the\n"
 	.string "the ELITE FOUR.\p"
 	.string "How about a quick battle before\n"
-	.string "you challenge this gym?\l"
+	.string "you challenge this gym?\p"
+	.string "Just so you know…\n"
+	.string "I'll be usin' a technique not known\l"
+	.string "to HOENN.\l"
+	.string "Don't be too suprised!\p"
+	.string "Now then…\n"
 	.string "I'd like to see what the ruckus is about!$" 
 
 PetalburgCity_Text_SidneyDefeat:

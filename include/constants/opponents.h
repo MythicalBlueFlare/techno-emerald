@@ -149,8 +149,8 @@
 #define TRAINER_MARK                        145
 #define TRAINER_GRUNT_MT_CHIMNEY_1          146
 #define TRAINER_STEVEN_EVER_GRANDE_CITY     147
-#define TRAINER_STEVE_3                     148
-#define TRAINER_STEVE_4                     149
+#define TRAINER_COURTNEY_METEOR_FALLS_FINAL 148
+#define TRAINER_MORTY                       149
 #define TRAINER_STEVE_5                     150
 #define TRAINER_LUIS                        151
 #define TRAINER_DOMINIK                     152

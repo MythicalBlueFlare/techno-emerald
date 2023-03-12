@@ -65,25 +65,22 @@ VerdanturfTown_EventScript_RusturfTunnelSign::
 	end
 	
 VerdanturfTown_EventScript_Tucker::
-	lockall 
+	lock
 	faceplayer
 	playse SE_PIN
 	applymovement LOCALID_TUCKER, Common_Movement_ExclamationMark
 	waitmovement 0
-	call_if_set FLAG_BRANDON_DEFEATED, VerdanturfTown_EventScript_TuckerHardMode
+	setvar VAR_SET_TERRAIN, STATUS_FIELD_MISTY_TERRAIN
 	trainerbattle_double TRAINER_TUCKER_1, VerdanturfTown_Text_TuckerIntro, VerdanturfTown_Text_TuckerDefeat, VerdanturfTown_Text_TuckerNeedTwoMons, VerdanturfTown_EventScript_TuckerDefeated, NO_MUSIC
 	end 
 	
-VerdanturfTown_EventScript_TuckerHardMode::
-	trainerbattle_double TRAINER_TUCKER_2, VerdanturfTown_Text_TuckerIntro, VerdanturfTown_Text_TuckerDefeat, VerdanturfTown_EventScript_TuckerDefeated, NO_MUSIC
-	end 
-	
 VerdanturfTown_EventScript_TuckerDefeated:: 
-	lockall 
-	faceplayer
-	msgbox VerdanturfTown_Text_TuckerLeave, MSGBOX_DEFAULT
-	closemessage
+	msgbox VerdanturfTown_Text_TuckerChoiceScarf, MSGBOX_DEFAULT
 	giveitem ITEM_CHOICE_SCARF
+	msgbox VerdanturfTown_Text_TuckerIHaveSomethingElse, MSGBOX_DEFAULT
+	giveitem ITEM_AUDINITE
+	msgbox VerdanturfTown_Text_TuckerLeave
+	closemessage
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_TUCKER
 	setflag FLAG_TUCKER_DEFEATED
@@ -160,6 +157,10 @@ VerdanturfTown_Text_TuckerIntro:
 	.string "I bet you are twitching with tension of\n"
 	.string "my presence!\p"
 	.string "But don't worry about a thing!\p"
+	.string "Oh!\n"
+	.string "Are you {PLAYER}?\l"
+	.string "You've become quite the star around\l"
+	.string "HOENN!\p"
 	.string "I want something from you.\p"
 	.string "Your strategy!\n"
 	.string "Let's see it!\l"
@@ -173,11 +174,26 @@ VerdanturfTown_Text_TuckerNeedTwoMons:
 VerdanturfTown_Text_TuckerDefeat:
 	.string "Grr… What the…$"
 	
-VerdanturfTown_Text_TuckerLeave:
+VerdanturfTown_Text_TuckerChoiceScarf:
 	.string "I see you've defeated me…\p"
 	.string "Well then. Take this.\n"
 	.string "It is an item said to increase the\l"
 	.string "SPEED of a POKéMON, but at the cost\l"
-	.string "of only being able to select one move.\p"
-	.string "I have a show to put on. Can't keep the\n"
-	.string "audience waiting!$"
+	.string "of only being able to select one move.$"
+
+VerdanturfTown_Text_TuckerIHaveSomethingElse:
+	.string "I have something else for you.$"
+
+VerdanturfTown_Text_TuckerLeave:
+	.string "This item will allow AUDINO to\n"
+	.string "MEGA EVOLVE in battle.\l"
+	.string "It is quite dazzling!\p"
+	.string "You'll need a MEGA RING to use it,\n"
+	.string "however.\p"
+	.string "I heard there was a trainer from another\n"
+	.string "REGION that was visiting.\l"
+	.string "Maybe they have one.\p"
+	.string "MEGA RINGS aren't produced locally here.\p"
+	.string "Anyway, I have a show to put on.\n"
+	.string "Can't keep the audience waiting!$"
+

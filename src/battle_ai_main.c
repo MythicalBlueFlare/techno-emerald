@@ -3595,7 +3595,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         break;
     case EFFECT_DESTINY_BOND:
         if (AI_WhoStrikesFirst(battlerAtk, battlerDef) == AI_IS_FASTER && CanTargetFaintAi(battlerDef, battlerAtk))
-            score += 3;
+            score += 4;
         break;
     case EFFECT_SPITE:
         //TODO - predicted move
@@ -3725,7 +3725,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
               && AI_DATA->atkSpecies == SPECIES_AEGISLASH_BLADE
               && !IsBattlerIncapacitated(battlerDef, AI_DATA->defAbility))
             {
-                score += 3;
+                score += 5;
                 break;
             }
             #endif
@@ -3758,7 +3758,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         if (AI_DATA->defAbility == ABILITY_MAGIC_BOUNCE || CountUsablePartyMons(battlerDef) == 0)
             break;
         if (gDisableStructs[battlerAtk].isFirstTurn)
-            score += 2;        
+            score += 3;        
         //TODO - track entire opponent party data to determine hazard effectiveness 
         break;
     case EFFECT_FORESIGHT:
@@ -4502,19 +4502,23 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         break;
     case EFFECT_SOAK:
         if (HasMoveWithType(battlerAtk, TYPE_ELECTRIC) || HasMoveWithType(battlerAtk, TYPE_GRASS) || HasMoveEffect(battlerAtk, EFFECT_FREEZE_DRY))
-            score += 2; // Get some super effective moves
+            score += 4; // Get some super effective moves
         break;
     case EFFECT_THIRD_TYPE:
         if (AI_DATA->defAbility == ABILITY_WONDER_GUARD)
-            score += 2; // Give target more weaknesses
+            score += 4; // Give target more weaknesses
         break;
     case EFFECT_ELECTRIFY:
-        if (predictedMove != MOVE_NONE && gBattleMoves[predictedMove].type == TYPE_NORMAL
+        if (predictedMove != MOVE_NONE 
          && (AI_DATA->atkAbility == ABILITY_VOLT_ABSORB
           || AI_DATA->atkAbility == ABILITY_MOTOR_DRIVE
           || AI_DATA->atkAbility == ABILITY_LIGHTNING_ROD))
         {
-            score += 3;
+            score += 4;
+        }
+        if IS_BATTLER_OF_TYPE(BATTLE_PARTNER(battlerAtk), TYPE_GROUND)
+        {
+            score += 4;
         }
         break;
     case EFFECT_TOPSY_TURVY:
@@ -4773,7 +4777,7 @@ static s16 AI_SetupFirstTurn(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
     case EFFECT_SANDSTORM:
     case EFFECT_HAIL:
     case EFFECT_GEOMANCY:
-        score += 2;
+        score += 3;
         break;
     default:
         break;

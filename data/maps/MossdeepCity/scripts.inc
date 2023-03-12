@@ -464,7 +464,8 @@ MossdeepCity_Text_SootopolisNewGymLeader:
 	.string "mentored WALLACE.$"
 
 MossdeepCity_Text_IveBeenExpectingYou:
-	.string "Oh? You must be {PLAYER}!\n"
+	.string "Oh?\n"
+	.string "You must be {PLAYER}\l"
 	.string "I've been expecting you.$" 
 	
 MossdeepCity_Text_ComeBackAfterBeatingRoxanne:
@@ -483,7 +484,7 @@ MossdeepCity_Text_ComeBackAfterBeatingBrawly:
 MossdeepCity_Text_OhGoodYouveBeatenThemBoth:
 	.string "Oh! I see BRAWLY has been defeated as\n"
 	.string "well.\p"
-	.string "It seems you are ready for TATE & LIZA\n"
+	.string "It seems you are ready for the GYM\n"
 	.string "now.\l"
 	.string "I'm sure we will see each other again,\l"
 	.string "{PLAYER}.$"

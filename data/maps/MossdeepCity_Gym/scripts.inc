@@ -1,3 +1,5 @@
+.set LOCALID_BLAKE, 3
+
 MossdeepCity_Gym_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, MossdeepCity_Gym_OnLoad
 	.byte 0
@@ -50,9 +52,6 @@ MossdeepCity_Gym_EventScript_SetSwitch4Metatiles::
 
 MossdeepCity_Gym_EventScript_TateAndLiza::
 	trainerbattle_double TRAINER_TATE_AND_LIZA_1, MossdeepCity_Gym_Text_TateAndLizaIntro, MossdeepCity_Gym_Text_TateAndLizaDefeat, MossdeepCity_Gym_Text_TateAndLizaNeedTwoMons, MossdeepCity_Gym_EventScript_TateAndLizaDefeated, NO_MUSIC
-	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, MossdeepCity_Gym_EventScript_TateAndLizaRematch
-	goto_if_unset FLAG_RECEIVED_TM04, MossdeepCity_Gym_EventScript_GiveCalmMind2
 	msgbox MossdeepCity_Gym_Text_TateAndLizaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -213,11 +212,6 @@ MossdeepCity_Gym_EventScript_Virgil::
 	msgbox MossdeepCity_Gym_Text_VirgilPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-MossdeepCity_Gym_EventScript_Blake::
-	trainerbattle_single TRAINER_BLAKE, MossdeepCity_Gym_Text_BlakeIntro, MossdeepCity_Gym_Text_BlakeDefeat
-	msgbox MossdeepCity_Gym_Text_BlakePostBattle, MSGBOX_AUTOCLOSE
-	end
-
 MossdeepCity_Gym_EventScript_Hannah::
 	trainerbattle_single TRAINER_HANNAH, MossdeepCity_Gym_Text_HannahIntro, MossdeepCity_Gym_Text_HannahDefeat
 	msgbox MossdeepCity_Gym_Text_HannahPostBattle, MSGBOX_AUTOCLOSE
@@ -364,6 +358,60 @@ MossdeepCity_Gym_EventScript_RedFloorSwitch::
 	freerotatingtilepuzzle
 	end
 
+MossdeepCity_Gym_EventScript_TrickRoomTrigger1::
+	lockall
+	setvar VAR_BATTLE_STATUS, 2
+	playse SE_PIN 
+	playbgm MUS_ENCOUNTER_INTENSE, FALSE
+	applymovement LOCALID_BLAKE, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_BLAKE, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_BLAKE, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_BLAKE, Common_Movement_WalkLeft
+	waitmovement 0
+	msgbox MossdeepCity_Gym_Text_YouWantToChallengeLeader, MSGBOX_DEFAULT
+	closemessage
+	trainerbattle_no_intro TRAINER_BLAKE, MossdeepCity_Gym_Text_BlakeDefeat
+	goto MossdeepCity_Gym_EventScript_BlakeDefeated
+	end 
+
+MossdeepCity_Gym_EventScript_TrickRoomTrigger2::
+	lockall
+	setvar VAR_BATTLE_STATUS, 2
+	playse SE_PIN 
+	playbgm MUS_ENCOUNTER_INTENSE, FALSE
+	applymovement LOCALID_BLAKE, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_BLAKE, Common_Movement_FaceLeft
+	waitmovement 0
+	applymovement LOCALID_BLAKE, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_BLAKE, Common_Movement_WalkDown
+	waitmovement 0
+	applymovement LOCALID_BLAKE, Common_Movement_WalkLeft
+	waitmovement 0
+	msgbox MossdeepCity_Gym_Text_YouWantToChallengeLeader, MSGBOX_DEFAULT
+	closemessage
+	trainerbattle_no_intro TRAINER_BLAKE, MossdeepCity_Gym_Text_BlakeDefeat
+	goto MossdeepCity_Gym_EventScript_BlakeDefeated
+	end 
+
+MossdeepCity_Gym_EventScript_BlakeDefeated::
+	setvar VAR_BLAKE_ENCOUNTER, 1
+	msgbox MossdeepCity_Gym_Text_ISurrender, MSGBOX_DEFAULT
+	closemessage
+	release
+	end
+
+MossdeepCity_Gym_EventScript_BlakePostBattle::
+	lock
+	faceplayer 
+	msgbox MossdeepCity_Gym_Text_ISurrender, MSGBOX_DEFAULT
+	release
+	end
+
 MossdeepCity_Gym_Text_GymGuideAdvice:
 	.string "Yo, how's it going, CHAMPION-bound\n"
 	.string "{PLAYER}?\p"
@@ -405,25 +453,6 @@ MossdeepCity_Gym_Text_VirgilPostBattle:
 	.string "then our GYM LEADERS are them!\p"
 	.string "However, you may be even more talented\n"
 	.string "than them…$"
-
-MossdeepCity_Gym_Text_BlakeIntro:
-	.string "Fufufufu… Watch me levitate a POKé\n"
-	.string "BALL telekinetically!\p"
-	.string "Wrooooooooaaaar!\n"
-	.string "… … … … … … …\p"
-	.string "Sometimes, I'm out of sync…$"
-
-MossdeepCity_Gym_Text_BlakeDefeat:
-	.string "My POKéMON battling skills are out\n"
-	.string "of sync, too!$"
-
-MossdeepCity_Gym_Text_BlakePostBattle:
-	.string "A POKé BALL was too heavy to lift\n"
-	.string "psychically. But this dust bunny…\p"
-	.string "Whoooooooooooooooh!\n"
-	.string "… … … … … …\p"
-	.string "No, I'm not cheating!\n"
-	.string "I didn't blow on it! Honestly!$"
 
 MossdeepCity_Gym_Text_HannahIntro:
 	.string "When you lose to me, don't be too hard\n"
@@ -646,3 +675,19 @@ MossdeepCity_Gym_Text_TateAndLizaRematchNeedTwoMons:
 	.string "LIZA: You brought just one POKéMON!\p"
 	.string "TATE: We need you to bring at least…\n"
 	.string "LIZA: Two POKéMON when you come back.$"
+
+MossdeepCity_Gym_Text_YouWantToChallengeLeader: 
+	.string "Oh?\n"
+	.string "You must possess incredible strength\l"
+	.string "to make it here.\p"
+	.string "I will be the final test between you\n"
+	.string "and our LEADER!$"
+
+MossdeepCity_Gym_Text_BlakeDefeat:
+	.string "I can't even comprehend your strength…$"
+
+MossdeepCity_Gym_Text_ISurrender: 
+	.string "You are quite strong,\n"
+	.string "I surrender.\p"
+	.string "You may now face our LEADER.$"
+

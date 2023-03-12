@@ -59,7 +59,7 @@
 #define FLAG_ANABEL_DEFEATED  0x2F 
 #define FLAG_TUCKER_DEFEATED   0x30
 #define FLAG_CHALLENGING_ELITE_4  0x31 
-#define FLAG_UNUSED_0x032    0x32 // Unused Flag
+#define FLAG_MORTY_DEFEATED    0x32 
 #define FLAG_UNUSED_0x033    0x33 // Unused Flag
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag

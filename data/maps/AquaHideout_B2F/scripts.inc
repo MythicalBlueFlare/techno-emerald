@@ -53,6 +53,9 @@ AquaHideout_B2F_EventScript_SubmarineEscape::
 	setflag FLAG_HIDE_LILYCOVE_CITY_AQUA_GRUNTS
 	clearflag FLAG_ROXANNE_REMATCH
 	clearflag FLAG_BRAWLY_REMATCH
+	clearflag FLAG_LUCY_DEFEATED
+	clearflag FLAG_ANABEL_DEFEATED
+	clearflag FLAG_TUCKER_DEFEATED
 	release
 	end
 

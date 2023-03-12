@@ -9426,3 +9426,44 @@ BattleScript_MagicianActivates::
 	call BattleScript_AbilityPopUp
 	call BattleScript_ItemSteal
 	return
+
+BattleScript_EffectPermanentMagnetRise::
+    printstring STRINGID_PERMAMAGNETRISE
+	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_MAGNETRISE
+	playanimation BS_OPPONENT2, B_ANIM_PERMANENT_MAGNETRISE
+    end3
+
+BattleScript_EffectPermanentTailwind::
+    printstring STRINGID_PERMATAILWIND
+    playanimation BS_EFFECT_BATTLER, B_ANIM_PERMANENT_TAILWIND
+    end3
+
+BattleScript_EffectPermanentTrickRoom::
+    printstring STRINGID_PERMATRICKROOM
+	playanimation BS_EFFECT_BATTLER, B_ANIM_PERMANENT_TRICK_ROOM
+    end3
+
+BattleScript_EffectPermanentTorment::
+    printstring STRINGID_PERMATORMENT
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_TORMENTP1
+	playanimation BS_PLAYER2, B_ANIM_PERMANENT_TORMENTP2
+    end3
+
+BattleScript_EffectPermanentGrudge::
+    printstring STRINGID_PERMAGRUDGE
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_GRUDGE
+    end3
+
+BattleScript_EffectPermanentSteelySpirit::
+	printstring STRINGID_PERMASTEELYSPIRIT
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_STEELY_SPIRIT
+    end3
+
+BattleScript_EffectPermanentMoldBreaker::
+	printstring STRINGID_PERMAMOLDBREAKER
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_MOLD_BREAKER
+    end3

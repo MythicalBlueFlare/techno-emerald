@@ -22,7 +22,6 @@ FallarborTown_Mart_Pokemart:
 	.2byte ITEM_ROSELI_BERRY
 	.2byte ITEM_PAYAPA_BERRY
 	.2byte ITEM_HABAN_BERRY
-	.2byte ITEM_KASIB_BERRY
 	.2byte ITEM_LUM_BERRY
 	.2byte ITEM_NONE
 	release

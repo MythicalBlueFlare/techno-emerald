@@ -19221,7 +19221,8 @@ const u32 gTMHMLearnsets[][2] =
                                             | TMHM(TM17_PROTECT)
                                             | TMHM(TM44_REST)
                                             | TMHM(TM12_TAUNT)
-                                            | TMHM(TM46_THIEF)),
+                                            | TMHM(TM46_THIEF)
+											| TMHM(HM06_ROCK_SMASH)),
 
     [SPECIES_CORVIKNIGHT] = TMHM_LEARNSET(TMHM(TM45_ATTRACT)
                                             | TMHM(TM08_BULK_UP)
@@ -19234,7 +19235,8 @@ const u32 gTMHMLearnsets[][2] =
                                             | TMHM(TM44_REST)
                                             | TMHM(TM47_STEEL_WING)
                                             | TMHM(TM12_TAUNT)
-                                            | TMHM(TM46_THIEF)),
+                                            | TMHM(TM46_THIEF)
+											| TMHM(HM06_ROCK_SMASH)),
 
     [SPECIES_BLIPBUG]     = TMHM_LEARNSET(0),
 

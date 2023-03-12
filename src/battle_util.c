@@ -2316,6 +2316,7 @@ u8 DoFieldEndTurnEffects(void)
             if (!effect)
             {
                 gBattleStruct->turnCountersTracker++;
+                gBattleStruct->turnSideTracker = 0;
             }
             break;
         case ENDTURN_RAIN:
@@ -3031,7 +3032,7 @@ u8 DoBattlerEndTurnEffects(void)
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_MAGNET_RISE:
-            if (gStatuses3[gActiveBattler] & STATUS3_MAGNET_RISE)
+            if (gStatuses3[gActiveBattler] & STATUS3_MAGNET_RISE && !(VarGet(VAR_BATTLE_STATUS) == 1 && GetBattlerSide(gActiveBattler) == B_SIDE_OPPONENT))
             {
                 if (gDisableStructs[gActiveBattler].magnetRiseTimer == 0 || --gDisableStructs[gActiveBattler].magnetRiseTimer == 0)
                 {
@@ -3041,6 +3042,8 @@ u8 DoBattlerEndTurnEffects(void)
                     effect++;
                 }
             }
+            gBattleStruct->turnEffectsTracker++;
+            break;
             gBattleStruct->turnEffectsTracker++;
             break;
         case ENDTURN_TELEKINESIS:
@@ -3367,7 +3370,8 @@ u8 AtkCanceller_UnableToUseMove(void)
         {
         case CANCELLER_FLAGS: // flags clear
             gBattleMons[gBattlerAttacker].status2 &= ~STATUS2_DESTINY_BOND;
-            gStatuses3[gBattlerAttacker] &= ~STATUS3_GRUDGE;
+            if (VarGet(VAR_BATTLE_STATUS) != 5)
+                gStatuses3[gBattlerAttacker] &= ~STATUS3_GRUDGE;
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_SKY_DROP:
@@ -4568,8 +4572,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             }
             break;
         case ABILITY_INTREPID_SWORD:
-            if (!gSpecialStatuses[battler].switchInAbilityDone)
+             if (!gSpecialStatuses[battler].switchInAbilityDone && CompareStat(battler, STAT_ATK, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
+                gBattlerAttacker = battler;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 SET_STATCHANGER(STAT_ATK, 1, FALSE);
                 BattleScriptPushCursorAndCallback(BattleScript_BattlerAbilityStatRaiseOnSwitchIn);
@@ -4577,8 +4582,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             }
             break;
         case ABILITY_DAUNTLESS_SHIELD:
-            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            if (!gSpecialStatuses[battler].switchInAbilityDone && CompareStat(battler, STAT_DEF, MAX_STAT_STAGE, CMP_LESS_THAN))
             {
+                gBattlerAttacker = battler;
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 SET_STATCHANGER(STAT_DEF, 1, FALSE);
                 BattleScriptPushCursorAndCallback(BattleScript_BattlerAbilityStatRaiseOnSwitchIn);
@@ -5847,7 +5853,8 @@ u32 GetBattlerAbility(u8 battlerId)
 
     if ((((gBattleMons[gBattlerAttacker].ability == ABILITY_MOLD_BREAKER
             || gBattleMons[gBattlerAttacker].ability == ABILITY_TERAVOLT
-            || gBattleMons[gBattlerAttacker].ability == ABILITY_TURBOBLAZE)
+            || gBattleMons[gBattlerAttacker].ability == ABILITY_TURBOBLAZE
+            || ((VarGet(VAR_BATTLE_STATUS) == 7) && ((GetBattlerSide(battlerId)) == B_SIDE_OPPONENT)))
             && !(gStatuses3[gBattlerAttacker] & STATUS3_GASTRO_ACID))
             || gBattleMoves[gCurrentMove].flags & FLAG_TARGET_ABILITY_IGNORED)
             && sAbilitiesAffectedByMoldBreaker[gBattleMons[battlerId].ability]
@@ -7394,7 +7401,8 @@ void ClearFuryCutterDestinyBondGrudge(u8 battlerId)
 {
     gDisableStructs[battlerId].furyCutterCounter = 0;
     gBattleMons[battlerId].status2 &= ~STATUS2_DESTINY_BOND;
-    gStatuses3[battlerId] &= ~STATUS3_GRUDGE;
+    if (VarGet(VAR_BATTLE_STATUS) != 5)
+                gStatuses3[gBattlerAttacker] &= ~STATUS3_GRUDGE;
 }
 
 void HandleAction_RunBattleScript(void) // identical to RunBattleScriptCommands
@@ -8293,12 +8301,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
             MulModifier(&modifier, UQ_4_12(1.2));
         break;
     case ABILITY_PUNK_ROCK:
-        if (gBattleMoves[move].flags & FLAG_SOUND)
-            MulModifier(&modifier, UQ_4_12(1.3));
+    case ABILITY_LIQUID_VOICE:
     case ABILITY_LEAD_SINGER:
         if (gBattleMoves[move].flags & FLAG_SOUND)
             MulModifier(&modifier, UQ_4_12(1.3));
-        break;
     case ABILITY_STEELY_SPIRIT:
         if (moveType == TYPE_STEEL)
             MulModifier(&modifier, UQ_4_12(1.5));
@@ -8492,6 +8498,10 @@ static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDe
         #endif
         break;
     }
+
+    // Permanent Steely Spirit effect
+    if (VarGet(VAR_BATTLE_STATUS) == 6 && GetBattlerSide(battlerAtk) == B_SIDE_OPPONENT && moveType == TYPE_STEEL)
+        MulModifier(&modifier, UQ_4_12(1.5));
 
     // various effecs
     if (gProtectStructs[battlerAtk].helpingHand)
@@ -10059,4 +10069,67 @@ bool32 IsBattlerWeatherAffected(u8 battlerId, u32 weatherFlags)
         return TRUE;
     }
     return FALSE;
+}
+
+bool8 TryBattleStatus(void)
+{
+    u8 varBattleStatus = VarGet(VAR_BATTLE_STATUS);
+
+    switch (varBattleStatus)
+    {
+    case 1: // Magnet Rise
+        gStatuses3[B_POSITION_OPPONENT_LEFT] |= STATUS3_MAGNET_RISE;
+        gStatuses3[B_POSITION_OPPONENT_RIGHT] |= STATUS3_MAGNET_RISE;
+        BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentMagnetRise);
+        return TRUE;
+    case 2: // Trick Room
+        gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
+        gFieldTimers.trickRoomTimer = 255;
+        BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentTrickRoom);
+        return TRUE;
+    case 3: // Tailwind
+        gSideStatuses[B_SIDE_OPPONENT] |= SIDE_STATUS_TAILWIND;
+        gSideTimers[B_SIDE_OPPONENT].tailwindTimer = 255;
+        BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentTailwind);
+        return TRUE;
+    case 4: // Torment
+        gBattleMons[B_POSITION_PLAYER_LEFT].status2 |= STATUS2_TORMENT;
+        gBattleMons[B_POSITION_PLAYER_RIGHT].status2 |= STATUS2_TORMENT;
+        BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentTorment);
+        return TRUE;
+    case 5: // Grudge
+        gStatuses3[B_POSITION_OPPONENT_LEFT] |= STATUS3_GRUDGE;
+        gStatuses3[B_POSITION_OPPONENT_RIGHT] |= STATUS3_GRUDGE;
+        BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentGrudge);
+        return TRUE;
+    case 6: // Steely Spirit
+        BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentSteelySpirit);
+        return TRUE;
+    case 7: // Mold Breaker
+        BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentMoldBreaker);
+        return TRUE;
+    default:
+        gStatuses3[B_POSITION_OPPONENT_LEFT] &= ~STATUS3_GRUDGE;
+        gStatuses3[B_POSITION_OPPONENT_RIGHT] &= ~STATUS3_GRUDGE;
+        return FALSE;
+    }
+}
+
+void GetBattleStatus(void)
+{
+    if (VarGet(VAR_BATTLE_STATUS) == 1)
+        {
+            gStatuses3[B_POSITION_OPPONENT_LEFT] |= STATUS3_MAGNET_RISE;
+            gStatuses3[B_POSITION_OPPONENT_RIGHT] |= STATUS3_MAGNET_RISE;
+        }
+    else if (VarGet(VAR_BATTLE_STATUS) == 4)
+        { 
+            gBattleMons[B_POSITION_PLAYER_LEFT].status2 |= STATUS2_TORMENT;
+            gBattleMons[B_POSITION_PLAYER_RIGHT].status2 |= STATUS2_TORMENT;
+        }
+    if (VarGet(VAR_BATTLE_STATUS) == 5)
+        {
+            gStatuses3[B_POSITION_OPPONENT_LEFT] |= STATUS3_GRUDGE;
+            gStatuses3[B_POSITION_OPPONENT_RIGHT] |= STATUS3_GRUDGE;
+        }
 }

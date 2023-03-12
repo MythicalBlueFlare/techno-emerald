@@ -416,5 +416,12 @@ extern const u8 BattleScript_BothCanNoLongerEscape[];
 extern const u8 BattleScript_OctolockEndTurn[];
 extern const u8 BattleScript_NeutralizingGasExits[];
 extern const u8 BattleScript_MagicianActivates[];
+extern const u8 BattleScript_EffectPermanentTailwind[];
+extern const u8 BattleScript_EffectPermanentTrickRoom[];
+extern const u8 BattleScript_EffectPermanentMagnetRise[];
+extern const u8 BattleScript_EffectPermanentTorment[];
+extern const u8 BattleScript_EffectPermanentGrudge[];
+extern const u8 BattleScript_EffectPermanentSteelySpirit[];
+extern const u8 BattleScript_EffectPermanentMoldBreaker[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

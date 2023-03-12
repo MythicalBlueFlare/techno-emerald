@@ -3,8 +3,6 @@
 .set LOCALID_VIVI, 3
 .set LOCALID_VICKY, 4
 .set LOCALID_ROCK_SMASH_MAN, 46
-.set LOCALID_WALLY, 47
-.set LOCALID_NORMAN, 48
 
 @ Note: LOCALID_ROUTE111_PLAYER_FALLING is a local id for this map used elsewhere. It's defined in event_objects.h
 
@@ -575,37 +573,6 @@ Route111_EventScript_TrainerHillSign::
 	msgbox Route111_Text_TrainerHillSign, MSGBOX_SIGN
 	end
 	
-Route111_EventScript_WallyRoute111Battle::
-	lockall 
-	faceplayer
-	playse SE_PIN
-	applymovement LOCALID_WALLY, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_NORMAN, Common_Movement_FacePlayer
-	trainerbattle_double TRAINER_WALLY_ROUTE111, Route111_Text_WallyIntro, Route111_Text_WallyDefeat, Route111_Text_WallyNeedTwoMons, Route111_EventScript_WallyDefeated, NO_MUSIC
-	end 
-	
-Route111_EventScript_WallyDefeated:: 
-	lockall 
-	faceplayer
-	msgbox Route111_Text_WallyExit, MSGBOX_DEFAULT
-	closemessage
-	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_WALLY
-	removeobject LOCALID_NORMAN
-	setflag FLAG_WALLY_ROUTE111_DEFEATED
-	fadescreen FADE_FROM_BLACK
-	release 
-	end 
-	
-Route111_EventScript_Norman:: 
-	lock 
-	faceplayer 
-	msgbox Route111_Text_NormanTalkToWally, MSGBOX_DEFAULT
-	release 
-	end
-	
-
 Route111_Text_BattleOurFamily:
 	.string "Hello! I take it you're a traveler.\p"
 	.string "How's this? What do you say to taking\n"
@@ -759,34 +726,3 @@ Route111_Text_TrainerHillSign:
 	.string "{RIGHT_ARROW} TRAINER HILL ENTRANCE\p"
 	.string "“Scale the heights, you hot-blooded\n"
 	.string "TRAINERS!”$"
-
-Route111_Text_WallyIntro:
-	.string "Hey, {PLAYER}{KUN}! Me and NORMAN were\n" 
-	.string "checking out this strange cave here!\l" 
-	.string "It is said to hold a LEGENDARY POKéMON.\p" 
-	.string "So, you got the badge from LAVARIDGE?\n" 
-	.string "I've been training with NORMAN, so how\l"
-	.string "about I show you what I've learned!$" 
-	
-Route111_Text_WallyNeedTwoMons:
-	.string "Hey, {PLAYER}{KUN}! Me and NORMAN were\n" 
-	.string "checking out this strange cave here!\l" 
-	.string "It is said to hold a LEGENDARY POKéMON.\p" 
-	.string "So, you got the badge from LAVARIDGE?\n" 
-	.string "Well, I'd love to battle, but you don't\l" 
-	.string "have two POKéMON on you. Come back\l" 
-	.string "when you do!$"
-	
-Route111_Text_WallyDefeat:
-	.string "Still not strong enough…$" 
-	
-Route111_Text_WallyExit:
-	.string "That was a close one! I'll be\n" 
-	.string "heading out now. Hopefully we see\l" 
-	.string "each other again!$" 
-	
-Route111_Text_NormanTalkToWally:
-	.string "Oh, I'm suprised to see you here\n" 
-	.string "{PLAYER}{KUN}! I've been researching this\l" 
-	.string "strange desert with WALLY.\p"
-	.string "You should speak to him.$"

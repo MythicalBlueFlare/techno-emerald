@@ -973,7 +973,7 @@ static const u8 sOpponentMugshotsPalIDs[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_RS_BRENDAN]            = MUGSHOT_COLOR_PURPLE,
     [TRAINER_PIC_RS_MAY]                = MUGSHOT_COLOR_PURPLE,
 	[TRAINER_PIC_MAGMA_ADMIN_F]         = MUGSHOT_COLOR_PURPLE,
-	[TRAINER_PIC_COURTNEY]         = MUGSHOT_COLOR_PURPLE,
+	[TRAINER_PIC_COURTNEY]              = MUGSHOT_COLOR_PURPLE,
 };
 
 static const u16 *const sPlayerMugshotsPals[GENDER_COUNT] =

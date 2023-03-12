@@ -1837,7 +1837,7 @@ static bool8 Fishing_CheckForBite(struct Task *task)
 
         if (!bite)
         {
-            if (Random() & 1)
+            if (Random() & 0)
                 task->tStep = FISHING_NO_BITE;
             else
                 bite = TRUE;
@@ -1869,11 +1869,8 @@ static bool8 Fishing_WaitForA(struct Task *task)
 
     AlignFishingAnimationFrames();
     task->tFrameCounter++;
-    if (task->tFrameCounter >= reelTimeouts[task->tFishingRod])
-        task->tStep = FISHING_GOT_AWAY;
-    else if (JOY_NEW(A_BUTTON))
+    if (JOY_NEW(A_BUTTON))
         task->tStep++;
-    return FALSE;
 }
 
 // Determine if we're going to play the dot game again

@@ -6689,7 +6689,7 @@ static void Cmd_hitanimation(void)
 static u32 GetTrainerMoneyToGive(u16 trainerId)
 {
     u32 i = 0;
-    u32 lastMonLevel = 0;
+    s32 lastMonLevel = 0;
     u32 moneyReward;
 
     if (trainerId == TRAINER_SECRET_BASE)
@@ -6721,7 +6721,11 @@ static u32 GetTrainerMoneyToGive(u16 trainerId)
         case F_TRAINER_PARTY_CUSTOM_MOVESET | F_TRAINER_PARTY_HELD_ITEM:
             {
                 const struct TrainerMonItemCustomMoves *party = gTrainers[trainerId].party.ItemCustomMoves;
-                lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
+                if (party[gTrainers[trainerId].partySize - 1].lvl <= 0)
+                    lastMonLevel = GetLevelCap();
+                else
+                    lastMonLevel = party[gTrainers[trainerId].partySize - 1].lvl;
+                
             }
             break;
         }

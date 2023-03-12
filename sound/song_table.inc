@@ -615,6 +615,7 @@ gSongTable::
 	song mus_vs_final_boss, 0, 0
 	song mus_vs_gsc_champion, 0, 0
 	song mus_vs_final_wally, 0, 0
+	song mus_vs_gsc_gym_leader, 0, 0
 
 	.align 2
 dummy_song_header:

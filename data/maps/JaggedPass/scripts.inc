@@ -1,4 +1,5 @@
 .set LOCALID_HIDEOUT_GUARD, 5
+.set LOCALID_WALLY, 7
 
 JaggedPass_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, JaggedPass_OnResume
@@ -149,6 +150,64 @@ JaggedPass_EventScript_Autumn::
 	msgbox JaggedPass_Text_AutumnPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+JaggedPass_EventScript_WallyEncounter1::
+	lockall
+    addobject LOCALID_WALLY
+	playse SE_LEDGE
+	applymovement LOCALID_WALLY, Common_Movement_Jump2Down
+	waitmovement 0
+	playse SE_LEDGE
+	applymovement LOCALID_WALLY, Common_Movement_Jump2Down
+	waitmovement 0
+	applymovement LOCALID_WALLY, JaggedPass_Movement_WallyApproachPlayer1
+	waitmovement 0
+	goto JaggedPass_EventScript_Wally
+	end
+
+JaggedPass_EventScript_WallyEncounter2::
+	lockall
+	addobject LOCALID_WALLY
+	playse SE_LEDGE
+	applymovement LOCALID_WALLY, Common_Movement_Jump2Down
+	waitmovement 0
+	playse SE_LEDGE
+	applymovement LOCALID_WALLY, Common_Movement_Jump2Down
+	waitmovement 0
+	applymovement LOCALID_WALLY, JaggedPass_Movement_WallyApproachPlayer2
+	waitmovement 0
+	goto JaggedPass_EventScript_Wally
+	end
+
+JaggedPass_EventScript_Wally::
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox JaggedPass_Text_WallyIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_WALLY_ROUTE111, JaggedPass_Text_WallyDefeat
+	goto JaggedPass_EventScript_WallyDefeated
+	end
+
+JaggedPass_EventScript_WallyDefeated::
+	msgbox JaggedPass_Text_WallyPostBattle, MSGBOX_DEFAULT
+	closemessage
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_WALLY
+	setflag FLAG_WALLY_ROUTE111_DEFEATED
+	setvar VAR_WALLY_JAGGED_PASS_ENCOUNTER, 1
+	fadescreen FADE_FROM_BLACK
+	release
+	end 
+
+JaggedPass_Movement_WallyApproachPlayer1:
+	walk_down
+	walk_down
+	step_end
+
+JaggedPass_Movement_WallyApproachPlayer2:
+	walk_down
+	walk_right
+	walk_down
+	step_end
+
 JaggedPass_Text_EricIntro:
 	.string "MT. CHIMNEY's JAGGED PASS…\p"
 	.string "Now this is what I've always wanted\n"
@@ -266,3 +325,31 @@ JaggedPass_Text_AutumnPostBattle:
 	.string "What is that odd rock protrusion\n"
 	.string "a little up the hill from here?$"
 
+JaggedPass_Text_WallyIntro:
+	.string "Hey, {PLAYER}!\p"
+	.string "I was watching you fight those\n"
+	.string "TEAM MAGMA guys from the cable car.\p"
+	.string "You sure are fearless, aren't you?\p"
+	.string "Why did I come here?\p"
+	.string "Well…\n"
+	.string "I'm taking on the GYM CHALLENGE!\p"
+	.string "I've already got a badge from RUSTBURO,\n"
+	.string "DEWFORD, and MAUVILLE!\p"
+	.string "Since we happened to bump into each\n"
+	.string "other…\p"
+	.string "How about a battle?\n"
+	.string "I've gotten a lot stronger since our\l"
+	.string "encounter in MAUVILLE.\p"
+	.string "Ok…\n"
+	.string "Here I come!$"
+
+JaggedPass_Text_WallyDefeat:
+	.string "So…\n"
+	.string "Still not strong enough…$"
+
+JaggedPass_Text_WallyPostBattle:
+	.string "That was fun!\n"
+	.string "I can see where you get your bravery\l"
+	.string "from!\p"
+	.string "Well, I better go do some more training.\n"
+	.string "Good luck!$"

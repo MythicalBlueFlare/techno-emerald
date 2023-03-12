@@ -532,6 +532,14 @@
 #define B_ANIM_STRONG_WINDS             30
 #define B_ANIM_PRIMAL_REVERSION         31
 #define B_ANIM_AQUA_RING_HEAL           32
+#define B_ANIM_PERMANENT_TAILWIND       33
+#define B_ANIM_PERMANENT_TRICK_ROOM     34
+#define B_ANIM_PERMANENT_MAGNETRISE     35
+#define B_ANIM_PERMANENT_TORMENTP1      36
+#define B_ANIM_PERMANENT_TORMENTP2      37
+#define B_ANIM_PERMANENT_GRUDGE         38
+#define B_ANIM_PERMANENT_STEELY_SPIRIT  39
+#define B_ANIM_PERMANENT_MOLD_BREAKER   40
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

@@ -167,6 +167,7 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 	end
 	
 DewfordTown_Gym_EventScript_Brawly2::
+	setvar VAR_SET_TERRAIN, STATUS_FIELD_MISTY_TERRAIN
 	trainerbattle_double TRAINER_BRAWLY_2, DewfordTown_Gym_Text_BrawlyIntroRematch, DewfordTown_Gym_Text_BrawlyDefeatRematch, DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons, DewfordTown_Gym_EventScript_BrawlyDefeatedRematch, MUSIC
 	release 
 	end

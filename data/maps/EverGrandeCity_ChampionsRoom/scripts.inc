@@ -42,6 +42,7 @@ EverGrandeCity_ChampionsRoom_Movement_PlayerApproachWallace:
 	step_end
 
 EverGrandeCity_ChampionsRoom_EventScript_Wallace::
+	setvar VAR_BATTLE_STATUS, 1
 	playbgm MUS_ENCOUNTER_CHAMPION, FALSE
 	msgbox EverGrandeCity_ChampionsRoom_Text_IntroSpeech, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_STEVEN_EVER_GRANDE_CITY, EverGrandeCity_ChampionsRoom_Text_Defeat
@@ -49,6 +50,7 @@ EverGrandeCity_ChampionsRoom_EventScript_Wallace::
 	end
 
 EverGrandeCity_ChampionsRoom_EventScript_Defeated::
+	setvar VAR_BATTLE_STATUS, 0
 	clearflag FLAG_CHALLENGING_ELITE_4
 	playse SE_DOOR
 	setmetatile 6, 1, METATILE_EliteFour_OpenDoorChampion_Frame, FALSE
@@ -228,8 +230,15 @@ EverGrandeCity_ChampionsRoom_Text_IntroSpeech:
 	.string "STEVEN: Welcome, {PLAYER}{KUN}.\p"
 	.string "I was looking forward to seeing you\n"
 	.string "here one day.\p"
-	.string "You… What did you see on your\n"
-	.string "journey with POKéMON?\p"
+	.string "When our paths first crossed in\n"
+	.string "GRANITE CAVE in DEWFORD,\l"
+	.string "I had this feeling.\p"
+	.string "I thought you would eventually make it\n"
+	.string "here to the POKéMON LEAGUE.\p"
+	.string "My predictions usually come true.\p"
+	.string "Now, then…\p"
+	.string "What did you see on your journey\n"
+	.string "with POKéMON?\p"
 	.string "What did you feel, meeting so many\n"
 	.string "other TRAINERS like you?\p"
 	.string "What has awoken in you?\n"

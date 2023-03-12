@@ -7375,7 +7375,8 @@ u16 GetBattleBGM(void)
         case TRAINER_CLASS_LEADER:
             return MUS_VS_GYM_LEADER;
         case TRAINER_CLASS_CHAMPION:
-            return MUS_RG_VS_CHAMPION;
+        case TRAINER_CLASS_FORMER_CHAMPION:
+            return MUS_VS_CHAMPION;
         case TRAINER_CLASS_RIVAL:
             if (gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
                 return MUS_VS_RIVAL;
@@ -7396,12 +7397,12 @@ u16 GetBattleBGM(void)
 			return MUS_RG_VS_TRAINER;
 		case TRAINER_CLASS_FINAL_BOSS:
 			return MUS_VS_FINAL_BOSS;
-		case TRAINER_CLASS_FORMER_CHAMPION:
-			return MUS_VS_CHAMPION;
 		case TRAINER_CLASS_VICTORY_ROAD:
 			return MUS_RG_VS_GYM_LEADER;
 		case TRAINER_CLASS_FINAL_RIVAL:
 			return MUS_VS_FINAL_WALLY;
+        case TRAINER_CLASS_JOHTO_LEADER:
+            return MUS_VS_GSC_GYM_LEADER;
         default:
             return MUS_VS_TRAINER;
         }
@@ -8258,7 +8259,7 @@ u16 MonTryLearningNewMoveEvolution(struct Pokemon *mon, bool8 firstMove)
 u8 GetLevelCap(void)
 {
     if (FlagGet(FLAG_BRANDON_DEFEATED))
-        return 101;
+        return 100;
     if (FlagGet(FLAG_BADGE08_GET))
         return 90;
 	if (FlagGet(FLAG_FINAL_COURTNEY_DEFEATED))
@@ -8303,8 +8304,10 @@ u8 GetLevelCap(void)
         return 38;
 	if (FlagGet(FLAG_HIDE_MAUVILLE_CITY_WALLY))
 		return 35;
+    if (FlagGet(FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE))
+        return 32;
 	if (FlagGet(FLAG_DELIVERED_DEVON_GOODS))
-		return 32;
+		return 30;
     if (FlagGet(FLAG_DELIVERED_STEVEN_LETTER))
         return 27;
     if (FlagGet(FLAG_BADGE02_GET))
