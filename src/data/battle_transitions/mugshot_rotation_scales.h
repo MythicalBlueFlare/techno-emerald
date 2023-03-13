@@ -98,4 +98,10 @@ static const s16 sMugshotsOpponentRotationScales[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_MORTY]                 = 0x200,
     [TRAINER_PIC_WALLY_NEW]             = 0x200,
     [TRAINER_PIC_WALLY_FINAL]           = 0x200,
+    [TRAINER_PIC_FRLG_ACE_TRAINER_M]    = 0x200,
+    [TRAINER_PIC_FRLG_ACE_TRAINER_F]    = 0x200,
+    [TRAINER_PIC_FRLG_RANGER_F]         = 0x200,
+    [TRAINER_PIC_ROCKER]                = 0x200,
+    [TRAINER_PIC_FALKNER]               = 0x200,
+    [TRAINER_PIC_JASMINE]               = 0x200,
 };

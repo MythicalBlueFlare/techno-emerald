@@ -115,8 +115,14 @@
 #define TRAINER_PIC_MORTY         	      95
 #define TRAINER_PIC_WALLY_NEW     	      96
 #define TRAINER_PIC_WALLY_FINAL       	  97
+#define TRAINER_PIC_FRLG_ACE_TRAINER_M    98
+#define TRAINER_PIC_FRLG_ACE_TRAINER_F    99
+#define TRAINER_PIC_FRLG_RANGER_F    	  100
+#define TRAINER_PIC_ROCKER     	          101
+#define TRAINER_PIC_FALKNER	              102
+#define TRAINER_PIC_JASMINE      	      103
 
-#define TRAINER_PIC_COUNT                 98
+#define TRAINER_PIC_COUNT                 104
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0

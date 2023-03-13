@@ -94,8 +94,8 @@ PetalburgCity_EventScript_Boy::
 	closemessage
 	applymovement LOCALID_BOY, Common_Movement_FaceOriginalDirection
 	waitmovement 0
-	warp MAP_VICTORY_ROAD_1F, 31, 21
-	release
+	warp MAP_VICTORY_ROAD_1F, 15, 38
+release
 	end
 
 PetalburgCity_EventScript_WallysMom::

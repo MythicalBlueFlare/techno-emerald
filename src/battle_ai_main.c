@@ -3758,7 +3758,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         if (AI_DATA->defAbility == ABILITY_MAGIC_BOUNCE || CountUsablePartyMons(battlerDef) == 0)
             break;
         if (gDisableStructs[battlerAtk].isFirstTurn)
-            score += 3;        
+            score += 5;        
         //TODO - track entire opponent party data to determine hazard effectiveness 
         break;
     case EFFECT_FORESIGHT:

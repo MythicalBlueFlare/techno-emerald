@@ -98,6 +98,12 @@ const struct MonCoords gTrainerFrontPicCoords[] =
     [TRAINER_PIC_MORTY] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_WALLY_NEW] = {.size = 8, .y_offset = 1},
     [TRAINER_PIC_WALLY_FINAL] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_FRLG_ACE_TRAINER_M] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_FRLG_ACE_TRAINER_F] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_FRLG_RANGER_F] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_ROCKER] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_FALKNER] = {.size = 8, .y_offset = 1},
+    [TRAINER_PIC_JASMINE] = {.size = 8, .y_offset = 1},
 };
 
 #define TRAINER_SPRITE(trainerPic, sprite, size) [TRAINER_PIC_##trainerPic] = {sprite, size, TRAINER_PIC_##trainerPic}
@@ -202,6 +208,12 @@ const struct CompressedSpriteSheet gTrainerFrontPicTable[] =
     TRAINER_SPRITE(MORTY, gTrainerFrontPic_Morty, 0x800),
     TRAINER_SPRITE(WALLY_NEW, gTrainerFrontPic_WallyNew, 0x800),
     TRAINER_SPRITE(WALLY_FINAL, gTrainerFrontPic_WallyFinal, 0x800),
+    TRAINER_SPRITE(FRLG_ACE_TRAINER_M, gTrainerFrontPic_FRLGAceTrainerM, 0x800),
+    TRAINER_SPRITE(FRLG_ACE_TRAINER_F, gTrainerFrontPic_FRLGAceTrainerF, 0x800),
+    TRAINER_SPRITE(FRLG_RANGER_F, gTrainerFrontPic_FRLGRangerF, 0x800),
+    TRAINER_SPRITE(ROCKER, gTrainerFrontPic_Rocker, 0x800),
+    TRAINER_SPRITE(FALKNER, gTrainerFrontPic_Falkner, 0x800),
+    TRAINER_SPRITE(JASMINE, gTrainerFrontPic_Jasmine, 0x800),
 };
 
 #define TRAINER_PAL(trainerPic, pal) [TRAINER_PIC_##trainerPic] = {pal, TRAINER_PIC_##trainerPic}
@@ -306,4 +318,10 @@ const struct CompressedSpritePalette gTrainerFrontPicPaletteTable[] =
     TRAINER_PAL(MORTY, gTrainerPalette_Morty),
     TRAINER_PAL(WALLY_NEW, gTrainerPalette_WallyNew),
     TRAINER_PAL(WALLY_FINAL, gTrainerPalette_WallyFinal),
+    TRAINER_PAL(FRLG_ACE_TRAINER_M, gTrainerPalette_FRLGAceTrainerM),
+    TRAINER_PAL(FRLG_ACE_TRAINER_F, gTrainerPalette_FRLGAceTrainerF),
+    TRAINER_PAL(FRLG_RANGER_F, gTrainerPalette_FRLGRangerF),
+    TRAINER_PAL(ROCKER, gTrainerPalette_Rocker),
+    TRAINER_PAL(FALKNER, gTrainerPalette_Falkner),
+    TRAINER_PAL(JASMINE, gTrainerPalette_Jasmine),
 };

@@ -391,6 +391,30 @@ static const union AnimCmd *const sAnims_WallyFinal[] ={
     sAnim_GeneralFrame0,
 };
 
+static const union AnimCmd *const sAnims_FRLGAceTrainerM[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_FRLGAceTrainerF[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_FRLGRangerF[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Rocker[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Falkner[] ={
+    sAnim_GeneralFrame0,
+};
+
+static const union AnimCmd *const sAnims_Jasmine[] ={
+    sAnim_GeneralFrame0,
+};
+
 
 const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
 {
@@ -492,4 +516,10 @@ const union AnimCmd *const *const gTrainerFrontAnimsPtrTable[] =
     [TRAINER_PIC_MORTY] = sAnims_Morty,
     [TRAINER_PIC_WALLY_NEW] = sAnims_WallyNew,
     [TRAINER_PIC_WALLY_FINAL] = sAnims_WallyFinal,
+    [TRAINER_PIC_FRLG_ACE_TRAINER_M] = sAnims_FRLGAceTrainerM,
+    [TRAINER_PIC_FRLG_ACE_TRAINER_F] = sAnims_FRLGAceTrainerF,
+    [TRAINER_PIC_FRLG_RANGER_F] = sAnims_FRLGRangerF,
+    [TRAINER_PIC_ROCKER] = sAnims_Rocker,
+    [TRAINER_PIC_FALKNER] = sAnims_Falkner,
+    [TRAINER_PIC_JASMINE] = sAnims_Jasmine,
 };
