@@ -1,6 +1,7 @@
 .set LOCALID_WOMAN_1, 19
 .set LOCALID_MAN_1, 20
 .set LOCALID_MARTGRUNT, 22
+.set LOCALID_JASMINE, 23
 
 LilycoveCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LilycoveCity_OnTransition
@@ -433,6 +434,31 @@ PetalburgCity_EventScript_AquaGruntDefeated::
 	release
 	end 
 
+LilycoveCity_EventScript_Jasmine::
+	lockall 
+	faceplayer
+	playse SE_PIN
+	applymovement LOCALID_JASMINE, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_JASMINE, Common_Movement_Delay48
+	waitmovement 0
+	trainerbattle_single TRAINER_LEADER_JASMINE, LilycoveCity_Text_JasmineIntro, LilycoveCity_Text_JasmineDefeat, LilycoveCity_EventScript_JasmineDefeated, NO_MUSIC
+	end 
+	
+LilycoveCity_EventScript_JasmineDefeated:: 
+	msgbox LilycoveCity_Text_JasmineGiveAron, MSGBOX_DEFAULT
+	givemon SPECIES_ARON, 30, ITEM_AGGRONITE
+	closemessage
+	msgbox LilycoveCity_Text_JasmineLeave, MSGBOX_DEFAULT
+	closemessage
+	playse SE_EXIT
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_JASMINE
+	setflag FLAG_JASMINE_DEFEATED
+	fadescreen FADE_FROM_BLACK
+	release 
+	end 
+
 LilycoveCity_Text_MayShoppingLetsBattle:
 	.string "MAY: Oh, hey?\n"
 	.string "{PLAYER}{KUN}, are you shopping, too?\p"
@@ -797,3 +823,38 @@ LilycoveCity_Text_AquaGruntDefeat:
 LilycoveCity_Text_AquaGruntRun:
 	.string "You may have bested me this time,\n"
 	.string "but you haven't seen the last of me!$"
+
+LilycoveCity_Text_JasmineIntro:	
+	.string "Hi!\n"
+	.string "I'm JASMINE!\p"
+	.string "I'm a GYM LEADER from JOHTO!\p"
+	.string "…This city makes me feel at home\n"
+	.string "somehow.\l"
+	.string "It's next to the sea…\p"
+	.string "Oh…\n"
+	.string "You have a lot of GYM BADGES…\p"
+	.string "Would you… want to battle?\p"
+	.string "I use the… clang! Steel-type!\n"
+	.string "…Do you know about the Steel-type?\p"
+	.string "They are very hard, cold, sharp,\n"
+	.string "and really strong!\p"
+	.string "Um…\n"
+	.string "I'm not lying…$"
+
+LilycoveCity_Text_JasmineDefeat:
+	.string "Well done…$"
+
+LilycoveCity_Text_JasmineGiveAron:
+	.string "You are a better Trainer than me,\n"
+	.string "in both skill and kindness.\p"
+	.string "I'd like you to have this POKéMON.\n"
+	.string "It is not from around here.$"
+
+LilycoveCity_Text_JasmineLeave:
+	.string "This POKéMON holds a MEGA STONE.\n"
+	.string "It allows you to become stronger\l"
+	.string "during battle…\p"
+	.string "My friends from JOHTO are visting.\n"
+	.string "Maybe you can get a MEGA RING from\l"
+	.string "them.\p"
+	.string "Goodbye…$"

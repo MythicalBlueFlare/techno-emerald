@@ -1741,8 +1741,8 @@ static const struct TrainerMonItemCustomMoves sParty_Hope[] = {
     .iv = 255,
     .lvl = 90,
     .species = SPECIES_TOGEKISS,
-    .heldItem = ITEM_LIFE_ORB,
-	.abilityNums = 2,
+    .heldItem = ITEM_EXPERT_BELT,
+	.abilityNums = 1,
     .moves = {MOVE_MOONBLAST, MOVE_AIR_SLASH, MOVE_EXTRASENSORY, MOVE_AURA_SPHERE}
     },
     {
@@ -3364,19 +3364,6 @@ static const struct TrainerMonNoItemDefaultMoves sParty_Justin[] = {
     }
 };
 
-static const struct TrainerMonNoItemDefaultMoves sParty_Ethan1[] = {
-    {
-    .iv = 255,
-    .lvl = 38,
-    .species = SPECIES_WATCHOG,
-    },
-    {
-    .iv = 255,
-    .lvl = 38,
-    .species = SPECIES_TOUCANNON,
-    }
-};
-
 static const struct TrainerMonNoItemDefaultMoves sParty_Autumn[] = {
     {
     .iv = 255,
@@ -4102,10 +4089,10 @@ static const struct TrainerMonItemCustomMoves sParty_Phoebe[] = {
     {
     .iv = 255,
     .lvl = 100,
-    .species = SPECIES_TREVENANT,
-    .heldItem = ITEM_SITRUS_BERRY,
-	.abilityNums = 1,
-    .moves = {MOVE_HORN_LEECH, MOVE_SHADOW_PUNCH, MOVE_ROCK_SLIDE, MOVE_POWER_UP_PUNCH}
+    .species = SPECIES_POLTEAGEIST,
+    .heldItem = ITEM_FOCUS_SASH,
+	.abilityNums = 0,
+    .moves = {MOVE_SHADOW_BALL, MOVE_STORED_POWER, MOVE_GIGA_DRAIN, MOVE_SHELL_SMASH}
     },
     {
     .iv = 255,
@@ -4177,10 +4164,10 @@ static const struct TrainerMonItemCustomMoves sParty_Glacia[] = {
     {
     .iv = 255,
     .lvl = 100,
-    .species = SPECIES_KYUREM_BLACK,
+    .species = SPECIES_CALYREX_ICE_RIDER,
     .heldItem = ITEM_LIFE_ORB,
 	.abilityNums = 0,
-    .moves = {MOVE_ICE_HAMMER, MOVE_FUSION_BOLT, MOVE_STONE_EDGE, MOVE_DRAGON_DANCE}
+    .moves = {MOVE_GLACIAL_LANCE, MOVE_CRUNCH, MOVE_SEED_BOMB, MOVE_SWORDS_DANCE}
     }
 };
 
@@ -4228,10 +4215,10 @@ static const struct TrainerMonItemCustomMoves sParty_Drake[] = {
     {
     .iv = 255,
     .lvl = 100,
-    .species = SPECIES_ZYGARDE,
-    .heldItem = ITEM_YACHE_BERRY,
+    .species = SPECIES_KYUREM_BLACK,
+    .heldItem = ITEM_SITRUS_BERRY,
 	.abilityNums = 0,
-    .moves = {MOVE_DRAGON_RUSH, MOVE_THOUSAND_ARROWS, MOVE_IRON_TAIL, MOVE_DRAGON_DANCE}
+    .moves = {MOVE_DRAGON_RUSH, MOVE_ICE_HAMMER, MOVE_FUSION_BOLT, MOVE_DRAGON_DANCE}
     }
 };
 
@@ -15247,5 +15234,142 @@ static const struct TrainerMonItemCustomMoves sParty_Morty[] = {
     .heldItem = ITEM_GENGARITE,
     .abilityNums = 0,
     .moves = {MOVE_SHADOW_BALL, MOVE_SLUDGE_BOMB, MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST}
+    }
+};
+
+static const struct TrainerMonItemCustomMoves sParty_Falkner[] = {
+    {
+    .iv = 255,
+    .lvl = 58,
+    .species = SPECIES_MASQUERAIN,
+    .heldItem = ITEM_FOCUS_SASH,
+    .abilityNums = 0,
+    .moves = {MOVE_BUG_BUZZ, MOVE_HURRICANE, MOVE_HYDRO_PUMP, MOVE_STICKY_WEB}
+    },
+    {
+    .iv = 255,
+    .lvl = 58,
+    .species = SPECIES_MANTINE,
+    .heldItem = ITEM_LEFTOVERS,
+    .abilityNums = 1,
+    .moves = {MOVE_SCALD, MOVE_HURRICANE, MOVE_TOXIC, MOVE_ROOST}
+    },
+    {
+    .iv = 255,
+    .lvl = 58,
+    .species = SPECIES_ALTARIA,
+    .heldItem = ITEM_HEAVY_DUTY_BOOTS,
+    .abilityNums = 0,
+    .moves = {MOVE_DUAL_WINGBEAT, MOVE_EARTHQUAKE, MOVE_ROOST, MOVE_DRAGON_DANCE}
+    },
+    {
+    .iv = 255,
+    .lvl = 58,
+    .species = SPECIES_DODRIO,
+    .heldItem = ITEM_SITRUS_BERRY,
+    .abilityNums = 1,
+    .moves = {MOVE_DOUBLE_EDGE, MOVE_BRAVE_BIRD, MOVE_HIGH_JUMP_KICK, MOVE_PURSUIT}
+    },
+    {
+    .iv = 255,
+    .lvl = 59,
+    .species = SPECIES_PIDGEOT,
+    .heldItem = ITEM_PIDGEOTITE,
+    .abilityNums = 2,
+    .moves = {MOVE_HYPER_VOICE, MOVE_HURRICANE, MOVE_HEAT_WAVE, MOVE_U_TURN}
+    }
+};
+
+static const struct TrainerMonItemCustomMoves sParty_LeaderJasmine[] = {
+    {
+    .iv = 255,
+    .lvl = 0,
+    .species = SPECIES_SKARMORY,
+    .heldItem = ITEM_CUSTAP_BERRY,
+    .abilityNums = 1,
+    .moves = {MOVE_DRILL_PECK, MOVE_BODY_PRESS, MOVE_TOXIC, MOVE_STEALTH_ROCK}
+    },
+    {
+    .iv = 255,
+    .lvl = 0,
+    .species = SPECIES_MAGNEZONE,
+    .heldItem = ITEM_AIR_BALLOON,
+    .abilityNums = 0,
+    .moves = {MOVE_THUNDERBOLT, MOVE_FLASH_CANNON, MOVE_BODY_PRESS, MOVE_VOLT_SWITCH}
+    },
+    {
+    .iv = 255,
+    .lvl = 0,
+    .species = SPECIES_BRONZONG,
+    .heldItem = ITEM_LEFTOVERS,
+    .abilityNums = 1,
+    .moves = {MOVE_GYRO_BALL, MOVE_BODY_PRESS, MOVE_TOXIC, MOVE_PROTECT}
+    },
+    {
+    .iv = 255,
+    .lvl = 0,
+    .species = SPECIES_SCIZOR,
+    .heldItem = ITEM_OCCA_BERRY,
+    .abilityNums = 1,
+    .moves = {MOVE_BULLET_PUNCH, MOVE_BUG_BITE, MOVE_AERIAL_ACE, MOVE_SWORDS_DANCE}
+    },
+    {
+    .iv = 255,
+    .lvl = 0,
+    .species = SPECIES_STEELIX,
+    .heldItem = ITEM_STEELIXITE,
+    .abilityNums = 0,
+    .moves = {MOVE_GYRO_BALL, MOVE_EARTHQUAKE, MOVE_ROCK_CLIMB, MOVE_CURSE}
+    }
+};
+
+static const struct TrainerMonItemCustomMoves sParty_Lance[] = {
+    {
+    .iv = 255,
+    .lvl = 90,
+    .species = SPECIES_AERODACTYL,
+    .heldItem = ITEM_FOCUS_SASH,
+    .abilityNums = 0,
+    .moves = {MOVE_HEAD_SMASH, MOVE_DUAL_WINGBEAT, MOVE_EARTHQUAKE, MOVE_STEALTH_ROCK}
+    },
+    {
+    .iv = 255,
+    .lvl = 90,
+    .species = SPECIES_GYARADOS,
+    .heldItem = ITEM_WACAN_BERRY,
+    .abilityNums = 0,
+    .moves = {MOVE_WATERFALL, MOVE_EARTHQUAKE, MOVE_ICE_FANG, MOVE_DRAGON_DANCE}
+    },
+    {
+    .iv = 255,
+    .lvl = 90,
+    .species = SPECIES_TYRANITAR,
+    .heldItem = ITEM_CHOPLE_BERRY,
+    .abilityNums = 0,
+    .moves = {MOVE_STONE_EDGE, MOVE_CRUNCH, MOVE_ICE_PUNCH, MOVE_THUNDER_WAVE}
+    },
+    {
+    .iv = 255,
+    .lvl = 90,
+    .species = SPECIES_CHARIZARD,
+    .heldItem = ITEM_CHARIZARDITE_X,
+    .abilityNums = 0,
+    .moves = {MOVE_FLARE_BLITZ, MOVE_DRAGON_RUSH, MOVE_EARTHQUAKE, MOVE_ROOST}
+    },
+    {
+    .iv = 255,
+    .lvl = 90,
+    .species = SPECIES_LATIOS,
+    .heldItem = ITEM_SOUL_DEW,
+    .abilityNums = 0,
+    .moves = {MOVE_DRACO_METEOR, MOVE_PSYCHIC, MOVE_MYSTICAL_FIRE, MOVE_THUNDERBOLT}
+    },
+    {
+    .iv = 255,
+    .lvl = 90,
+    .species = SPECIES_DRAGONITE,
+    .heldItem = ITEM_HEAVY_DUTY_BOOTS,
+    .abilityNums = 2,
+    .moves = {MOVE_DUAL_WINGBEAT, MOVE_EARTHQUAKE, MOVE_EXTREME_SPEED, MOVE_DRAGON_DANCE}
     }
 };

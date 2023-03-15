@@ -151,7 +151,7 @@
 #define TRAINER_STEVEN_EVER_GRANDE_CITY     147
 #define TRAINER_COURTNEY_METEOR_FALLS_FINAL 148
 #define TRAINER_MORTY                       149
-#define TRAINER_STEVE_5                     150
+#define TRAINER_FALKNER                     150
 #define TRAINER_LUIS                        151
 #define TRAINER_DOMINIK                     152
 #define TRAINER_DOUGLAS                     153
@@ -217,10 +217,10 @@
 #define TRAINER_LARRY                       213
 #define TRAINER_SHANE                       214
 #define TRAINER_JUSTIN                      215
-#define TRAINER_ETHAN_1                     216
+#define TRAINER_LEADER_JASMINE              216
 #define TRAINER_AUTUMN                      217
 #define TRAINER_TRAVIS                      218
-#define TRAINER_ETHAN_2                     219
+#define TRAINER_LANCE                       219
 #define TRAINER_ETHAN_3                     220
 #define TRAINER_ETHAN_4                     221
 #define TRAINER_ETHAN_5                     222

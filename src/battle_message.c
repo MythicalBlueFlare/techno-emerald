@@ -1968,8 +1968,17 @@ static const u8 sText_Opposing1[] = _("The opposing");
 static const u8 sText_Your2[] = _("your");
 static const u8 sText_Opposing2[] = _("the opposing");
 
+static const u8 sText_LanceLastSwitchIn[] = _("All right!\nI thought this would never happen!\p");
+static const u8 sText_LanceLastLowHp[] = _("I never give up,\nno matter what.\pYou must be the same?\p");
+
+static const u8 sText_JasmineLastSwitchIn[] = _("Properly tempered steel won't be made\nrusty by things like this!\p");
+static const u8 sText_JasmineLastLowHp[] = _("Steel will hang on to the very last!\p");
+
 static const u8 sText_MortyLastSwitchIn[] = _("No, it's not over yet--not yet!\nI still believe we can do it!\p");
 static const u8 sText_MortyLastLowHp[] = _("We've got more discipline than anyone\nelse!\p");
+
+static const u8 sText_FalknerLastSwitchIn[] = _("The wind is finally with us!\p");
+static const u8 sText_FalknerLastLowHp[] = _("We can still fly!\p");
 
 static const u8 sText_Steven3LastSwitchIn[] = _("This last few moments will decide\n everything!\p");
 static const u8 sText_Steven3LastLowHp[] = _("So it comes down to this…\p");
@@ -4060,6 +4069,9 @@ static const struct TrainerSlide sTrainerSlides[] =
 	{TRAINER_DRAKE, sText_DrakeLastSwitchIn, sText_DrakeLastLowHp, NULL},
 	{TRAINER_STEVEN_EVER_GRANDE_CITY, sText_Steven3LastSwitchIn, sText_Steven3LastLowHp, NULL},
     {TRAINER_MORTY, sText_MortyLastSwitchIn, sText_MortyLastLowHp, NULL},
+    {TRAINER_FALKNER, sText_FalknerLastSwitchIn, sText_FalknerLastLowHp, NULL},
+    {TRAINER_LEADER_JASMINE, sText_JasmineLastSwitchIn, sText_JasmineLastLowHp, NULL},
+    {TRAINER_LANCE, sText_LanceLastSwitchIn, sText_LanceLastLowHp, NULL},
 };
 
 static u32 GetEnemyMonCount(bool32 onlyAlive)

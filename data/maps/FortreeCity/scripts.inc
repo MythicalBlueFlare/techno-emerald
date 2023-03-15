@@ -1,3 +1,5 @@
+.set LOCALID_FALKNER, 7
+
 FortreeCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, FortreeCity_OnTransition
 	map_script MAP_SCRIPT_ON_RESUME, FortreeCity_OnResume
@@ -87,6 +89,63 @@ FortreeCity_Movement_KecleonFlee:
 	walk_right
 	step_end
 
+FortreeCity_EventScript_Falkner::
+	lockall
+	addobject LOCALID_FALKNER
+	applymovement LOCALID_FALKNER, FortreeCity_Movement_FalknerApproachPlayer
+	waitmovement 0
+	playse SE_PIN
+	applymovement LOCALID_FALKNER, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	applymovement LOCALID_FALKNER, Common_Movement_Delay48
+	waitmovement 0
+	msgbox FortreeCity_Text_ImFalkner, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_FALKNER, FortreeCity_Movement_MoveInFrontGymFalkner
+	applymovement OBJ_EVENT_ID_PLAYER, FortreeCity_Movement_MoveInFrontGymPlayer
+	waitmovement 0
+	msgbox FortreeCity_Text_IllShowYouPowerBirdPokemon, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_FALKNER, FortreeCity_Text_FalknerDefeat
+	msgbox FortreeCity_Text_MyDadsBirdPokemon, MSGBOX_DEFAULT
+	givemon SPECIES_PIDGEY, 30, ITEM_PIDGEOTITE
+	closemessage
+	msgbox FortreeCity_Text_FalknerLeave, MSGBOX_DEFAULT
+	closemessage
+	playse SE_EXIT
+	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_FALKNER
+	setvar VAR_FALKNER_DEFEATED, 1
+	fadescreen FADE_FROM_BLACK
+	release 
+	end 
+	
+FortreeCity_Movement_FalknerApproachPlayer:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	step_end
+
+FortreeCity_Movement_MoveInFrontGymPlayer:
+	walk_down
+	walk_left
+	walk_left
+	walk_left
+	walk_left
+	face_right
+	step_end
+
+FortreeCity_Movement_MoveInFrontGymFalkner:
+	walk_down
+	walk_down
+	walk_left
+	walk_left
+	step_end
+
 FortreeCity_Text_SawGiganticPokemonInSky:
 	.string "No one believes me, but I saw this\n"
 	.string "gigantic POKéMON in the sky.\p"
@@ -154,3 +213,53 @@ FortreeCity_Text_GymSign:
 	.string "“The bird user taking flight into\n"
 	.string "the world.”$"
 
+FortreeCity_Text_ImFalkner:
+	.string "Oh?\n"
+	.string "Are you looking to challenge the\l"
+	.string "FORTREE GYM?\p"
+	.string "I see.\n"
+	.string "I'm FALKNER, a GYM LEADER from JOHTO.\p"
+	.string "My FATHER was a friend of the\n"
+	.string "GYM LEADER here,\l"
+	.string "So I've come to visit.\p"
+	.string "You seem like a strong trainer to make\n"
+	.string "it this far.\l"
+	.string "I'd like to test you before you take\l"
+	.string "on this GYM.\p"
+	.string "Let's move to a more spacious area.$"
+
+FortreeCity_Text_IllShowYouPowerBirdPokemon:
+	.string "People say you can clip Flying-type\n"
+	.string "POKéMON's wings with a jolt of\l"
+	.string "electricity…\p"
+	.string "I won't allow such insults to bird\n"
+	.string "POKéMON!\p"
+	.string "I'll show you the real power of the\n"
+	.string "magnificent bird POKéMON!$"
+
+FortreeCity_Text_FalknerDefeat:
+	.string "I understand…\n"
+	.string "I'll bow out gracefully.$"
+
+FortreeCity_Text_MyDadsBirdPokemon:
+	.string "…For pity's sake!\n"
+	.string "My dad's cherished bird POKéMON…\l"
+	.string "But a defeat is a defeat.\p"
+	.string "All right.\n"
+	.string "Take this POKéMON,\l"
+	.string "it comes all the way from JOHTO.$"
+
+FortreeCity_Text_FalknerLeave:
+	.string "You will be able to MEGA EVOLVE\n"
+	.string "that POKéMON once it has fully evolved.\p"
+	.string "Assuming you have a MEGA RING,\n"
+	.string "of course.\p"
+	.string "Truthfully…\n"
+	.string "I'm unsure if you'll be able to obtain\l"
+	.string "one…\p"
+	.string "I've heard others from JOHTO are\n"
+	.string "visiting.\p"
+	.string "Maybe one of them will give you a\n"
+	.string "MEGA RING.\p"
+	.string "Good luck with your GYM CHALLENGE,\n"
+	.string "trainer!$"

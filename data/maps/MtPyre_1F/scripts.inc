@@ -78,8 +78,7 @@ MtPyre_1F_Text_RestingPlaceOfZigzagoon:
 MtPyre_1F_Text_MortyIntro:	
 	.string "Greetings.\n"
 	.string "My name is MORTY.\p"
-	.string "I am a GYM LEADER from another\n"
-	.string "REGION.\p"
+	.string "I am a GYM LEADER from JOHTO.\p"
 	.string "The land of HOENN is mysterious,\n"
 	.string "and facinating.\p"
 	.string "There are many POKéMON here that\n"

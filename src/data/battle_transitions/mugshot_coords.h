@@ -104,4 +104,5 @@ static const struct Coords16 sMugshotsOpponentCoords[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_ROCKER]                = { 0,  0},
     [TRAINER_PIC_FALKNER]               = { 0,  0},
     [TRAINER_PIC_JASMINE]               = { 0,  0},
+    [TRAINER_PIC_LANCE]               = { 0,  0},
 };

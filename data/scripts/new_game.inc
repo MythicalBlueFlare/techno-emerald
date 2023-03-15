@@ -278,5 +278,8 @@ EventScript_ResetAllMapFlags::
 	setflag FLAG_LUCY_DEFEATED
 	setflag FLAG_ANABEL_DEFEATED
 	setflag FLAG_TUCKER_DEFEATED
+	setflag FLAG_WALLY_ROUTE111_DEFEATED
+	setflag FLAG_FALKNER_DEFEATED
+	setflag FLAG_HIDE_LANCE
 	call EventScript_ResetAllBerries
 	end

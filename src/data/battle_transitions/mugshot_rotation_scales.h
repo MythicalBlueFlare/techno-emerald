@@ -104,4 +104,5 @@ static const s16 sMugshotsOpponentRotationScales[TRAINER_PIC_COUNT] =
     [TRAINER_PIC_ROCKER]                = 0x200,
     [TRAINER_PIC_FALKNER]               = 0x200,
     [TRAINER_PIC_JASMINE]               = 0x200,
+    [TRAINER_PIC_LANCE]                 = 0x200,
 };

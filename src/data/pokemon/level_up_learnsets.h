@@ -10632,6 +10632,7 @@ static const struct LevelUpMove sZebstrikaLevelUpLearnset[] = {
     LEVEL_UP_MOVE(37, MOVE_FIRE_LASH),
     LEVEL_UP_MOVE(40, MOVE_WILD_CHARGE),
     LEVEL_UP_MOVE(46, MOVE_FLARE_BLITZ),
+    LEVEL_UP_MOVE(54, MOVE_VOLT_TACKLE),
     LEVEL_UP_END
 };
 

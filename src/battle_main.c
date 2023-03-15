@@ -390,6 +390,7 @@ const struct TrainerMoney gTrainerMoneyTable[] =
 	{TRAINER_CLASS_FORMER_CHAMPION, 50},
 	{TRAINER_CLASS_FINAL_RIVAL, 15},
     {TRAINER_CLASS_JOHTO_LEADER, 25},
+    {TRAINER_CLASS_JOHTO_CHAMPION, 50},
     {0xFF, 5}, // Any trainer class not listed above uses this
 };
 

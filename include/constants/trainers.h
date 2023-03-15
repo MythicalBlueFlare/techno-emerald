@@ -121,8 +121,9 @@
 #define TRAINER_PIC_ROCKER     	          101
 #define TRAINER_PIC_FALKNER	              102
 #define TRAINER_PIC_JASMINE      	      103
+#define TRAINER_PIC_LANCE        	      104
 
-#define TRAINER_PIC_COUNT                 104
+#define TRAINER_PIC_COUNT                 105
 
 // The player back pics are assumed to alternate according to the gender values (MALE/FEMALE)
 #define TRAINER_BACK_PIC_BRENDAN                0
@@ -371,6 +372,7 @@
 #define TRAINER_CLASS_VICTORY_ROAD   0x45
 #define TRAINER_CLASS_FINAL_RIVAL  0x46
 #define TRAINER_CLASS_JOHTO_LEADER   0x47
+#define TRAINER_CLASS_JOHTO_CHAMPION   0x48
 
 #define TRAINER_ENCOUNTER_MUSIC_MALE         0 // standard male encounter music
 #define TRAINER_ENCOUNTER_MUSIC_FEMALE       1 // standard female encounter music

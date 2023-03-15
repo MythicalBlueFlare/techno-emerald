@@ -7403,6 +7403,8 @@ u16 GetBattleBGM(void)
 			return MUS_VS_FINAL_WALLY;
         case TRAINER_CLASS_JOHTO_LEADER:
             return MUS_VS_GSC_GYM_LEADER;
+        case TRAINER_CLASS_JOHTO_CHAMPION:
+            return MUS_VS_GSC_CHAMPION;
         default:
             return MUS_VS_TRAINER;
         }
@@ -8305,7 +8307,7 @@ u8 GetLevelCap(void)
 	if (FlagGet(FLAG_HIDE_MAUVILLE_CITY_WALLY))
 		return 35;
     if (FlagGet(FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE))
-        return 32;
+        return 90;
 	if (FlagGet(FLAG_DELIVERED_DEVON_GOODS))
 		return 30;
     if (FlagGet(FLAG_DELIVERED_STEVEN_LETTER))

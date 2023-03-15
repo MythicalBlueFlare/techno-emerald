@@ -60,9 +60,9 @@
 #define FLAG_TUCKER_DEFEATED   0x30
 #define FLAG_CHALLENGING_ELITE_4  0x31 
 #define FLAG_MORTY_DEFEATED    0x32 
-#define FLAG_UNUSED_0x033    0x33 // Unused Flag
-#define FLAG_UNUSED_0x034    0x34 // Unused Flag
-#define FLAG_UNUSED_0x035    0x35 // Unused Flag
+#define FLAG_FALKNER_DEFEATED    0x33 
+#define FLAG_JASMINE_DEFEATED    0x34
+#define FLAG_HIDE_LANCE    0x35 
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
 #define FLAG_UNUSED_0x037    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
