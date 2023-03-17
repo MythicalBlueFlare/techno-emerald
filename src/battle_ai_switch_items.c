@@ -79,7 +79,7 @@ static bool8 HasBadOdds(void)
 		if (GetMostSuitableMonToSwitchInto()==PARTY_SIZE) //If there is no better option...
 			return FALSE;
 		if ((!HasSuperEffectiveMoveAgainstOpponents(FALSE))
-			&& (gBattleMons[gActiveBattler].hp >= gBattleMons[gActiveBattler].maxHP/6)) //If the computer doesn't have a super effective move AND they have >1/6 their HP...
+			&& (gBattleMons[gActiveBattler].hp >= gBattleMons[gActiveBattler].maxHP/4)) //If the computer doesn't have a super effective move AND they have >1/4 their HP...
 		{
 			for (i = 0; i < MAX_MON_MOVES; i++) //Then check their moves to see if they have a status move. If you have a status move, you probably want to use it even if you don't have the advantage.
 			{
@@ -103,6 +103,22 @@ static bool8 HasBadOdds(void)
 		}
 	}
 	return FALSE;
+}
+
+static bool8 ShouldSwitchIfStatsDecreased(void)
+{
+    s32 i;
+
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        if (gBattleMons[gActiveBattler].statStages[i] < 5)
+        {
+            *(gBattleStruct->AI_monToSwitchIntoId + gActiveBattler) = PARTY_SIZE;
+            BtlController_EmitTwoReturnValues(BUFFER_B, B_ACTION_SWITCH, 0);
+            return (Random() & 1);
+        }
+    }
+    return FALSE;
 }
 
 static bool8 ShouldSwitchIfAllBadMoves(void)
@@ -556,6 +572,8 @@ if (availableToSwitch == 0)
         return TRUE;
 	if (HasBadOdds())
 		return TRUE;
+    if (ShouldSwitchIfStatsDecreased())
+        return TRUE;
     if (FindMonThatAbsorbsOpponentsMove())
         return TRUE;
     if (ShouldSwitchIfNaturalCure())

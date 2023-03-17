@@ -48,7 +48,9 @@ EverGrandeCity_EventScript_Lance::
 	msgbox EverGrandeCity_Text_LanceFaceMeWithCourage, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_LANCE, EverGrandeCity_Text_LanceDefeat
 	msgbox EverGrandeCity_Text_LanceTrulyPowerful
+	closemessage
 	givemon SPECIES_AERODACTYL, 75, ITEM_AERODACTYLITE
+	closemessage
 	setfieldeffectargument 0, 1
 	dofieldeffect FLDEFF_NPCFLY_OUT
 	delay 15
