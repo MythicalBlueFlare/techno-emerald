@@ -244,6 +244,10 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Storyteller;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Giddy;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan1;
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_UnusedMauvilleOldMan2;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Falkner;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Morty;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Jasmine;
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lance;
 
 
 const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM_OBJ_EVENT_GFX] = {
@@ -486,6 +490,10 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LINK_RS_MAY] =              &gObjectEventGraphicsInfo_RubySapphireMay,
     [OBJ_EVENT_GFX_LUGIA] =                    &gObjectEventGraphicsInfo_Lugia,
     [OBJ_EVENT_GFX_HOOH] =                     &gObjectEventGraphicsInfo_HoOh,
+    [OBJ_EVENT_GFX_FALKNER] =                  &gObjectEventGraphicsInfo_Falkner,
+    [OBJ_EVENT_GFX_MORTY] =                    &gObjectEventGraphicsInfo_Morty,
+    [OBJ_EVENT_GFX_JASMINE] =                  &gObjectEventGraphicsInfo_Jasmine,
+    [OBJ_EVENT_GFX_LANCE] =                    &gObjectEventGraphicsInfo_Lance,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

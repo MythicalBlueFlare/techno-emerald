@@ -43,8 +43,6 @@ EverGrandeCity_EventScript_Lance::
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
 	waitmovement 0
-	applymovement LOCALID_LANCE, Common_Movement_WalkUp
-	waitmovement 0
 	msgbox EverGrandeCity_Text_LanceFaceMeWithCourage, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_LANCE, EverGrandeCity_Text_LanceDefeat
 	msgbox EverGrandeCity_Text_LanceTrulyPowerful
