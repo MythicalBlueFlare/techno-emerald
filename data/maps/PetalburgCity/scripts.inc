@@ -94,8 +94,6 @@ PetalburgCity_EventScript_Boy::
 	closemessage
 	applymovement LOCALID_BOY, Common_Movement_FaceOriginalDirection
 	waitmovement 0
-	setflag FLAG_HIDE_LANCE
-	warp MAP_FORTREE_CITY, 25, 9
 	release
 	end
 

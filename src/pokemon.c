@@ -8306,8 +8306,8 @@ u8 GetLevelCap(void)
         return 38;
 	if (FlagGet(FLAG_HIDE_MAUVILLE_CITY_WALLY))
 		return 35;
-    if (FlagGet(FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE))
-        return 90;
+    if (FlagGet(FLAG_RIVAL_ROUTE110_DEFEATED))
+        return 32;
 	if (FlagGet(FLAG_DELIVERED_DEVON_GOODS))
 		return 30;
     if (FlagGet(FLAG_DELIVERED_STEVEN_LETTER))

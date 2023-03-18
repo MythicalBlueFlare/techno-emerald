@@ -91,15 +91,18 @@ FortreeCity_Movement_KecleonFlee:
 
 FortreeCity_EventScript_Falkner::
 	lockall
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 	addobject LOCALID_FALKNER
-	applymovement LOCALID_FALKNER, FortreeCity_Movement_FalknerApproachPlayer
-	waitmovement 0
-	playse SE_PIN
-	applymovement LOCALID_FALKNER, Common_Movement_ExclamationMark
-	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	applymovement LOCALID_FALKNER, Common_Movement_Delay48
+	playse SE_PIN
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48
+	waitmovement 0
+	applymovement LOCALID_FALKNER, FortreeCity_Movement_FalknerApproachPlayer
 	waitmovement 0
 	msgbox FortreeCity_Text_ImFalkner, MSGBOX_DEFAULT
 	closemessage
@@ -113,18 +116,16 @@ FortreeCity_EventScript_Falkner::
 	closemessage
 	msgbox FortreeCity_Text_FalknerLeave, MSGBOX_DEFAULT
 	closemessage
-	playse SE_EXIT
-	fadescreen FADE_TO_BLACK
+	setfieldeffectargument 0, 1
+	dofieldeffect FLDEFF_NPCFLY_OUT
+	delay 15
 	removeobject LOCALID_FALKNER
+	waitfieldeffect FLDEFF_NPCFLY_OUT
 	setvar VAR_FALKNER_DEFEATED, 1
-	fadescreen FADE_FROM_BLACK
 	release 
 	end 
 	
 FortreeCity_Movement_FalknerApproachPlayer:
-	walk_down
-	walk_down
-	walk_down
 	walk_down
 	walk_down
 	walk_down

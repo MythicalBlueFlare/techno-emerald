@@ -487,6 +487,7 @@ Route110_EventScript_RivalExit::
 	setvar VAR_ROUTE110_STATE, 1
 	savebgm MUS_DUMMY
 	fadedefaultbgm
+	setflag FLAG_RIVAL_ROUTE110_DEFEATED
 	releaseall
 	end
 
