@@ -1615,7 +1615,7 @@ SootopolisCity_Text_AfterAllOurScheming:
 SootopolisCity_Text_KyogreCalmDown:
 	.string "ARCHIE: ZEKROM! What's wrong?!\n"
 	.string "Look over here! It's the RED ORB!\l"
-	.string "Calm down! KYOGRE!\p"
+	.string "Calm down! ZEKROM!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "It's no good!\n"

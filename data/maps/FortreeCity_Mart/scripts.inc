@@ -28,6 +28,10 @@ FortreeCity_Mart_Pokemart:
 	.2byte ITEM_PETAYA_BERRY
 	.2byte ITEM_APICOT_BERRY
 	.2byte ITEM_LANSAT_BERRY
+	.2byte ITEM_YELLOW_NECTAR
+	.2byte ITEM_PINK_NECTAR
+	.2byte ITEM_PURPLE_NECTAR
+	.2byte ITEM_RED_NECTAR
 	.2byte ITEM_NONE
 	release
 	end

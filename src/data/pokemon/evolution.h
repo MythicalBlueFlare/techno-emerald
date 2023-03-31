@@ -388,7 +388,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_LITLEO]                = {{EVO_LEVEL, 20, SPECIES_PYROAR}},
     [SPECIES_FLABEBE]               = {{EVO_LEVEL, 19, SPECIES_FLOETTE}},
     [SPECIES_FLOETTE]               = {{EVO_ITEM, ITEM_SHINY_STONE, SPECIES_FLORGES}},
-    [SPECIES_SKIDDO]                = {{EVO_LEVEL, 28, SPECIES_GOGOAT}},
+    [SPECIES_SKIDDO]                = {{EVO_LEVEL, 27, SPECIES_GOGOAT}},
     [SPECIES_PANCHAM]               = {{EVO_LEVEL, 30, SPECIES_PANGORO}},
     [SPECIES_ESPURR]                = {{EVO_LEVEL_MALE, 25, SPECIES_MEOWSTIC},
                                        {EVO_LEVEL_FEMALE, 25, SPECIES_MEOWSTIC_FEMALE}},

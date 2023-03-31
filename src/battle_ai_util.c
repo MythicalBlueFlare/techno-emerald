@@ -1038,7 +1038,8 @@ bool32 CanTargetFaintAi(u8 battlerDef, u8 battlerAtk)
 {
     s32 i, dmg;
     u32 unusable = CheckMoveLimitations(battlerDef, 0, MOVE_LIMITATIONS_ALL);
-    u16 *moves = gBattleResources->battleHistory->usedMoves[battlerDef];
+    // u16 *moves = gBattleResources->battleHistory->usedMoves[battlerDef];
+    u16 *moves = gBattleMons[battlerDef].moves;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
     {

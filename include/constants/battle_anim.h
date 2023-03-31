@@ -538,8 +538,9 @@
 #define B_ANIM_PERMANENT_TORMENTP1      36
 #define B_ANIM_PERMANENT_TORMENTP2      37
 #define B_ANIM_PERMANENT_GRUDGE         38
-#define B_ANIM_PERMANENT_STEELY_SPIRIT  39
+#define B_ANIM_PERMANENT_FIRE_IMMUNITY  39
 #define B_ANIM_PERMANENT_MOLD_BREAKER   40
+#define B_ANIM_PERMANENT_DAZZLING       41
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

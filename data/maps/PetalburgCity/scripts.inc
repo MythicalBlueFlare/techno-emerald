@@ -715,10 +715,15 @@ PetalburgCity_EventScript_GymBoy::
 	end
 	
 PetalburgCity_EventScript_Sidney::
+	lock
+	faceplayer
 	setvar VAR_BATTLE_STATUS, 4
 	msgbox PetalburgCity_Text_SidneyApologies, MSGBOX_DEFAULT
+	closemessage
 	playse SE_PIN
 	applymovement LOCALID_SIDNEY, Common_Movement_ExclamationMark
+	waitmovement 0
+	applymovement LOCALID_SIDNEY, Common_Movement_Delay48
 	waitmovement 0
 	trainerbattle_single TRAINER_SIDNEY_PETALBURG_CITY, PetalburgCity_Text_SidneyIntro, PetalburgCity_Text_SidneyDefeat, PetalburgCity_EventScript_SidneyDefeated, MUSIC
 	end

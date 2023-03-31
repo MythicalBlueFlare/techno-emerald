@@ -465,7 +465,7 @@ MossdeepCity_Text_SootopolisNewGymLeader:
 
 MossdeepCity_Text_IveBeenExpectingYou:
 	.string "Oh?\n"
-	.string "You must be {PLAYER}\l"
+	.string "You must be {PLAYER}.\l"
 	.string "I've been expecting you.$" 
 	
 MossdeepCity_Text_ComeBackAfterBeatingRoxanne:

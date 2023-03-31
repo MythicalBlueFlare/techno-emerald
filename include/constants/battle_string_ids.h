@@ -615,10 +615,12 @@
 #define STRINGID_PERMAMAGNETRISE                      613
 #define STRINGID_PERMATORMENT                         614
 #define STRINGID_PERMAGRUDGE                          615
-#define STRINGID_PERMASTEELYSPIRIT                    616
-#define STRINGID_PERMAMOLDBREAKER                     617
+#define STRINGID_IMMUNITYTOFIRE                       616
+#define STRINGID_MOVESMOLDEREDOUT                     617
+#define STRINGID_PERMAMOLDBREAKER                     618
+#define STRINGID_PERMADAZZLING                        619
 
-#define BATTLESTRINGS_COUNT                           618
+#define BATTLESTRINGS_COUNT                           620
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

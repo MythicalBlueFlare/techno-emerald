@@ -420,8 +420,11 @@ extern const u8 BattleScript_EffectPermanentTailwind[];
 extern const u8 BattleScript_EffectPermanentTrickRoom[];
 extern const u8 BattleScript_EffectPermanentMagnetRise[];
 extern const u8 BattleScript_EffectPermanentTorment[];
+extern const u8 BattleScript_EffectPermanentTormentDouble[];
 extern const u8 BattleScript_EffectPermanentGrudge[];
-extern const u8 BattleScript_EffectPermanentSteelySpirit[];
+extern const u8 BattleScript_EffectFireMoveSmoldered[];
+extern const u8 BattleScript_EffectImmunityToFire[];
 extern const u8 BattleScript_EffectPermanentMoldBreaker[];
+extern const u8 BattleScript_EffectPermanentDazzling[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

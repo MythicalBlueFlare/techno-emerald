@@ -313,11 +313,11 @@ static u8 ChooseMoveOrAction_Singles(void)
         && !(gBattleMons[gActiveBattler].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION))
         && !(gStatuses3[gActiveBattler] & STATUS3_ROOTED)
         && !(gBattleTypeFlags & (BATTLE_TYPE_ARENA | BATTLE_TYPE_PALACE))
-        && AI_THINKING_STRUCT->aiFlags & (AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_PREFER_BATON_PASS))
+        && AI_THINKING_STRUCT->aiFlags & (AI_FLAG_CHECK_VIABILITY | AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT))
     {
         // Consider switching if all moves are worthless to use.
-        if (GetTotalBaseStat(gBattleMons[sBattler_AI].species) >= 310 // Mon is not weak.
-            && gBattleMons[sBattler_AI].hp >= gBattleMons[sBattler_AI].maxHP / 2)
+        if (GetTotalBaseStat(gBattleMons[sBattler_AI].species) > 300 // Mon is not weak.
+            && gBattleMons[sBattler_AI].hp >= gBattleMons[sBattler_AI].maxHP / 4)
         {
             s32 cap = AI_THINKING_STRUCT->aiFlags & (AI_FLAG_CHECK_VIABILITY) ? 95 : 93;
             for (i = 0; i < MAX_MON_MOVES; i++)
@@ -2494,17 +2494,21 @@ static s16 AI_CheckBadMove(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
 }
 
 static s16 AI_TryToFaint(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
-{    
+{
     if (IsTargetingPartner(battlerAtk, battlerDef))
         return score;
-    
+
     if (gBattleMoves[move].power == 0)
         return score;   // can't make anything faint with no power
-    
-    if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex, 0) && gBattleMoves[move].effect != EFFECT_EXPLOSION)
+
+    if (!WillAIStrikeFirst() && CanTargetFaintAi(battlerDef, battlerAtk) && (GetMovePriority(battlerAtk, move) > 0))
+    {
+        score += 4;
+    }
+    else if (CanIndexMoveFaintTarget(battlerAtk, battlerDef, AI_THINKING_STRUCT->movesetIndex, 0) && gBattleMoves[move].effect != EFFECT_EXPLOSION)
     {
         // this move can faint the target
-        if (!WillAIStrikeFirst() || GetMovePriority(battlerAtk, move) > 0)
+        if (WillAIStrikeFirst() || GetMovePriority(battlerAtk, move) > 0)
             score += 4; // we go first or we're using priority move
         else
             score += 2;
@@ -2514,10 +2518,10 @@ static s16 AI_TryToFaint(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         // this move isn't expected to faint the target
         if (TestMoveFlags(move, FLAG_HIGH_CRIT))
             score += 2; // crit makes it more likely to make them faint
-        
+
         if (GetMoveDamageResult(move) == MOVE_POWER_OTHER)
             score--;
-        
+
         switch (AI_GetMoveEffectiveness(move, battlerAtk, battlerDef))
         {
         case AI_EFFECTIVENESS_x4:
@@ -2550,7 +2554,7 @@ static s16 AI_TryToFaint(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
             break;
         }
     }
-    
+
     //AI_TryToFaint_CheckIfDanger
     if (!WillAIStrikeFirst() && CanTargetFaintAi(battlerDef, battlerAtk))
     { // AI_TryToFaint_Danger
@@ -2559,7 +2563,7 @@ static s16 AI_TryToFaint(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         else
             score++;
     }
-    
+
     return score;
 }
 

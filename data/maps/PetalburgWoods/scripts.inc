@@ -328,11 +328,12 @@ PetalburgWoods_EventScript_Anabel::
 	setweather WEATHER_RAIN
 	doweather
 	setvar VAR_SET_TERRAIN, STATUS_FIELD_GRASSY_TERRAIN
+	setvar VAR_BATTLE_STATUS, 8
 	trainerbattle_single TRAINER_ANABEL_1, PetalburgWoods_Text_AnabelIntro, PetalburgWoods_Text_AnabelDefeat, PetalburgWoods_EventScript_AnabelDefeated, NO_MUSIC
 	end 
 	
 PetalburgWoods_EventScript_AnabelDefeated:: 
-	setweather WEATHER_NONE
+	setweather WEATHER_SHADE
 	doweather
 	msgbox PetalburgWoods_Text_AnabelLeave, MSGBOX_DEFAULT
 	closemessage

@@ -23,7 +23,6 @@ VerdanturfTown_Mart_Pokemart:
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
 	.2byte ITEM_REPEL
-	.2byte ITEM_X_SP_ATK
 	.2byte ITEM_KASIB_BERRY
 	.2byte ITEM_CHILAN_BERRY
 	.2byte ITEM_NONE

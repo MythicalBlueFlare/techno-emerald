@@ -1,6 +1,6 @@
 .set LOCALID_RIVAL, 16
 .set LOCALID_RIVAL_ON_BIKE, 25
-.set LOCALID_SCOTT, 43
+.set LOCALID_SCOTT, 42
 
 Route119_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route119_OnResume
@@ -32,11 +32,15 @@ Route119_EventScript_MoveInstituteWorkersDownstairs::
 
 Route119_EventScript_RivalTrigger1::
 	setvar VAR_TEMP_1, 1
+	setweather WEATHER_NONE  
+	doweather
 	goto Route119_EventScript_RivalEncounter
 	end
 
 Route119_EventScript_RivalTrigger2::
 	setvar VAR_TEMP_1, 2
+	setweather WEATHER_NONE  
+	doweather
 	goto Route119_EventScript_RivalEncounter
 	end
 

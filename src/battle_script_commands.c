@@ -1367,6 +1367,15 @@ static void Cmd_attackcanceler(void)
         return;
     }
 
+    if (moveType == TYPE_FIRE 
+     && VarGet(VAR_BATTLE_STATUS) == 6
+     && gBattleMoves[gCurrentMove].power)
+    {
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_EffectFireMoveSmoldered;
+        return;
+    }
+
     if (moveType == TYPE_WATER
      && (gBattleWeather & B_WEATHER_SUN_PRIMAL)
      && WEATHER_HAS_EFFECT

@@ -12793,7 +12793,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_HUMAN_LIKE,
         .eggGroup2 = EGG_GROUP_HUMAN_LIKE,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_ANTICIPATION, ABILITY_DRY_SKIN, ABILITY_POISON_TOUCH},
+            .abilities = {ABILITY_UNBURDEN, ABILITY_DRY_SKIN, ABILITY_POISON_TOUCH},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE},
         #endif
@@ -12824,7 +12824,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_HUMAN_LIKE,
         .eggGroup2 = EGG_GROUP_HUMAN_LIKE,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_ANTICIPATION, ABILITY_DRY_SKIN, ABILITY_POISON_TOUCH},
+            .abilities = {ABILITY_UNBURDEN, ABILITY_DRY_SKIN, ABILITY_POISON_TOUCH},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE},
         #endif
@@ -22737,7 +22737,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_UNDISCOVERED,
         .eggGroup2 = EGG_GROUP_UNDISCOVERED,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_BEAST_BOOST, ABILITY_NONE},
+            .abilities = {ABILITY_LEVITATE, ABILITY_NONE, ABILITY_BEAST_BOOST},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE},
         #endif
@@ -22766,7 +22766,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_UNDISCOVERED,
         .eggGroup2 = EGG_GROUP_UNDISCOVERED,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_BEAST_BOOST, ABILITY_NONE},
+            .abilities = {ABILITY_LEVITATE, ABILITY_NONE, ABILITY_BEAST_BOOST},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE},
         #endif

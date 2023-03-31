@@ -180,7 +180,7 @@
       "x": 30,
       "y": 6,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
+      "var": "VAR_BRANDON_ENCOUNTER",
       "var_value": "0",
       "script": "VictoryRoad_1F_EventScript_BrandonEncounter1"
     },

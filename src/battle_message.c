@@ -739,8 +739,10 @@ static const u8 sText_PermaTwistedDimensions[] = _("The opponent permanently twi
 static const u8 sText_PermaMagnetRise[] = _("The opponent's team levitated on\nelectromagnetism!");
 static const u8 sText_PermaTorment[] = _("Your team was subjected\nto an endless Torment!");
 static const u8 sText_PermaGrudge[] = _("The opponent's team is\nbearing a Grudge!");
-static const u8 sText_PermaSteelySpirit[] = _("The opponent's steel spirit is strong!");
+static const u8 sText_ImmunityToFire[] = _("The opponent's Pokémon have developed\nan immunity to fire!");
+static const u8 sText_MoveSmolderedOut[] = _("The Fire-type attack smoldered out!");
 static const u8 sText_PermaMoldBreaker[] = _("The opponent breaks the mold!");
+static const u8 sText_PermaDazzling[] = _("The opponent's dazzling battle style\nprevents the use of priority moves!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1348,8 +1350,10 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_PERMAMAGNETRISE - BATTLESTRINGS_TABLE_START] = sText_PermaMagnetRise,
     [STRINGID_PERMATORMENT - BATTLESTRINGS_TABLE_START] = sText_PermaTorment,
     [STRINGID_PERMAGRUDGE - BATTLESTRINGS_TABLE_START] = sText_PermaGrudge,
-    [STRINGID_PERMASTEELYSPIRIT - BATTLESTRINGS_TABLE_START] = sText_PermaSteelySpirit,
+    [STRINGID_IMMUNITYTOFIRE - BATTLESTRINGS_TABLE_START] = sText_ImmunityToFire,
+    [STRINGID_MOVESMOLDEREDOUT - BATTLESTRINGS_TABLE_START] = sText_MoveSmolderedOut,
     [STRINGID_PERMAMOLDBREAKER - BATTLESTRINGS_TABLE_START] = sText_PermaMoldBreaker,
+    [STRINGID_PERMADAZZLING - BATTLESTRINGS_TABLE_START] = sText_PermaDazzling,
 };
 
 const u16 gMentalHerbCureStringIds[] = 
@@ -1980,7 +1984,7 @@ static const u8 sText_MortyLastLowHp[] = _("We've got more discipline than anyon
 static const u8 sText_FalknerLastSwitchIn[] = _("The wind is finally with us!\p");
 static const u8 sText_FalknerLastLowHp[] = _("We can still fly!\p");
 
-static const u8 sText_Steven3LastSwitchIn[] = _("This last few moments will decide\n everything!\p");
+static const u8 sText_Steven3LastSwitchIn[] = _("These last few moments will decide\n everything!\p");
 static const u8 sText_Steven3LastLowHp[] = _("So it comes down to this…\p");
 
 static const u8 sText_DrakeLastSwitchIn[] = _("Don't underestimate the mighty\ndragon!\p");

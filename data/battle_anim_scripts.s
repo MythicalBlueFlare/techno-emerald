@@ -840,8 +840,9 @@ gBattleAnims_General::
 	.4byte General_PermanentTormentPart1	@ B_ANIM_PERMANENT_TORMENTP1
 	.4byte General_PermanentTormentPart2	@ B_ANIM_PERMANENT_TORMENTP2
 	.4byte General_PermanentGrudge 			@ B_ANIM_PERMANENT_GRUDGE
-	.4byte General_PermanentSteelySpirit	@ B_ANIM_PERMANENT_STEELY_SPIRIT
+	.4byte General_PermanentFireImmunity	@ B_ANIM_PERMANENT_FIRE_IMMUNITY
 	.4byte General_PermanentMoldBreaker 	@ B_ANIM_PERMANENT_MOLD_BREAKER
+	.4byte General_PermanentDazzling	    @ B_ANIM_PERMANENT_DAZZLING
 
 	.align 2
 gBattleAnims_Special::
@@ -25033,10 +25034,38 @@ General_PermanentGrudge::
 	clearmonbg ANIM_ATTACKER
 	end
 
-General_PermanentSteelySpirit::
-	loopsewithpan SE_SHINY, SOUND_PAN_ATTACKER, 28, 2
-	createvisualtask AnimTask_MetallicShine, 5, 0, 0, 0
-	createsprite gComplexPaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 1, 8, 2, RGB_WHITEALPHA, 14, RGB_WHITEALPHA, 0
+General_PermanentFireImmunity::
+	loadspritegfx ANIM_TAG_SMALL_EMBER
+	fadetobg BG_MAGMA_STORM @Add new bg
+	waitbgfadeout
+	createvisualtask AnimTask_MoveSeismicTossBg, 3
+	playsewithpan SE_M_SACRED_FIRE2, SOUND_PAN_ATTACKER
+	loopsewithpan SE_M_SACRED_FIRE2, SOUND_PAN_ATTACKER, 5, 8
+	createvisualtask AnimTask_SeismicTossBgAccelerateDownAtEnd, 3
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_ATTACKER, 0, 2, 47, 1
+	createvisualtask AnimTask_BlendColorCycle, 2, 6, 4, 2, 2, 0, 12, RGB(22, 9, 7)
+	call FireSpinEffect
+	call FireSpinEffect
+	createvisualtask AnimTask_BlendColorCycle, 2, 6, 4, 2, 2, 0, 12, RGB(22, 9, 7)
+	call FireSpinEffect
+	call FireSpinEffect
+	createvisualtask AnimTask_BlendColorCycle, 2, 6, 4, 2, 2, 0, 12, RGB(22, 9, 7)
+	call FireSpinEffect
+	restorebg
+	waitbgfadeout
+	setarg 7, 0xFFF
+	waitbgfadein
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	loadspritegfx ANIM_TAG_FOCUS_ENERGY
+	playsewithpan SE_M_DRAGON_RAGE, SOUND_PAN_ATTACKER
+	call EndureEffect
+	delay 8
+	createvisualtask AnimTask_BlendColorCycle, 2, 2, 2, 2, 0, 11, RGB_RED
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_ATTACKER, 1, 0, 32, 1
+	call EndureEffect
+	delay 8
+	call EndureEffect
 	waitforvisualfinish
 	end
 
@@ -25083,6 +25112,21 @@ OutrageFlames:
 	delay 0
 	createsprite gOutrageFlameSpriteTemplate, ANIM_TARGET, 2, 0, 0, 30, -1280, -768, 3
 	return
+
+General_PermanentDazzling:
+	loadspritegfx ANIM_TAG_SPARKLE_2
+	loadspritegfx ANIM_TAG_BLUE_STAR
+	launchtemplate gSimplePaletteBlendSpriteTemplate 0x2 0x5 0x1 0x2 0x0 0xd 0x7fff
+	playsewithpan SE_M_TWISTER, SOUND_PAN_ATTACKER
+	@call 0x081D56B3 -> middle of GrantingStarsEffect
+	createsprite gGrantingStarsSpriteTemplate, ANIM_ATTACKER, 2, 12, -5, 0, 0, 32, 60
+	delay 8
+	waitforvisualfinish
+	launchtemplate gSimplePaletteBlendSpriteTemplate 0x2 0x5 0x1 0x0 0xd 0x0 0x7fff
+	waitforvisualfinish
+	clearmonbg 0x0
+	blendoff
+	end
 
 SnatchMoveTrySwapFromSubstitute:
 	createvisualtask AnimTask_IsAttackerBehindSubstitute, 2

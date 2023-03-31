@@ -9445,9 +9445,14 @@ BattleScript_EffectPermanentTrickRoom::
 
 BattleScript_EffectPermanentTorment::
     printstring STRINGID_PERMATORMENT
-	waitmessage B_WAIT_TIME_LONG
-	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_TORMENTP1
-	playanimation BS_PLAYER2, B_ANIM_PERMANENT_TORMENTP2
+    waitmessage B_WAIT_TIME_LONG
+    playanimation BS_OPPONENT1, B_ANIM_PERMANENT_TORMENTP1
+    jumpifbattletype BATTLE_TYPE_DOUBLE, BattleScript_EffectPermanentTormentDouble
+    playanimation BS_PLAYER1, B_ANIM_PERMANENT_TORMENTP2
+    end3
+
+BattleScript_EffectPermanentTormentDouble:
+    playanimation BS_PLAYER2, B_ANIM_PERMANENT_TORMENTP2
     end3
 
 BattleScript_EffectPermanentGrudge::
@@ -9456,14 +9461,29 @@ BattleScript_EffectPermanentGrudge::
 	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_GRUDGE
     end3
 
-BattleScript_EffectPermanentSteelySpirit::
-	printstring STRINGID_PERMASTEELYSPIRIT
+BattleScript_EffectImmunityToFire::
+	printstring STRINGID_IMMUNITYTOFIRE
 	waitmessage B_WAIT_TIME_LONG
-	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_STEELY_SPIRIT
+	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_FIRE_IMMUNITY
     end3
+
+BattleScript_EffectFireMoveSmoldered::
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	pause B_WAIT_TIME_SHORT
+	ppreduce
+	printstring STRINGID_MOVESMOLDEREDOUT
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EffectPermanentMoldBreaker::
 	printstring STRINGID_PERMAMOLDBREAKER
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_MOLD_BREAKER
+    end3
+
+BattleScript_EffectPermanentDazzling::
+	printstring STRINGID_PERMADAZZLING
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_DAZZLING
     end3

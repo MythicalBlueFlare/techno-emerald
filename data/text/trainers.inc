@@ -1158,15 +1158,16 @@ Route110_Text_DalePostBattle:
 	.string "You have to focus on the floater.$"
 
 Route110_Text_IsabelIntro:
-	.string "Ahahaha! I would go anywhere to show\n"
-	.string "off my delightful POKéMON.$"
+	.string "I have trained and honed my battling\n"
+	.string "skills for this moment!$"
 
 Route110_Text_IsabelDefeated:
-	.string "Oh, dear, this won't do.$"
+	.string "You just got lucky!$"
 
 Route110_Text_IsabelPostBattle:
-	.string "Rather than battling, perhaps I should\n"
-	.string "show off my POKéMON at the FAN CLUB.$"
+	.string "You have a strong aura.\n"
+	.string "Perhaps you winning wasn't just\l"
+	.string "luck.$"
 
 Route110_Text_IsabelRegister:
 	.string "That wasn't close to what I could\n"

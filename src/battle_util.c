@@ -10102,11 +10102,14 @@ bool8 TryBattleStatus(void)
         gStatuses3[B_POSITION_OPPONENT_RIGHT] |= STATUS3_GRUDGE;
         BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentGrudge);
         return TRUE;
-    case 6: // Steely Spirit
-        BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentSteelySpirit);
+    case 6: // Prevent Fire Moves
+        BattleScriptPushCursorAndCallback(BattleScript_EffectImmunityToFire);
         return TRUE;
     case 7: // Mold Breaker
         BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentMoldBreaker);
+        return TRUE;
+    case 8: // Dazzling
+        BattleScriptPushCursorAndCallback(BattleScript_EffectPermanentDazzling);
         return TRUE;
     default:
         gStatuses3[B_POSITION_OPPONENT_LEFT] &= ~STATUS3_GRUDGE;
