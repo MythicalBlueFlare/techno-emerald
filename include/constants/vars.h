@@ -94,11 +94,11 @@
 #define VAR_POKELOT_RND1                     0x404B
 #define VAR_POKELOT_RND2                     0x404C
 #define VAR_POKELOT_PRIZE_PLACE              0x404D
-#define VAR_FALKNER_DEFEATED               0x404E // Unused Var
+#define VAR_FALKNER_DEFEATED                 0x404E 
 #define VAR_LOTAD_SIZE_RECORD                0x404F
 #define VAR_LITTLEROOT_TOWN_STATE            0x4050
 #define VAR_OLDALE_TOWN_STATE                0x4051
-#define VAR_DEWFORD_TOWN_STATE               0x4052 // Unused Var
+#define VAR_REPEL_LAST_USED                  0x4052    
 #define VAR_LAVARIDGE_TOWN_STATE             0x4053
 #define VAR_CURRENT_SECRET_BASE              0x4054 // was probably allocated for VAR_FALLARBOR_TOWN_STATE at one point
 #define VAR_VERDANTURF_TOWN_STATE            0x4055 // Unused Var
@@ -155,7 +155,7 @@
 #define VAR_CONTEST_TYPE                     0x4088
 #define VAR_SECRET_BASE_INITIALIZED          0x4089
 #define VAR_CONTEST_PRIZE_PICKUP             0x408A
-#define VAR_JASMINE_ENCOUNTER                   0x408B 
+#define VAR_JASMINE_ENCOUNTER                0x408B 
 #define VAR_LITTLEROOT_HOUSES_STATE_BRENDAN  0x408C
 #define VAR_LITTLEROOT_RIVAL_STATE           0x408D
 #define VAR_BOARD_BRINEY_BOAT_STATE          0x408E
@@ -263,14 +263,14 @@
 #define VAR_ROXANNE_CALL_STEP_COUNTER        0x40F4
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER       0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER 0x40F6
-#define VAR_NOLAND_ENCOUNTER               0x40F7
-#define VAR_WALLACE_ENCOUNTER                 0x40F8 
+#define VAR_NOLAND_ENCOUNTER                 0x40F7
+#define VAR_WALLACE_ENCOUNTER                0x40F8 
 #define VAR_CHALLENGING_ELITE_4              0x40F9 
-#define VAR_SET_TERRAIN                 0x40FA
-#define VAR_BATTLE_STATUS              0x40FB 
-#define VAR_BLAKE_ENCOUNTER                 0x40FC
-#define VAR_BRANDON_ENCOUNTER                   0x40FD 
-#define VAR_WALLY_JAGGED_PASS_ENCOUNTER                   0x40FE 
+#define VAR_SET_TERRAIN                      0x40FA
+#define VAR_BATTLE_STATUS                    0x40FB 
+#define VAR_BLAKE_ENCOUNTER                  0x40FC
+#define VAR_BRANDON_ENCOUNTER                0x40FD 
+#define VAR_WALLY_JAGGED_PASS_ENCOUNTER      0x40FE 
 #define VAR_UNUSED_0x40FF                    0x40FF
 
 #define VARS_END                             0x40FF
