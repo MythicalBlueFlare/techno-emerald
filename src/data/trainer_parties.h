@@ -1716,10 +1716,10 @@ static const struct TrainerMonItemCustomMoves sParty_Hope[] = {
 	{
     .iv = 255,
     .lvl = 90,
-    .species = SPECIES_JUMPLUFF,
-    .heldItem = ITEM_SITRUS_BERRY,
+    .species = SPECIES_LYCANROC_MIDNIGHT,
+    .heldItem = ITEM_CHOPLE_BERRY,
 	.abilityNums = 2,
-    .moves = {MOVE_DOUBLE_EDGE, MOVE_SEED_BOMB, MOVE_U_TURN, MOVE_SWORDS_DANCE}
+    .moves = {MOVE_ROCK_CLIMB, MOVE_DARKEST_LARIAT, MOVE_SUCKER_PUNCH, MOVE_COUNTER}
     },
     {
     .iv = 255,
@@ -4030,10 +4030,10 @@ static const struct TrainerMonItemCustomMoves sParty_Sidney[] = {
     {
     .iv = 255,
     .lvl = 100,
-    .species = SPECIES_MUK_ALOLAN,
-    .heldItem = ITEM_BLACK_SLUDGE,
-	.abilityNums = 1,
-    .moves = {MOVE_GUNK_SHOT, MOVE_DARKEST_LARIAT, MOVE_ICE_PUNCH, MOVE_DRAIN_PUNCH}
+    .species = SPECIES_DRAPION,
+    .heldItem = ITEM_SCOPE_LENS,
+	.abilityNums = 2,
+    .moves = {MOVE_CROSS_POISON, MOVE_NIGHT_SLASH, MOVE_BRICK_BREAK, MOVE_SWORDS_DANCE}
     },
     {
     .iv = 255,
@@ -4311,19 +4311,19 @@ static const struct TrainerMonItemCustomMoves sParty_Brawly1[] = {
 static const struct TrainerMonItemCustomMoves sParty_Wattson1[] = {
     {
     .iv = 255,
-    .lvl = 34,
-    .species = SPECIES_ZEBSTRIKA,
-	.heldItem = ITEM_FOCUS_SASH,
-	.abilityNums = 2,
-    .moves = {MOVE_ZING_ZAP, MOVE_BLAZE_KICK, MOVE_DOUBLE_KICK, MOVE_VOLT_SWITCH}
+    .lvl = 35,
+    .species = SPECIES_TOGEDEMARU,
+	.heldItem = ITEM_AIR_BALLOON,
+	.abilityNums = 0,
+    .moves = {MOVE_ZING_ZAP, MOVE_IRON_HEAD, MOVE_NUZZLE, MOVE_SPIKY_SHIELD}
     },
     {
     .iv = 255,
     .lvl = 34,
-    .species = SPECIES_VIKAVOLT,
-	.heldItem = ITEM_CHARTI_BERRY,
+    .species = SPECIES_GALVANTULA,
+	.heldItem = ITEM_SITRUS_BERRY,
 	.abilityNums = 0,
-    .moves = {MOVE_THUNDERBOLT, MOVE_BUG_BUZZ, MOVE_ENERGY_BALL, MOVE_ROOST}
+    .moves = {MOVE_THUNDERBOLT, MOVE_BUG_BUZZ, MOVE_ENERGY_BALL, MOVE_VOLT_SWITCH}
     },
     {
     .iv = 255,
@@ -4335,11 +4335,11 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson1[] = {
     },
     {
     .iv = 255,
-    .lvl = 35,
-    .species = SPECIES_DRACOZOLT,
-	.heldItem = ITEM_AIR_BALLOON,
-	.abilityNums = 1,
-    .moves = {MOVE_DRAGON_CLAW, MOVE_BOLT_BEAK, MOVE_STOMPING_TANTRUM, MOVE_LOW_SWEEP}
+    .lvl = 34,
+    .species = SPECIES_ELECTIVIRE,
+	.heldItem = ITEM_MAGNET,
+	.abilityNums = 0,
+    .moves = {MOVE_WILD_CHARGE, MOVE_LOW_SWEEP, MOVE_ICE_PUNCH, MOVE_VOLT_SWITCH}
     },
     {
     .iv = 255,
@@ -4347,7 +4347,7 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson1[] = {
     .species = SPECIES_EELEKTROSS,
 	.heldItem = ITEM_LEFTOVERS,
 	.abilityNums = 0,
-    .moves = {MOVE_WILD_CHARGE, MOVE_FLAMETHROWER, MOVE_LIQUIDATION, MOVE_VOLT_SWITCH}
+    .moves = {MOVE_WILD_CHARGE, MOVE_CLOSE_COMBAT, MOVE_LIQUIDATION, MOVE_U_TURN}
     }
 };
 
@@ -8032,10 +8032,10 @@ static const struct TrainerMonItemCustomMoves sParty_WallyVR1[] = {
     {
     .iv = 255,
     .lvl = 90,
-    .species = SPECIES_DRAPION,
-	.heldItem = ITEM_SCOPE_LENS,
-	.abilityNums = 1,
-    .moves = {MOVE_NIGHT_SLASH, MOVE_CROSS_POISON, MOVE_AQUA_TAIL, MOVE_SWORDS_DANCE}
+    .species = SPECIES_LYCANROC_DUSK,
+	.heldItem = ITEM_PASSHO_BERRY,
+	.abilityNums = 0,
+    .moves = {MOVE_ROCK_CLIMB, MOVE_HEADLONG_RUSH, MOVE_ACCELEROCK, MOVE_BULK_UP}
     },
     {
     .iv = 255,
@@ -8736,16 +8736,16 @@ static const struct TrainerMonItemCustomMoves sParty_Anabel1[] = {
     {
     .iv = 255,
     .lvl = 0,
-    .species = SPECIES_GOGOAT,
-    .heldItem = ITEM_YACHE_BERRY,
+    .species = SPECIES_LUDICOLO,
+    .heldItem = ITEM_COBA_BERRY,
 	.abilityNums = 0,
-    .moves = {MOVE_HORN_LEECH, MOVE_HIGH_HORSEPOWER, MOVE_ROCK_SLIDE, MOVE_BULK_UP}
+    .moves = {MOVE_SCALD, MOVE_GIGA_DRAIN, MOVE_ICE_BEAM, MOVE_LEECH_SEED}
     },
     {
     .iv = 255,
     .lvl = 0,
     .species = SPECIES_LILLIGANT,
-    .heldItem = ITEM_LEFTOVERS,
+    .heldItem = ITEM_COBA_BERRY,
 	.abilityNums = 1,
     .moves = {MOVE_GIGA_DRAIN, MOVE_MOONBLAST, MOVE_WEATHER_BALL, MOVE_QUIVER_DANCE}
     },
@@ -10821,14 +10821,6 @@ static const struct TrainerMonItemCustomMoves sParty_WallyMauville[] = {
     {
     .iv = 255,
     .lvl = 31,
-    .species = SPECIES_SKORUPI,
-	.heldItem = ITEM_EXPERT_BELT,
-	.abilityNums = 1,
-    .moves = {MOVE_POISON_JAB, MOVE_X_SCISSOR, MOVE_KNOCK_OFF, MOVE_HONE_CLAWS}
-    },
-    {
-    .iv = 255,
-    .lvl = 31,
     .species = SPECIES_AMAURA,
 	.heldItem = ITEM_CHOPLE_BERRY,
 	.abilityNums = 0,
@@ -10848,7 +10840,7 @@ static const struct TrainerMonItemCustomMoves sParty_WallyMauville[] = {
     .species = SPECIES_LARVESTA,
 	.heldItem = ITEM_EVIOLITE,
 	.abilityNums = 0,
-    .moves = {MOVE_FLARE_BLITZ, MOVE_LEECH_LIFE, MOVE_WILD_CHARGE, MOVE_U_TURN}
+    .moves = {MOVE_FLARE_BLITZ, MOVE_LEECH_LIFE, MOVE_WILD_CHARGE, MOVE_SCREECH}
     }
 };
 
@@ -14814,10 +14806,10 @@ static const struct TrainerMonItemCustomMoves sParty_WallyRoute111[] = {
     {
     .iv = 255,
     .lvl = 40,
-    .species = SPECIES_DRAPION,
-	.heldItem = ITEM_SCOPE_LENS,
-	.abilityNums = 1,
-    .moves = {MOVE_NIGHT_SLASH, MOVE_CROSS_POISON, MOVE_AQUA_TAIL, MOVE_SWORDS_DANCE}
+    .species = SPECIES_LYCANROC_DUSK,
+	.heldItem = ITEM_SOFT_SAND,
+	.abilityNums = 0,
+    .moves = {MOVE_ROCK_CLIMB, MOVE_HIGH_HORSEPOWER, MOVE_THUNDER_FANG, MOVE_HOWL}
     },
     {
     .iv = 255,
@@ -14880,19 +14872,19 @@ static const struct TrainerMonItemCustomMoves sParty_SidneyPetalburgCity[] = {
     },
     {
     .iv = 255,
+    .lvl = 46,
+    .species = SPECIES_DRAPION,
+    .heldItem = ITEM_SCOPE_LENS,
+	.abilityNums = 2,
+    .moves = {MOVE_CROSS_POISON, MOVE_NIGHT_SLASH, MOVE_ICE_FANG, MOVE_SWORDS_DANCE}
+    },
+    {
+    .iv = 255,
     .lvl = 47,
     .species = SPECIES_ABSOL,
 	.heldItem = ITEM_ABSOLITE,
 	.abilityNums = 0,
     .moves = {MOVE_NIGHT_SLASH, MOVE_PLAY_ROUGH, MOVE_AERIAL_ACE, MOVE_SWORDS_DANCE}
-    },
-    {
-    .iv = 255,
-    .lvl = 46,
-    .species = SPECIES_MUK_ALOLAN,
-	.heldItem = ITEM_BLACK_SLUDGE,
-	.abilityNums = 2,
-    .moves = {MOVE_GUNK_SHOT, MOVE_DARKEST_LARIAT, MOVE_ICE_PUNCH, MOVE_DRAIN_PUNCH}
     },
     {
     .iv = 255,
