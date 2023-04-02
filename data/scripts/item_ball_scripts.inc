@@ -91,7 +91,7 @@ Route113_EventScript_ItemHyperPotion::
 	end
 
 Route114_EventScript_ItemRareCandy::
-	finditem ITEM_RARE_CANDY
+	finditem ITEM_ASSAULT_VEST
 	end
 
 Route114_EventScript_ItemProtein::
@@ -195,7 +195,7 @@ Route120_EventScript_ItemNugget::
 	end
 
 Route120_EventScript_ItemFullHeal::
-	finditem ITEM_FULL_HEAL
+	finditem ITEM_POWER_HERB
 	end
 
 Route120_EventScript_ItemHyperPotion::
@@ -307,7 +307,7 @@ PetalburgCity_EventScript_ItemMaxRevive::
 	end
 
 PetalburgCity_EventScript_ItemEther::
-	finditem ITEM_ETHER
+	finditem ITEM_LIGHT_CLAY
 	end
 
 MauvilleCity_EventScript_ItemXSpeed::
@@ -607,7 +607,7 @@ VictoryRoad_1F_EventScript_ItemMaxElixir::
 	end
 
 VictoryRoad_1F_EventScript_ItemPPUp::
-	finditem ITEM_ASSAULT_VEST
+	finditem ITEM_PP_MAX
 	end
 
 VictoryRoad_B1F_EventScript_ItemTM29::

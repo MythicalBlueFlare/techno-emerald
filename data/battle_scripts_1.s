@@ -9487,3 +9487,12 @@ BattleScript_EffectPermanentDazzling::
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_OPPONENT1, B_ANIM_PERMANENT_DAZZLING
     end3
+
+BattleScript_EffectPriorityPrevented::
+	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
+	attackstring
+	pause B_WAIT_TIME_SHORT
+	ppreduce
+	printstring STRINGID_PRIORITYMOVEFAILED
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd

@@ -1,6 +1,6 @@
 .set LOCALID_GRUNT, 3
 .set LOCALID_DEVON_EMPLOYEE, 4
-.set LOCALID_ANABEL, 14
+.set LOCALID_ANABEL, 13
 
 PetalburgWoods_MapScripts::
 	.byte 0
@@ -325,16 +325,34 @@ PetalburgWoods_EventScript_Anabel::
 	playse SE_PIN
 	applymovement LOCALID_ANABEL, Common_Movement_ExclamationMark
 	waitmovement 0
+	applymovement LOCALID_ANABEL, Common_Movement_Delay48
+	waitmovement 0
+	setvar VAR_SET_TERRAIN, STATUS_FIELD_GRASSY_TERRAIN
+	msgbox PetalburgWoods_Text_AnabelGreetings, MSGBOX_DEFAULT
+	closemessage
+	playse SE_LEDGE
+	applymovement LOCALID_ANABEL, Common_Movement_Jump2Down
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_Jump2Down
+	waitmovement 0
+	applymovement OBJ_EVENT_ID_PLAYER, PetalburgWoods_Movement_MoveToOpenAreaPlayer
+	applymovement LOCALID_ANABEL, PetalburgWoods_Movement_MoveToOpenAreaAnabel
+	delay 24
+	msgbox PetalburgWoods_Text_AnabelIComeHereOften, MSGBOX_DEFAULT
+	waitmovement 0
 	setweather WEATHER_RAIN
 	doweather
-	setvar VAR_SET_TERRAIN, STATUS_FIELD_GRASSY_TERRAIN
-	setvar VAR_BATTLE_STATUS, 8
-	trainerbattle_single TRAINER_ANABEL_1, PetalburgWoods_Text_AnabelIntro, PetalburgWoods_Text_AnabelDefeat, PetalburgWoods_EventScript_AnabelDefeated, NO_MUSIC
+	msgbox PetalburgWoods_Text_AnabelYouSeemStrong, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_ANABEL_1, PetalburgWoods_Text_AnabelDefeat
+	goto PetalburgWoods_EventScript_AnabelDefeated
 	end 
 	
 PetalburgWoods_EventScript_AnabelDefeated:: 
 	setweather WEATHER_SHADE
 	doweather
+	applymovement LOCALID_ANABEL, Common_Movement_WalkRight  
+	waitmovement 0
+	applymovement LOCALID_ANABEL, Common_Movement_WalkRight  
+	waitmovement 0
 	msgbox PetalburgWoods_Text_AnabelLeave, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_CHOICE_SPECS
@@ -344,6 +362,36 @@ PetalburgWoods_EventScript_AnabelDefeated::
 	fadescreen FADE_FROM_BLACK
 	release 
 	end 
+
+PetalburgWoods_Movement_MoveToOpenAreaAnabel:
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left  
+	walk_left
+	walk_left  
+	walk_left
+	walk_left  
+	walk_left  
+	walk_left
+	face_right
+	step_end
+
+PetalburgWoods_Movement_MoveToOpenAreaPlayer:
+	delay_16
+	walk_left
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_down
+	walk_left  
+	walk_left
+	walk_left  
+	walk_left 
+	step_end
 
 PetalburgWoods_Text_NotAOneToBeFound:
 	.string "Hmmm…\n"
@@ -501,15 +549,24 @@ PetalburgWoods_Text_TrainerTipsPP:
 	.string "If a POKéMON runs out of PP, it must be\n"
 	.string "taken to a POKéMON CENTER.$"
 
-PetalburgWoods_Text_AnabelIntro:
+PetalburgWoods_Text_AnabelGreetings:
 	.string "Greetings.\n"
 	.string "My name is ANABEL.\p"
 	.string "I run the BATTLE TOWER at the\n"
 	.string "BATTLE FRONTIER.\p"
-	.string "I come here often to observe the\n"
-	.string "lush and blooming woods.\p"
 	.string "You seem like a very strong trainer…\n"
 	.string "Could you be {PLAYER}?\p"
+	.string "Come with me.$"
+
+PetalburgWoods_Text_AnabelIComeHereOften:
+	.string "I come here often to observe the\n"
+	.string "lush and blooming woods.\l"
+	.string "I feel a strong connection to nature.$"
+
+PetalburgWoods_Text_AnabelYouSeemStrong:
+	.string "What a time to rain…\p"
+	.string "Anyway, this area should be a good place\n"
+	.string "for a battle.\p"
 	.string "I would like you to show me something.\p"
 	.string "Let me see your talent in\n"
 	.string "its entirety!$" 

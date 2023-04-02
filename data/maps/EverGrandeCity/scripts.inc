@@ -47,7 +47,7 @@ EverGrandeCity_EventScript_Lance::
 	trainerbattle_no_intro TRAINER_LANCE, EverGrandeCity_Text_LanceDefeat
 	msgbox EverGrandeCity_Text_LanceTrulyPowerful
 	closemessage
-	givemon SPECIES_AERODACTYL, 75, ITEM_AERODACTYLITE
+	givemon SPECIES_CHARIZARD, 75, ITEM_CHARIZARDITE_X
 	closemessage
 	setfieldeffectargument 0, 1
 	dofieldeffect FLDEFF_NPCFLY_OUT

@@ -471,7 +471,7 @@ static const u8 sText_Someones[] = _("someone's");
 static const u8 sText_Lanettes[] = _("LANETTE's");
 static const u8 sText_PkmnDataAddedToDex[] = _("{B_DEF_NAME}'s data was\nadded to the POKéDEX.\p");
 static const u8 sText_ItIsRaining[] = _("It is raining.");
-static const u8 sText_ItIsHailing[] = _("A blizzard formed.");
+static const u8 sText_ItIsHailing[] = _("It is hailing.");
 static const u8 sText_SandstormIsRaging[] = _("A sandstorm is raging.");
 static const u8 sText_BoxIsFull[] = _("The BOX is full!\nYou can't catch any more!\p");
 static const u8 sText_EnigmaBerry[] = _("ENIGMA BERRY");
@@ -734,15 +734,16 @@ static const u8 sText_PkmnAboutToBeAttackedByItsItem[] = _("{B_DEF_NAME_WITH_PRE
 static const u8 sText_CantEscapeBecauseOfCurrentMove[] = _("{B_DEF_NAME_WITH_PREFIX} can no longer escape\nbecause of {B_CURRENT_MOVE}!");
 static const u8 sText_NeutralizingGasEnters[] = _("Neutralizing Gas filled the area!");
 static const u8 sText_NeutralizingGasOver[] = _("The effects of Neutralizing\nGas wore off!");
-static const u8 sText_PermaTailWindBlew[] = _("A permanent tailwind blew\nbehind the opposing team!");
-static const u8 sText_PermaTwistedDimensions[] = _("The opponent permanently twisted\nthe dimensions!");
+static const u8 sText_PermaTailWindBlew[] = _("A permanent tailwind blew behind the\nopposing team!");
+static const u8 sText_PermaTwistedDimensions[] = _("The opponent permanently twisted the\ndimensions!");
 static const u8 sText_PermaMagnetRise[] = _("The opponent's team levitated on\nelectromagnetism!");
-static const u8 sText_PermaTorment[] = _("Your team was subjected\nto an endless Torment!");
-static const u8 sText_PermaGrudge[] = _("The opponent's team is\nbearing a Grudge!");
-static const u8 sText_ImmunityToFire[] = _("The opponent's Pokémon have developed\nan immunity to fire!");
+static const u8 sText_PermaTorment[] = _("Your team was subjected to an endless\nTorment!");
+static const u8 sText_PermaGrudge[] = _("The opponent's team is bearing a\nGrudge!");
+static const u8 sText_ImmunityToFire[] = _("The opponent's Pokémon have developed\nan immunity to heat!");
 static const u8 sText_MoveSmolderedOut[] = _("The Fire-type attack smoldered out!");
 static const u8 sText_PermaMoldBreaker[] = _("The opponent breaks the mold!");
 static const u8 sText_PermaDazzling[] = _("The opponent's dazzling battle style\nprevents the use of priority moves!");
+static const u8 sText_PriorityMoveFail[] = _("The opponent's dazzling battle style\nprevented the use of {B_BUFF3}!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1354,6 +1355,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_MOVESMOLDEREDOUT - BATTLESTRINGS_TABLE_START] = sText_MoveSmolderedOut,
     [STRINGID_PERMAMOLDBREAKER - BATTLESTRINGS_TABLE_START] = sText_PermaMoldBreaker,
     [STRINGID_PERMADAZZLING - BATTLESTRINGS_TABLE_START] = sText_PermaDazzling,
+    [STRINGID_PRIORITYMOVEFAILED - BATTLESTRINGS_TABLE_START] = sText_PriorityMoveFail,
 };
 
 const u16 gMentalHerbCureStringIds[] = 

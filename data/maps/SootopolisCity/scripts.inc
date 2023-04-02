@@ -1,20 +1,19 @@
-.set LOCALID_EXPERT, 1
-.set LOCALID_WOMAN_2, 2
-.set LOCALID_KIRI, 3
-.set LOCALID_NINJA_BOY, 4
-.set LOCALID_BOY_1, 5
-.set LOCALID_STEVEN, 7
-.set LOCALID_WOMAN_1, 8
-.set LOCALID_GROUDON, 9
-.set LOCALID_KYOGRE, 10
-.set LOCALID_RAYQUAZA, 11
-.set LOCALID_MANIAC, 12
-.set LOCALID_GIRL, 13
-.set LOCALID_BLACK_BELT, 14
-.set LOCALID_BOY_2, 15
-.set LOCALID_MAXIE, 16
-.set LOCALID_ARCHIE, 17
-.set LOCALID_WALLACE, 18
+.set LOCALID_WOMAN_2, 1
+.set LOCALID_KIRI, 2
+.set LOCALID_NINJA_BOY, 3
+.set LOCALID_BOY_1, 4
+.set LOCALID_STEVEN, 5
+.set LOCALID_WOMAN_1, 7
+.set LOCALID_GROUDON, 8
+.set LOCALID_KYOGRE, 9
+.set LOCALID_RAYQUAZA, 10
+.set LOCALID_MANIAC, 11
+.set LOCALID_GIRL, 12
+.set LOCALID_BLACK_BELT, 13
+.set LOCALID_BOY_2, 14
+.set LOCALID_MAXIE, 15
+.set LOCALID_ARCHIE, 16
+.set LOCALID_WALLACE, 17
 
 SootopolisCity_MapScripts::
 	map_script MAP_SCRIPT_ON_LOAD, SootopolisCity_OnLoad
@@ -64,7 +63,6 @@ SootopolisCity_OnTransition:
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 3, SootopolisCity_EventScript_CheckSetEnterCaveOfOriginObjPos
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 4, SootopolisCity_EventScript_SetExitCaveOfOriginObjPos
 	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 5, SootopolisCity_EventScript_SetOutsideGymObjPos
-	call_if_eq VAR_SOOTOPOLIS_CITY_STATE, 6, SootopolisCity_EventScript_SetExpertBlockCaveEntrance
 	end
 
 SootopolisCity_EventScript_HideMapNamePopup::
@@ -119,18 +117,15 @@ SootopolisCity_EventScript_CheckSetEnterCaveOfOriginObjPos::
 	return
 
 SootopolisCity_EventScript_SetEnterCaveOfOriginObjPos::
-	setobjectxyperm LOCALID_EXPERT, 30, 18
 	setobjectxyperm LOCALID_STEVEN, 32, 18
 	return
 
 SootopolisCity_EventScript_SetExitCaveOfOriginObjPos::
-	setobjectxyperm LOCALID_EXPERT, 30, 18
 	setobjectxyperm LOCALID_WALLACE, 31, 18
 	setobjectxyperm LOCALID_STEVEN, 32, 18
 	end
 
 SootopolisCity_EventScript_SetOutsideGymObjPos::
-	setobjectxyperm LOCALID_EXPERT, 31, 18
 	setobjectxyperm LOCALID_STEVEN, 29, 33
 	setobjectxyperm LOCALID_MAXIE, 33, 35
 	setobjectxyperm LOCALID_ARCHIE, 34, 35
@@ -152,10 +147,6 @@ SootopolisCity_EventScript_SetWallaceRight::
 SootopolisCity_EventScript_SetWallaceLeft::
 	setobjectxyperm LOCALID_WALLACE, 30, 33
 	setobjectmovementtype LOCALID_WALLACE, MOVEMENT_TYPE_FACE_DOWN
-	return
-
-SootopolisCity_EventScript_SetExpertBlockCaveEntrance::
-	setobjectxyperm LOCALID_EXPERT, 31, 18
 	return
 
 SootopolisCity_OnWarp:
@@ -932,8 +923,6 @@ SootopolisCity_EventScript_StevenLeadPlayerCaveOfOrigin::
 	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_Movement_PlayerWalkToCaveOfOrigin
 	waitmovement 0
 	delay 120
-	applymovement LOCALID_EXPERT, SootopolisCity_Movement_ExpertMoveAside
-	waitmovement 0
 	applymovement LOCALID_STEVEN, SootopolisCity_Movement_StevenArriveCaveEntrance
 	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_Movement_PlayerArriveCaveEntrance
 	waitmovement 0

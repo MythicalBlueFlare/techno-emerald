@@ -50,7 +50,6 @@ EverGrandeCity_ChampionsRoom_EventScript_Wallace::
 	end
 
 EverGrandeCity_ChampionsRoom_EventScript_Defeated::
-	setvar VAR_BATTLE_STATUS, 0
 	clearflag FLAG_CHALLENGING_ELITE_4
 	playse SE_DOOR
 	setmetatile 6, 1, METATILE_EliteFour_OpenDoorChampion_Frame, FALSE

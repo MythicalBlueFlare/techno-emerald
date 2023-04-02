@@ -3729,7 +3729,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
               && AI_DATA->atkSpecies == SPECIES_AEGISLASH_BLADE
               && !IsBattlerIncapacitated(battlerDef, AI_DATA->defAbility))
             {
-                score += 5;
+                score += 8;
                 break;
             }
             #endif

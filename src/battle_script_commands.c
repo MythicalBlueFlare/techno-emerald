@@ -1376,6 +1376,16 @@ static void Cmd_attackcanceler(void)
         return;
     }
 
+    if (GetChosenMovePriority(gBattlerAttacker) > 0
+     && gBattleMoves[gCurrentMove].effect != EFFECT_PROTECT
+     && VarGet(VAR_BATTLE_STATUS) == 8
+     && gBattleMoves[gCurrentMove].power)
+    {
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_EffectPriorityPrevented;
+        return;
+    }
+
     if (moveType == TYPE_WATER
      && (gBattleWeather & B_WEATHER_SUN_PRIMAL)
      && WEATHER_HAS_EFFECT

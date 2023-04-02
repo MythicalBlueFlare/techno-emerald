@@ -619,8 +619,9 @@
 #define STRINGID_MOVESMOLDEREDOUT                     617
 #define STRINGID_PERMAMOLDBREAKER                     618
 #define STRINGID_PERMADAZZLING                        619
+#define STRINGID_PRIORITYMOVEFAILED                   620
 
-#define BATTLESTRINGS_COUNT                           620
+#define BATTLESTRINGS_COUNT                           621
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

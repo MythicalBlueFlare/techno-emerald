@@ -1821,7 +1821,7 @@ static const struct TrainerMonItemCustomMoves sParty_Tucker1[] = {
     .species = SPECIES_COMFEY,
     .heldItem = ITEM_BIG_ROOT,
 	.abilityNums = 1,
-    .moves = {MOVE_DRAINING_KISS, MOVE_LEECH_SEED, MOVE_HELPING_HAND, MOVE_FLORAL_HEALING}
+    .moves = {MOVE_DRAINING_KISS, MOVE_GIGA_DRAIN, MOVE_HELPING_HAND, MOVE_FLORAL_HEALING}
     },
     {
     .iv = 255,
@@ -1852,7 +1852,7 @@ static const struct TrainerMonItemCustomMoves sParty_Tucker1[] = {
     .lvl = 0,
     .species = SPECIES_MAWILE,
     .heldItem = ITEM_MAWILITE,
-	.abilityNums = 0,
+	.abilityNums = 1,
     .moves = {MOVE_PLAY_ROUGH, MOVE_IRON_HEAD, MOVE_THUNDER_PUNCH, MOVE_SUCKER_PUNCH}
     },
     {
@@ -4108,7 +4108,7 @@ static const struct TrainerMonItemCustomMoves sParty_Phoebe[] = {
     .species = SPECIES_SABLEYE,
     .heldItem = ITEM_SABLENITE,
 	.abilityNums = 0,
-    .moves = {MOVE_SHADOW_BALL, MOVE_FOUL_PLAY, MOVE_CALM_MIND, MOVE_WILL_O_WISP}
+    .moves = {MOVE_SHADOW_BALL, MOVE_FOUL_PLAY, MOVE_CALM_MIND, MOVE_RECOVER}
     },
     {
     .iv = 255,
@@ -4167,7 +4167,7 @@ static const struct TrainerMonItemCustomMoves sParty_Glacia[] = {
     .species = SPECIES_CALYREX_ICE_RIDER,
     .heldItem = ITEM_LIFE_ORB,
 	.abilityNums = 0,
-    .moves = {MOVE_GLACIAL_LANCE, MOVE_CRUNCH, MOVE_SEED_BOMB, MOVE_SWORDS_DANCE}
+    .moves = {MOVE_GLACIAL_LANCE, MOVE_HIGH_HORSEPOWER, MOVE_SEED_BOMB, MOVE_SWORDS_DANCE}
     }
 };
 
@@ -4216,7 +4216,7 @@ static const struct TrainerMonItemCustomMoves sParty_Drake[] = {
     .iv = 255,
     .lvl = 100,
     .species = SPECIES_KYUREM_BLACK,
-    .heldItem = ITEM_SITRUS_BERRY,
+    .heldItem = ITEM_LUM_BERRY,
 	.abilityNums = 0,
     .moves = {MOVE_DRAGON_RUSH, MOVE_ICE_HAMMER, MOVE_FUSION_BOLT, MOVE_DRAGON_DANCE}
     }
@@ -8737,17 +8737,17 @@ static const struct TrainerMonItemCustomMoves sParty_Anabel1[] = {
     .iv = 255,
     .lvl = 0,
     .species = SPECIES_LUDICOLO,
-    .heldItem = ITEM_COBA_BERRY,
+    .heldItem = ITEM_LIFE_ORB,
 	.abilityNums = 0,
-    .moves = {MOVE_SCALD, MOVE_GIGA_DRAIN, MOVE_ICE_BEAM, MOVE_LEECH_SEED}
+    .moves = {MOVE_SCALD, MOVE_GIGA_DRAIN, MOVE_ICE_BEAM, MOVE_THUNDER_PUNCH}
     },
     {
     .iv = 255,
     .lvl = 0,
-    .species = SPECIES_LILLIGANT,
-    .heldItem = ITEM_COBA_BERRY,
-	.abilityNums = 1,
-    .moves = {MOVE_GIGA_DRAIN, MOVE_MOONBLAST, MOVE_WEATHER_BALL, MOVE_QUIVER_DANCE}
+    .species = SPECIES_CRADILY,
+    .heldItem = ITEM_LEFTOVERS,
+	.abilityNums = 2,
+    .moves = {MOVE_GIGA_DRAIN, MOVE_POWER_GEM, MOVE_EARTH_POWER, MOVE_TOXIC}
     },
     {
     .iv = 255,
@@ -8771,7 +8771,7 @@ static const struct TrainerMonItemCustomMoves sParty_Anabel1[] = {
     .species = SPECIES_TAPU_BULU,
     .heldItem = ITEM_ASSAULT_VEST,
 	.abilityNums = 2,
-    .moves = {MOVE_HORN_LEECH, MOVE_PLAY_ROUGH, MOVE_HIGH_HORSEPOWER, MOVE_ROCK_SLIDE}
+    .moves = {MOVE_GRASSY_GLIDE, MOVE_PLAY_ROUGH, MOVE_HIGH_HORSEPOWER, MOVE_ROCK_SLIDE}
     }
 };
 
@@ -9630,7 +9630,7 @@ static const struct TrainerMonItemCustomMoves sParty_GruntSpaceCenter5[] = {
     .lvl = 76,
     .species = SPECIES_SANDACONDA,
 	.heldItem = ITEM_ASSAULT_VEST,
-	.abilityNums = 0,
+	.abilityNums = 2,
     .moves = {MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_BODY_PRESS, MOVE_FIRE_FANG}
     },
     {

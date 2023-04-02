@@ -426,5 +426,6 @@ extern const u8 BattleScript_EffectFireMoveSmoldered[];
 extern const u8 BattleScript_EffectImmunityToFire[];
 extern const u8 BattleScript_EffectPermanentMoldBreaker[];
 extern const u8 BattleScript_EffectPermanentDazzling[];
+extern const u8 BattleScript_EffectPriorityPrevented[];
 
 #endif // GUARD_BATTLE_SCRIPTS_H

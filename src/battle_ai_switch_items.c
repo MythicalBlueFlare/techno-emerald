@@ -620,6 +620,41 @@ static u32 GetBestMonBatonPass(struct Pokemon *party, int firstId, int lastId, u
     return PARTY_SIZE;
 }
 
+static u32 GetBestMonToAgainstBattler(struct Pokemon *party, int firstId, int lastId, u8 invalidMons, u32 opposingBattler)
+{
+    int i, j;
+    int bestDmg = 0;
+    int bestMonId = PARTY_SIZE;
+    s32 partyMonDamage, opposingBattlerDamage;
+
+    gMoveResultFlags = 0;
+    // If we couldn't find the best mon in terms of typing, find the one that deals most damage.
+    for (i = firstId; i < lastId; i++)
+    {
+        if (gBitTable[i] & invalidMons)
+            continue;
+
+        for (j = 0; j < MAX_MON_MOVES; j++)
+        {
+            u32 move = GetMonData(&party[i], MON_DATA_MOVE1 + j);
+            if (move != MOVE_NONE && gBattleMoves[move].power != 0)
+            {
+                partyMonDamage = AI_CalcPartyMonDamage(move, gActiveBattler, opposingBattler, &party[i]);
+
+                PokemonToBattleMon(&party[i], &gBattleMons[gActiveBattler]);
+                AI_CalcDamage(move, opposingBattler, gActiveBattler);
+
+                if (gBattleMons[opposingBattler].hp <= partyMonDamage && (gBattleMons[gActiveBattler].hp * 3/4) >= opposingBattlerDamage)
+                {
+                    bestMonId = i;
+                }
+            }
+        }
+    }
+
+    return bestMonId;
+}
+
 static u32 GestBestMonOffensive(struct Pokemon *party, int firstId, int lastId, u8 invalidMons, u32 opposingBattler)
 {
     int i, bits = 0;
@@ -772,6 +807,10 @@ u8 GetMostSuitableMonToSwitchInto(void)
     }
 
     bestMonId = GetBestMonBatonPass(party, firstId, lastId, invalidMons, aliveCount);
+    if (bestMonId != PARTY_SIZE)
+        return bestMonId;
+
+    bestMonId = GetBestMonToAgainstBattler(party, firstId, lastId, invalidMons, opposingBattler);
     if (bestMonId != PARTY_SIZE)
         return bestMonId;
 
