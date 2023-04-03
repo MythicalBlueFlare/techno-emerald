@@ -13721,7 +13721,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_UNDISCOVERED,
         .eggGroup2 = EGG_GROUP_UNDISCOVERED,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_SLOW_START, ABILITY_NONE},
+            .abilities = {ABILITY_SLOW_START, ABILITY_NONE, ABILITY_CLEAR_BODY},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE},
         #endif
@@ -19153,10 +19153,10 @@ const struct BaseStats gBaseStats[] =
     {
         .baseHP        = 114,
         .baseAttack    = 28,
-        .baseDefense   = 91,
+        .baseDefense   = 86,
         .baseSpeed     = 104,
         .baseSpAttack  = 83,
-        .baseSpDefense = 96,
+        .baseSpDefense = 91,
         .type1 = TYPE_PSYCHIC,
         .type2 = TYPE_PSYCHIC,
         .catchRate = 75,
@@ -24499,7 +24499,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_HUMAN_LIKE,
         .eggGroup2 = EGG_GROUP_HUMAN_LIKE,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_ICY_HEART, ABILITY_SCREEN_CLEANER, ABILITY_ICE_BODY},
+            .abilities = {ABILITY_ICE_BODY, ABILITY_SCREEN_CLEANER, ABILITY_ICY_HEART},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE},
         #endif
@@ -27538,7 +27538,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_HUMAN_LIKE,
         .eggGroup2 = EGG_GROUP_HUMAN_LIKE,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_VITAL_SPIRIT, ABILITY_SCREEN_CLEANER, ABILITY_ICE_BODY},
+            .abilities = {ABILITY_VITAL_SPIRIT, ABILITY_SCREEN_CLEANER, ABILITY_ICY_HEART},
         #else
             .abilities = {ABILITY_VITAL_SPIRIT, ABILITY_NONE},
         #endif
@@ -31716,7 +31716,7 @@ const struct BaseStats gBaseStats[] =
         .baseAttack    = 48,
         .baseDefense   = 76,
         .baseSpeed     = 114,
-        .baseSpAttack  = 123,
+        .baseSpAttack  = 113,
         .baseSpDefense = 81,
         .type1 = TYPE_PSYCHIC,
         .type2 = TYPE_PSYCHIC,
