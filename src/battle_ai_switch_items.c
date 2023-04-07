@@ -587,6 +587,72 @@ void AI_TrySwitchOrUseItem(void)
     BtlController_EmitTwoReturnValues(BUFFER_B, B_ACTION_USE_MOVE, (gActiveBattler ^ BIT_SIDE) << 8);
 }
 
+static u32 GetBestMonWithBestScore(struct Pokemon *party, int firstId, int lastId, u8 invalidMons, u32 opposingBattler)
+{
+    u8 i, j;
+    u8 bestMonId = PARTY_SIZE;
+    u16 partyMonHP;
+    u32 unusable = CheckMoveLimitations(opposingBattler, 0, MOVE_LIMITATIONS_ALL);
+    u16 *moves = gBattleMons[opposingBattler].moves;
+    u32 move;
+    u16 partyMonDamage, opposingBattlerDamage;
+
+    s8 scores[PARTY_SIZE] = {0};
+
+    for (i = firstId; i < lastId; i++)
+    {
+        u16 bestDmg = 0;
+        u16 bestOpposingDmg = 0;
+
+        if (gBitTable[i] & invalidMons)
+            continue;
+
+        for (j = 0; j < MAX_MON_MOVES; j++) // BattlerDef
+        {
+            if (moves[i] != 0xFFFF && !(unusable & gBitTable[i]) && gBattleMoves[moves[j]].power != 0)
+                opposingBattlerDamage = AI_CalcPartyMonDamage(moves[j], opposingBattler, gActiveBattler, &party[i], TRUE);
+
+            if (opposingBattlerDamage > bestOpposingDmg)
+                bestOpposingDmg = opposingBattlerDamage;
+        }
+
+        partyMonHP = GetMonData(&party[i], MON_DATA_HP);
+        if (partyMonHP * 1 / 3 > bestOpposingDmg)
+            scores[i] += 2;
+        else if (partyMonHP / 2 > bestOpposingDmg)
+            scores[i] += 1;
+        else if (partyMonHP <= bestOpposingDmg)
+            scores[i] -= 2;
+
+        for (j = 0; j < MAX_MON_MOVES; j++) // party mon
+        {
+            move = GetMonData(&party[i], MON_DATA_MOVE1 + j);
+
+            if (move != MOVE_NONE && gBattleMoves[move].power != 0)
+                partyMonDamage = AI_CalcPartyMonDamage(move, gActiveBattler, opposingBattler, &party[i], FALSE);
+
+            if (partyMonDamage > bestDmg)
+                bestDmg = partyMonDamage;
+        }
+
+        if (gBattleMons[opposingBattler].hp <= bestDmg)
+            scores[i] += 4;
+        else if (gBattleMons[opposingBattler].hp / 2 <= bestDmg)
+            scores[i] += 1;
+
+        if (AI_IsPartyMonFaster(gActiveBattler, opposingBattler, &party[i]))
+            scores[i] += 2;
+        // moxie, grim neigh, chilling neigh, hubris, beast boost, soul-heart
+        if (AI_IsBoostingAbility(gActiveBattler, &party[i]))
+            scores[i] += 1;
+
+        if (scores[i] > scores[bestMonId])
+            bestMonId = i;
+    }
+
+    return bestMonId;
+}
+
 // If there are two(or more) mons to choose from, always choose one that has baton pass
 // as most often it can't do much on its own.
 static u32 GetBestMonBatonPass(struct Pokemon *party, int firstId, int lastId, u8 invalidMons, int aliveCount)
@@ -681,36 +747,36 @@ static u32 GestBestMonOffensive(struct Pokemon *party, int firstId, int lastId, 
     return PARTY_SIZE;
 }
 
-static u32 GetBestMonDmg(struct Pokemon *party, int firstId, int lastId, u8 invalidMons, u32 opposingBattler)
-{
-    int i, j;
-    int bestDmg = 0;
-    int bestMonId = PARTY_SIZE;
+// static u32 GetBestMonDmg(struct Pokemon *party, int firstId, int lastId, u8 invalidMons, u32 opposingBattler)
+// {
+//     int i, j;
+//     int bestDmg = 0;
+//     int bestMonId = PARTY_SIZE;
 
-    gMoveResultFlags = 0;
-    // If we couldn't find the best mon in terms of typing, find the one that deals most damage.
-    for (i = firstId; i < lastId; i++)
-    {
-        if (gBitTable[i] & invalidMons)
-            continue;
+//     gMoveResultFlags = 0;
+//     // If we couldn't find the best mon in terms of typing, find the one that deals most damage.
+//     for (i = firstId; i < lastId; i++)
+//     {
+//         if (gBitTable[i] & invalidMons)
+//             continue;
 
-        for (j = 0; j < MAX_MON_MOVES; j++)
-        {
-            u32 move = GetMonData(&party[i], MON_DATA_MOVE1 + j);
-            if (move != MOVE_NONE && gBattleMoves[move].power != 0)
-            {
-                s32 dmg = AI_CalcPartyMonDamage(move, gActiveBattler, opposingBattler, &party[i]);
-                if (bestDmg < dmg)
-                {
-                    bestDmg = dmg;
-                    bestMonId = i;
-                }
-            }
-        }
-    }
+//         for (j = 0; j < MAX_MON_MOVES; j++)
+//         {
+//             u32 move = GetMonData(&party[i], MON_DATA_MOVE1 + j);
+//             if (move != MOVE_NONE && gBattleMoves[move].power != 0)
+//             {
+//                 s32 dmg = AI_CalcPartyMonDamage(move, gActiveBattler, opposingBattler, &party[i]);
+//                 if (bestDmg < dmg)
+//                 {
+//                     bestDmg = dmg;
+//                     bestMonId = i;
+//                 }
+//             }
+//         }
+//     }
 
-    return bestMonId;
-}
+//     return bestMonId;
+// }
 
 u8 GetMostSuitableMonToSwitchInto(void)
 {
@@ -770,15 +836,7 @@ u8 GetMostSuitableMonToSwitchInto(void)
             aliveCount++;
     }
 
-    bestMonId = GetBestMonBatonPass(party, firstId, lastId, invalidMons, aliveCount);
-    if (bestMonId != PARTY_SIZE)
-        return bestMonId;
-
-    bestMonId = GestBestMonOffensive(party, firstId, lastId, invalidMons, opposingBattler);
-    if (bestMonId != PARTY_SIZE)
-        return bestMonId;
-
-    bestMonId = GetBestMonDmg(party, firstId, lastId, invalidMons, opposingBattler);
+    bestMonId = GetBestMonWithBestScore(party, firstId, lastId, invalidMons, opposingBattler);
     if (bestMonId != PARTY_SIZE)
         return bestMonId;
 

@@ -3242,17 +3242,21 @@ bool32 ShouldUseWishAromatherapy(u8 battlerAtk, u8 battlerDef, u16 move)
 }
 
 // party logic
-s32 AI_CalcPartyMonDamage(u16 move, u8 battlerAtk, u8 battlerDef, struct Pokemon *mon)
+s32 AI_CalcPartyMonDamage(u16 move, u8 battlerAtk, u8 battlerDef, struct Pokemon *mon, bool8 calcEnemyDamage)
 {
     s32 dmg;
     u32 i;
+    u8 effectiveness;
     struct BattlePokemon *battleMons = Alloc(sizeof(struct BattlePokemon) * MAX_BATTLERS_COUNT);
 
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
         battleMons[i] = gBattleMons[i];
 
     PokemonToBattleMon(mon, &gBattleMons[battlerAtk]);
-    dmg = AI_CalcDamage(move, battlerAtk, battlerDef);
+    if (calcEnemyDamage)
+        dmg = AI_CalcDamage(move, battlerDef, battlerAtk);
+    else
+        dmg = AI_CalcDamage(move, battlerAtk, battlerDef);
 
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
         gBattleMons[i] = battleMons[i];
@@ -3260,6 +3264,60 @@ s32 AI_CalcPartyMonDamage(u16 move, u8 battlerAtk, u8 battlerDef, struct Pokemon
     Free(battleMons);
 
     return dmg;
+}
+
+// party logic
+bool32 AI_IsPartyMonFaster(u8 battlerAtk, u8 battlerDef, struct Pokemon *mon)
+{
+    u32 i;
+    bool32 isFaster = FALSE;
+    struct BattlePokemon *battleMons = Alloc(sizeof(struct BattlePokemon) * MAX_BATTLERS_COUNT);
+
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        battleMons[i] = gBattleMons[i];
+
+    PokemonToBattleMon(mon, &gBattleMons[battlerAtk]);
+    if (GetWhoStrikesFirst(battlerAtk, battlerDef, TRUE) == 0)
+        isFaster = TRUE;
+
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        gBattleMons[i] = battleMons[i];
+
+    Free(battleMons);
+
+    return isFaster;
+}
+
+bool32 AI_IsBoostingAbility(u8 battlerAtk, struct Pokemon *mon)
+{
+    u32 i;
+    bool32 isBoostingAbility = FALSE;
+    struct BattlePokemon *battleMons = Alloc(sizeof(struct BattlePokemon) * MAX_BATTLERS_COUNT);
+
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        battleMons[i] = gBattleMons[i];
+
+    PokemonToBattleMon(mon, &gBattleMons[battlerAtk]);
+    switch(GetBattlerAbility(battlerAtk))
+    {
+    case ABILITY_MOXIE:
+    case ABILITY_HUBRIS:
+    case ABILITY_BEAST_BOOST:
+    case ABILITY_SOUL_HEART:
+    case ABILITY_CHILLING_NEIGH:
+    case ABILITY_GRIM_NEIGH:
+    case ABILITY_AS_ONE_ICE_RIDER:
+    case ABILITY_AS_ONE_SHADOW_RIDER:
+        isBoostingAbility = TRUE;
+        break;
+    }
+
+    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+        gBattleMons[i] = battleMons[i];
+
+    Free(battleMons);
+
+    return isBoostingAbility;
 }
 
 s32 CountUsablePartyMons(u8 battlerId)

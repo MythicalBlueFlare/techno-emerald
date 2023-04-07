@@ -537,7 +537,7 @@ static const struct TrainerMonItemCustomMoves sParty_ShellyWeatherInstitute[] = 
     .lvl = 55,
     .species = SPECIES_MR_RIME,
 	.heldItem = ITEM_EXPERT_BELT,
-	.abilityNums = 0,
+	.abilityNums = 2,
     .moves = {MOVE_BLIZZARD, MOVE_PSYCHIC, MOVE_FREEZE_DRY, MOVE_DAZZLING_GLEAM}
     }
 };
@@ -588,7 +588,7 @@ static const struct TrainerMonItemCustomMoves sParty_ShellySeafloorCavern[] = {
     .lvl = 80,
     .species = SPECIES_MR_RIME,
 	.heldItem = ITEM_EXPERT_BELT,
-	.abilityNums = 0,
+	.abilityNums = 2,
     .moves = {MOVE_BLIZZARD, MOVE_PSYCHIC, MOVE_FREEZE_DRY, MOVE_DAZZLING_GLEAM}
     }
 };
@@ -4414,10 +4414,10 @@ static const struct TrainerMonItemCustomMoves sParty_Norman1[] = {
     {
     .iv = 255,
     .lvl = 49,
-    .species = SPECIES_BEWEAR,
-    .heldItem = ITEM_ASSAULT_VEST,
+    .species = SPECIES_CONKELDURR,
+    .heldItem = ITEM_FLAME_ORB,
 	.abilityNums = 0,
-    .moves = {MOVE_DRAIN_PUNCH, MOVE_DARKEST_LARIAT, MOVE_THUNDER_PUNCH, MOVE_IRON_HEAD}
+    .moves = {MOVE_DRAIN_PUNCH, MOVE_ROCK_SLIDE, MOVE_POISON_JAB, MOVE_DETECT}
     },
     {
     .iv = 255,
