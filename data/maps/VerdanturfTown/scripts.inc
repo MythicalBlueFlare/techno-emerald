@@ -81,6 +81,7 @@ VerdanturfTown_EventScript_TuckerDefeated::
 	giveitem ITEM_AUDINITE
 	msgbox VerdanturfTown_Text_TuckerLeave
 	closemessage
+	playse SE_EXIT
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_TUCKER
 	setflag FLAG_TUCKER_DEFEATED

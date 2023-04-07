@@ -178,6 +178,8 @@ Route114_EventScript_LucyDefeated::
 	msgbox Route114_Text_LucyLeave, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_CHOICE_BAND
+	closemessage
+	playse SE_EXIT
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_LUCY
 	setflag FLAG_LUCY_DEFEATED

@@ -356,6 +356,8 @@ PetalburgWoods_EventScript_AnabelDefeated::
 	msgbox PetalburgWoods_Text_AnabelLeave, MSGBOX_DEFAULT
 	closemessage
 	giveitem ITEM_CHOICE_SPECS
+	closemessage
+	playse SE_EXIT
 	fadescreen FADE_TO_BLACK
 	removeobject LOCALID_ANABEL
 	setflag FLAG_ANABEL_DEFEATED
