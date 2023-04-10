@@ -64,7 +64,7 @@
 #define FLAG_JASMINE_DEFEATED    0x34
 #define FLAG_HIDE_LANCE    0x35 
 #define FLAG_RIVAL_ROUTE110_DEFEATED    0x36 
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
+#define FLAG_SET_THREE_PERFECT_IVS   0x37
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag

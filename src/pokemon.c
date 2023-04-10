@@ -65,6 +65,7 @@ static void Task_PlayMapChosenOrBattleBGM(u8 taskId);
 static u16 GiveMoveToBoxMon(struct BoxPokemon *boxMon, u16 move);
 static bool8 ShouldSkipFriendshipChange(void);
 static u8 SendMonToPC(struct Pokemon* mon);
+static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv);
 
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
 EWRAM_DATA u8 gPlayerPartyCount = 0;
@@ -3187,6 +3188,10 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     u32 personality;
     u32 value;
     u16 checksum;
+    u8 i;
+    u8 availableIVs[NUM_STATS];
+    u8 selectedIvs[3];
+    u8 maxIV = MAX_IV_MASK;
 
     ZeroBoxMonData(boxMon);
 
@@ -3280,6 +3285,49 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
         SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &iv);
         iv = (value & (MAX_IV_MASK << 10)) >> 10;
         SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &iv);
+
+        if (FlagGet(FLAG_SET_THREE_PERFECT_IVS))
+        {
+            iv = MAX_PER_STAT_IVS;
+            // Initialize a list of IV indices.
+            for (i = 0; i < NUM_STATS; i++)
+            {
+                availableIVs[i] = i;
+            }
+
+            // Select the 3 IVs that will be perfected.
+            for (i = 0; i < 3; i++)
+            {
+                u8 index = Random() % (NUM_STATS - i);
+                selectedIvs[i] = availableIVs[index];
+                RemoveIVIndexFromList(availableIVs, index);
+            }
+            for (i = 0; i < 3; i++)
+            {
+                switch (selectedIvs[i])
+                {
+                case STAT_HP:
+                    SetBoxMonData(boxMon, MON_DATA_HP_IV, &iv);
+                    break;
+                case STAT_ATK:
+                    SetBoxMonData(boxMon, MON_DATA_ATK_IV, &iv);
+                    break;
+                case STAT_DEF:
+                    SetBoxMonData(boxMon, MON_DATA_DEF_IV, &iv);
+                    break;
+                case STAT_SPEED:
+                    SetBoxMonData(boxMon, MON_DATA_SPEED_IV, &iv);
+                    break;
+                case STAT_SPATK:
+                    SetBoxMonData(boxMon, MON_DATA_SPATK_IV, &iv);
+                    break;
+                case STAT_SPDEF:
+                    SetBoxMonData(boxMon, MON_DATA_SPDEF_IV, &iv);
+                    break;
+                }
+            }
+        }
+
     }
 
     if (gBaseStats[species].abilities[1])
@@ -8323,3 +8371,21 @@ u8 GetLevelCap(void)
     return 16;
 }
 
+static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
+{
+    s32 i, j;
+    u8 temp[NUM_STATS];
+
+    ivs[selectedIv] = 0xFF;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        temp[i] = ivs[i];
+    }
+
+    j = 0;
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        if (temp[i] != 0xFF)
+            ivs[j++] = temp[i];
+    }
+}

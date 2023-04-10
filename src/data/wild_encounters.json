@@ -735,17 +735,7 @@
               {
                 "min_level": 20,
                 "max_level": 22,
-                "species": "SPECIES_BLITZLE"
-              },
-              {
-                "min_level": 20,
-                "max_level": 22,
-                "species": "SPECIES_BLITZLE"
-              },
-              {
-                "min_level": 20,
-                "max_level": 22,
-                "species": "SPECIES_BLITZLE"
+                "species": "SPECIES_TYNAMO"
               },
               {
                 "min_level": 20,
@@ -755,12 +745,22 @@
               {
                 "min_level": 20,
                 "max_level": 22,
-                "species": "SPECIES_BLITZLE"
+                "species": "SPECIES_TYNAMO"
+              },
+              {
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_TOGEDEMARU"
               },
               {
                 "min_level": 20,
                 "max_level": 22,
                 "species": "SPECIES_TYNAMO"
+              },
+              {
+                "min_level": 20,
+                "max_level": 22,
+                "species": "SPECIES_TOGEDEMARU"
               }
             ]
           },

@@ -3813,7 +3813,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_ADAPTABILITY, ABILITY_CLOUD_NINE, ABILITY_DRIZZLE},
+            .abilities = {ABILITY_WATER_ABSORB, ABILITY_CLOUD_NINE, ABILITY_ADAPTABILITY},
         #else
             .abilities = {ABILITY_WATER_ABSORB, ABILITY_WATER_ABSORB},
         #endif
@@ -3841,7 +3841,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_ADAPTABILITY, ABILITY_VOLT_ABSORB, ABILITY_ELECTRIC_SURGE},
+            .abilities = {ABILITY_VOLT_ABSORB, ABILITY_BATTERY, ABILITY_ADAPTABILITY},
         #else
             .abilities = {ABILITY_VOLT_ABSORB, ABILITY_VOLT_ABSORB},
         #endif
@@ -3868,7 +3868,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_ADAPTABILITY, ABILITY_GUTS, ABILITY_DROUGHT},
+        .abilities = {ABILITY_FLASH_FIRE, ABILITY_GUTS, ABILITY_ADAPTABILITY},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = FALSE,
     },
@@ -5566,7 +5566,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_ADAPTABILITY, ABILITY_MAGIC_BOUNCE, ABILITY_PSYCHIC_SURGE},
+            .abilities = {ABILITY_SYNCHRONIZE, ABILITY_MAGIC_BOUNCE, ABILITY_ADAPTABILITY},
         #else
             .abilities = {ABILITY_SYNCHRONIZE, ABILITY_SYNCHRONIZE},
         #endif
@@ -5593,7 +5593,7 @@ const struct BaseStats gBaseStats[] =
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
-        .abilities = {ABILITY_ADAPTABILITY, ABILITY_SYNCHRONIZE, ABILITY_SHADOW_SHIELD},
+        .abilities = {ABILITY_SYNCHRONIZE, ABILITY_IMMUNITY, ABILITY_ADAPTABILITY},
         .bodyColor = BODY_COLOR_BLACK,
         .noFlip = FALSE,
     },
@@ -13280,7 +13280,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_ADAPTABILITY, ABILITY_CHLOROPHYLL, ABILITY_GRASSY_SURGE},
+            .abilities = {ABILITY_QUICK_FEET, ABILITY_CHLOROPHYLL, ABILITY_ADAPTABILITY},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE, ABILITY_CHLOROPHYLL},
         #endif
@@ -13308,7 +13308,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_ADAPTABILITY, ABILITY_MULTISCALE, ABILITY_SNOW_WARNING},
+            .abilities = {ABILITY_ICE_BODY, ABILITY_MULTISCALE, ABILITY_ADAPTABILITY},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE},
         #endif
@@ -19287,7 +19287,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FAIRY,
         .eggGroup2 = EGG_GROUP_FAIRY,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_REGENERATOR, ABILITY_AROMA_VEIL, ABILITY_LEAD_SINGER},
+            .abilities = {ABILITY_FAIRY_AURA, ABILITY_LEAD_SINGER, ABILITY_REGENERATOR},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE},
         #endif
@@ -19315,7 +19315,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FAIRY,
         .eggGroup2 = EGG_GROUP_FAIRY,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_REGENERATOR, ABILITY_AROMA_VEIL, ABILITY_LEAD_SINGER},
+            .abilities = {ABILITY_FAIRY_AURA, ABILITY_LEAD_SINGER, ABILITY_REGENERATOR},
         #else
             .abilities = {ABILITY_NONE, ABILITY_NONE},
         #endif
@@ -19792,7 +19792,7 @@ const struct BaseStats gBaseStats[] =
         .eggGroup1 = EGG_GROUP_FIELD,
         .eggGroup2 = EGG_GROUP_FIELD,
         #ifdef BATTLE_ENGINE
-            .abilities = {ABILITY_ADAPTABILITY, ABILITY_LEAD_SINGER, ABILITY_MISTY_SURGE},
+            .abilities = {ABILITY_CUTE_CHARM, ABILITY_LEAD_SINGER, ABILITY_ADAPTABILITY},
         #else
             .abilities = {ABILITY_CUTE_CHARM, ABILITY_CUTE_CHARM},
         #endif

@@ -11499,6 +11499,7 @@ static const struct LevelUpMove sTirtougaLevelUpLearnset[] = {
 
 static const struct LevelUpMove sCarracostaLevelUpLearnset[] = {
 	LEVEL_UP_MOVE( 1, MOVE_ICICLE_CRASH),
+    LEVEL_UP_MOVE( 1, MOVE_PROTECT),
     LEVEL_UP_MOVE( 1, MOVE_BIDE),
     LEVEL_UP_MOVE( 1, MOVE_WITHDRAW),
     LEVEL_UP_MOVE( 1, MOVE_WATER_GUN),
@@ -11558,10 +11559,10 @@ static const struct LevelUpMove sArcheopsLevelUpLearnset[] = {
     LEVEL_UP_MOVE(31, MOVE_CRUNCH),
     LEVEL_UP_MOVE(35, MOVE_DUAL_WINGBEAT),
     LEVEL_UP_MOVE(38, MOVE_ROCK_CLIMB),
-    LEVEL_UP_MOVE(41, MOVE_U_TURN),
     LEVEL_UP_MOVE(45, MOVE_STONE_EDGE),
     LEVEL_UP_MOVE(48, MOVE_HEADLONG_RUSH),
     LEVEL_UP_MOVE(50, MOVE_DRAGON_CLAW),
+    LEVEL_UP_MOVE(55, MOVE_U_TURN),
     LEVEL_UP_END
 };
 
