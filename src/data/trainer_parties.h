@@ -4327,7 +4327,7 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson1[] = {
     },
     {
     .iv = 255,
-    .lvl = 35,
+    .lvl = 34,
     .species = SPECIES_HELIOLISK,
 	.heldItem = ITEM_EXPERT_BELT,
 	.abilityNums = 0,
@@ -4339,7 +4339,7 @@ static const struct TrainerMonItemCustomMoves sParty_Wattson1[] = {
     .species = SPECIES_ELECTIVIRE,
 	.heldItem = ITEM_MAGNET,
 	.abilityNums = 0,
-    .moves = {MOVE_WILD_CHARGE, MOVE_LOW_SWEEP, MOVE_ICE_PUNCH, MOVE_VOLT_SWITCH}
+    .moves = {MOVE_PLASMA_FISTS, MOVE_LOW_SWEEP, MOVE_ICE_PUNCH, MOVE_VOLT_SWITCH}
     },
     {
     .iv = 255,

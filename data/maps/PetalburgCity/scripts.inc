@@ -94,6 +94,7 @@ PetalburgCity_EventScript_Boy::
 	closemessage
 	applymovement LOCALID_BOY, Common_Movement_FaceOriginalDirection
 	waitmovement 0
+	warp MAP_MAGMA_HIDEOUT_4F, 6, 11
 	release
 	end
 
