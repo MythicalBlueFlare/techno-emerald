@@ -5020,7 +5020,7 @@ static const struct TrainerMonItemCustomMoves sParty_Isabel1[] = {
     .species = SPECIES_CORSOLA_GALARIAN,
 	.heldItem = ITEM_EVIOLITE,
 	.abilityNums = 1,
-    .moves = {MOVE_NIGHT_SHADE, MOVE_GIGA_DRAIN, MOVE_RECOVER, MOVE_STRENGTH_SAP}
+    .moves = {MOVE_NIGHT_SHADE, MOVE_GIGA_DRAIN, MOVE_TOXIC, MOVE_STRENGTH_SAP}
     },
     {
     .iv = 255,

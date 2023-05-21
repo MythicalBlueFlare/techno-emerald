@@ -155,6 +155,7 @@ EverGrandeCity_PokemonLeague_1F_EventScript_Wallace1::
 	end
 	
 EverGrandeCity_PokemonLeague_1F_EventScript_Wallace:: 
+	setvar VAR_BATTLE_STATUS, 8
 	applymovement LOCALID_WALLACE, EverGrandeCity_PokemonLeague_1F_Movement_WallaceStartWalkUp
 	waitmovement 0
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown

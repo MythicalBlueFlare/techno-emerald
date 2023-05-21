@@ -1744,7 +1744,7 @@ static u8 CalcBerryYield(struct BerryTree *tree)
 
 static u8 GetBerryCountByBerryTreeId(u8 id)
 {
-    return gSaveBlock1Ptr->berryTrees[id].berryYield;
+    return 255;
 }
 
 static u16 GetStageDurationByBerryType(u8 berry)
