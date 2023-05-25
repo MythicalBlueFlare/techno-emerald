@@ -565,7 +565,6 @@ PetalburgCity_EventScript_Scott::
 	waitmovement 0
 	delay 30 
 	msgbox PetalburgCity_Text_TakeTheseItems, MSGBOX_DEFAULT
-	giveitem ITEM_CANDY_BAG, 1
 	giveitem ITEM_POKE_VIAL, 1
 	giveitem ITEM_EXP_SHARE, 1
 	closemessage

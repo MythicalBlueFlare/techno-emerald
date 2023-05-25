@@ -139,6 +139,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_AgreeToSeeRival::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_GetRivalToTeachYou, MSGBOX_DEFAULT
 	clearflag FLAG_HIDE_ROUTE_101_BOY
 	setvar VAR_BIRCH_LAB_STATE, 3
+	msgbox LittlerootTown_ProfessorBirchsLab_Text_TakeThisAsWell, MSGBOX_DEFAULT
+	giveitem ITEM_CANDY_BAG, 1
 	releaseall
 	end
 
@@ -999,3 +1001,8 @@ LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall:
 	.string "we meet. I'll be waiting!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
+
+LittlerootTown_ProfessorBirchsLab_Text_TakeThisAsWell:
+	.string "Oh!\n"
+	.string "I'd like you to have this as well.\l"
+	.string "It'll help your POKéMON grow faster!$"

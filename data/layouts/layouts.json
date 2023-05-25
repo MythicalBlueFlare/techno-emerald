@@ -3908,7 +3908,7 @@
       "height": 5,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_BattleFrontier",
-      "border_filepath": "data/layouts/BattleFrontier_BattleTo\u0000\u0000\u0000\u0000ultiCorridor/border.bin",
+      "border_filepath": "data/layouts/BattleFrontier_BattleTowerMultiCorridor/border.bin",
       "blockdata_filepath": "data/layouts/BattleFrontier_BattleTowerMultiCorridor/map.bin"
     },
     {
