@@ -5572,7 +5572,7 @@ static const struct TrainerMonItemCustomMoves sParty_Wallace[] = {
     .species = SPECIES_FROSMOTH,
     .heldItem = ITEM_CHARTI_BERRY,
 	.abilityNums = 2,
-    .moves = {MOVE_ICE_BEAM, MOVE_BUG_BUZZ, MOVE_HURRICANE, MOVE_QUIVER_DANCE}
+    .moves = {MOVE_ICE_BEAM, MOVE_BUG_BUZZ, MOVE_WEATHER_BALL, MOVE_QUIVER_DANCE}
     },
     {
     .iv = 255,
@@ -5588,7 +5588,7 @@ static const struct TrainerMonItemCustomMoves sParty_Wallace[] = {
     .species = SPECIES_EELEKTROSS,
     .heldItem = ITEM_ASSAULT_VEST,
 	.abilityNums = 0,
-    .moves = {MOVE_THUNDER, MOVE_HYDRO_PUMP, MOVE_LIQUIDATION, MOVE_VOLT_SWITCH}
+    .moves = {MOVE_THUNDER, MOVE_HYDRO_PUMP, MOVE_GIGA_DRAIN, MOVE_VOLT_SWITCH}
     },
     {
     .iv = 255,

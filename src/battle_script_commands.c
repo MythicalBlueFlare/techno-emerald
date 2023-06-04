@@ -13438,7 +13438,7 @@ u8 GetCatchingBattler(void)
 
 static void Cmd_handleballthrow(void)
 {
-    u8 ballMultiplier = 10;
+    u8 ballMultiplier = 20;
     s8 ballAddition = 0;
 
     if (gBattleControllerExecFlags)
@@ -13474,7 +13474,7 @@ static void Cmd_handleballthrow(void)
         if (gBaseStats[gBattleMons[gBattlerTarget].species].flags & FLAG_ULTRA_BEAST)
         {
             if (gLastUsedItem == ITEM_BEAST_BALL)
-                ballMultiplier = 50;
+                ballMultiplier = 100;
             else
                 ballMultiplier = 1;
         }
@@ -13485,17 +13485,17 @@ static void Cmd_handleballthrow(void)
         switch (gLastUsedItem)
         {
         case ITEM_ULTRA_BALL:
-            ballMultiplier = 20;
+            ballMultiplier = 40;
         case ITEM_GREAT_BALL:
         case ITEM_SAFARI_BALL:
         #ifdef ITEM_EXPANSION
         case ITEM_SPORT_BALL:
         #endif
-            ballMultiplier = 15;
+            ballMultiplier = 30;
         case ITEM_NET_BALL:
             if (IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_WATER) || IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_BUG))
                 #if B_NET_BALL_MODIFIER >= GEN_7
-                    ballMultiplier = 50;
+                    ballMultiplier = 75;
                 #else
                     ballMultiplier = 30;
                 #endif
@@ -13503,7 +13503,7 @@ static void Cmd_handleballthrow(void)
         case ITEM_DIVE_BALL:
             #if B_DIVE_BALL_MODIFIER >= GEN_4
                 if (GetCurrentMapType() == MAP_TYPE_UNDERWATER || gIsFishingEncounter || gIsSurfingEncounter)
-                    ballMultiplier = 35;
+                    ballMultiplier = 50;
             #else
                 if (GetCurrentMapType() == MAP_TYPE_UNDERWATER)
                     ballMultiplier = 35;
@@ -13531,7 +13531,7 @@ static void Cmd_handleballthrow(void)
         case ITEM_REPEAT_BALL:
             if (GetSetPokedexFlag(SpeciesToNationalPokedexNum(gBattleMons[gBattlerTarget].species), FLAG_GET_CAUGHT))
                 #if B_REPEAT_BALL_MODIFIER >= GEN_7
-                    ballMultiplier = 35;
+                    ballMultiplier = 50;
                 #else
                     ballMultiplier = 30;
                 #endif
@@ -13542,15 +13542,15 @@ static void Cmd_handleballthrow(void)
             #else
                 ballMultiplier = gBattleResults.battleTurnCounter + 10;
             #endif
-            if (ballMultiplier > 40)
-                ballMultiplier = 40;
+            if (ballMultiplier > 100)
+                ballMultiplier = 100;
             break;
         #ifdef ITEM_EXPANSION
         case ITEM_DUSK_BALL:
             RtcCalcLocalTime();
-            if ((gLocalTime.hours >= 20 && gLocalTime.hours <= 3) || gMapHeader.cave || gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
+            if ((gLocalTime.hours >= 40 && gLocalTime.hours <= 3) || gMapHeader.cave || gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
                 #if B_DUSK_BALL_MODIFIER >= GEN_7
-                    ballMultiplier = 30;
+                    ballMultiplier = 60;
                 #else
                     ballMultiplier = 35;
                 #endif
@@ -13558,7 +13558,7 @@ static void Cmd_handleballthrow(void)
         case ITEM_QUICK_BALL:
             if (gBattleResults.battleTurnCounter == 0)
                 #if B_QUICK_BALL_MODIFIER >= GEN_5
-                    ballMultiplier = 50;
+                    ballMultiplier = 75;
                 #else
                     ballMultiplier = 40;
                 #endif
