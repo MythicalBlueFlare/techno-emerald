@@ -38,3 +38,5 @@ porymap.project.cfg
 *.diff
 *.sym
 *.js
+showdown_sets.json
+__pycache__/
