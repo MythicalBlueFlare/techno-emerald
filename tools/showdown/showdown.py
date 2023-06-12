@@ -343,14 +343,14 @@ def to_showdown_json_sets(bosses):
         # the boss key might contain some important info about trainers with the same class + name
         # e.g. assorted grunt mini-bosses being marked as their locations
         boss_data = bosses[boss_key]
-        boss_class = TRCLASS_NAMES[boss_data['class']].replace('{PKMN}', 'Pokémon')
+        boss_class = TRCLASS_NAMES[boss_data['class']].replace('{PKMN}', u'Pokémon')
         boss_name = boss_data['name']
         boss_items = boss_data['party']['items']
         boss_party = boss_data['party']['party']
         for boss_mon in boss_party:
             print(boss_mon)
             species = SPECIES_NAMES[boss_mon['species']]
-            item = '(None)' if not boss_items or 'heldItem' not in boss_mon else ITEM_NAMES[boss_mon['heldItem']]
+            item = None if not boss_items or 'heldItem' not in boss_mon or boss_mon['heldItem'] == 'ITEM_NONE' else ITEM_NAMES[boss_mon['heldItem']]
             moves = [MOVE_NAMES[m] for m in boss_mon['moves']]
             level = boss_mon['lvl']
             # nature is implicitly Hardy
@@ -381,10 +381,11 @@ def to_showdown_json_sets(bosses):
             sets[species][f'{boss_class} {boss_name}'] = {
                 'ability': ability,
                 'level': level,
-                'item': item,
                 'moves': moves
             }
 
+            if item is not None:
+                sets[species][f'{boss_class} {boss_name}']['item'] = item
     
     return sets
 
@@ -403,4 +404,4 @@ if __name__ == '__main__':
     sets = to_showdown_json_sets(bosses)
 
     with open('showdown_sets.json', 'w') as fp:
-        fp.write(json.dumps(sets, indent=4))
+        fp.write(json.dumps(sets, indent=4, ensure_ascii=False))
