@@ -163,6 +163,71 @@ MONS_NAMES_OVERRIDES = {
     'SPECIES_ZAPDOS_GALARIAN': 'Zapdos-Galar',
 }
 
+REMATCH_BOSSES = set([
+    'Roxanne',
+    'Brawly'
+])
+
+IGNORED_BOSSES = set([
+    'ROXANNE_3',
+    'ROXANNE_4',
+    'ROXANNE_5',
+    'BRAWLY_3',
+    'BRAWLY_4',
+    'BRAWLY_5',
+    'WATTSON_2',
+    'WATTSON_3',
+    'WATTSON_4',
+    'WATTSON_5',
+    'FLANNERY_2',
+    'FLANNERY_3',
+    'FLANNERY_4',
+    'FLANNERY_5',
+    'NORMAN_2',
+    'NORMAN_3',
+    'NORMAN_4',
+    'NORMAN_5',
+    'WINONA_2',
+    'WINONA_3',
+    'WINONA_4',
+    'WINONA_5',
+    'TATE_AND_LIZA_2',
+    'TATE_AND_LIZA_3',
+    'TATE_AND_LIZA_4',
+    'TATE_AND_LIZA_5',
+    'JUAN_2',
+    'JUAN_3',
+    'JUAN_4',
+    'JUAN_5',
+])
+
+BOSSES_NO_EXTRA_DATA = set([
+    'Wattson',
+    'Flannery',
+    'Norman',
+    'Winona',
+    'Tate & Liza',
+    'Juan',
+    'Jasmine',
+    'Lucy',
+    'Tucker',
+    'Anabel',
+    'Noland',
+])
+
+LEVEL_SCALED_BOSSES = {
+    'MORTY': 65,
+    'LEADER_JASMINE': 65,
+    'GRUNT_LILYCOVECITY': 65,
+    'LUCY_1': 74,
+    'TUCKER_1': 74,
+    'ANABEL_1': 74,
+}
+
+EXTENDED_ABILITY_NAMES = {
+
+}
+
 # - TrainerMonItemCustomMoves: has an item, has a custom moveset
 # - TrainerMonItemDefaultMoves: has an item, moveset is based on level-up learnset
 # - TrainerMonNoItemCustomMoves: has no item, has a custom moveset
@@ -212,7 +277,7 @@ def import_ability_names():
     with open(ABILITY_DATA_FILE_NAME, 'r') as ability_data_file:
         for line in ability_data_file:
             # seek through the file until finding the start of the ability names
-            if line.strip() == 'const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =':
+            if line.strip() == '#if B_EXPANDED_ABILITY_NAMES == TRUE':
                 break
         
         key = ''
@@ -220,11 +285,15 @@ def import_ability_names():
         r = re.compile(r'\[(ABILITY_(\w+))\] = _\("(.+)"\),')
         next(ability_data_file)
         for line in ability_data_file:
+            if line.strip().startswith('#else'):
+                break
+
             if r.match(line.strip()):
                 (key, _, name) = r.match(line.strip()).groups()
-                ABILITY_NAMES[key] = name
-            elif line.strip == '};':
-                break
+                if key == 'ABILITY_WRESTLERS_MARK':
+                    ABILITY_NAMES[key] = 'Wrestler\'s Mark'
+                else:
+                    ABILITY_NAMES[key] = name
 
 
 def import_pokemon_abilities():
@@ -340,20 +409,30 @@ def parse_bosses(boss_parties):
 def to_showdown_json_sets(bosses):
     sets = {}
     for boss_key in bosses:
+        if boss_key in IGNORED_BOSSES:
+            continue
+
         # the boss key might contain some important info about trainers with the same class + name
         # e.g. assorted grunt mini-bosses being marked as their locations
         boss_data = bosses[boss_key]
         boss_class = TRCLASS_NAMES[boss_data['class']].replace('{PKMN}', u'Pokémon')
         boss_name = boss_data['name']
+        boss_extra = None
+        if '_' in boss_key:
+            boss_extra = ' '.join(boss_key.split('_')[1:]).title()
+
         boss_items = boss_data['party']['items']
         boss_party = boss_data['party']['party']
         for boss_mon in boss_party:
-            print(boss_mon)
             species = SPECIES_NAMES[boss_mon['species']]
             item = None if not boss_items or 'heldItem' not in boss_mon or boss_mon['heldItem'] == 'ITEM_NONE' else ITEM_NAMES[boss_mon['heldItem']]
             moves = [MOVE_NAMES[m] for m in boss_mon['moves']]
-            level = boss_mon['lvl']
             # nature is implicitly Hardy
+
+            # check the level; if it's 0, get the level from level-scaling defs
+            level = boss_mon['lvl']
+            if int(level) == 0:
+                level = LEVEL_SCALED_BOSSES.get(boss_key, -1)
 
             # ability needs to be sanitized: if the value is out of range, implicitly set to 0
             if len(SPECIES_ABILITIES[boss_mon['species']]) <= int(boss_mon['abilityNums']):
@@ -375,17 +454,24 @@ def to_showdown_json_sets(bosses):
                 sets[species] = {}
             
             sets_key = f'{boss_class} {boss_name}'
-            if len(boss_key.split('_')) > 1:
-                sets_key = sets_key + ' '.join([s.capitalize() for s in boss_key.split('_')[1:]])
+            if boss_extra is not None and boss_name not in BOSSES_NO_EXTRA_DATA:
+                if boss_extra.isnumeric() and boss_name in REMATCH_BOSSES and int(boss_extra) < 3:
+                    boss_extra = 'Rematch'
+                elif 'Route1' in boss_extra:
+                    boss_extra = boss_extra.replace('Route1', 'Route 1')
+                elif 'city' in boss_extra:
+                    boss_extra = boss_extra.replace('city', ' City')
+
+                sets_key = sets_key + f' ({boss_extra})'
             
-            sets[species][f'{boss_class} {boss_name}'] = {
+            sets[species][sets_key] = {
                 'ability': ability,
                 'level': level,
                 'moves': moves
             }
 
             if item is not None:
-                sets[species][f'{boss_class} {boss_name}']['item'] = item
+                sets[species][sets_key]['item'] = item
     
     return sets
 
