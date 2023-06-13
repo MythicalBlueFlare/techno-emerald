@@ -453,9 +453,9 @@ static const struct TrainerMonItemCustomMoves sParty_Matt[] = {
     .iv = 255,
     .lvl = 72,
     .species = SPECIES_CHESNAUGHT,
-	.heldItem = ITEM_LEFTOVERS,
+	.heldItem = ITEM_COBA_BERRY,
 	.abilityNums = 0,
-    .moves = {MOVE_HORN_LEECH, MOVE_IRON_TAIL, MOVE_HAMMER_ARM, MOVE_EARTHQUAKE}
+    .moves = {MOVE_HORN_LEECH, MOVE_HAMMER_ARM, MOVE_THUNDER_PUNCH, MOVE_EARTHQUAKE}
     },
     {
     .iv = 255,
