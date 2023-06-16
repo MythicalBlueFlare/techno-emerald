@@ -4522,7 +4522,7 @@ static s16 AI_CheckViability(u8 battlerAtk, u8 battlerDef, u16 move, s16 score)
         }
         if IS_BATTLER_OF_TYPE(BATTLE_PARTNER(battlerAtk), TYPE_GROUND)
         {
-            score += 4;
+            score += 5;
         }
         break;
     case EFFECT_TOPSY_TURVY:
